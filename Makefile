@@ -1,5 +1,6 @@
 #
 # Clawsker makefile
+# $Id$
 #
 
 NAME=clawsker
