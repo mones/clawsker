@@ -1,0 +1,788 @@
+#!/usr/bin/perl -w
+#
+# $Id$
+#
+
+=pod
+
+=head1 NAME
+
+Clawsker - A Claws Mail Tweaker
+
+=head1 SYNOPSIS
+
+clawsker [options]
+
+=head1 DESCRIPTION
+
+Clawsker is an applet to edit the so called Claws Mail hidden preferences.
+
+Claws Mail is a fast, lightweight and feature-rich MUA with a high number 
+of configurable options. To keep the binary small and fast some of these 
+preferences which not widely used are not provided with a graphical interface 
+for inspection and/or modification.
+
+Users wanting to edit such preferences had to face raw edition of their 
+configuration files, now you can do it with a convenient GTK2 interface
+using Clawsker.
+
+=head1 OPTIONS
+
+No options are currently available.
+
+=head1 LIMITATIONS
+
+Alternate configuration directories are not (yet) supported.
+
+=head1 AUTHOR
+
+Ricardo Mones E<lt>ricardo@mones.orgE<gt>
+
+=head1 LICENSE
+
+Copyright (c) 2007 by Ricardo Mones
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see E<lt>http://www.gnu.org/licenses/E<gt>.
+
+=cut
+
+use strict;
+use Glib qw(TRUE FALSE);
+use Gtk2 -init;
+
+my $PREFIX = '@PREFIX@';
+my $LIBDIR = '@LIBDIR@';
+my $VERSION = '@VERSION@';
+
+# default messages
+%xl::s = (
+    win_title => 'Claws Mail Hidden Preferences',
+    about => 'About...',
+    about_title => 'Clawsker ~ A Claws Mail Tweaker',
+    about_license => 'License:',
+
+    tab_colours => 'Colours',
+    tab_behaviour => 'Behaviour',
+    tab_gui => 'GUI',
+    tab_other => 'Other',
+
+    ab_frame => 'Addressbook',
+    mem_frame => 'Memory',
+    msgview_frame => 'Message view',
+    log_frame => 'Log window',
+
+    l_oth_use_dlg => 'Use address book dialog',
+    h_oth_use_dlg => 'If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.',
+    l_oth_max_use => 'Maximum memory for message cache (Kb)',
+    h_oth_max_use => 'The maximum amount of memory to use to cache messages, in kB.',
+    l_oth_min_time => 'Minimun time for cache elements (minutes)',
+    h_oth_min_time => 'The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.',
+    
+    l_gui_b_unread => 'Show unread messages with bold font',
+    h_gui_b_unread => 'Show unread messages in the Message List using a bold font.',
+    l_gui_no_markup => 'Don\'t use markup in compose window',
+    h_gui_no_markup => 'Don\'t use bold and italic text in Compose dialogue\'s account selector.',
+    l_gui_dot_lines => 'Use dotted lines in tree views',
+    h_gui_dot_lines => 'Use the old dotted line look in the main window tree views (folder and message lists) instead of the modern lineless look.',
+    l_gui_h_scroll => 'Enable horizontal scrollbar',
+    h_gui_h_scroll => 'Enable the horizontal scrollbar in the Message List.',
+    l_gui_swp_from => 'Swap From field in Sent folder',
+    h_gui_swp_from => 'Display the sender\'s email address in the To column of the Sent folder instead of the recipient\'s.',
+    l_gui_v_scroll => 'Folder list scrollbar behaviour',
+    h_gui_v_scroll => 'Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.',
+    l_gui_v_scroll_show => 'Show always',
+    l_gui_v_scroll_auto => 'Automatic',
+    l_gui_v_scroll_hide => 'Hide always',
+    l_gui_strip_off => 'Striped lines contrast',
+    h_gui_strip_off => 'Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.',
+    l_gui_cursor_v => 'Cursor visible in message view',
+    h_gui_cursor_v => 'Display the cursor in the message view.',
+    l_gui_toolbar_d => 'Detachable toolbars',
+    h_gui_toolbar_d => 'Show handles in the toolbars.',
+    l_gui_strip_all => 'Use stripes in tree view components',
+    h_gui_strip_all => 'Enable alternately coloured lines in all tree view components.',
+    l_gui_strip_sum => 'Use stripes in summary view',
+    h_gui_strip_sum => 'Enable alternately coloured lines in summary view and folder list',
+
+    l_beh_hover_t => 'Drag and drop hover timeout (ms)',
+    h_beh_hover_t => 'Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.',
+    l_beh_dangerous => 'Don\'t confirm deletions',
+    h_beh_dangerous => 'Don\'t ask for confirmation before definitive deletion of emails.',
+    l_beh_flowed => 'Respect flowed format in messages',
+    h_beh_flowed => 'Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped.',
+    l_beh_parts_rw => 'Allow writable temporary files',
+    h_beh_parts_rw => 'Saves temporary files when opening attachment with write bit set.',
+    l_beh_skip_ssl => 'Don\'t check SSL certificates',
+    h_beh_skip_ssl => 'Disables the verification of SSL certificates.',
+    l_beh_up_step => 'Progress update step (items)',
+    h_beh_up_step => 'Update stepping in progress bars.',
+    l_beh_thread_a => 'Maximum age in threading by subject (days)', 
+    h_beh_thread_a => 'Number of days to include a message in a thread when using "Thread using subject in addition to standard headers".',
+    l_beh_unsafe_ssl => 'Allow unsafe SSL certificates',
+    h_beh_unsafe_ssl => 'Allows Claws Mail to remember multiple SSL certificates for a given server/port.',
+    l_beh_use_utf8 => 'Use UTF-8 in broken mails',
+    h_beh_use_utf8 => 'Use UTF-8 encoding for broken mails instead of current locale.',
+    l_beh_warn_dnd => 'Warning on drag and drop',
+    h_beh_warn_dnd => 'Display a confirmation dialogue on drag \'n\' drop of folders.',
+
+    l_col_emphasis => 'Emphasised X-Mailer colour',
+    h_col_emphasis => 'The colour used for the X-Mailer line when its value is Claws Mail.',
+    l_col_log_err => 'Errors colour',
+    h_col_log_err => 'Colour for error messages in log window.',
+    l_col_log_in => 'Input colour',
+    h_col_log_in => 'Colour for input messages in log window.',
+    l_col_log_msg => 'Messages colour',
+    h_col_log_msg => 'Colour for messages in log window.',
+    l_col_log_out => 'Output colour',
+    h_col_log_out => 'Colour for output messages in log window.',
+    l_col_log_warn => 'Warnings colour',
+    h_col_log_warn => 'Colour for warning messages in log window.',
+
+    e_error => 'Error: ',
+    e_noclawsrc => 'no $HOME/.claws-mail/clawsrc file found.',
+    e_running => 'seems Claws Mail is currently running, close it first.',
+);
+
+# load i18n messages if available
+my $pname = "clawsker";
+my @spp = split('/',$0);
+$spp[$#spp] = '';
+my $sps = join('/',@spp);
+my $lang = (defined($ENV{'LANG'}))? $ENV{'LANG'}: 'en';
+my $langf = "";
+for ($lang) {
+    /es.*/ && do { $langf = "es"; };
+}
+if ($langf ne "") { 
+    my $lf = $sps . $pname . "." . $langf . ".pl";
+    -x $lf or print "Warning: cant load $langf translation file\n";
+    do $lf unless ! -x $lf ;
+}
+
+# check if claws is running
+my $socket = "/tmp/claws-mail-$<";
+-S $socket and die "$xl::s{e_error}$xl::s{e_running}\n";
+
+# all preferences read by load_preferences
+my %PREFS = ();
+# values of all preferences handled by clawsker
+my %HPVALUE = ();
+
+# index constants for preference arrays
+use constant NAME  => 0; # the name on the rc file
+use constant LABEL => 1; # the label on the GUI
+use constant DESC  => 2; # the description for the hint/help
+use constant TYPE  => 3; # data type: bool, int, float, string, color
+use constant GUI   => 4; # GUI element
+
+# data handlers and auxiliar functions
+
+sub handle_bool_value {
+    my ($widget, $event, $dataref) = @_;
+    $$dataref = ($widget->get_active ())? '1': '0';
+}
+
+sub handle_int_value {
+    my ($widget, $event, $dataref) = @_;
+    $_ = $widget->get_text ();
+    s/^\s+//;
+    s/\s+$//;
+    if (/^[0-9]+$/) {
+        $$dataref = $_;
+	$widget->set_text ($_);
+    }
+    else {
+        $widget->set_text ($$dataref);
+    }
+}
+
+sub handle_string_value {
+    my ($widget, $event, $dataref) = @_;
+    $$dataref = $widget->get_text ();
+}
+
+sub gdk_color_from_str {
+    my ($str) = @_;
+    my ($rr, $gg, $bb) = (0, 0 ,0);
+    $_ = uc ($str);
+    if (/\#([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])/) {
+        $rr = hex($1) * 256;
+        $gg = hex($2) * 256; 
+        $bb = hex($3) * 256;
+    }
+    my $color = Gtk2::Gdk::Color->new ($rr, $gg, $bb);
+    return $color;
+}
+
+sub str_from_gdk_color {
+    my ($color) = @_;
+    my $rr = $color->red / 256;
+    my $gg = $color->green / 256;
+    my $bb = $color->blue / 256;
+    my $str = sprintf ("#%.2x%.2x%.2x", $rr, $gg, $bb);
+    return $str;
+}
+
+sub handle_color_value {
+    my ($widget, $event, $dataref) = @_;
+    my $newcol = $widget->get_color;
+    $$dataref = &str_from_gdk_color ($newcol);
+}
+
+sub handle_selection_value {
+    my ($widget, $event, $dataref) = @_;
+    $$dataref = $widget->get_active;
+}
+
+# graphic element creation 
+
+sub new_check_button_for {
+    my ($hash, $key) = @_;
+    my $name = $$hash{$key}[NAME];
+    my $label = $$hash{$key}[LABEL];
+    #
+    my $cb = Gtk2::CheckButton->new ($label);
+    $$hash{$key}[GUI] = $cb;
+    $cb->set_active ($HPVALUE{$name} eq '1');
+    $cb->signal_connect (clicked => sub {
+            my ($w, $e) = @_;
+	    &handle_bool_value($w, $e, \$HPVALUE{$name});
+        });
+    #
+    return $cb;
+}
+
+sub new_text_box_for {
+    my ($hash, $key) = @_;
+    my $name = $$hash{$key}[NAME];
+    my $label = $$hash{$key}[LABEL];
+    #
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    my $glabel = Gtk2::Label->new ($label);
+    my $gentry = Gtk2::Entry->new;
+    $$hash{$key}[GUI] = $gentry;
+    $gentry->set_text($HPVALUE{$name});
+    $gentry->signal_connect(changed => sub {
+            my ($w, $e) = @_;
+	    &handle_int_value($w, $e, \$HPVALUE{$name}); # FIXME int only
+        });
+    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
+    $hbox->pack_start ($gentry, FALSE, FALSE, 0);
+    #
+    return $hbox;
+}
+
+sub new_color_button_for {
+    my ($hash, $key) = @_;
+    my $name = $$hash{$key}[NAME];
+    my $label = $$hash{$key}[LABEL];
+    #
+    my $col = &gdk_color_from_str ($HPVALUE{$name});
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    my $glabel = Gtk2::Label->new ($label);
+    my $button = Gtk2::ColorButton->new_with_color ($col);
+    $$hash{$key}[GUI] = $button;
+    $button->set_title ($label);
+    $button->signal_connect ('color-set' => sub {
+            my ($w, $e) = @_;
+	    &handle_color_value($w, $e, \$HPVALUE{$name}); 
+        });
+    $hbox->pack_start ($button, FALSE, FALSE, 0);
+    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
+    #
+    return $hbox;
+}
+
+sub new_selection_box_for {
+    my ($hash, $key) = @_;
+    my $name = $$hash{$key}[NAME];
+    my $label = $$hash{$key}[LABEL];
+    #
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    my $glabel = Gtk2::Label->new ($label);
+    my $combo = Gtk2::ComboBox->new_text;
+    $$hash{$key}[GUI] = $combo;
+    my @options = split (';', $$hash{$key}[TYPE]);
+    foreach my $opt (@options) {
+        my ($index, $textkey) = split ('=', $opt);
+        $combo->insert_text ($index, $xl::s{$textkey});
+    }
+    $combo->signal_connect ('changed' => sub {
+            my ($w, $e) = @_;
+	    &handle_selection_value($w, $e, \$HPVALUE{$name});
+        });
+    $combo->set_active ($HPVALUE{$name});
+    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
+    $hbox->pack_start ($combo, FALSE, FALSE, 0);
+    #
+    return $hbox;
+}
+
+# preference maps and corresponding page creation subs
+
+%pr::oth = ( # other preferences
+    use_dlg => [ 
+        'addressbook_use_editaddress_dialog',
+	$xl::s{l_oth_use_dlg},
+        $xl::s{h_oth_use_dlg},
+	'bool',
+	undef,
+    ],
+    max_use => [
+    	'cache_max_mem_usage',
+	$xl::s{l_oth_max_use},
+	$xl::s{h_oth_max_use},
+	'int',
+	undef,
+    ],
+    min_time => [
+        'cache_min_keep_time',
+	$xl::s{l_oth_min_time},
+	$xl::s{h_oth_min_time},
+	'int',
+	undef,
+    ],
+);
+
+sub new_other_page() {
+    my $of = Gtk2::VBox->new (FALSE, 5);
+
+    my $ab_frame = Gtk2::Frame->new ($xl::s{ab_frame}); 
+    my $cb_use_dlg = &new_check_button_for(\%pr::oth, 'use_dlg');
+    my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->pack_start ($cb_use_dlg, FALSE, FALSE, 0);
+    $ab_frame->add ($vb1);
+
+    my $mem_frame = Gtk2::Frame->new ($xl::s{mem_frame}); 
+    my $tb_max_use = &new_text_box_for(\%pr::oth, 'max_use');
+    my $tb_min_time = &new_text_box_for(\%pr::oth, 'min_time');
+    my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->pack_start ($tb_max_use, FALSE, FALSE, 0);
+    $vb2->pack_start ($tb_min_time, FALSE, FALSE, 0);
+    $mem_frame->add ($vb2);
+
+    $of->pack_start ($ab_frame, FALSE, FALSE, 0);
+    $of->pack_start ($mem_frame, FALSE, FALSE, 0);
+
+    return $of;
+}
+
+%pr::gui = ( # gui bells and whistles
+    b_unread => [ 
+        'bold_unread',
+        $xl::s{l_gui_b_unread},
+        $xl::s{h_gui_b_unread},
+	'bool',
+	undef,
+    ],
+    no_markup => [
+        'compose_no_markup',
+        $xl::s{l_gui_no_markup},
+        $xl::s{h_gui_no_markup},
+	'bool',
+	undef,
+    ],
+    dot_lines => [
+        'enable_dotted_lines',
+        $xl::s{l_gui_dot_lines},
+        $xl::s{h_gui_dot_lines},
+	'bool',
+	undef,
+    ],
+    h_scroll => [
+        'enable_hscrollbar',
+        $xl::s{l_gui_h_scroll},
+        $xl::s{h_gui_h_scroll},
+	'bool',
+	undef,
+    ],
+    swp_from => [
+        'enable_swap_from',
+        $xl::s{l_gui_swp_from},
+        $xl::s{h_gui_swp_from},
+	'bool',
+	undef,
+    ],
+    v_scroll => [
+        'folderview_vscrollbar_policy',
+        $xl::s{l_gui_v_scroll},
+        $xl::s{h_gui_v_scroll},
+	'0=l_gui_v_scroll_show;1=l_gui_v_scroll_auto;2=l_gui_v_scroll_hide',
+	undef,
+    ],
+    strip_off => [
+        'stripes_color_offset',
+	$xl::s{l_gui_strip_off},
+	$xl::s{h_gui_strip_off},
+	'int',
+	undef,
+    ],
+    cursor_v => [
+        'textview_cursor_visible',
+        $xl::s{l_gui_cursor_v},
+        $xl::s{h_gui_cursor_v},
+	'bool',
+	undef,
+    ],
+    toolbar_d => [
+        'toolbar_detachable',
+        $xl::s{l_gui_toolbar_d},
+        $xl::s{h_gui_toolbar_d},
+	'bool',
+	undef,
+    ],
+    strip_all => [
+        'use_stripes_everywhere',
+        $xl::s{l_gui_strip_all},
+        $xl::s{h_gui_strip_all},
+	'bool',
+	undef,
+    ],
+    strip_sum => [
+        'use_stripes_in_summaries',
+        $xl::s{l_gui_strip_sum},
+        $xl::s{h_gui_strip_sum},
+	'bool',
+	undef,
+    ],
+);
+
+sub new_gui_page() {
+    my $gf = Gtk2::VBox->new (FALSE, 5);
+
+    my $cb_b_unread = &new_check_button_for (\%pr::gui, 'b_unread');
+    my $cb_no_markup = &new_check_button_for (\%pr::gui, 'no_markup'); 
+    my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
+    my $cb_h_scroll = &new_check_button_for (\%pr::gui, 'h_scroll');
+    my $cb_swp_from = &new_check_button_for (\%pr::gui, 'swp_from');
+    my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
+    my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
+    my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
+    my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
+    my $sb_v_scroll = &new_selection_box_for (\%pr::gui, 'v_scroll');
+    my $tb_strip_off = &new_text_box_for (\%pr::gui, 'strip_off');
+
+    $gf->pack_start ($cb_b_unread, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_no_markup, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_h_scroll, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_swp_from, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_strip_all, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_strip_sum, FALSE, FALSE, 0);
+    $gf->pack_start ($sb_v_scroll, FALSE, FALSE, 0);
+    $gf->pack_start ($tb_strip_off, FALSE, FALSE, 0);
+    return $gf;
+}
+
+%pr::beh = ( # tweak some behaviour
+    hover_t => [
+        'hover_timeout',
+        $xl::s{l_beh_hover_t},
+        $xl::s{h_beh_hover_t},
+	'int',
+	undef,
+    ],
+    dangerous => [
+        'live_dangerously',
+        $xl::s{l_beh_dangerous},
+        $xl::s{h_beh_dangerous},
+	'bool',
+	undef,
+    ],
+    flowed => [
+        'respect_flowed_format',
+        $xl::s{l_beh_flowed},
+        $xl::s{h_beh_flowed},
+	'bool',
+	undef,
+    ],
+    parts_rw => [
+        'save_parts_readwrite',
+        $xl::s{l_beh_parts_rw},
+        $xl::s{h_beh_parts_rw},
+	'bool',
+	undef,
+    ],
+    skip_ssl => [
+        'skip_ssl_cert_check',
+        $xl::s{l_beh_skip_ssl},
+        $xl::s{h_beh_skip_ssl},
+	'bool',
+	undef,
+    ],
+    up_step => [
+        'statusbar_update_step',
+        $xl::s{l_beh_up_step},
+        $xl::s{h_beh_up_step},
+	'int',
+	undef,
+    ],
+    thread_a => [
+        'thread_by_subject_max_age',
+        $xl::s{l_beh_thread_a},
+        $xl::s{h_beh_thread_a},
+	'int',
+	undef,
+    ],
+    unsafe_ssl => [
+        'unsafe_ssl_certs',
+        $xl::s{l_beh_unsafe_ssl},
+        $xl::s{h_beh_unsafe_ssl},
+	'bool',
+	undef,
+    ],
+    use_utf8 => [
+        'utf8_instead_of_locale_for_broken_mail',
+        $xl::s{l_beh_use_utf8},
+        $xl::s{h_beh_use_utf8},
+	'bool',
+	undef,
+    ],
+    warn_dnd => [
+        'warn_dnd',
+        $xl::s{l_beh_warn_dnd},
+        $xl::s{h_beh_warn_dnd},
+	'bool',
+	undef,
+    ],
+);
+
+sub new_behaviour_page() {
+    my $bf = Gtk2::VBox->new (FALSE, 5);
+  
+    my $tb_hoover_t = &new_text_box_for (\%pr::beh, 'hover_t');
+    my $tb_up_step = &new_text_box_for (\%pr::beh, 'up_step');
+    my $tb_thread_a = &new_text_box_for (\%pr::beh, 'thread_a');
+    my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
+    my $cb_flowed = &new_check_button_for (\%pr::beh, 'flowed');
+    my $cb_parts_rw = &new_check_button_for (\%pr::beh, 'parts_rw');
+    my $cb_skip_ssl = &new_check_button_for (\%pr::beh, 'skip_ssl');
+    my $cb_unsafe_ssl = &new_check_button_for (\%pr::beh, 'unsafe_ssl');
+    my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
+    my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
+
+    $bf->pack_start ($tb_hoover_t, FALSE, FALSE, 0);
+    $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
+    $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_dangerous, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_flowed, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_skip_ssl, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
+    $bf->pack_start ($cb_warn_dnd, FALSE, FALSE, 0);
+    return $bf;
+}
+
+%pr::col = ( # a variety of colours
+    emphasis => [
+        'emphasis_color',
+        $xl::s{l_col_emphasis},
+        $xl::s{h_col_emphasis},
+	'color',
+	undef,
+    ],
+    log_err => [
+        'log_error_color',
+        $xl::s{l_col_log_err},
+        $xl::s{h_col_log_err},
+        'color',
+        undef,
+    ],
+    log_in => [
+        'log_in_color',
+        $xl::s{l_col_log_in},
+        $xl::s{h_col_log_in},
+        'color',
+        undef,
+    ],
+    log_msg => [
+        'log_msg_color',
+        $xl::s{l_col_log_msg},
+        $xl::s{h_col_log_msg},
+        'color',
+        undef,
+    ],
+    log_out => [
+        'log_out_color',
+        $xl::s{l_col_log_out},
+        $xl::s{h_col_log_out},
+        'color',
+        undef,
+    ],
+    log_warn => [
+        'log_warn_color',
+        $xl::s{l_col_log_warn},
+        $xl::s{h_col_log_warn},
+        'color',
+        undef,
+    ],
+);
+
+sub new_colours_page() {
+    my $cf = Gtk2::VBox->new (FALSE, 5);
+
+    my $msgview_frame = Gtk2::Frame->new ($xl::s{msgview_frame}); 
+    my $cb_emphasis = &new_color_button_for (\%pr::col, 'emphasis');
+    my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->pack_start ($cb_emphasis, FALSE, FALSE, 0);
+    $msgview_frame->add ($vb1);
+    
+    my $log_frame = Gtk2::Frame->new ($xl::s{log_frame}); 
+    my $cb_log_err = &new_color_button_for (\%pr::col, 'log_err');
+    my $cb_log_in = &new_color_button_for (\%pr::col, 'log_in');
+    my $cb_log_msg = &new_color_button_for (\%pr::col, 'log_msg');
+    my $cb_log_out = &new_color_button_for (\%pr::col, 'log_out');
+    my $cb_log_warn = &new_color_button_for (\%pr::col, 'log_warn');
+    my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->pack_start ($cb_log_err, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_log_in, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_log_msg, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_log_out, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_log_warn, FALSE, FALSE, 0);
+    $log_frame->add ($vb2);
+
+    $cf->pack_start ($msgview_frame, FALSE, FALSE, 0);
+    $cf->pack_start ($log_frame, FALSE, FALSE, 0);
+    return $cf;
+}
+
+# update the hidden preferences status from loaded values
+sub init_hidden_preferences() {
+    foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth) {
+        foreach my $key (keys %$hash) { 
+	    $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
+        }
+    }
+}
+
+# load current status from disc
+sub load_preferences() {
+    my $rc = $ENV{HOME} . '/.claws-mail/clawsrc';
+    -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+    open (RCF, "<$rc");
+    while (<RCF>) {
+	chomp;
+	if (/^([8a-z_]+)=(.*)$/) {
+	    $PREFS{$1} = "$2";
+        }
+    }
+    close (RCF);
+}
+
+# save current preferences to disc
+sub save_preferences() {
+    my $rc = $ENV{HOME} . '/.claws-mail/clawsrc';
+    my $rcbak = "$rc.backup";
+    rename ($rc, $rcbak);
+    open (RCF, ">$rc");
+    open (RCB, "<$rcbak");
+    while (<RCB>) {
+	chomp;
+	if (/^([8a-z_]+)=(.*)$/) {
+	    if (defined($HPVALUE{$1})) {
+	        print RCF $1 . "=" . $HPVALUE{$1} . "\n";
+	    }
+	    else {
+	        print RCF $_ . "\n";
+	    }
+        }
+	else {
+	    print RCF $_ . "\n";
+	}
+    }
+    close (RCB);
+    close (RCF);
+}
+
+# create notebook
+sub new_notebook() {
+    my $nb = Gtk2::Notebook->new;
+    # 
+    $nb->append_page (&new_behaviour_page, $xl::s{tab_behaviour});
+    $nb->append_page (&new_colours_page, $xl::s{tab_colours});
+    $nb->append_page (&new_gui_page, $xl::s{tab_gui});
+    $nb->append_page (&new_other_page, $xl::s{tab_other});
+
+    return $nb;
+}
+
+# create an about dialog
+sub new_about_dialog() {
+    my ($parent) = @_;
+    my $title = $xl::s{about_title};
+    my $lic = $xl::s{about_license};
+    my $license = 
+"This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
+
+    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent, 
+                    [qw/modal destroy-with-parent/], 
+		    'info', 'close', 
+		    "<span size=\"x-large\" weight=\"bold\">$title</span>\n<span>Copyright 2007 by Ricardo Mones &lt;ricardo\@mones.org&gt;</span>\n\n<span size=\"large\">$lic</span>\n\n<span size=\"small\">$license</span>");
+    $dialog->set_title ($xl::s{about});
+    #
+    return $dialog;
+}
+
+# create buttons box
+sub new_button_box() {
+    my ($adlg) = @_;
+    my $b_about = Gtk2::Button->new_from_stock ('gtk-about');
+    my $b_exit = Gtk2::Button->new_from_stock ('gtk-quit');
+    my $b_apply = Gtk2::Button->new_from_stock ('gtk-apply');
+    # disable button until is really implemented
+    # my $b_undo = Gtk2::Button->new_from_stock ('gtk-undo');
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    # signal handlers 
+    $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
+    $b_apply->signal_connect (clicked => sub { &save_preferences });
+    # $b_undo->signal_connect (clicked => sub { &undo_current_changes });
+    $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
+    # package them
+    $hbox->pack_end ($b_exit, FALSE, FALSE, 0);
+    $hbox->pack_end ($b_apply, FALSE, FALSE, 0);
+    # $hbox->pack_end ($b_undo, FALSE, FALSE, 0);
+    $hbox->pack_start ($b_about, FALSE, FALSE, 0);
+    #
+    return $hbox;
+}
+
+# initialise values
+&load_preferences;
+&init_hidden_preferences;
+# create main GUI
+my $window = Gtk2::Window->new ('toplevel');
+my $box = Gtk2::VBox->new (FALSE, 5);
+my $about = &new_about_dialog;
+$box->pack_start (&new_notebook, FALSE, FALSE, 0);
+$box->pack_end (&new_button_box ($about), FALSE, FALSE, 0);
+
+$window->set_title ($xl::s{win_title});
+$window->add ($box);
+$window->show_all;
+Gtk2->main;
+
