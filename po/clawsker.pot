@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-12-17 11:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../clawsker:90
+msgid "Claws Mail Hidden Preferences"
+msgstr ""
+
+#: ../clawsker:91
+msgid "About..."
+msgstr ""
+
+#: ../clawsker:92
+msgid "Clawsker ~ A Claws Mail Tweaker"
+msgstr ""
+
+#: ../clawsker:93
+msgid "License:"
+msgstr ""
+
+#: ../clawsker:95
+msgid "Colours"
+msgstr ""
+
+#: ../clawsker:96
+msgid "Behaviour"
+msgstr ""
+
+#: ../clawsker:97
+msgid "GUI"
+msgstr ""
+
+#: ../clawsker:98
+msgid "Other"
+msgstr ""
+
+#: ../clawsker:100
+msgid "Addressbook"
+msgstr ""
+
+#: ../clawsker:101
+msgid "Memory"
+msgstr ""
+
+#: ../clawsker:102
+msgid "Message view"
+msgstr ""
+
+#: ../clawsker:103
+msgid "Log window"
+msgstr ""
+
+#: ../clawsker:105
+msgid "Use address book dialog"
+msgstr ""
+
+#: ../clawsker:106
+msgid ""
+"If true use a separate dialogue to edit a person's details. Otherwise will "
+"use a form embedded in the addressbook's main window."
+msgstr ""
+
+#: ../clawsker:107
+msgid "Maximum memory for message cache (Kb)"
+msgstr ""
+
+#: ../clawsker:108
+msgid "The maximum amount of memory to use to cache messages, in kB."
+msgstr ""
+
+#: ../clawsker:109
+msgid "Minimun time for cache elements (minutes)"
+msgstr ""
+
+#: ../clawsker:110
+msgid ""
+"The minimum time in minutes to keep a cache in memory. Caches more recent "
+"than this time will not be freed, even if the memory usage is too high."
+msgstr ""
+
+#: ../clawsker:112
+msgid "Show unread messages with bold font"
+msgstr ""
+
+#: ../clawsker:113
+msgid "Show unread messages in the Message List using a bold font."
+msgstr ""
+
+#: ../clawsker:114
+msgid "Don't use markup in compose window"
+msgstr ""
+
+#: ../clawsker:115
+msgid "Don't use bold and italic text in Compose dialogue's account selector."
+msgstr ""
+
+#: ../clawsker:116
+msgid "Use dotted lines in tree views"
+msgstr ""
+
+#: ../clawsker:117
+msgid ""
+"Use the old dotted line look in the main window tree views (folder and "
+"message lists) instead of the modern lineless look."
+msgstr ""
+
+#: ../clawsker:118
+msgid "Enable horizontal scrollbar"
+msgstr ""
+
+#: ../clawsker:119
+msgid "Enable the horizontal scrollbar in the Message List."
+msgstr ""
+
+#: ../clawsker:120
+msgid "Swap From field in Sent folder"
+msgstr ""
+
+#: ../clawsker:121
+msgid ""
+"Display the sender's email address in the To column of the Sent folder "
+"instead of the recipient's."
+msgstr ""
+
+#: ../clawsker:122
+msgid "Folder list scrollbar behaviour"
+msgstr ""
+
+#: ../clawsker:123
+msgid ""
+"Specify the policy of vertical scrollbar of Folder List: show always, "
+"automatic or hide always."
+msgstr ""
+
+#: ../clawsker:124
+msgid "Show always"
+msgstr ""
+
+#: ../clawsker:125
+msgid "Automatic"
+msgstr ""
+
+#: ../clawsker:126
+msgid "Hide always"
+msgstr ""
+
+#: ../clawsker:127
+msgid "Striped lines contrast"
+msgstr ""
+
+#: ../clawsker:128
+msgid ""
+"Specify the value to use when creating alternately coloured lines in tree "
+"view components. The smaller the value, the less visible the difference in "
+"the alternating colours of the lines."
+msgstr ""
+
+#: ../clawsker:129
+msgid "Cursor visible in message view"
+msgstr ""
+
+#: ../clawsker:130
+msgid "Display the cursor in the message view."
+msgstr ""
+
+#: ../clawsker:131
+msgid "Detachable toolbars"
+msgstr ""
+
+#: ../clawsker:132
+msgid "Show handles in the toolbars."
+msgstr ""
+
+#: ../clawsker:133
+msgid "Use stripes in tree view components"
+msgstr ""
+
+#: ../clawsker:134
+msgid "Enable alternately coloured lines in all tree view components."
+msgstr ""
+
+#: ../clawsker:135
+msgid "Use stripes in summary view"
+msgstr ""
+
+#: ../clawsker:136
+msgid "Enable alternately coloured lines in summary view and folder list"
+msgstr ""
+
+#: ../clawsker:138
+msgid "Drag and drop hover timeout (ms)"
+msgstr ""
+
+#: ../clawsker:139
+msgid ""
+"Time in milliseconds that will cause a folder tree to expand when the mouse "
+"cursor is held over it during drag and drop."
+msgstr ""
+
+#: ../clawsker:140
+msgid "Don't confirm deletions"
+msgstr ""
+
+#: ../clawsker:141
+msgid "Don't ask for confirmation before definitive deletion of emails."
+msgstr ""
+
+#: ../clawsker:142
+msgid "Respect flowed format in messages"
+msgstr ""
+
+#: ../clawsker:143
+msgid ""
+"Respect format=flowed on text/plain message parts. This will cause some mails "
+"to have long lines, but will fix some URLs that would otherwise be wrapped."
+msgstr ""
+
+#: ../clawsker:144
+msgid "Allow writable temporary files"
+msgstr ""
+
+#: ../clawsker:145
+msgid "Saves temporary files when opening attachment with write bit set."
+msgstr ""
+
+#: ../clawsker:146
+msgid "Don't check SSL certificates"
+msgstr ""
+
+#: ../clawsker:147
+msgid "Disables the verification of SSL certificates."
+msgstr ""
+
+#: ../clawsker:148
+msgid "Progress update step (items)"
+msgstr ""
+
+#: ../clawsker:149
+msgid "Update stepping in progress bars."
+msgstr ""
+
+#: ../clawsker:150
+msgid "Maximum age in threading by subject (days)"
+msgstr ""
+
+#: ../clawsker:151
+msgid ""
+"Number of days to include a message in a thread when using \"Thread using "
+"subject in addition to standard headers\"."
+msgstr ""
+
+#: ../clawsker:152
+msgid "Allow unsafe SSL certificates"
+msgstr ""
+
+#: ../clawsker:153
+msgid ""
+"Allows Claws Mail to remember multiple SSL certificates for a given server/"
+"port."
+msgstr ""
+
+#: ../clawsker:154
+msgid "Use UTF-8 in broken mails"
+msgstr ""
+
+#: ../clawsker:155
+msgid "Use UTF-8 encoding for broken mails instead of current locale."
+msgstr ""
+
+#: ../clawsker:156
+msgid "Warning on drag and drop"
+msgstr ""
+
+#: ../clawsker:157
+msgid "Display a confirmation dialogue on drag 'n' drop of folders."
+msgstr ""
+
+#: ../clawsker:159
+msgid "Emphasised X-Mailer colour"
+msgstr ""
+
+#: ../clawsker:160
+msgid "The colour used for the X-Mailer line when its value is Claws Mail."
+msgstr ""
+
+#: ../clawsker:161
+msgid "Errors colour"
+msgstr ""
+
+#: ../clawsker:162
+msgid "Colour for error messages in log window."
+msgstr ""
+
+#: ../clawsker:163
+msgid "Input colour"
+msgstr ""
+
+#: ../clawsker:164
+msgid "Colour for input messages in log window."
+msgstr ""
+
+#: ../clawsker:165
+msgid "Messages colour"
+msgstr ""
+
+#: ../clawsker:166
+msgid "Colour for messages in log window."
+msgstr ""
+
+#: ../clawsker:167
+msgid "Output colour"
+msgstr ""
+
+#: ../clawsker:168
+msgid "Colour for output messages in log window."
+msgstr ""
+
+#: ../clawsker:169
+msgid "Warnings colour"
+msgstr ""
+
+#: ../clawsker:170
+msgid "Colour for warning messages in log window."
+msgstr ""
+
+#: ../clawsker:172
+msgid "Error: "
+msgstr ""
+
+#: ../clawsker:173
+msgid "no $HOME/.claws-mail/clawsrc file found."
+msgstr ""
+
+#: ../clawsker:174
+msgid "seems Claws Mail is currently running, close it first."
+msgstr ""

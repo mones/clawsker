@@ -1,3 +1,14 @@
+2007-12-17 13:35  mones   0.0.1svn13
+
+	* Makefile
+	* po			**NEW**
+	* po/es.po		**NEW**
+	* po/POTFILES		**NEW**
+	* po/clawsker.pot	**NEW**
+	* po/Makefile		**NEW**
+		Added more gettext stuff
+		Added Spanish translation (incomplete)
+
 2007-12-17 03:17  mones   0.0.1svn12
 
 	* clawsker

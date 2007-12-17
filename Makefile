@@ -15,7 +15,7 @@ MAN1DIR = ${MANDIR}/man1
 all: build
 
 build:
-	mkdir build
+	-mkdir build
 	sed -e "s,@PREFIX@,${PREFIX},;s,@LIBDIR@,${LIBDIR},;s,@VERSION@,${VERSION}," \
 		< ${NAME} > build/${NAME}
 	pod2man ${NAME} > build/${NAME}.1
