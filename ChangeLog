@@ -1,3 +1,15 @@
+2007-12-17 18:56  mones   0.0.1svn14
+
+	* clawsker
+		Some GUI improvements (grouping frames, version)
+	* Makefile
+		Call make in po subdir
+	* po/es.po
+	* po/clawsker.pot
+	* po/Makefile
+		Updated strings, fixed quotes
+		Updated and completed translation
+
 2007-12-17 13:35  mones   0.0.1svn13
 
 	* Makefile

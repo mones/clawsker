@@ -91,6 +91,7 @@ sub _ {
     about => _('About...'),
     about_title => _('Clawsker ~ A Claws Mail Tweaker'),
     about_license => _('License:'),
+    about_version => _('Version:'),
 
     tab_colours => _('Colours'),
     tab_behaviour => _('Behaviour'),
@@ -101,6 +102,11 @@ sub _ {
     mem_frame => _('Memory'),
     msgview_frame => _('Message view'),
     log_frame => _('Log window'),
+    dnd_frame => _('Drag and drop'),
+    ssl_frame => _('Secure Sockets Layer'),
+    msgs_frame => _('Messages'),
+    stripes_frame => _('Stripes'),
+    sbar_frame => _('Scroll bars'),
 
     l_oth_use_dlg => _('Use address book dialog'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.'),
@@ -137,7 +143,7 @@ sub _ {
 
     l_beh_hover_t => _('Drag and drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
-    l_beh_dangerous => _('Don\'t confirm deletions'),
+    l_beh_dangerous => _('Don\'t confirm deletions (dangerous!)'),
     h_beh_dangerous => _('Don\'t ask for confirmation before definitive deletion of emails.'),
     l_beh_flowed => _('Respect flowed format in messages'),
     h_beh_flowed => _('Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped.'),
@@ -189,6 +195,10 @@ use constant LABEL => 1; # the label on the GUI
 use constant DESC  => 2; # the description for the hint/help
 use constant TYPE  => 3; # data type: bool, int, float, string, color
 use constant GUI   => 4; # GUI element
+
+# constants for GUI spacing
+use constant HBOX_SPC => 5;
+use constant FRAME_SPC => 2;
 
 # data handlers and auxiliar functions
 
@@ -256,6 +266,7 @@ sub new_check_button_for {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
     $$hash{$key}[GUI] = $cb;
     $cb->set_active ($HPVALUE{$name} eq '1');
@@ -263,8 +274,9 @@ sub new_check_button_for {
             my ($w, $e) = @_;
 	    &handle_bool_value($w, $e, \$HPVALUE{$name});
         });
+    $hbox->pack_start ($cb, FALSE, FALSE, HBOX_SPC);
     #
-    return $cb;
+    return $hbox;
 }
 
 sub new_text_box_for {
@@ -281,8 +293,8 @@ sub new_text_box_for {
             my ($w, $e) = @_;
 	    &handle_int_value($w, $e, \$HPVALUE{$name}); # FIXME int only
         });
-    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
-    $hbox->pack_start ($gentry, FALSE, FALSE, 0);
+    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
+    $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
 }
@@ -302,8 +314,8 @@ sub new_color_button_for {
             my ($w, $e) = @_;
 	    &handle_color_value($w, $e, \$HPVALUE{$name}); 
         });
-    $hbox->pack_start ($button, FALSE, FALSE, 0);
-    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
+    $hbox->pack_start ($button, FALSE, FALSE, HBOX_SPC);
+    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
 }
@@ -327,8 +339,8 @@ sub new_selection_box_for {
 	    &handle_selection_value($w, $e, \$HPVALUE{$name});
         });
     $combo->set_active ($HPVALUE{$name});
-    $hbox->pack_start ($glabel, FALSE, FALSE, 0);
-    $hbox->pack_start ($combo, FALSE, FALSE, 0);
+    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
+    $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
 }
@@ -376,8 +388,8 @@ sub new_other_page() {
     $vb2->pack_start ($tb_min_time, FALSE, FALSE, 0);
     $mem_frame->add ($vb2);
 
-    $of->pack_start ($ab_frame, FALSE, FALSE, 0);
-    $of->pack_start ($mem_frame, FALSE, FALSE, 0);
+    $of->pack_start ($ab_frame, FALSE, FALSE, FRAME_SPC);
+    $of->pack_start ($mem_frame, FALSE, FALSE, FRAME_SPC);
 
     return $of;
 }
@@ -465,29 +477,40 @@ sub new_other_page() {
 sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
 
+    my $stripes_frame = Gtk2::Frame->new ($xl::s{stripes_frame});
+    my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
+    my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
+    my $tb_strip_off = &new_text_box_for (\%pr::gui, 'strip_off');
+    my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->pack_start ($cb_strip_all, FALSE, FALSE, 0);
+    $vb1->pack_start ($cb_strip_sum, FALSE, FALSE, 0);
+    $vb1->pack_start ($tb_strip_off, FALSE, FALSE, 0);
+    $stripes_frame->add ($vb1);
+
+    my $sbar_frame = Gtk2::Frame->new ($xl::s{sbar_frame});
+    my $cb_h_scroll = &new_check_button_for (\%pr::gui, 'h_scroll');
+    my $sb_v_scroll = &new_selection_box_for (\%pr::gui, 'v_scroll');
+    my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->pack_start ($cb_h_scroll, FALSE, FALSE, 0);
+    $vb2->pack_start ($sb_v_scroll, FALSE, FALSE, 0);
+    $sbar_frame->add ($vb2);
+
     my $cb_b_unread = &new_check_button_for (\%pr::gui, 'b_unread');
     my $cb_no_markup = &new_check_button_for (\%pr::gui, 'no_markup'); 
     my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
-    my $cb_h_scroll = &new_check_button_for (\%pr::gui, 'h_scroll');
     my $cb_swp_from = &new_check_button_for (\%pr::gui, 'swp_from');
     my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
-    my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
-    my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
-    my $sb_v_scroll = &new_selection_box_for (\%pr::gui, 'v_scroll');
-    my $tb_strip_off = &new_text_box_for (\%pr::gui, 'strip_off');
 
+    $gf->pack_start ($stripes_frame, FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_b_unread, FALSE, FALSE, 0);
     $gf->pack_start ($cb_no_markup, FALSE, FALSE, 0);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_h_scroll, FALSE, FALSE, 0);
     $gf->pack_start ($cb_swp_from, FALSE, FALSE, 0);
     $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_strip_all, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_strip_sum, FALSE, FALSE, 0);
-    $gf->pack_start ($sb_v_scroll, FALSE, FALSE, 0);
-    $gf->pack_start ($tb_strip_off, FALSE, FALSE, 0);
+    $gf->pack_start ($sbar_frame, FALSE, FALSE, FRAME_SPC);
+
     return $gf;
 }
 
@@ -566,28 +589,44 @@ sub new_gui_page() {
 
 sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
-  
+
+    my $dnd_frame = Gtk2::Frame->new ($xl::s{dnd_frame});
     my $tb_hoover_t = &new_text_box_for (\%pr::beh, 'hover_t');
-    my $tb_up_step = &new_text_box_for (\%pr::beh, 'up_step');
-    my $tb_thread_a = &new_text_box_for (\%pr::beh, 'thread_a');
-    my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
-    my $cb_flowed = &new_check_button_for (\%pr::beh, 'flowed');
-    my $cb_parts_rw = &new_check_button_for (\%pr::beh, 'parts_rw');
+    my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
+    my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->pack_start ($cb_warn_dnd, FALSE, FALSE, 0);
+    $vb1->pack_start ($tb_hoover_t, FALSE, FALSE, 0);
+    $dnd_frame->add ($vb1);
+
+    my $ssl_frame = Gtk2::Frame->new ($xl::s{ssl_frame});
     my $cb_skip_ssl = &new_check_button_for (\%pr::beh, 'skip_ssl');
     my $cb_unsafe_ssl = &new_check_button_for (\%pr::beh, 'unsafe_ssl');
-    my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
-    my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
+    my $hb1 = Gtk2::HBox->new (FALSE, 5);
+    $hb1->pack_start ($cb_skip_ssl, FALSE, FALSE, 0);
+    $hb1->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
+    $ssl_frame->add ($hb1);
 
-    $bf->pack_start ($tb_hoover_t, FALSE, FALSE, 0);
+    my $tb_up_step = &new_text_box_for (\%pr::beh, 'up_step');
+    my $tb_thread_a = &new_text_box_for (\%pr::beh, 'thread_a');
+
+    my $msgs_frame = Gtk2::Frame->new ($xl::s{msgs_frame});
+    my $cb_flowed = &new_check_button_for (\%pr::beh, 'flowed');
+    my $cb_parts_rw = &new_check_button_for (\%pr::beh, 'parts_rw');
+    my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
+    my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
+    my $vb2 = Gtk2::VBox->new (FALSE, 5);    
+    $vb2->pack_start ($cb_flowed, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_dangerous, FALSE, FALSE, 0);
+    $msgs_frame->add ($vb2);
+
+    $bf->pack_start ($dnd_frame, FALSE, FALSE, FRAME_SPC);
+    $bf->pack_start ($ssl_frame, FALSE, FALSE, FRAME_SPC);
     $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
     $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_dangerous, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_flowed, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_skip_ssl, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
-    $bf->pack_start ($cb_warn_dnd, FALSE, FALSE, 0);
+    $bf->pack_start ($msgs_frame, FALSE, FALSE, FRAME_SPC);
+
     return $bf;
 }
 
@@ -729,6 +768,7 @@ sub new_about_dialog() {
     my ($parent) = @_;
     my $title = $xl::s{about_title};
     my $lic = $xl::s{about_license};
+    my $vers = $xl::s{about_version} . " $VERSION";
     my $license = 
 "This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -742,11 +782,17 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
+    my $year = "2007";
+    my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
 
     my $dialog = Gtk2::MessageDialog->new_with_markup ($parent, 
                     [qw/modal destroy-with-parent/], 
 		    'info', 'close', 
-		    "<span size=\"x-large\" weight=\"bold\">$title</span>\n<span>Copyright 2007 by Ricardo Mones &lt;ricardo\@mones.org&gt;</span>\n\n<span size=\"large\">$lic</span>\n\n<span size=\"small\">$license</span>");
+		    "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
+		    . "<span size=\"large\">$vers</span>\n"
+		    . "<span>Copyright $year by $holder</span>\n\n"
+		    . "<span size=\"large\">$lic</span>\n\n"
+		    . "<span size=\"small\">$license</span>");
     $dialog->set_title ($xl::s{about});
     #
     return $dialog;

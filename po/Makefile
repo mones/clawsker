@@ -8,7 +8,7 @@ PREFIX ?= /usr/local
 DATADIR = ${PREFIX}/share
 LOCALEDIR = ${DATADIR}/locale
 
-XG_ARGS = "--keyword=_ --flag=_:1:pass-java-format -L Perl -w 80"
+XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80
 LINGUAS = "es"
 
 all: build
