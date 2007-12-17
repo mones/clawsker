@@ -1,4 +1,9 @@
-107-11-17 2:27  mones   0.0.1svn11
+2007-12-17 03:17  mones   0.0.1svn12
+
+	* clawsker
+		Added gettext code for i18n, removed old i18n stuff
+
+2007-12-17 02:27  mones   0.0.1svn11
 
 	* VERSION	**NEW**
 	* Makefile

@@ -58,117 +58,121 @@ along with this program.  If not, see E<lt>http://www.gnu.org/licenses/E<gt>.
 =cut
 
 use strict;
+use POSIX qw(setlocale);
+use Locale::gettext;
 use Glib qw(TRUE FALSE);
 use Gtk2 -init;
 
+my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
 my $LIBDIR = '@LIBDIR@';
 my $VERSION = '@VERSION@';
 
+my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
+setlocale(LC_ALL, $locale);
+bindtextdomain(lc($NAME), sprintf('%s/share/locale', $PREFIX));
+textdomain(lc($NAME));
+
+sub _ {
+    my $str = shift;
+    my %par = @_;
+    my $xla = gettext($str);
+    if (scalar(keys(%par)) > 0) {
+        foreach my $key (keys %par) {
+            $xla =~ s/\{$key\}/$par{$key}/g;
+        }
+    }
+    return $xla;
+}
+
 # default messages
 %xl::s = (
-    win_title => 'Claws Mail Hidden Preferences',
-    about => 'About...',
-    about_title => 'Clawsker ~ A Claws Mail Tweaker',
-    about_license => 'License:',
+    win_title => _('Claws Mail Hidden Preferences'),
+    about => _('About...'),
+    about_title => _('Clawsker ~ A Claws Mail Tweaker'),
+    about_license => _('License:'),
 
-    tab_colours => 'Colours',
-    tab_behaviour => 'Behaviour',
-    tab_gui => 'GUI',
-    tab_other => 'Other',
+    tab_colours => _('Colours'),
+    tab_behaviour => _('Behaviour'),
+    tab_gui => _('GUI'),
+    tab_other => _('Other'),
 
-    ab_frame => 'Addressbook',
-    mem_frame => 'Memory',
-    msgview_frame => 'Message view',
-    log_frame => 'Log window',
+    ab_frame => _('Addressbook'),
+    mem_frame => _('Memory'),
+    msgview_frame => _('Message view'),
+    log_frame => _('Log window'),
 
-    l_oth_use_dlg => 'Use address book dialog',
-    h_oth_use_dlg => 'If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.',
-    l_oth_max_use => 'Maximum memory for message cache (Kb)',
-    h_oth_max_use => 'The maximum amount of memory to use to cache messages, in kB.',
-    l_oth_min_time => 'Minimun time for cache elements (minutes)',
-    h_oth_min_time => 'The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.',
+    l_oth_use_dlg => _('Use address book dialog'),
+    h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.'),
+    l_oth_max_use => _('Maximum memory for message cache (Kb)'),
+    h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kB.'),
+    l_oth_min_time => _('Minimun time for cache elements (minutes)'),
+    h_oth_min_time => _('The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.'),
     
-    l_gui_b_unread => 'Show unread messages with bold font',
-    h_gui_b_unread => 'Show unread messages in the Message List using a bold font.',
-    l_gui_no_markup => 'Don\'t use markup in compose window',
-    h_gui_no_markup => 'Don\'t use bold and italic text in Compose dialogue\'s account selector.',
-    l_gui_dot_lines => 'Use dotted lines in tree views',
-    h_gui_dot_lines => 'Use the old dotted line look in the main window tree views (folder and message lists) instead of the modern lineless look.',
-    l_gui_h_scroll => 'Enable horizontal scrollbar',
-    h_gui_h_scroll => 'Enable the horizontal scrollbar in the Message List.',
-    l_gui_swp_from => 'Swap From field in Sent folder',
-    h_gui_swp_from => 'Display the sender\'s email address in the To column of the Sent folder instead of the recipient\'s.',
-    l_gui_v_scroll => 'Folder list scrollbar behaviour',
-    h_gui_v_scroll => 'Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.',
-    l_gui_v_scroll_show => 'Show always',
-    l_gui_v_scroll_auto => 'Automatic',
-    l_gui_v_scroll_hide => 'Hide always',
-    l_gui_strip_off => 'Striped lines contrast',
-    h_gui_strip_off => 'Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.',
-    l_gui_cursor_v => 'Cursor visible in message view',
-    h_gui_cursor_v => 'Display the cursor in the message view.',
-    l_gui_toolbar_d => 'Detachable toolbars',
-    h_gui_toolbar_d => 'Show handles in the toolbars.',
-    l_gui_strip_all => 'Use stripes in tree view components',
-    h_gui_strip_all => 'Enable alternately coloured lines in all tree view components.',
-    l_gui_strip_sum => 'Use stripes in summary view',
-    h_gui_strip_sum => 'Enable alternately coloured lines in summary view and folder list',
+    l_gui_b_unread => _('Show unread messages with bold font'),
+    h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
+    l_gui_no_markup => _('Don\'t use markup in compose window'),
+    h_gui_no_markup => _('Don\'t use bold and italic text in Compose dialogue\'s account selector.'),
+    l_gui_dot_lines => _('Use dotted lines in tree views'),
+    h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (folder and message lists) instead of the modern lineless look.'),
+    l_gui_h_scroll => _('Enable horizontal scrollbar'),
+    h_gui_h_scroll => _('Enable the horizontal scrollbar in the Message List.'),
+    l_gui_swp_from => _('Swap From field in Sent folder'),
+    h_gui_swp_from => _('Display the sender\'s email address in the To column of the Sent folder instead of the recipient\'s.'),
+    l_gui_v_scroll => _('Folder list scrollbar behaviour'),
+    h_gui_v_scroll => _('Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.'),
+    l_gui_v_scroll_show => _('Show always'),
+    l_gui_v_scroll_auto => _('Automatic'),
+    l_gui_v_scroll_hide => _('Hide always'),
+    l_gui_strip_off => _('Striped lines contrast'),
+    h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
+    l_gui_cursor_v => _('Cursor visible in message view'),
+    h_gui_cursor_v => _('Display the cursor in the message view.'),
+    l_gui_toolbar_d => _('Detachable toolbars'),
+    h_gui_toolbar_d => _('Show handles in the toolbars.'),
+    l_gui_strip_all => _('Use stripes in tree view components'),
+    h_gui_strip_all => _('Enable alternately coloured lines in all tree view components.'),
+    l_gui_strip_sum => _('Use stripes in summary view'),
+    h_gui_strip_sum => _('Enable alternately coloured lines in summary view and folder list'),
 
-    l_beh_hover_t => 'Drag and drop hover timeout (ms)',
-    h_beh_hover_t => 'Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.',
-    l_beh_dangerous => 'Don\'t confirm deletions',
-    h_beh_dangerous => 'Don\'t ask for confirmation before definitive deletion of emails.',
-    l_beh_flowed => 'Respect flowed format in messages',
-    h_beh_flowed => 'Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped.',
-    l_beh_parts_rw => 'Allow writable temporary files',
-    h_beh_parts_rw => 'Saves temporary files when opening attachment with write bit set.',
-    l_beh_skip_ssl => 'Don\'t check SSL certificates',
-    h_beh_skip_ssl => 'Disables the verification of SSL certificates.',
-    l_beh_up_step => 'Progress update step (items)',
-    h_beh_up_step => 'Update stepping in progress bars.',
-    l_beh_thread_a => 'Maximum age in threading by subject (days)', 
-    h_beh_thread_a => 'Number of days to include a message in a thread when using "Thread using subject in addition to standard headers".',
-    l_beh_unsafe_ssl => 'Allow unsafe SSL certificates',
-    h_beh_unsafe_ssl => 'Allows Claws Mail to remember multiple SSL certificates for a given server/port.',
-    l_beh_use_utf8 => 'Use UTF-8 in broken mails',
-    h_beh_use_utf8 => 'Use UTF-8 encoding for broken mails instead of current locale.',
-    l_beh_warn_dnd => 'Warning on drag and drop',
-    h_beh_warn_dnd => 'Display a confirmation dialogue on drag \'n\' drop of folders.',
+    l_beh_hover_t => _('Drag and drop hover timeout (ms)'),
+    h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
+    l_beh_dangerous => _('Don\'t confirm deletions'),
+    h_beh_dangerous => _('Don\'t ask for confirmation before definitive deletion of emails.'),
+    l_beh_flowed => _('Respect flowed format in messages'),
+    h_beh_flowed => _('Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped.'),
+    l_beh_parts_rw => _('Allow writable temporary files'),
+    h_beh_parts_rw => _('Saves temporary files when opening attachment with write bit set.'),
+    l_beh_skip_ssl => _('Don\'t check SSL certificates'),
+    h_beh_skip_ssl => _('Disables the verification of SSL certificates.'),
+    l_beh_up_step => _('Progress update step (items)'),
+    h_beh_up_step => _('Update stepping in progress bars.'),
+    l_beh_thread_a => _('Maximum age in threading by subject (days)'),
+    h_beh_thread_a => _('Number of days to include a message in a thread when using "Thread using subject in addition to standard headers".'),
+    l_beh_unsafe_ssl => _('Allow unsafe SSL certificates'),
+    h_beh_unsafe_ssl => _('Allows Claws Mail to remember multiple SSL certificates for a given server/port.'),
+    l_beh_use_utf8 => _('Use UTF-8 in broken mails'),
+    h_beh_use_utf8 => _('Use UTF-8 encoding for broken mails instead of current locale.'),
+    l_beh_warn_dnd => _('Warning on drag and drop'),
+    h_beh_warn_dnd => _('Display a confirmation dialogue on drag \'n\' drop of folders.'),
 
-    l_col_emphasis => 'Emphasised X-Mailer colour',
-    h_col_emphasis => 'The colour used for the X-Mailer line when its value is Claws Mail.',
-    l_col_log_err => 'Errors colour',
-    h_col_log_err => 'Colour for error messages in log window.',
-    l_col_log_in => 'Input colour',
-    h_col_log_in => 'Colour for input messages in log window.',
-    l_col_log_msg => 'Messages colour',
-    h_col_log_msg => 'Colour for messages in log window.',
-    l_col_log_out => 'Output colour',
-    h_col_log_out => 'Colour for output messages in log window.',
-    l_col_log_warn => 'Warnings colour',
-    h_col_log_warn => 'Colour for warning messages in log window.',
+    l_col_emphasis => _('Emphasised X-Mailer colour'),
+    h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
+    l_col_log_err => _('Errors colour'),
+    h_col_log_err => _('Colour for error messages in log window.'),
+    l_col_log_in => _('Input colour'),
+    h_col_log_in => _('Colour for input messages in log window.'),
+    l_col_log_msg => _('Messages colour'),
+    h_col_log_msg => _('Colour for messages in log window.'),
+    l_col_log_out => _('Output colour'),
+    h_col_log_out => _('Colour for output messages in log window.'),
+    l_col_log_warn => _('Warnings colour'),
+    h_col_log_warn => _('Colour for warning messages in log window.'),
 
-    e_error => 'Error: ',
-    e_noclawsrc => 'no $HOME/.claws-mail/clawsrc file found.',
-    e_running => 'seems Claws Mail is currently running, close it first.',
+    e_error => _('Error: '),
+    e_noclawsrc => _('no $HOME/.claws-mail/clawsrc file found.'),
+    e_running => _('seems Claws Mail is currently running, close it first.'),
 );
-
-# load i18n messages if available
-my $pname = "clawsker";
-my @spp = split('/',$0);
-$spp[$#spp] = '';
-my $sps = join('/',@spp);
-my $lang = (defined($ENV{'LANG'}))? $ENV{'LANG'}: 'en';
-my $langf = "";
-for ($lang) {
-    /es.*/ && do { $langf = "es"; };
-}
-if ($langf ne "") { 
-    my $lf = $sps . $pname . "." . $langf . ".pl";
-    -x $lf or print "Warning: cant load $langf translation file\n";
-    do $lf unless ! -x $lf ;
-}
 
 # check if claws is running
 my $socket = "/tmp/claws-mail-$<";
