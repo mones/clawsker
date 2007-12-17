@@ -1,3 +1,9 @@
+107-11-17 2:27  mones   0.0.1svn11
+
+	* VERSION	**NEW**
+	* Makefile
+		Added version file, replace var values in make
+
 2007-12-11	mones
 
 	* Initial import
