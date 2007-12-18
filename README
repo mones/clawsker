@@ -13,10 +13,10 @@ Dependencies
 
   - Building:
 
-  Nothing special: make, sed, install and pod2man.
+  Nothing special: make, sed, install, gettext and pod2man.
 
   On Debian systems:
-  # apt-get install make sed coreutils perl
+  # apt-get install make sed coreutils gettext perl
   (Although you probably already have some of these installed)
 
   - Running:

@@ -105,8 +105,9 @@ sub _ {
     dnd_frame => _('Drag and drop'),
     ssl_frame => _('Secure Sockets Layer'),
     msgs_frame => _('Messages'),
-    stripes_frame => _('Stripes'),
+    stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
+    mlist_frame => _('Message list'),
 
     l_oth_use_dlg => _('Use address book dialog'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.'),
@@ -288,6 +289,7 @@ sub new_text_box_for {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $gentry = Gtk2::Entry->new;
+    $gentry->set_width_chars (8);
     $$hash{$key}[GUI] = $gentry;
     $gentry->set_text($HPVALUE{$name});
     $gentry->signal_connect(changed => sub {
@@ -311,6 +313,7 @@ sub new_color_button_for {
     my $button = Gtk2::ColorButton->new_with_color ($col);
     $$hash{$key}[GUI] = $button;
     $button->set_title ($label);
+    $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
             my ($w, $e) = @_;
 	    &handle_color_value($w, $e, \$HPVALUE{$name}); 
@@ -374,11 +377,12 @@ sub new_selection_box_for {
 
 sub new_other_page() {
     my $of = Gtk2::VBox->new (FALSE, 5);
-    $of->set_border_width(PAGE_SPC);
+    $of->set_border_width (PAGE_SPC);
 
     my $ab_frame = Gtk2::Frame->new ($xl::s{ab_frame}); 
     my $cb_use_dlg = &new_check_button_for(\%pr::oth, 'use_dlg');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->set_border_width (PAGE_SPC); 
     $vb1->pack_start ($cb_use_dlg, FALSE, FALSE, 0);
     $ab_frame->add ($vb1);
 
@@ -386,6 +390,7 @@ sub new_other_page() {
     my $tb_max_use = &new_text_box_for(\%pr::oth, 'max_use');
     my $tb_min_time = &new_text_box_for(\%pr::oth, 'min_time');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->set_border_width (PAGE_SPC); 
     $vb2->pack_start ($tb_max_use, FALSE, FALSE, 0);
     $vb2->pack_start ($tb_min_time, FALSE, FALSE, 0);
     $mem_frame->add ($vb2);
@@ -478,38 +483,46 @@ sub new_other_page() {
 
 sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
-    $gf->set_border_width(PAGE_SPC);
+    $gf->set_border_width (PAGE_SPC);
 
     my $stripes_frame = Gtk2::Frame->new ($xl::s{stripes_frame});
     my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
     my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
     my $tb_strip_off = &new_text_box_for (\%pr::gui, 'strip_off');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->set_border_width (PAGE_SPC);
     $vb1->pack_start ($cb_strip_all, FALSE, FALSE, 0);
     $vb1->pack_start ($cb_strip_sum, FALSE, FALSE, 0);
     $vb1->pack_start ($tb_strip_off, FALSE, FALSE, 0);
     $stripes_frame->add ($vb1);
 
+    my $mlist_frame = Gtk2::Frame->new ($xl::s{mlist_frame});
+    my $cb_b_unread = &new_check_button_for (\%pr::gui, 'b_unread');
+    my $cb_swp_from = &new_check_button_for (\%pr::gui, 'swp_from');
+    my $vb3 = Gtk2::VBox->new (FALSE, 5);
+    $vb3->set_border_width (PAGE_SPC);
+    $vb3->pack_start ($cb_b_unread, FALSE, FALSE, 0);
+    $vb3->pack_start ($cb_swp_from, FALSE, FALSE, 0);
+    $mlist_frame->add ($vb3);
+
     my $sbar_frame = Gtk2::Frame->new ($xl::s{sbar_frame});
     my $cb_h_scroll = &new_check_button_for (\%pr::gui, 'h_scroll');
     my $sb_v_scroll = &new_selection_box_for (\%pr::gui, 'v_scroll');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->set_border_width (PAGE_SPC);
     $vb2->pack_start ($cb_h_scroll, FALSE, FALSE, 0);
     $vb2->pack_start ($sb_v_scroll, FALSE, FALSE, 0);
     $sbar_frame->add ($vb2);
 
-    my $cb_b_unread = &new_check_button_for (\%pr::gui, 'b_unread');
     my $cb_no_markup = &new_check_button_for (\%pr::gui, 'no_markup'); 
     my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
-    my $cb_swp_from = &new_check_button_for (\%pr::gui, 'swp_from');
     my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
 
     $gf->pack_start ($stripes_frame, FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($cb_b_unread, FALSE, FALSE, 0);
+    $gf->pack_start ($mlist_frame, FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_no_markup, FALSE, FALSE, 0);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_swp_from, FALSE, FALSE, 0);
     $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
     $gf->pack_start ($sbar_frame, FALSE, FALSE, FRAME_SPC);
@@ -592,12 +605,13 @@ sub new_gui_page() {
 
 sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
-    $bf->set_border_width(PAGE_SPC);
+    $bf->set_border_width (PAGE_SPC);
 
     my $dnd_frame = Gtk2::Frame->new ($xl::s{dnd_frame});
     my $tb_hoover_t = &new_text_box_for (\%pr::beh, 'hover_t');
     my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->set_border_width (PAGE_SPC);
     $vb1->pack_start ($cb_warn_dnd, FALSE, FALSE, 0);
     $vb1->pack_start ($tb_hoover_t, FALSE, FALSE, 0);
     $dnd_frame->add ($vb1);
@@ -606,6 +620,7 @@ sub new_behaviour_page() {
     my $cb_skip_ssl = &new_check_button_for (\%pr::beh, 'skip_ssl');
     my $cb_unsafe_ssl = &new_check_button_for (\%pr::beh, 'unsafe_ssl');
     my $hb1 = Gtk2::HBox->new (FALSE, 5);
+    $hb1->set_border_width (PAGE_SPC);
     $hb1->pack_start ($cb_skip_ssl, FALSE, FALSE, 0);
     $hb1->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
     $ssl_frame->add ($hb1);
@@ -619,6 +634,7 @@ sub new_behaviour_page() {
     my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
     my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);    
+    $vb2->set_border_width (PAGE_SPC);
     $vb2->pack_start ($cb_flowed, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
@@ -681,11 +697,12 @@ sub new_behaviour_page() {
 
 sub new_colours_page() {
     my $cf = Gtk2::VBox->new (FALSE, 5);
-    $cf->set_border_width(PAGE_SPC);
+    $cf->set_border_width (PAGE_SPC);
 
     my $msgview_frame = Gtk2::Frame->new ($xl::s{msgview_frame}); 
     my $cb_emphasis = &new_color_button_for (\%pr::col, 'emphasis');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
+    $vb1->set_border_width (PAGE_SPC);
     $vb1->pack_start ($cb_emphasis, FALSE, FALSE, 0);
     $msgview_frame->add ($vb1);
     
@@ -696,6 +713,7 @@ sub new_colours_page() {
     my $cb_log_out = &new_color_button_for (\%pr::col, 'log_out');
     my $cb_log_warn = &new_color_button_for (\%pr::col, 'log_warn');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);
+    $vb2->set_border_width (PAGE_SPC);
     $vb2->pack_start ($cb_log_err, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_log_in, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_log_msg, FALSE, FALSE, 0);

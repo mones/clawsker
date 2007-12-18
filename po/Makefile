@@ -16,6 +16,9 @@ all: build
 update-pot:
 	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o ./${NAME}.pot
 
+%.pox: %.po
+	msgmerge -o $@ --previous $< ${NAME}.pot 
+
 build:
 	for po in ${LINGUAS}; \
 	do msgfmt -c -o t-$${po} $${po}.po && mv -f t-$${po} $${po}.mo; \
@@ -38,9 +41,13 @@ uninstall:
 	done
 
 clean-build:
+	rm -f *.mo
 
-clean:
-	rm -f *.mo *~
+clean-pox:
+	rm -f *.pox
 
-.PHONY: all build install install-dirs uninstall clean clean-build update-pot
+clean: clean-build
+	rm -f *~
+
+.PHONY: all build install install-dirs uninstall clean clean-pox clean-build update-pot
 
