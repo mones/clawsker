@@ -1,3 +1,11 @@
+2007-12-18 01:09  mones   0.1.0svn15
+
+	* VERSION
+		Bumped version number
+	* clawsker
+		Improve widget spacing with borders
+		Terminate on window closed by WM button
+
 2007-12-17 18:56  mones   0.0.1svn14
 
 	* clawsker

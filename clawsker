@@ -89,7 +89,7 @@ sub _ {
 %xl::s = (
     win_title => _('Claws Mail Hidden Preferences'),
     about => _('About...'),
-    about_title => _('Clawsker ~ A Claws Mail Tweaker'),
+    about_title => _('Clawsker :: A Claws Mail Tweaker'),
     about_license => _('License:'),
     about_version => _('Version:'),
 
@@ -199,6 +199,7 @@ use constant GUI   => 4; # GUI element
 # constants for GUI spacing
 use constant HBOX_SPC => 5;
 use constant FRAME_SPC => 2;
+use constant PAGE_SPC => 5;
 
 # data handlers and auxiliar functions
 
@@ -373,6 +374,7 @@ sub new_selection_box_for {
 
 sub new_other_page() {
     my $of = Gtk2::VBox->new (FALSE, 5);
+    $of->set_border_width(PAGE_SPC);
 
     my $ab_frame = Gtk2::Frame->new ($xl::s{ab_frame}); 
     my $cb_use_dlg = &new_check_button_for(\%pr::oth, 'use_dlg');
@@ -476,6 +478,7 @@ sub new_other_page() {
 
 sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
+    $gf->set_border_width(PAGE_SPC);
 
     my $stripes_frame = Gtk2::Frame->new ($xl::s{stripes_frame});
     my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
@@ -589,6 +592,7 @@ sub new_gui_page() {
 
 sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
+    $bf->set_border_width(PAGE_SPC);
 
     my $dnd_frame = Gtk2::Frame->new ($xl::s{dnd_frame});
     my $tb_hoover_t = &new_text_box_for (\%pr::beh, 'hover_t');
@@ -677,6 +681,7 @@ sub new_behaviour_page() {
 
 sub new_colours_page() {
     my $cf = Gtk2::VBox->new (FALSE, 5);
+    $cf->set_border_width(PAGE_SPC);
 
     my $msgview_frame = Gtk2::Frame->new ($xl::s{msgview_frame}); 
     my $cb_emphasis = &new_color_button_for (\%pr::col, 'emphasis');
@@ -700,6 +705,7 @@ sub new_colours_page() {
 
     $cf->pack_start ($msgview_frame, FALSE, FALSE, 0);
     $cf->pack_start ($log_frame, FALSE, FALSE, 0);
+
     return $cf;
 }
 
@@ -821,16 +827,17 @@ sub new_button_box() {
     return $hbox;
 }
 
-# initialise values
+# initialise
 &load_preferences;
 &init_hidden_preferences;
 # create main GUI
 my $window = Gtk2::Window->new ('toplevel');
 my $box = Gtk2::VBox->new (FALSE, 5);
+$box->set_border_width(3);
 my $about = &new_about_dialog;
 $box->pack_start (&new_notebook, FALSE, FALSE, 0);
 $box->pack_end (&new_button_box ($about), FALSE, FALSE, 0);
-
+$window->signal_connect (delete_event => sub { Gtk2->main_quit });
 $window->set_title ($xl::s{win_title});
 $window->add ($box);
 $window->show_all;
