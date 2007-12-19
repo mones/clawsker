@@ -28,8 +28,19 @@ using Clawsker.
 
 =head1 OPTIONS
 
-No options are currently available.
+--help
+	Shows a brief help screen.
 
+--alternate-config-dir <dir>
+	Uses <dir> as Claws Mail configuration dir.
+
+--clawsrc <file>
+	Uses <file> as Claws Mail resource configuration file. This sets
+	the full file name overriding any previous setting.
+
+Multiple options are allowed, although only the last one has effect. Weird
+option specifications may produce weird results (but otherwise correct).
+	
 =head1 LIMITATIONS
 
 Alternate configuration directories are not (yet) supported.
@@ -69,14 +80,14 @@ my $LIBDIR = '@LIBDIR@';
 my $VERSION = '@VERSION@';
 
 my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
-setlocale(LC_ALL, $locale);
-bindtextdomain(lc($NAME), sprintf('%s/share/locale', $PREFIX));
-textdomain(lc($NAME));
+setlocale (LC_ALL, $locale);
+bindtextdomain ($NAME, sprintf ('%s/share/locale', $PREFIX));
+textdomain ($NAME);
 
 sub _ {
     my $str = shift;
     my %par = @_;
-    my $xla = gettext($str);
+    my $xla = gettext ($str);
     if (scalar(keys(%par)) > 0) {
         foreach my $key (keys %par) {
             $xla =~ s/\{$key\}/$par{$key}/g;
@@ -177,18 +188,21 @@ sub _ {
     h_col_log_warn => _('Colour for warning messages in log window.'),
 
     e_error => _('Error: '),
-    e_noclawsrc => _('no $HOME/.claws-mail/clawsrc file found.'),
+    e_noclawsrc => _('resource file for Claws Mail was not found.'),
     e_running => _('seems Claws Mail is currently running, close it first.'),
+    e_requireddir => _('option requires a directory name.'),
+    e_requiredfile => _('option requires a file name.'),
+    e_notadir => _('specified name is not a directory or does not exist.'),
+    e_notafile => _('specified name is not a file or does not exist.'),
 );
-
-# check if claws is running
-my $socket = "/tmp/claws-mail-$<";
--S $socket and die "$xl::s{e_error}$xl::s{e_running}\n";
 
 # all preferences read by load_preferences
 my %PREFS = ();
 # values of all preferences handled by clawsker
 my %HPVALUE = ();
+# default config dir and file name
+my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
+my $CONFIGRC = 'clawsrc';
 
 # index constants for preference arrays
 use constant NAME  => 0; # the name on the rc file
@@ -259,6 +273,23 @@ sub handle_color_value {
 sub handle_selection_value {
     my ($widget, $event, $dataref) = @_;
     $$dataref = $widget->get_active;
+}
+
+sub get_rc_filename {
+    return $CONFIGDIR . $CONFIGRC;
+}
+
+sub set_rc_filename {
+    my ($fullname) = @_;
+    my @parts = split ('/', $fullname);
+    $CONFIGRC = $parts[$#parts];
+    $parts[$#parts] = '';
+    $CONFIGDIR = join ('/', @parts);
+}
+
+sub check_claws_not_running() {
+    my $socket = "/tmp/claws-mail-$<";
+    -S $socket and die "$xl::s{e_error}$xl::s{e_running}\n";
 }
 
 # graphic element creation 
@@ -727,6 +758,55 @@ sub new_colours_page() {
     return $cf;
 }
 
+# the command line help
+sub print_help() {
+    my $line = '-' x length ($xl::s{about_title}) . "\n";
+    print $line;
+    print $xl::s{about_title} . "\n";
+    print $xl::s{about_version} . " $VERSION\n";
+    print $line;
+    print _("Syntax:\n");
+    print _("    clawsker [options]\n");
+    print _("Options:\n");
+    print _("    --help                         Prints this help screen.\n");
+    print _("    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n");
+    print _("    --clawsrc <file>               Uses <file> as full resource name.\n");
+}
+
+# parse the command line
+sub parse_command_line() {
+    my $arg = 0;
+    while (defined($ARGV[$arg])) {
+        for ($ARGV[$arg]) {
+            /--help/ && do { 
+	        &print_help; 
+                exit 0;
+	    };
+	    /--alternate-config-dir/ && do {
+	        ++$arg;
+		die "$xl::s{e_error}$xl::s{e_requireddir}\n" 
+		    unless defined($ARGV[$arg]);
+		die "$xl::s{e_error}$xl::s{e_notadir}\n" 
+		    unless -d $ARGV[$arg];
+		$CONFIGDIR = $ARGV[$arg];
+	        last;
+	    };
+	    /--clawsrc/ && do {
+	        ++$arg;
+		die "$xl::s{e_error}$xl::s{e_requiredfile}\n" 
+		    unless defined($ARGV[$arg]);
+		die "$xl::s{e_error}$xl::s{e_notafile}\n" 
+		    unless -f $ARGV[$arg];
+		&set_rc_filename ($ARGV[$arg]);
+	        last;
+	    };
+	    /.*/ && die $xl::s{e_error} 
+	                . _("unknown option '{opt}'.\n", opt => $ARGV[$arg]);
+	}
+	++$arg;
+    }
+}
+
 # update the hidden preferences status from loaded values
 sub init_hidden_preferences() {
     foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth) {
@@ -738,8 +818,9 @@ sub init_hidden_preferences() {
 
 # load current status from disc
 sub load_preferences() {
-    my $rc = $ENV{HOME} . '/.claws-mail/clawsrc';
+    my $rc = &get_rc_filename;
     -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+    &check_claws_not_running;
     open (RCF, "<$rc");
     while (<RCF>) {
 	chomp;
@@ -752,7 +833,9 @@ sub load_preferences() {
 
 # save current preferences to disc
 sub save_preferences() {
-    my $rc = $ENV{HOME} . '/.claws-mail/clawsrc';
+    my $rc = &get_rc_filename;
+    -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+    &check_claws_not_running;
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -846,6 +929,7 @@ sub new_button_box() {
 }
 
 # initialise
+&parse_command_line;
 &load_preferences;
 &init_hidden_preferences;
 # create main GUI
