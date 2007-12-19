@@ -4,12 +4,13 @@
 #
 
 NAME = clawsker
+VERSION = $(shell cat ../VERSION)
 PREFIX ?= /usr/local
 DATADIR = ${PREFIX}/share
 LOCALEDIR = ${DATADIR}/locale
 
-XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80
-LINGUAS = "es"
+XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80 --package-name=${NAME} --package-version=${VERSION} --msgid-bugs-address=ricardo@mones.org
+LINGUAS = es
 
 all: build
 

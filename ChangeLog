@@ -1,3 +1,12 @@
+2007-12-19 11:41  mones   0.1.0svn22
+
+	* README
+		Added contributing section
+	* po/es.po
+	* po/clawsker.pot
+	* po/Makefile
+		Update translation, add package details in pot
+
 2007-12-19 10:45  mones   0.1.0svn21
 
 	* clawsker
