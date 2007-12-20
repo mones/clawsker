@@ -43,7 +43,9 @@ option specifications may produce weird results (but otherwise correct).
 	
 =head1 LIMITATIONS
 
-Alternate configuration directories are not (yet) supported.
+A running Claws Mail cannot be detected if using the --clawsrc option because
+the directory is not assumed to be a Claws Mail configuration dir. If that is 
+the case the --alternate-config-dir option instead.
 
 =head1 AUTHOR
 
@@ -201,6 +203,7 @@ my %PREFS = ();
 # values of all preferences handled by clawsker
 my %HPVALUE = ();
 # default config dir and file name
+my $ALTCONFIGDIR = FALSE;
 my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
 my $CONFIGRC = 'clawsrc';
 
@@ -288,7 +291,8 @@ sub set_rc_filename {
 }
 
 sub check_claws_not_running() {
-    my $socket = "/tmp/claws-mail-$<";
+    my $socket = ($ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
+    $socket .= "claws-mail-$<";
     -S $socket and die "$xl::s{e_error}$xl::s{e_running}\n";
 }
 
@@ -789,6 +793,7 @@ sub parse_command_line() {
 		die "$xl::s{e_error}$xl::s{e_notadir}\n" 
 		    unless -d $ARGV[$arg];
 		$CONFIGDIR = $ARGV[$arg];
+		$ALTCONFIGDIR = TRUE;
 	        last;
 	    };
 	    /--clawsrc/ && do {
