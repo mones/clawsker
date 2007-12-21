@@ -19,10 +19,10 @@ Clawsker is an applet to edit the so called Claws Mail hidden preferences.
 
 Claws Mail is a fast, lightweight and feature-rich MUA with a high number 
 of configurable options. To keep the binary small and fast some of these 
-preferences which not widely used are not provided with a graphical interface 
-for inspection and/or modification.
+preferences which are not widely used are not provided with a graphical
+interface for inspection and/or modification.
 
-Users wanting to edit such preferences had to face raw edition of their 
+Users wanting to edit such preferences had to face raw editing of their 
 configuration files, now you can do it with a convenient GTK2 interface
 using Clawsker.
 
@@ -115,15 +115,15 @@ sub _ {
     mem_frame => _('Memory'),
     msgview_frame => _('Message view'),
     log_frame => _('Log window'),
-    dnd_frame => _('Drag and drop'),
+    dnd_frame => _('Drag \'n\' drop'),
     ssl_frame => _('Secure Sockets Layer'),
     msgs_frame => _('Messages'),
     stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
     mlist_frame => _('Message list'),
 
-    l_oth_use_dlg => _('Use address book dialog'),
-    h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the addressbook\'s main window.'),
+    l_oth_use_dlg => _('Use detached address book edit dialogue'),
+    h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
     l_oth_max_use => _('Maximum memory for message cache (Kb)'),
     h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kB.'),
     l_oth_min_time => _('Minimun time for cache elements (minutes)'),
@@ -137,7 +137,7 @@ sub _ {
     h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (folder and message lists) instead of the modern lineless look.'),
     l_gui_h_scroll => _('Enable horizontal scrollbar'),
     h_gui_h_scroll => _('Enable the horizontal scrollbar in the Message List.'),
-    l_gui_swp_from => _('Swap From field in Sent folder'),
+    l_gui_swp_from => _('Dislay To header in From field in Sent folder'),
     h_gui_swp_from => _('Display the sender\'s email address in the To column of the Sent folder instead of the recipient\'s.'),
     l_gui_v_scroll => _('Folder list scrollbar behaviour'),
     h_gui_v_scroll => _('Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.'),
@@ -146,47 +146,47 @@ sub _ {
     l_gui_v_scroll_hide => _('Hide always'),
     l_gui_strip_off => _('Striped lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
-    l_gui_cursor_v => _('Cursor visible in message view'),
+    l_gui_cursor_v => _('Show Cursor in message view'),
     h_gui_cursor_v => _('Display the cursor in the message view.'),
     l_gui_toolbar_d => _('Detachable toolbars'),
     h_gui_toolbar_d => _('Show handles in the toolbars.'),
-    l_gui_strip_all => _('Use stripes in tree view components'),
+    l_gui_strip_all => _('Use stripes in all tree view components'),
     h_gui_strip_all => _('Enable alternately coloured lines in all tree view components.'),
-    l_gui_strip_sum => _('Use stripes in summary view'),
-    h_gui_strip_sum => _('Enable alternately coloured lines in summary view and folder list'),
+    l_gui_strip_sum => _('Use stripes in Folder List and Message List'),
+    h_gui_strip_sum => _('Enable alternately coloured lines in message list and folder list'),
 
-    l_beh_hover_t => _('Drag and drop hover timeout (ms)'),
+    l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
     l_beh_dangerous => _('Don\'t confirm deletions (dangerous!)'),
     h_beh_dangerous => _('Don\'t ask for confirmation before definitive deletion of emails.'),
-    l_beh_flowed => _('Respect flowed format in messages'),
+    l_beh_flowed => _('Respect format=flowed in messages'),
     h_beh_flowed => _('Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped.'),
     l_beh_parts_rw => _('Allow writable temporary files'),
     h_beh_parts_rw => _('Saves temporary files when opening attachment with write bit set.'),
     l_beh_skip_ssl => _('Don\'t check SSL certificates'),
     h_beh_skip_ssl => _('Disables the verification of SSL certificates.'),
-    l_beh_up_step => _('Progress update step (items)'),
+    l_beh_up_step => _('Progress bar update step (items)'),
     h_beh_up_step => _('Update stepping in progress bars.'),
-    l_beh_thread_a => _('Maximum age in threading by subject (days)'),
+    l_beh_thread_a => _('Maximum age when threading by subject (days)'),
     h_beh_thread_a => _('Number of days to include a message in a thread when using "Thread using subject in addition to standard headers".'),
     l_beh_unsafe_ssl => _('Allow unsafe SSL certificates'),
     h_beh_unsafe_ssl => _('Allows Claws Mail to remember multiple SSL certificates for a given server/port.'),
-    l_beh_use_utf8 => _('Use UTF-8 in broken mails'),
+    l_beh_use_utf8 => _('Force UTF-8 for broken mails'),
     h_beh_use_utf8 => _('Use UTF-8 encoding for broken mails instead of current locale.'),
-    l_beh_warn_dnd => _('Warning on drag and drop'),
+    l_beh_warn_dnd => _('Warn on drag \'n\' drop'),
     h_beh_warn_dnd => _('Display a confirmation dialogue on drag \'n\' drop of folders.'),
 
-    l_col_emphasis => _('Emphasised X-Mailer colour'),
+    l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
-    l_col_log_err => _('Errors colour'),
+    l_col_log_err => _('Error messages'),
     h_col_log_err => _('Colour for error messages in log window.'),
-    l_col_log_in => _('Input colour'),
+    l_col_log_in => _('Server messages'),
     h_col_log_in => _('Colour for input messages in log window.'),
-    l_col_log_msg => _('Messages colour'),
+    l_col_log_msg => _('Standard messages'),
     h_col_log_msg => _('Colour for messages in log window.'),
-    l_col_log_out => _('Output colour'),
+    l_col_log_out => _('Client messages'),
     h_col_log_out => _('Colour for output messages in log window.'),
-    l_col_log_warn => _('Warnings colour'),
+    l_col_log_warn => _('Warnings'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
 
     e_error => _('Error: '),

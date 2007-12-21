@@ -4,7 +4,7 @@ Clawsker - A Claws Mail Tweaker
 
 Clawsker is a Perl-GTK2 applet to edit hidden preferences for Claws Mail,
 and to do it in a safe and user friendly way, preventing users from raw 
-edition of configuration files.
+editing of configuration files.
 
 Claws Mail is a fast and lightweight Mail User Agent by the Claws Mail Team.
 
@@ -32,11 +32,14 @@ Dependencies
 Install
 -------
 
-After downloading the tarball, as root:
+After downloading the tarball:
 
   tar xzf clawsker-VERSION.tar.gz
   cd clawsker-VERSION
   make
+
+If finished correctly, become root and:
+
   make install
 
 Replace VERSION with the actual version number of the tarball.
