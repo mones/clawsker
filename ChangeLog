@@ -1,3 +1,9 @@
+2007-12-23 03:09  mones   0.2.0svn31
+
+	* clawsker
+		Fix typo in manual page
+		Warning for running claws with dialog
+
 2007-12-21 12:18  mones   0.2.0svn30
 
 	* po/es.po

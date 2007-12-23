@@ -45,7 +45,7 @@ option specifications may produce weird results (but otherwise correct).
 
 A running Claws Mail cannot be detected if using the --clawsrc option because
 the directory is not assumed to be a Claws Mail configuration dir. If that is 
-the case the --alternate-config-dir option instead.
+the case use the --alternate-config-dir option instead.
 
 =head1 AUTHOR
 
@@ -291,9 +291,20 @@ sub set_rc_filename {
 }
 
 sub check_claws_not_running() {
-    my $socket = ($ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
+    my ($parent) = @_;
+    my $socket = (not $ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
     $socket .= "claws-mail-$<";
-    -S $socket and die "$xl::s{e_error}$xl::s{e_running}\n";
+    -S $socket and do {
+        my $emsg = "$xl::s{e_error}$xl::s{e_running}";
+        die "$emsg\n" unless defined($parent);
+	my $errordlg = Gtk2::MessageDialog->new ($parent, 'modal', 'error', 'cancel', $emsg);
+	$errordlg->set_title (_('Error'));
+	$errordlg->run;
+	$errordlg->destroy;
+	return FALSE;
+     };
+
+     return TRUE;
 }
 
 # graphic element creation 
@@ -825,7 +836,7 @@ sub init_hidden_preferences() {
 sub load_preferences() {
     my $rc = &get_rc_filename;
     -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
-    &check_claws_not_running;
+    &check_claws_not_running ();
     open (RCF, "<$rc");
     while (<RCF>) {
 	chomp;
@@ -838,9 +849,10 @@ sub load_preferences() {
 
 # save current preferences to disc
 sub save_preferences() {
+    my ($parent) = @_;
     my $rc = &get_rc_filename;
     -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
-    &check_claws_not_running;
+    &check_claws_not_running ($parent) or return;
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -912,7 +924,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
 
 # create buttons box
 sub new_button_box() {
-    my ($adlg) = @_;
+    my ($parent, $adlg) = @_;
     my $b_about = Gtk2::Button->new_from_stock ('gtk-about');
     my $b_exit = Gtk2::Button->new_from_stock ('gtk-quit');
     my $b_apply = Gtk2::Button->new_from_stock ('gtk-apply');
@@ -921,7 +933,7 @@ sub new_button_box() {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     # signal handlers 
     $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
-    $b_apply->signal_connect (clicked => sub { &save_preferences });
+    $b_apply->signal_connect (clicked => sub { &save_preferences ($parent) });
     # $b_undo->signal_connect (clicked => sub { &undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
     # package them
@@ -943,7 +955,7 @@ my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
 my $about = &new_about_dialog;
 $box->pack_start (&new_notebook, FALSE, FALSE, 0);
-$box->pack_end (&new_button_box ($about), FALSE, FALSE, 0);
+$box->pack_end (&new_button_box ($window, $about), FALSE, FALSE, 0);
 $window->signal_connect (delete_event => sub { Gtk2->main_quit });
 $window->set_title ($xl::s{win_title});
 $window->add ($box);
