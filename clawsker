@@ -31,6 +31,9 @@ using Clawsker.
 --help
 	Shows a brief help screen.
 
+--verbose
+	Tell more on the standard output.
+
 --alternate-config-dir <dir>
 	Uses <dir> as Claws Mail configuration dir.
 
@@ -80,6 +83,8 @@ my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
 my $LIBDIR = '@LIBDIR@';
 my $VERSION = '@VERSION@';
+my $VERBOSE = FALSE;
+my $main_window = undef;
 
 my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
 setlocale (LC_ALL, $locale);
@@ -290,21 +295,47 @@ sub set_rc_filename {
     $CONFIGDIR = join ('/', @parts);
 }
 
+sub log_message {
+    my ($mesg, $fatal) = @_;
+    if ($VERBOSE) {
+        if (defined($fatal) && $fatal eq 'die') {
+	   die "$NAME: $mesg\n";
+        }
+        print "$NAME: $mesg\n";
+    }
+}
+
+sub error_dialog {
+    my ($emsg) = @_;
+    my $errordlg = Gtk2::MessageDialog->new ($main_window, 'modal', 'error', 'cancel', $emsg);
+    $errordlg->set_title (_('Error'));
+    $errordlg->run;
+    $errordlg->destroy;
+}
+
 sub check_claws_not_running() {
-    my ($parent) = @_;
     my $socket = (not $ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
     $socket .= "claws-mail-$<";
     -S $socket and do {
         my $emsg = "$xl::s{e_error}$xl::s{e_running}";
-        die "$emsg\n" unless defined($parent);
-	my $errordlg = Gtk2::MessageDialog->new ($parent, 'modal', 'error', 'cancel', $emsg);
-	$errordlg->set_title (_('Error'));
-	$errordlg->run;
-	$errordlg->destroy;
+        log_message ($emsg);
+        error_dialog ($emsg);
 	return FALSE;
      };
 
      return TRUE;
+}
+
+sub check_rc_file() {
+    my ($rcfile) = @_;
+    (defined($rcfile) && -f $rcfile) or do {
+       my $emsg = "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+        log_message ($emsg);
+        error_dialog ($emsg);
+	return FALSE;
+    };
+
+    return TRUE;
 }
 
 # graphic element creation 
@@ -784,6 +815,7 @@ sub print_help() {
     print _("    clawsker [options]\n");
     print _("Options:\n");
     print _("    --help                         Prints this help screen.\n");
+    print _("    --verbose                      More messages on standard output.\n");
     print _("    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n");
     print _("    --clawsrc <file>               Uses <file> as full resource name.\n");
 }
@@ -796,6 +828,9 @@ sub parse_command_line() {
             /--help/ && do { 
 	        &print_help; 
                 exit 0;
+	    };
+	    /--verbose/ && do {
+	        $VERBOSE = TRUE;
 	    };
 	    /--alternate-config-dir/ && do {
 	        ++$arg;
@@ -835,8 +870,8 @@ sub init_hidden_preferences() {
 # load current status from disc
 sub load_preferences() {
     my $rc = &get_rc_filename;
-    -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
-    &check_claws_not_running ();
+    &check_rc_file ($rc) or return;
+    &check_claws_not_running or return;
     open (RCF, "<$rc");
     while (<RCF>) {
 	chomp;
@@ -849,10 +884,9 @@ sub load_preferences() {
 
 # save current preferences to disc
 sub save_preferences() {
-    my ($parent) = @_;
     my $rc = &get_rc_filename;
-    -f $rc or die "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
-    &check_claws_not_running ($parent) or return;
+    &check_rc_file ($rc) or return;
+    &check_claws_not_running or return;
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -946,19 +980,19 @@ sub new_button_box() {
 }
 
 # initialise
+$main_window = Gtk2::Window->new ('toplevel');
 &parse_command_line;
 &load_preferences;
 &init_hidden_preferences;
 # create main GUI
-my $window = Gtk2::Window->new ('toplevel');
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
 my $about = &new_about_dialog;
 $box->pack_start (&new_notebook, FALSE, FALSE, 0);
-$box->pack_end (&new_button_box ($window, $about), FALSE, FALSE, 0);
-$window->signal_connect (delete_event => sub { Gtk2->main_quit });
-$window->set_title ($xl::s{win_title});
-$window->add ($box);
-$window->show_all;
+$box->pack_end (&new_button_box ($main_window, $about), FALSE, FALSE, 0);
+$main_window->signal_connect (delete_event => sub { Gtk2->main_quit });
+$main_window->set_title ($xl::s{win_title});
+$main_window->add ($box);
+$main_window->show_all;
 Gtk2->main;
 
