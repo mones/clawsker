@@ -1,3 +1,10 @@
+2008-01-09 22:58  mones   0.2.0svn40
+
+	* clawsker
+		Make error message in dialog more readable
+		Fix finishing applet when checks fail
+		Order buttons following GNOME HIG 2.0 for dialogs
+
 2008-01-09 18:34  mones   0.2.0svn39
 
 	* clawsker

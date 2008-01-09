@@ -307,8 +307,9 @@ sub log_message {
 
 sub error_dialog {
     my ($emsg) = @_;
-    my $errordlg = Gtk2::MessageDialog->new ($main_window, 'modal', 'error', 'cancel', $emsg);
-    $errordlg->set_title (_('Error'));
+    my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
+    my $errordlg = Gtk2::MessageDialog->new_with_markup ($main_window, 'modal', 'error', 'cancel', $markup);
+    $errordlg->set_title (_('Error message'));
     $errordlg->run;
     $errordlg->destroy;
 }
@@ -831,6 +832,7 @@ sub parse_command_line() {
 	    };
 	    /--verbose/ && do {
 	        $VERBOSE = TRUE;
+		last;
 	    };
 	    /--alternate-config-dir/ && do {
 	        ++$arg;
@@ -870,8 +872,8 @@ sub init_hidden_preferences() {
 # load current status from disc
 sub load_preferences() {
     my $rc = &get_rc_filename;
-    &check_rc_file ($rc) or return;
-    &check_claws_not_running or return;
+    &check_rc_file ($rc) or return FALSE;
+    &check_claws_not_running or return FALSE;
     open (RCF, "<$rc");
     while (<RCF>) {
 	chomp;
@@ -880,13 +882,14 @@ sub load_preferences() {
         }
     }
     close (RCF);
+    return TRUE;
 }
 
 # save current preferences to disc
 sub save_preferences() {
     my $rc = &get_rc_filename;
-    &check_rc_file ($rc) or return;
-    &check_claws_not_running or return;
+    &check_rc_file ($rc) or return FALSE;
+    &check_claws_not_running or return FALSE;
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -907,6 +910,7 @@ sub save_preferences() {
     }
     close (RCB);
     close (RCF);
+    return TRUE;
 }
 
 # create notebook
@@ -971,8 +975,8 @@ sub new_button_box() {
     # $b_undo->signal_connect (clicked => sub { &undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
     # package them
-    $hbox->pack_end ($b_exit, FALSE, FALSE, 0);
     $hbox->pack_end ($b_apply, FALSE, FALSE, 0);
+    $hbox->pack_end ($b_exit, FALSE, FALSE, 0);
     # $hbox->pack_end ($b_undo, FALSE, FALSE, 0);
     $hbox->pack_start ($b_about, FALSE, FALSE, 0);
     #
@@ -982,8 +986,8 @@ sub new_button_box() {
 # initialise
 $main_window = Gtk2::Window->new ('toplevel');
 &parse_command_line;
-&load_preferences;
-&init_hidden_preferences;
+&load_preferences or exit;
+&init_hidden_preferences or exit;
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
