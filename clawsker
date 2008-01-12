@@ -828,7 +828,7 @@ sub parse_command_line() {
         for ($ARGV[$arg]) {
             /--help/ && do { 
 	        &print_help; 
-                exit 0;
+                return FALSE;
 	    };
 	    /--verbose/ && do {
 	        $VERBOSE = TRUE;
@@ -858,6 +858,8 @@ sub parse_command_line() {
 	}
 	++$arg;
     }
+    # eveything continues...
+    return TRUE;
 }
 
 # update the hidden preferences status from loaded values
@@ -867,13 +869,15 @@ sub init_hidden_preferences() {
 	    $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
         }
     }
+    return TRUE;
 }
 
 # load current status from disc
 sub load_preferences() {
     my $rc = &get_rc_filename;
-    &check_rc_file ($rc) or return FALSE;
-    &check_claws_not_running or return FALSE;
+    &log_message ("Loading preferences from $rc\n");
+    return FALSE unless &check_rc_file ($rc);
+    return FALSE unless &check_claws_not_running;
     open (RCF, "<$rc");
     while (<RCF>) {
 	chomp;
@@ -888,8 +892,9 @@ sub load_preferences() {
 # save current preferences to disc
 sub save_preferences() {
     my $rc = &get_rc_filename;
-    &check_rc_file ($rc) or return FALSE;
-    &check_claws_not_running or return FALSE;
+    &log_message ("Saving preferences to $rc\n");
+    return FALSE unless &check_rc_file ($rc);
+    return FALSE unless &check_claws_not_running;
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -985,9 +990,9 @@ sub new_button_box() {
 
 # initialise
 $main_window = Gtk2::Window->new ('toplevel');
-&parse_command_line;
-&load_preferences or exit;
-&init_hidden_preferences or exit;
+exit unless &parse_command_line;
+exit unless &load_preferences;
+exit unless &init_hidden_preferences;
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
