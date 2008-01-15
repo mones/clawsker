@@ -811,6 +811,21 @@ sub print_help() {
     print $line;
     print $xl::s{about_title} . "\n";
     print $xl::s{about_version} . " $VERSION\n";
+    print "Perl-GLib " . $Glib::VERSION;
+    # The version info stuff appeared in 1.040
+    if ($Glib::VERSION >= 1.040) {
+        print _(", built for ") . join(".", Glib->GET_VERSION_INFO) 
+              . _(", running with ") . join(".", &Glib::major_version, 
+	          &Glib::minor_version, &Glib::micro_version);
+    }
+    print "\n";
+    print "Perl-GTK2 " . $Gtk2::VERSION;
+    if ($Gtk2::VERSION >= 1.040) {
+        print _(", built for ") . join(".", Gtk2->GET_VERSION_INFO)
+	      . _(", running with ") . join(".", &Gtk2::major_version, 
+	          &Gtk2::minor_version, &Gtk2::micro_version);
+    }
+    print "\n";
     print $line;
     print _("Syntax:\n");
     print _("    clawsker [options]\n");
