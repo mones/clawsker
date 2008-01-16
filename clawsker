@@ -91,6 +91,9 @@ setlocale (LC_ALL, $locale);
 bindtextdomain ($NAME, sprintf ('%s/share/locale', $PREFIX));
 textdomain ($NAME);
 
+my $SHOWHINTS = FALSE;
+$SHOWHINTS = TRUE if ($Gtk2::VERSION >= 1.040 and Gtk2->CHECK_VERSION (2, 12, 0));
+
 sub _ {
     my $str = shift;
     my %par = @_;
@@ -339,6 +342,14 @@ sub check_rc_file() {
     return TRUE;
 }
 
+sub set_widget_hint() {
+    if ($SHOWHINTS) {
+        my ($wdgt, $hint) = @_;    
+        $wdgt->set_tooltip_text ($hint);
+        $wdgt->set_has_tooltip (TRUE);
+    }
+}
+
 # graphic element creation 
 
 sub new_check_button_for {
@@ -354,6 +365,7 @@ sub new_check_button_for {
             my ($w, $e) = @_;
 	    &handle_bool_value($w, $e, \$HPVALUE{$name});
         });
+    &set_widget_hint ($cb, $$hash{$key}[DESC]);
     $hbox->pack_start ($cb, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
@@ -374,6 +386,7 @@ sub new_text_box_for {
             my ($w, $e) = @_;
 	    &handle_int_value($w, $e, \$HPVALUE{$name}); # FIXME int only
         });
+    &set_widget_hint ($gentry, $$hash{$key}[DESC]);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
     #
@@ -396,6 +409,7 @@ sub new_color_button_for {
             my ($w, $e) = @_;
 	    &handle_color_value($w, $e, \$HPVALUE{$name}); 
         });
+    &set_widget_hint ($button, $$hash{$key}[DESC]);
     $hbox->pack_start ($button, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     #
@@ -421,6 +435,7 @@ sub new_selection_box_for {
 	    &handle_selection_value($w, $e, \$HPVALUE{$name});
         });
     $combo->set_active ($HPVALUE{$name});
+    &set_widget_hint ($combo, $$hash{$key}[DESC]);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
     #
@@ -812,7 +827,7 @@ sub print_help() {
     print $xl::s{about_title} . "\n";
     print $xl::s{about_version} . " $VERSION\n";
     print "Perl-GLib " . $Glib::VERSION;
-    # The version info stuff appeared in 1.040
+    # version info stuff appeared in 1.040
     if ($Glib::VERSION >= 1.040) {
         print _(", built for ") . join(".", Glib->GET_VERSION_INFO) 
               . _(", running with ") . join(".", &Glib::major_version, 

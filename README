@@ -8,6 +8,10 @@ editing of configuration files.
 
 Claws Mail is a fast and lightweight Mail User Agent by the Claws Mail Team.
 
+You can download the latest version from Clawsker homepage:
+
+  http://www.claws-mail.org/clawsker
+
 Dependencies
 ------------
 
@@ -54,8 +58,8 @@ Optionally you can provide also a DESTDIR as a root tree for the installation.
 Contributing
 ------------
 
-Patches, and specially, new translations (or updates to the existing) are
-welcome.
+Patches, bug fixes, and specially, new translations (or updates to the 
+existing ones) are welcome.
 
 To create a new translation just change to 'po' directory, copy 'clawsker.pot'
 into 'xx.po' or 'xx_YY.po',  and fill the empty strings and placeholder values. 
