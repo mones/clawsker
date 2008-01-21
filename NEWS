@@ -1,1 +1,17 @@
-Initial release
+0.3.0:
+
+- Tooltips with extended help for all input items
+  * Requires a perl-gtk built with GTK+ > 2.12 to be enabled
+- Better error handling
+- A home page (thanks to Paul Mangan)
+- Human Interface Guidelines compliant button ordering
+- Flag for being verbose on console
+- Version information for perl-gtk on --help 
+- Updated Spanish translation
+
+0.2.0:
+
+- Initial release
+
+--
+$Id$
