@@ -56,7 +56,7 @@ Ricardo Mones E<lt>ricardo@mones.orgE<gt>
 
 =head1 LICENSE
 
-Copyright (c) 2007 by Ricardo Mones
+Copyright (c) 2007-2008 by Ricardo Mones Lastra
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -300,10 +300,10 @@ sub set_rc_filename {
 
 sub log_message {
     my ($mesg, $fatal) = @_;
+    if (defined($fatal) && $fatal eq 'die') {
+        die "$NAME: $mesg\n";
+    }
     if ($VERBOSE) {
-        if (defined($fatal) && $fatal eq 'die') {
-	   die "$NAME: $mesg\n";
-        }
         print "$NAME: $mesg\n";
     }
 }
@@ -851,6 +851,14 @@ sub print_help() {
     print _("    --clawsrc <file>               Uses <file> as full resource name.\n");
 }
 
+# handle errors which don't allow to run
+sub command_line_fatal() {
+    my $reason = shift;
+    my $emsg = $xl::s{e_error} . $reason;
+    error_dialog ($emsg);
+    log_message ("$emsg", 'die');
+}
+
 # parse the command line
 sub parse_command_line() {
     my $arg = 0;
@@ -866,9 +874,9 @@ sub parse_command_line() {
 	    };
 	    /--alternate-config-dir/ && do {
 	        ++$arg;
-		die "$xl::s{e_error}$xl::s{e_requireddir}\n" 
+		&command_line_fatal ($xl::s{e_requireddir})
 		    unless defined($ARGV[$arg]);
-		die "$xl::s{e_error}$xl::s{e_notadir}\n" 
+		&command_line_fatal ($xl::s{e_notadir})
 		    unless -d $ARGV[$arg];
 		$CONFIGDIR = $ARGV[$arg];
 		$ALTCONFIGDIR = TRUE;
@@ -876,15 +884,15 @@ sub parse_command_line() {
 	    };
 	    /--clawsrc/ && do {
 	        ++$arg;
-		die "$xl::s{e_error}$xl::s{e_requiredfile}\n" 
+		&command_line_fatal($xl::s{e_requiredfile}) 
 		    unless defined($ARGV[$arg]);
-		die "$xl::s{e_error}$xl::s{e_notafile}\n" 
+		&command_line_fatal($xl::s{e_notafile}) 
 		    unless -f $ARGV[$arg];
 		&set_rc_filename ($ARGV[$arg]);
 	        last;
 	    };
-	    /.*/ && die $xl::s{e_error} 
-	                . _("unknown option '{opt}'.\n", opt => $ARGV[$arg]);
+	    /.*/ && &command_line_fatal (
+	                _("unknown option '{opt}'.\n", opt => $ARGV[$arg]));
 	}
 	++$arg;
     }
