@@ -1,3 +1,9 @@
+2008-01-29 17:00  mones   0.3.0svn54
+
+	* clawsker
+		Add room for minimal Claws Mail version
+		and default values, including default values
+
 2008-01-21 09:38  mones   0.3.0
 
 	* VERSION

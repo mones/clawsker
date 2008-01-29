@@ -220,7 +220,9 @@ use constant NAME  => 0; # the name on the rc file
 use constant LABEL => 1; # the label on the GUI
 use constant DESC  => 2; # the description for the hint/help
 use constant TYPE  => 3; # data type: bool, int, float, string, color
-use constant GUI   => 4; # GUI element
+use constant CMVER => 4; # lowest Claws Mail version the feature exists
+use constant CMDEF => 5; # default value for the preference in Claws Mail
+use constant GUI   => 6; # GUI element
 
 # constants for GUI spacing
 use constant HBOX_SPC => 5;
@@ -450,6 +452,8 @@ sub new_selection_box_for {
 	$xl::s{l_oth_use_dlg},
         $xl::s{h_oth_use_dlg},
 	'bool',
+	'2.7.0',
+	'0',
 	undef,
     ],
     max_use => [
@@ -457,6 +461,8 @@ sub new_selection_box_for {
 	$xl::s{l_oth_max_use},
 	$xl::s{h_oth_max_use},
 	'int',
+	'0.0.0',
+	'4096',
 	undef,
     ],
     min_time => [
@@ -464,6 +470,8 @@ sub new_selection_box_for {
 	$xl::s{l_oth_min_time},
 	$xl::s{h_oth_min_time},
 	'int',
+	'0.0.0',
+	'15',
 	undef,
     ],
 );
@@ -500,13 +508,17 @@ sub new_other_page() {
         $xl::s{l_gui_b_unread},
         $xl::s{h_gui_b_unread},
 	'bool',
+	'0.0.0',
+	'1',
 	undef,
     ],
     no_markup => [
         'compose_no_markup',
         $xl::s{l_gui_no_markup},
         $xl::s{h_gui_no_markup},
-	'bool',
+        'bool',
+        '0.0.0',
+        '0',
 	undef,
     ],
     dot_lines => [
@@ -514,6 +526,8 @@ sub new_other_page() {
         $xl::s{l_gui_dot_lines},
         $xl::s{h_gui_dot_lines},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     h_scroll => [
@@ -521,6 +535,8 @@ sub new_other_page() {
         $xl::s{l_gui_h_scroll},
         $xl::s{h_gui_h_scroll},
 	'bool',
+	'0.0.0',
+	'1',
 	undef,
     ],
     swp_from => [
@@ -528,6 +544,8 @@ sub new_other_page() {
         $xl::s{l_gui_swp_from},
         $xl::s{h_gui_swp_from},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     v_scroll => [
@@ -535,6 +553,8 @@ sub new_other_page() {
         $xl::s{l_gui_v_scroll},
         $xl::s{h_gui_v_scroll},
 	'0=l_gui_v_scroll_show;1=l_gui_v_scroll_auto;2=l_gui_v_scroll_hide',
+	'0.0.0',
+	'0',
 	undef,
     ],
     strip_off => [
@@ -542,6 +562,8 @@ sub new_other_page() {
 	$xl::s{l_gui_strip_off},
 	$xl::s{h_gui_strip_off},
 	'int',
+	'0.0.0',
+	'4000',
 	undef,
     ],
     cursor_v => [
@@ -549,6 +571,8 @@ sub new_other_page() {
         $xl::s{l_gui_cursor_v},
         $xl::s{h_gui_cursor_v},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     toolbar_d => [
@@ -556,6 +580,8 @@ sub new_other_page() {
         $xl::s{l_gui_toolbar_d},
         $xl::s{h_gui_toolbar_d},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     strip_all => [
@@ -563,6 +589,8 @@ sub new_other_page() {
         $xl::s{l_gui_strip_all},
         $xl::s{h_gui_strip_all},
 	'bool',
+	'0.0.0',
+	'1',
 	undef,
     ],
     strip_sum => [
@@ -570,6 +598,8 @@ sub new_other_page() {
         $xl::s{l_gui_strip_sum},
         $xl::s{h_gui_strip_sum},
 	'bool',
+	'0.0.0',
+	'1',
 	undef,
     ],
 );
@@ -629,6 +659,8 @@ sub new_gui_page() {
         $xl::s{l_beh_hover_t},
         $xl::s{h_beh_hover_t},
 	'int',
+	'0.0.0',
+	'500',
 	undef,
     ],
     dangerous => [
@@ -636,6 +668,8 @@ sub new_gui_page() {
         $xl::s{l_beh_dangerous},
         $xl::s{h_beh_dangerous},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     flowed => [
@@ -643,6 +677,8 @@ sub new_gui_page() {
         $xl::s{l_beh_flowed},
         $xl::s{h_beh_flowed},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     parts_rw => [
@@ -650,6 +686,8 @@ sub new_gui_page() {
         $xl::s{l_beh_parts_rw},
         $xl::s{h_beh_parts_rw},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     skip_ssl => [
@@ -657,6 +695,8 @@ sub new_gui_page() {
         $xl::s{l_beh_skip_ssl},
         $xl::s{h_beh_skip_ssl},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     up_step => [
@@ -664,6 +704,8 @@ sub new_gui_page() {
         $xl::s{l_beh_up_step},
         $xl::s{h_beh_up_step},
 	'int',
+	'0.0.0',
+	'10',
 	undef,
     ],
     thread_a => [
@@ -671,6 +713,8 @@ sub new_gui_page() {
         $xl::s{l_beh_thread_a},
         $xl::s{h_beh_thread_a},
 	'int',
+	'0.0.0',
+	'10',
 	undef,
     ],
     unsafe_ssl => [
@@ -678,6 +722,8 @@ sub new_gui_page() {
         $xl::s{l_beh_unsafe_ssl},
         $xl::s{h_beh_unsafe_ssl},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     use_utf8 => [
@@ -685,6 +731,8 @@ sub new_gui_page() {
         $xl::s{l_beh_use_utf8},
         $xl::s{h_beh_use_utf8},
 	'bool',
+	'0.0.0',
+	'0',
 	undef,
     ],
     warn_dnd => [
@@ -692,6 +740,8 @@ sub new_gui_page() {
         $xl::s{l_beh_warn_dnd},
         $xl::s{h_beh_warn_dnd},
 	'bool',
+	'0.0.0',
+	'1',
 	undef,
     ],
 );
@@ -749,6 +799,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_emphasis},
         $xl::s{h_col_emphasis},
 	'color',
+	'0.0.0',
+	'#0000cf',
 	undef,
     ],
     log_err => [
@@ -756,6 +808,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_log_err},
         $xl::s{h_col_log_err},
         'color',
+	'0.0.0',
+	'#af0000',
         undef,
     ],
     log_in => [
@@ -763,6 +817,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_log_in},
         $xl::s{h_col_log_in},
         'color',
+	'0.0.0',
+	'#000000',
         undef,
     ],
     log_msg => [
@@ -770,6 +826,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_log_msg},
         $xl::s{h_col_log_msg},
         'color',
+	'0.0.0',
+	'#00af00',
         undef,
     ],
     log_out => [
@@ -777,6 +835,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_log_out},
         $xl::s{h_col_log_out},
         'color',
+	'0.0.0',
+	'#0000ef',
         undef,
     ],
     log_warn => [
@@ -784,6 +844,8 @@ sub new_behaviour_page() {
         $xl::s{l_col_log_warn},
         $xl::s{h_col_log_warn},
         'color',
+	'0.0.0',
+	'#af0000',
         undef,
     ],
 );
