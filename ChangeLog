@@ -1,3 +1,9 @@
+2008-01-29 17:15  mones   0.3.0svn55
+
+	* clawsker
+		Default to C locale on empty environments
+		by default like NetBSD
+
 2008-01-29 17:00  mones   0.3.0svn54
 
 	* clawsker
