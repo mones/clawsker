@@ -1,3 +1,11 @@
+2008-02-25 18:02  mones   0.3.0svn72
+
+	* clawsker
+		Fixed encoding used (and messed up translations)
+	* po/es.po
+	* po/clawsker.pot
+		Updated translation and pot file.
+
 2008-02-25 16:38  mones   0.3.0svn71
 
 	* clawsker
