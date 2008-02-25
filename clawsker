@@ -130,6 +130,7 @@ sub _ {
     stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
     mlist_frame => _('Message list'),
+    netm_frame => _('NetworkManager'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -137,6 +138,8 @@ sub _ {
     h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kB.'),
     l_oth_min_time => _('Minimun time for cache elements (minutes)'),
     h_oth_min_time => _('The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.'),
+    l_oth_use_netm => _('Use NetworkManager'),
+    h_oth_use_netm => _('Use NetworkManager to switch offline automatically.'),
     
     l_gui_b_unread => _('Show unread messages with bold font'),
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
@@ -475,6 +478,15 @@ sub new_selection_box_for {
 	'15',
 	undef,
     ],
+    use_netm => [
+        'use_networkmanager',
+	$xl::s{l_oth_use_netm},
+	$xl::s{h_oth_use_netm},
+	'bool',
+	'3.3.1',
+	'1',
+	undef,
+    ],
 );
 
 sub new_other_page() {
@@ -497,8 +509,16 @@ sub new_other_page() {
     $vb2->pack_start ($tb_min_time, FALSE, FALSE, 0);
     $mem_frame->add ($vb2);
 
+    my $netm_frame = Gtk2::Frame->new ($xl::s{netm_frame});
+    my $cb_use_netm = &new_check_button_for(\%pr::oth, 'use_netm');
+    my $vb3 = Gtk2::VBox->new (FALSE, 5);
+    $vb3->set_border_width (PAGE_SPC);
+    $vb3->pack_start ($cb_use_netm, FALSE, FALSE, 0);
+    $netm_frame->add ($vb3);
+
     $of->pack_start ($ab_frame, FALSE, FALSE, FRAME_SPC);
     $of->pack_start ($mem_frame, FALSE, FALSE, FRAME_SPC);
+    $of->pack_start ($netm_frame, FALSE, FALSE, FRAME_SPC);
 
     return $of;
 }
