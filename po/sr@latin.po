@@ -1,0 +1,465 @@
+# translation of Clawsker to Serbian (Latin)
+# Copyright (C) 2007-2008 Ricardo Mones
+# This file is distributed under the same license as the Clawsker package.
+#
+# Aleksandar Urošević <urke@users.sourceforge.net>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: Clawsker\n"
+"Report-Msgid-Bugs-To: ricardo@mones.org\n"
+"POT-Creation-Date: 2008-02-25 16:43+0100\n"
+"PO-Revision-Date: 2008-02-25 20:15+0100\n"
+"Last-Translator: Aleksandar Urošević <urke@users.sourceforge.net>\n"
+"Language-Team: Serbian <gnome@prevod.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../clawsker:112
+msgid "Claws Mail Hidden Preferences"
+msgstr "Skrivene postavke za Claws Mail"
+
+#: ../clawsker:113
+msgid "About..."
+msgstr "O Clawsker..."
+
+#: ../clawsker:114
+msgid "Clawsker :: A Claws Mail Tweaker"
+msgstr "Clawsker :: Fino štelovanje skrivenih postavki za Claws Mail"
+
+#: ../clawsker:115
+msgid "License:"
+msgstr "Licenca:"
+
+#: ../clawsker:116
+msgid "Version:"
+msgstr "Verzija:"
+
+#: ../clawsker:118
+msgid "Colours"
+msgstr "Boje"
+
+#: ../clawsker:119
+msgid "Behaviour"
+msgstr "Ponašanje"
+
+#: ../clawsker:120
+msgid "GUI"
+msgstr "Sučelje"
+
+#: ../clawsker:121
+msgid "Other"
+msgstr "Ostalo"
+
+#: ../clawsker:123
+msgid "Addressbook"
+msgstr "Adresar"
+
+#: ../clawsker:124
+msgid "Memory"
+msgstr "Memorija"
+
+#: ../clawsker:125
+msgid "Message view"
+msgstr "Prikaz poruke"
+
+#: ../clawsker:126
+msgid "Log window"
+msgstr "Dnevnik rada"
+
+#: ../clawsker:127
+msgid "Drag 'n' drop"
+msgstr "Povuci i pusti"
+
+#: ../clawsker:128
+msgid "Secure Sockets Layer"
+msgstr "Bezbedni soket sloj"
+
+#: ../clawsker:129
+msgid "Messages"
+msgstr "Poruke"
+
+#: ../clawsker:130
+msgid "Coloured stripes"
+msgstr "Obojene štrafte"
+
+#: ../clawsker:131
+msgid "Scroll bars"
+msgstr "Trake za pomeranje"
+
+#: ../clawsker:132
+msgid "Message list"
+msgstr "Spisak poruka"
+
+#: ../clawsker:133
+msgid "NetworkManager"
+msgstr "Upravljanje mrežom"
+
+#: ../clawsker:135
+msgid "Use detached address book edit dialogue"
+msgstr "Koristi posebno prozorče za uređivanje adresara"
+
+#: ../clawsker:136
+msgid ""
+"If true use a separate dialogue to edit a person's details. Otherwise will "
+"use a form embedded in the address book's main window."
+msgstr ""
+"Ako je omogućeno, koristi se posebno prozorče za uređivanje ličnih "
+"podataka. U suprotnom će se koristiti formular ugrađen u prozor adresara."
+
+#: ../clawsker:137
+msgid "Maximum memory for message cache (Kb)"
+msgstr "Maksimalna memorija za keširanje poruka (Kb)"
+
+#: ../clawsker:138
+msgid "The maximum amount of memory to use to cache messages, in kB."
+msgstr "Maksimalna količina memorije za keširanje poruka, u kilobajtima."
+
+#: ../clawsker:139
+msgid "Minimun time for cache elements (minutes)"
+msgstr "Minimalno vreme čuvanje keša (minuti)"
+
+#: ../clawsker:140
+msgid ""
+"The minimum time in minutes to keep a cache in memory. Caches more recent "
+"than this time will not be freed, even if the memory usage is too high."
+msgstr "Minimalno vreme u minutima za čuvanje keširanih elemenata u memoriji. Keš svežiji od ovog vremena neće biti ispražnjen, čak iako je upotreba memorije prevelika."
+
+#: ../clawsker:141
+msgid "Use NetworkManager"
+msgstr "Koristi upravnik mreže"
+
+#: ../clawsker:142
+msgid "Use NetworkManager to switch offline automatically."
+msgstr "Za automatski prelazak na rad van mreže koristi se upravnik mreže."
+
+#: ../clawsker:144
+msgid "Show unread messages with bold font"
+msgstr "Prikaži nepročitane poruke podebljanim fontom"
+
+#: ../clawsker:145
+msgid "Show unread messages in the Message List using a bold font."
+msgstr "Nepročitane poruke u spisku poruka prikazuju se podebljanim fontom."
+
+#: ../clawsker:146
+msgid "Don't use markup in compose window"
+msgstr "Bez naglašavanja u prozoru za sastavljanje"
+
+#: ../clawsker:147
+msgid "Don't use bold and italic text in Compose dialogue's account selector."
+msgstr "Na dijalogu za sastavljanje poruka u izborniku naloga ne koristi se podebljani i kurzivni tekst."
+
+#: ../clawsker:148
+msgid "Use dotted lines in tree views"
+msgstr "Koristi tačkaste linije u stablima"
+
+#: ../clawsker:149
+msgid ""
+"Use the old dotted line look in the main window tree views (folder and "
+"message lists) instead of the modern lineless look."
+msgstr "Umesto modernog izgleda bez linija u spisku poruka fascikli i poruka, koristi se stari način povezivanja fascikli tačkastim linijama."
+
+#: ../clawsker:150
+msgid "Enable horizontal scrollbar"
+msgstr "Omogući vodoravnu traku za pomeranje"
+
+#: ../clawsker:151
+msgid "Enable the horizontal scrollbar in the Message List."
+msgstr "Omogućava prikaz vodoravne trake za pomeranje u spisku poruka."
+
+#: ../clawsker:152
+msgid "Dislay To header in From field in Sent folder"
+msgstr "„Primalac“ u polju „Pošiljalac“ za fasciklu „Poslato“"
+
+#: ../clawsker:153
+msgid ""
+"Display the sender's email address in the To column of the Sent folder "
+"instead of the recipient's."
+msgstr ""
+"U fascikli za poslate poruke umesto adresa e-pošte primaoca u polju "
+"„Primalac“ prikazuje se adresa pošiljaoca."
+
+#: ../clawsker:154
+msgid "Folder list scrollbar behaviour"
+msgstr "Prikaz trake za pomeranje u spisku fascikli"
+
+#: ../clawsker:155
+msgid ""
+"Specify the policy of vertical scrollbar of Folder List: show always, "
+"automatic or hide always."
+msgstr ""
+"Određuje prikaz uspravnih traka za pomeranje u spisku fascikli: uvek "
+"vidljiva, automatski ili uvek skrivena."
+
+#: ../clawsker:156
+msgid "Show always"
+msgstr "uvek vidljiva"
+
+#: ../clawsker:157
+msgid "Automatic"
+msgstr "automatski"
+
+#: ../clawsker:158
+msgid "Hide always"
+msgstr "uvek skrivena"
+
+#: ../clawsker:159
+msgid "Striped lines contrast"
+msgstr "Kontrast štrafti"
+
+#: ../clawsker:160
+msgid ""
+"Specify the value to use when creating alternately coloured lines in tree "
+"view components. The smaller the value, the less visible the difference in "
+"the alternating colours of the lines."
+msgstr ""
+"Određuje vrednost koja će se koristiti kada se pravi alternativno obojena "
+"linija u komponentama stabla. Što je vrednost niža, vidljiva razlika obojenih "
+"linija je manja."
+
+#: ../clawsker:161
+msgid "Show Cursor in message view"
+msgstr "Prikaži kursor u prikazu poruke"
+
+#: ../clawsker:162
+msgid "Display the cursor in the message view."
+msgstr "U prikazu poruke prikazuje se kursor."
+
+#: ../clawsker:163
+msgid "Detachable toolbars"
+msgstr "Odvojive tarke alatki"
+
+#: ../clawsker:164
+msgid "Show handles in the toolbars."
+msgstr "U trakama alatki prikazuju se jastučići za odvajanje."
+
+#: ../clawsker:165
+msgid "Use stripes in all tree view components"
+msgstr "Koristi štrafte u svim stablima"
+
+#: ../clawsker:166
+msgid "Enable alternately coloured lines in all tree view components."
+msgstr "Omogućava naizmenično obojene linije u svim stablima."
+
+#: ../clawsker:167
+msgid "Use stripes in Folder List and Message List"
+msgstr "Koristi štrafte u spisku fascikli i poruka"
+
+#: ../clawsker:168
+msgid "Enable alternately coloured lines in message list and folder list"
+msgstr "Omogućava naizmenično obojene linije u spisku poruka i spisku fascikli"
+
+#: ../clawsker:170
+msgid "Drag 'n' drop hover timeout (ms)"
+msgstr "Vreme za akciju „prevuci i pusti“ (ms)"
+
+#: ../clawsker:171
+msgid ""
+"Time in milliseconds that will cause a folder tree to expand when the mouse "
+"cursor is held over it during drag and drop."
+msgstr "Vreme u milisekundama posle koga će se otvoriti stablo u spisku fascikli kada se kursor miša nađe iznad fascikle za vreme akcije „prevuci i pusti“."
+
+#: ../clawsker:172
+msgid "Don't confirm deletions (dangerous!)"
+msgstr "Bez potvrde brisanja (opasno!)"
+
+#: ../clawsker:173
+msgid "Don't ask for confirmation before definitive deletion of emails."
+msgstr ""
+"Pre permanentnog brisanja poruka, neće biti postavljeno pitanje za potvrdu "
+"brisanja."
+
+#: ../clawsker:174
+msgid "Respect format=flowed in messages"
+msgstr "Poštuj opciju „format=flowed“ u porukama"
+
+#: ../clawsker:175
+msgid ""
+"Respect format=flowed on text/plain message parts. This will cause some "
+"mails to have long lines, but will fix some URLs that would otherwise be "
+"wrapped."
+msgstr "Poštovanje opcije „format=flowed“ u delovima običnih tekstualnih poruka. Ovo će dovesti do toga da pojedine poruke imaju dugačke redove, ali će popraviti neke veb adrese koje bi u suprotnom bile prelomljene."
+
+#: ../clawsker:176
+msgid "Allow writable temporary files"
+msgstr "Omogući upisive privremene datoteke"
+
+#: ../clawsker:177
+msgid "Saves temporary files when opening attachment with write bit set."
+msgstr "Omogućava dozvolu za pisanje u datoteku pri čuva privremene datoteke kod otvaranja priloga."
+
+#: ../clawsker:178
+msgid "Don't check SSL certificates"
+msgstr "Bez provere SSL sertifikata"
+
+#: ../clawsker:179
+msgid "Disables the verification of SSL certificates."
+msgstr "Isključuje vetifikaciju SSL sertifikata."
+
+#: ../clawsker:180
+msgid "Progress bar update step (items)"
+msgstr "Period ažuriranja linije napretka (stavke)"
+
+#: ../clawsker:181
+msgid "Update stepping in progress bars."
+msgstr "Određuje koliko stavki čini jedan korak napretka za liniju napretka."
+
+#: ../clawsker:182
+msgid "Maximum age when threading by subject (days)"
+msgstr "Maksimalna starost spajanja u niti po temi (dana)"
+
+#: ../clawsker:183
+msgid ""
+"Number of days to include a message in a thread when using \"Thread using "
+"subject in addition to standard headers\"."
+msgstr "Broj dana koji će se uzeti u obzir pri spajanju poruka u niti razgovora kada se koristi „Spajanje u nit razgovora koristeći temu kao dodatak za standardna zaglavlja“."
+
+#: ../clawsker:184
+msgid "Allow unsafe SSL certificates"
+msgstr "Dozvoli nesigurni SSL"
+
+#: ../clawsker:185
+msgid ""
+"Allows Claws Mail to remember multiple SSL certificates for a given server/"
+"port."
+msgstr "Dozvoljava da Clas Mail pamti višestruke SSL sertifikate za dati server/port."
+
+#: ../clawsker:186
+msgid "Force UTF-8 for broken mails"
+msgstr "Forsiraj UTF-8 za neispravne poruke"
+
+#: ../clawsker:187
+msgid "Use UTF-8 encoding for broken mails instead of current locale."
+msgstr "Umesto aktivnog lokaliteta koristi se UTF-8 kodni raspored za neispravne poruke."
+
+#: ../clawsker:188
+msgid "Warn on drag 'n' drop"
+msgstr "Upozori na „prevuci i pusti“"
+
+#: ../clawsker:189
+msgid "Display a confirmation dialogue on drag 'n' drop of folders."
+msgstr "Prikazuje dijalog za potvrdu za akciju „prevuci i pusti“ nad fasciklama."
+
+#: ../clawsker:191
+msgid "X-Mailer header"
+msgstr "„X-Mailer“ zaglavlje"
+
+#: ../clawsker:192
+msgid "The colour used for the X-Mailer line when its value is Claws Mail."
+msgstr "Boja za prikaz reda X-Mailer kada mu je vrednost Claws Mail."
+
+#: ../clawsker:193
+msgid "Error messages"
+msgstr "Poruke o greškama"
+
+#: ../clawsker:194
+msgid "Colour for error messages in log window."
+msgstr "Boja poruka o greškama u prozoru dnevnika rada."
+
+#: ../clawsker:195
+msgid "Server messages"
+msgstr "Poruke od servera"
+
+#: ../clawsker:196
+msgid "Colour for input messages in log window."
+msgstr "Boja dolaznih poruka u prozoru dnevnika rada."
+
+#: ../clawsker:197
+msgid "Standard messages"
+msgstr "Obične poruke"
+
+#: ../clawsker:198
+msgid "Colour for messages in log window."
+msgstr "Boja običnih poruka u prozoru dnevnika rada."
+
+#: ../clawsker:199
+msgid "Client messages"
+msgstr "Poruke klijenta"
+
+#: ../clawsker:200
+msgid "Colour for output messages in log window."
+msgstr "Boja izlaznih poruka u prozoru dnevnika rada."
+
+#: ../clawsker:201
+msgid "Warnings"
+msgstr "Upozorenja"
+
+#: ../clawsker:202
+msgid "Colour for warning messages in log window."
+msgstr "Boja za pouke o upozorenjima u prozoru dnevnika rada."
+
+#: ../clawsker:204
+msgid "Error: "
+msgstr "Greška: "
+
+#: ../clawsker:205
+msgid "resource file for Claws Mail was not found."
+msgstr "datoteka za Claws Mail resurse nije pronađena."
+
+#: ../clawsker:206
+msgid "seems Claws Mail is currently running, close it first."
+msgstr "izgleda da je Claws Mail pokrenut, prvo ga isključite."
+
+#: ../clawsker:207
+msgid "option requires a directory name."
+msgstr "opcija zahteva naziv direktorijuma."
+
+#: ../clawsker:208
+msgid "option requires a file name."
+msgstr "opcija zahteva naziv datoteke."
+
+#: ../clawsker:209
+msgid "specified name is not a directory or does not exist."
+msgstr "zadati naziv nije direktorijum ili on ne postoji."
+
+#: ../clawsker:210
+msgid "specified name is not a file or does not exist."
+msgstr "zadati naziv nije datoteka ili ona ne postoji."
+
+#: ../clawsker:321
+msgid "Error message"
+msgstr "Poruka o grešci"
+
+#: ../clawsker:915 ../clawsker:922
+msgid ", built for "
+msgstr ", izgređen za "
+
+#: ../clawsker:916 ../clawsker:923
+msgid ", running with "
+msgstr ", pokrenut sa "
+
+#: ../clawsker:928
+msgid "Syntax:\n"
+msgstr "Sintaksa:\n"
+
+#: ../clawsker:929
+msgid "    clawsker [options]\n"
+msgstr "    clawsker [opcije]\n"
+
+#: ../clawsker:930
+msgid "Options:\n"
+msgstr "Opcije:\n"
+
+#: ../clawsker:931
+msgid "    --help                         Prints this help screen.\n"
+msgstr "    --help                         Prikazuje ovaj ekran pomoći.\n"
+
+#: ../clawsker:932
+msgid "    --verbose                      More messages on standard output.\n"
+msgstr "    --verbose                      Više poruka na stardantnom izlazu.\n"
+
+#: ../clawsker:933
+msgid "    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n"
+msgstr "    --alternate-config-dir <dir>   KOristi <dir> kao konfiguracioni direktorijum za Claws Mail.\n"
+
+#: ../clawsker:934
+msgid "    --clawsrc <file>               Uses <file> as full resource name.\n"
+msgstr "    --clawsrc <datoteka>           Koristi datoteku <datoteka> kao naziv za resurse.\n"
+
+#: ../clawsker:978
+#, perl-brace-format
+msgid "unknown option '{opt}'.\n"
+msgstr "nepoznata opcija „{opt}“.\n"
+
