@@ -26,7 +26,9 @@ Dependencies
   - Running:
 
   Perl - http://www.perl.com (>= 5.8)
-  GTK+2 bindings for Perl - http://gtk2-perl.sourceforge.net (>= 1.140)
+  GTK+2 bindings for Perl - http://gtk2-perl.sourceforge.net (>= 1.161) built
+  with GTK+ >= 2.12 (lower GTK+ versions do not support widget tooltips and 
+  a warning is issued).
   Locale::gettext - http://search.cpan.org/~pvandry/gettext-1.05/ (>= 1.05)
   Claws Mail - http://www.claws-mail.org (>= 3.1.0)
 
@@ -76,6 +78,13 @@ with the same name of your .po file should be created if everything is right.
 To update an existing translation just type 'make xx.pox' or 'make xx_YY.pox'
 and update the new .pox file created, copy the .pox file to the .po file and
 test it as above (no need to modify the Makefile this time).
+
+Bugs
+----
+
+You can send bug reports to the Issues list on http://clawsker.googlecode.com/
+Also directly by mail to me or in the Claws Mail mailing list, but the Issues
+list is the preferred way.
 
 Thanks
 ------

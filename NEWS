@@ -1,3 +1,13 @@
+0.4.0:
+
+- Supported new hidden property 'use_networkmanager' in
+  Claws Mail 3.3.1
+- Fixed UTF-8 usage which made translations appear messed
+- Fixed default locale for empty enviroments (like NetBSD)
+- Updated Spanish translation
+- New Serbian translations (cyrillic and latin)
+  thanks to Aleksandar Urosevic
+
 0.3.0:
 
 - Tooltips with extended help for all input items
