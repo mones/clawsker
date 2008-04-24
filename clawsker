@@ -167,6 +167,8 @@ sub _ {
     h_gui_strip_all => _('Enable alternately coloured lines in all tree view components.'),
     l_gui_strip_sum => _('Use stripes in Folder List and Message List'),
     h_gui_strip_sum => _('Enable alternately coloured lines in message list and folder list'),
+    l_gui_two_line_v => _('2 lines per Message List item in 3-column layout'),
+    h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
@@ -624,6 +626,15 @@ sub new_other_page() {
 	'1',
 	undef,
     ],
+    two_linev => [
+        'two_line_vertical',
+	$xl::s{l_gui_two_line_v},
+	$xl::s{h_gui_two_line_v},
+	'bool',
+	'3.4.0.7',
+	'0',
+	undef,
+    ],
 );
 
 sub new_gui_page() {
@@ -663,6 +674,7 @@ sub new_gui_page() {
     my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
     my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
+    my $cb_two_linev = &new_check_button_for (\%pr::gui, 'two_linev');
 
     $gf->pack_start ($stripes_frame, FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($mlist_frame, FALSE, FALSE, FRAME_SPC);
@@ -670,6 +682,7 @@ sub new_gui_page() {
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_two_linev, FALSE, FALSE, 0);
     $gf->pack_start ($sbar_frame, FALSE, FALSE, FRAME_SPC);
 
     return $gf;

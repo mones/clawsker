@@ -1,3 +1,9 @@
+2008-04-24 10:06  mones   0.4.0svn89
+
+	* clawsker
+		Add support for new hidden preference in version
+		3.4.0cvs7: 'two_line_vertical'
+
 2008-02-26 11:58  mones   0.4.0
 
 	* README
