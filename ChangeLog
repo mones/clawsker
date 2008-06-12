@@ -1,3 +1,12 @@
+2008-06-12 13:20  mones   0.4.0svn102
+
+	* clawsker
+	* po/es.po
+	* po/clawsker.pot
+		Add support for new hidden preference in version
+		3.4.0cvs37: 'outgoing_fallback_to_ascii'
+		Updated Spanish translation
+
 2008-06-11 15:34  mones   0.4.0svn101
 
 	* po/es.po

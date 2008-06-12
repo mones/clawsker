@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 0.4.0svn89\n"
+"Project-Id-Version: clawsker 0.4.0svn101\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2008-06-11 15:25+0200\n"
+"POT-Creation-Date: 2008-06-12 13:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,124 +339,134 @@ msgstr ""
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
 msgstr ""
 
-#: ../clawsker:194
-msgid "X-Mailer header"
+#: ../clawsker:193
+msgid "Ougoing messages fallback to ASCII"
 msgstr ""
 
-#: ../clawsker:195
-msgid "The colour used for the X-Mailer line when its value is Claws Mail."
+#: ../clawsker:194
+msgid ""
+"If content allows, ASCII will be used to encode outgoing messages, otherwise "
+"the user-defined encoding is enforced always."
 msgstr ""
 
 #: ../clawsker:196
-msgid "Error messages"
+msgid "X-Mailer header"
 msgstr ""
 
 #: ../clawsker:197
-msgid "Colour for error messages in log window."
+msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr ""
 
 #: ../clawsker:198
-msgid "Server messages"
+msgid "Error messages"
 msgstr ""
 
 #: ../clawsker:199
-msgid "Colour for input messages in log window."
+msgid "Colour for error messages in log window."
 msgstr ""
 
 #: ../clawsker:200
-msgid "Standard messages"
+msgid "Server messages"
 msgstr ""
 
 #: ../clawsker:201
-msgid "Colour for messages in log window."
+msgid "Colour for input messages in log window."
 msgstr ""
 
 #: ../clawsker:202
-msgid "Client messages"
+msgid "Standard messages"
 msgstr ""
 
 #: ../clawsker:203
-msgid "Colour for output messages in log window."
+msgid "Colour for messages in log window."
 msgstr ""
 
 #: ../clawsker:204
-msgid "Warnings"
+msgid "Client messages"
 msgstr ""
 
 #: ../clawsker:205
-msgid "Colour for warning messages in log window."
+msgid "Colour for output messages in log window."
+msgstr ""
+
+#: ../clawsker:206
+msgid "Warnings"
 msgstr ""
 
 #: ../clawsker:207
-msgid "Error: "
-msgstr ""
-
-#: ../clawsker:208
-msgid "resource file for Claws Mail was not found."
+msgid "Colour for warning messages in log window."
 msgstr ""
 
 #: ../clawsker:209
-msgid "seems Claws Mail is currently running, close it first."
+msgid "Error: "
 msgstr ""
 
 #: ../clawsker:210
-msgid "option requires a directory name."
+msgid "resource file for Claws Mail was not found."
 msgstr ""
 
 #: ../clawsker:211
-msgid "option requires a file name."
+msgid "seems Claws Mail is currently running, close it first."
 msgstr ""
 
 #: ../clawsker:212
-msgid "specified name is not a directory or does not exist."
+msgid "option requires a directory name."
 msgstr ""
 
 #: ../clawsker:213
+msgid "option requires a file name."
+msgstr ""
+
+#: ../clawsker:214
+msgid "specified name is not a directory or does not exist."
+msgstr ""
+
+#: ../clawsker:215
 msgid "specified name is not a file or does not exist."
 msgstr ""
 
-#: ../clawsker:324
+#: ../clawsker:326
 msgid "Error message"
 msgstr ""
 
-#: ../clawsker:929 ../clawsker:936
+#: ../clawsker:942 ../clawsker:949
 msgid ", built for "
 msgstr ""
 
-#: ../clawsker:930 ../clawsker:937
+#: ../clawsker:943 ../clawsker:950
 msgid ", running with "
 msgstr ""
 
-#: ../clawsker:942
+#: ../clawsker:955
 msgid "Syntax:\n"
 msgstr ""
 
-#: ../clawsker:943
+#: ../clawsker:956
 msgid "    clawsker [options]\n"
 msgstr ""
 
-#: ../clawsker:944
+#: ../clawsker:957
 msgid "Options:\n"
 msgstr ""
 
-#: ../clawsker:945
+#: ../clawsker:958
 msgid "    --help                         Prints this help screen.\n"
 msgstr ""
 
-#: ../clawsker:946
+#: ../clawsker:959
 msgid "    --verbose                      More messages on standard output.\n"
 msgstr ""
 
-#: ../clawsker:947
+#: ../clawsker:960
 msgid ""
 "    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n"
 msgstr ""
 
-#: ../clawsker:948
+#: ../clawsker:961
 msgid "    --clawsrc <file>               Uses <file> as full resource name.\n"
 msgstr ""
 
-#: ../clawsker:992
+#: ../clawsker:1005
 #, perl-brace-format
 msgid "unknown option '{opt}'.\n"
 msgstr ""

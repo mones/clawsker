@@ -190,6 +190,8 @@ sub _ {
     h_beh_use_utf8 => _('Use UTF-8 encoding for broken mails instead of current locale.'),
     l_beh_warn_dnd => _('Warn on drag \'n\' drop'),
     h_beh_warn_dnd => _('Display a confirmation dialogue on drag \'n\' drop of folders.'),
+    l_beh_out_ascii => _('Ougoing messages fallback to ASCII'),
+    h_beh_out_ascii => _('If content allows, ASCII will be used to encode outgoing messages, otherwise the user-defined encoding is enforced always.'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -779,6 +781,15 @@ sub new_gui_page() {
 	'1',
 	undef,
     ],
+    out_ascii => [
+        'outgoing_fallback_to_ascii',
+	$xl::s{l_beh_out_ascii},
+	$xl::s{h_beh_out_ascii},
+	'bool',
+	'3.4.0.37',
+	'1',
+	undef,
+    ],
 );
 
 sub new_behaviour_page() {
@@ -811,12 +822,14 @@ sub new_behaviour_page() {
     my $cb_parts_rw = &new_check_button_for (\%pr::beh, 'parts_rw');
     my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
     my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
+    my $cb_out_ascii = &new_check_button_for (\%pr::beh, 'out_ascii');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);    
     $vb2->set_border_width (PAGE_SPC);
     $vb2->pack_start ($cb_flowed, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_dangerous, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_out_ascii, FALSE, FALSE, 0);
     $msgs_frame->add ($vb2);
 
     $bf->pack_start ($dnd_frame, FALSE, FALSE, FRAME_SPC);
