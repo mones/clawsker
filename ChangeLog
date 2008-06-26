@@ -1,3 +1,9 @@
+2008-06-26 08:59  mones   0.4.0svn115
+
+	* clawsker
+		Fix alternate folder option behaviour
+		Fix warning when boolean properties don't exist
+
 2008-06-12 13:20  mones   0.4.0svn102
 
 	* clawsker

@@ -371,7 +371,9 @@ sub new_check_button_for {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
     $$hash{$key}[GUI] = $cb;
-    $cb->set_active ($HPVALUE{$name} eq '1');
+    if (defined ($HPVALUE{$name})) {
+        $cb->set_active ($HPVALUE{$name} eq '1');
+    }
     $cb->signal_connect (clicked => sub {
             my ($w, $e) = @_;
 	    &handle_bool_value($w, $e, \$HPVALUE{$name});
@@ -989,6 +991,8 @@ sub parse_command_line() {
 		&command_line_fatal ($xl::s{e_notadir})
 		    unless -d $ARGV[$arg];
 		$CONFIGDIR = $ARGV[$arg];
+		$CONFIGDIR .= "/" 
+		    unless ($CONFIGDIR =~ /.*\/$/);
 		$ALTCONFIGDIR = TRUE;
 	        last;
 	    };
