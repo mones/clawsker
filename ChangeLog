@@ -1,3 +1,10 @@
+2008-06-26 16:21  mones   0.4.0svn116
+
+	* clawsker
+		Rename integer handling function accordingly
+		Define and set ranges for all integer properties
+		Use spin buttons instead text entries for them
+
 2008-06-26 08:59  mones   0.4.0svn115
 
 	* clawsker

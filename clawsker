@@ -384,20 +384,25 @@ sub new_check_button_for {
     return $hbox;
 }
 
-sub new_text_box_for {
+sub new_text_box_for_int {
     my ($hash, $key) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
+    my @type = split (/,/, $$hash{$key}[TYPE]);
+    push (@type, 0), push (@type, 10000) unless ($#type > 0); 
     #
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
-    my $gentry = Gtk2::Entry->new;
-    $gentry->set_width_chars (8);
+    my $pagei = int (($type[2] - $type[1]) / 10);
+    my $adjust = Gtk2::Adjustment->new (
+            $HPVALUE{$name}, $type[1], $type[2], 1, $pagei, 10
+	);
+    my $gentry = Gtk2::SpinButton->new ($adjust, 1, 0);
+    $gentry->set_numeric (TRUE);
     $$hash{$key}[GUI] = $gentry;
-    $gentry->set_text($HPVALUE{$name});
-    $gentry->signal_connect(changed => sub {
+    $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
-	    &handle_int_value($w, $e, \$HPVALUE{$name}); # FIXME int only
+	    &handle_int_value($w, $e, \$HPVALUE{$name});
         });
     &set_widget_hint ($gentry, $$hash{$key}[DESC]);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
@@ -471,7 +476,7 @@ sub new_selection_box_for {
     	'cache_max_mem_usage',
 	$xl::s{l_oth_max_use},
 	$xl::s{h_oth_max_use},
-	'int',
+	'int,0,262144', # 0 Kb - 256 Mb
 	'0.0.0',
 	'4096',
 	undef,
@@ -480,7 +485,7 @@ sub new_selection_box_for {
         'cache_min_keep_time',
 	$xl::s{l_oth_min_time},
 	$xl::s{h_oth_min_time},
-	'int',
+	'int,0,120', # 0 minutes - 2 hours
 	'0.0.0',
 	'15',
 	undef,
@@ -508,8 +513,8 @@ sub new_other_page() {
     $ab_frame->add ($vb1);
 
     my $mem_frame = Gtk2::Frame->new ($xl::s{mem_frame}); 
-    my $tb_max_use = &new_text_box_for(\%pr::oth, 'max_use');
-    my $tb_min_time = &new_text_box_for(\%pr::oth, 'min_time');
+    my $tb_max_use = &new_text_box_for_int(\%pr::oth, 'max_use');
+    my $tb_min_time = &new_text_box_for_int(\%pr::oth, 'min_time');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);
     $vb2->set_border_width (PAGE_SPC); 
     $vb2->pack_start ($tb_max_use, FALSE, FALSE, 0);
@@ -589,7 +594,7 @@ sub new_other_page() {
         'stripes_color_offset',
 	$xl::s{l_gui_strip_off},
 	$xl::s{h_gui_strip_off},
-	'int',
+	'int,0,10000', # no idea what this number means
 	'0.0.0',
 	'4000',
 	undef,
@@ -648,7 +653,7 @@ sub new_gui_page() {
     my $stripes_frame = Gtk2::Frame->new ($xl::s{stripes_frame});
     my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
     my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
-    my $tb_strip_off = &new_text_box_for (\%pr::gui, 'strip_off');
+    my $tb_strip_off = &new_text_box_for_int (\%pr::gui, 'strip_off');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
     $vb1->set_border_width (PAGE_SPC);
     $vb1->pack_start ($cb_strip_all, FALSE, FALSE, 0);
@@ -697,7 +702,7 @@ sub new_gui_page() {
         'hover_timeout',
         $xl::s{l_beh_hover_t},
         $xl::s{h_beh_hover_t},
-	'int',
+	'int,100,3000', # 0.1 seconds - 3 seconds
 	'0.0.0',
 	'500',
 	undef,
@@ -742,7 +747,7 @@ sub new_gui_page() {
         'statusbar_update_step',
         $xl::s{l_beh_up_step},
         $xl::s{h_beh_up_step},
-	'int',
+	'int,1,200', # 1 item - 200 items
 	'0.0.0',
 	'10',
 	undef,
@@ -751,7 +756,7 @@ sub new_gui_page() {
         'thread_by_subject_max_age',
         $xl::s{l_beh_thread_a},
         $xl::s{h_beh_thread_a},
-	'int',
+	'int,1,30', # 1 day - 30 days
 	'0.0.0',
 	'10',
 	undef,
@@ -799,7 +804,7 @@ sub new_behaviour_page() {
     $bf->set_border_width (PAGE_SPC);
 
     my $dnd_frame = Gtk2::Frame->new ($xl::s{dnd_frame});
-    my $tb_hoover_t = &new_text_box_for (\%pr::beh, 'hover_t');
+    my $tb_hoover_t = &new_text_box_for_int (\%pr::beh, 'hover_t');
     my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
     my $vb1 = Gtk2::VBox->new (FALSE, 5);
     $vb1->set_border_width (PAGE_SPC);
@@ -816,8 +821,8 @@ sub new_behaviour_page() {
     $hb1->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
     $ssl_frame->add ($hb1);
 
-    my $tb_up_step = &new_text_box_for (\%pr::beh, 'up_step');
-    my $tb_thread_a = &new_text_box_for (\%pr::beh, 'thread_a');
+    my $tb_up_step = &new_text_box_for_int (\%pr::beh, 'up_step');
+    my $tb_thread_a = &new_text_box_for_int (\%pr::beh, 'thread_a');
 
     my $msgs_frame = Gtk2::Frame->new ($xl::s{msgs_frame});
     my $cb_flowed = &new_check_button_for (\%pr::beh, 'flowed');
