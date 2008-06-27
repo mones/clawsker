@@ -3,6 +3,7 @@
 - Supported new hidden properties 'two_line_vertical' and
   'outgoing_fallback_to_ascii' in Claws Mail 3.5.0
 - New French translation thanks to Tristan Chabredier (wwp)
+- Integer values handled with spin-buttons instead raw text
 - Updated Spanish translation
 - Fixed --alternate-config-dir argument checking
 - Fixed minor warnings and typos
