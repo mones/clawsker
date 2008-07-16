@@ -32,7 +32,7 @@ using Clawsker.
 	Shows a brief help screen.
 
 --verbose
-	Tell more on the standard output.
+	Tells more on the standard output.
 
 --alternate-config-dir <dir>
 	Uses <dir> as Claws Mail configuration dir.
@@ -130,13 +130,13 @@ sub _ {
     msgs_frame => _('Messages'),
     stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
-    mlist_frame => _('Message list'),
+    mlist_frame => _('Message List'),
     netm_frame => _('NetworkManager'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
-    l_oth_max_use => _('Maximum memory for message cache (Kb)'),
-    h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kB.'),
+    l_oth_max_use => _('Maximum memory for message cache (kB)'),
+    h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kilobytes.'),
     l_oth_min_time => _('Minimun time for cache elements (minutes)'),
     h_oth_min_time => _('The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.'),
     l_oth_use_netm => _('Use NetworkManager'),
@@ -146,18 +146,18 @@ sub _ {
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
     l_gui_no_markup => _('Don\'t use markup in compose window'),
     h_gui_no_markup => _('Don\'t use bold and italic text in Compose dialogue\'s account selector.'),
-    l_gui_dot_lines => _('Use dotted lines in tree views'),
-    h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (folder and message lists) instead of the modern lineless look.'),
+    l_gui_dot_lines => _('Use dotted lines in tree view components'),
+    h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look.'),
     l_gui_h_scroll => _('Enable horizontal scrollbar'),
     h_gui_h_scroll => _('Enable the horizontal scrollbar in the Message List.'),
-    l_gui_swp_from => _('Dislay To header in From field in Sent folder'),
-    h_gui_swp_from => _('Display the sender\'s email address in the To column of the Sent folder instead of the recipient\'s.'),
-    l_gui_v_scroll => _('Folder list scrollbar behaviour'),
+    l_gui_swp_from => _('Dislay To column instead From column in Sent folder'),
+    h_gui_swp_from => _('Display the recipient\'s email address in a To column of the Sent folder instead of the originator\'s one in a From column.'),
+    l_gui_v_scroll => _('Folder List scrollbar behaviour'),
     h_gui_v_scroll => _('Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.'),
     l_gui_v_scroll_show => _('Show always'),
     l_gui_v_scroll_auto => _('Automatic'),
     l_gui_v_scroll_hide => _('Hide always'),
-    l_gui_strip_off => _('Striped lines contrast'),
+    l_gui_strip_off => _('Coloured lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
     l_gui_cursor_v => _('Show Cursor in message view'),
     h_gui_cursor_v => _('Display the cursor in the message view.'),
@@ -166,9 +166,9 @@ sub _ {
     l_gui_strip_all => _('Use stripes in all tree view components'),
     h_gui_strip_all => _('Enable alternately coloured lines in all tree view components.'),
     l_gui_strip_sum => _('Use stripes in Folder List and Message List'),
-    h_gui_strip_sum => _('Enable alternately coloured lines in message list and folder list'),
+    h_gui_strip_sum => _('Enable alternately coloured lines in Message list and Folder list.'),
     l_gui_two_line_v => _('2 lines per Message List item in 3-column layout'),
-    h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode'),
+    h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode.'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
@@ -198,11 +198,11 @@ sub _ {
     l_col_log_err => _('Error messages'),
     h_col_log_err => _('Colour for error messages in log window.'),
     l_col_log_in => _('Server messages'),
-    h_col_log_in => _('Colour for input messages in log window.'),
+    h_col_log_in => _('Colour for messages received from servers in log window.'),
     l_col_log_msg => _('Standard messages'),
     h_col_log_msg => _('Colour for messages in log window.'),
     l_col_log_out => _('Client messages'),
-    h_col_log_out => _('Colour for output messages in log window.'),
+    h_col_log_out => _('Colour for messages sent to servers in log window.'),
     l_col_log_warn => _('Warnings'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
 
