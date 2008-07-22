@@ -1,3 +1,8 @@
+2008-07-22 10:17  mones   0.5.0svn147
+
+	* clawsker
+		Added version checking and comparing functions
+
 2008-07-16 16:44  mones   0.5.0svn144
 
 	* clawsker

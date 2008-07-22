@@ -238,6 +238,52 @@ use constant HBOX_SPC => 5;
 use constant FRAME_SPC => 2;
 use constant PAGE_SPC => 5;
 
+# version functions
+
+sub version_greater() {
+  my ($version, $refvers) = @_;
+  my @version = split (/\./, $version);
+  my @refvers = split (/\./, $refvers);
+  while ($#version < $#refvers) {
+    push (@version, '0');
+  }
+  my $idx = 0;
+  while (($idx <= $#refvers) 
+         and (int ($version[$idx]) == int ($refvers[$idx]))) {
+    ++$idx;
+  }
+  return TRUE if (($idx > $#refvers) 
+               or (int ($version[$idx]) > int ($refvers[$idx])));
+  return FALSE;
+}
+
+sub get_claws_version() {
+    my @cmbin = (
+        'claws-mail',
+    );
+    my $res = "";
+    foreach my $bin (@cmbin) {
+        $_ = qx/which $bin/;
+        chomp;
+        last if ($_ ne "");
+    }
+    return "" unless ($_); # not installed
+    $_ = qx/$_ -v/;
+    chomp;
+    my @fver = split (/ /);
+    die "Invalid version string" unless ($fver[2] eq "version");
+    my @ver = split (/\./, $fver[3]);
+    $res .= "$ver[0].";
+    $res .= "$ver[1].";
+    if ($ver[2] =~ /(\d+)cvs(\d+)/) {
+        $res .= "$1.$2";
+    }
+    else {
+        $res .= "$ver[2].0";
+    }
+    return $res;
+}
+
 # data handlers and auxiliar functions
 
 sub handle_bool_value {
