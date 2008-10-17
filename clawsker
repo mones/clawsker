@@ -983,10 +983,8 @@ sub new_colours_page() {
     return $cf;
 }
 
-# the command line help
-sub print_help() {
-    my $line = '-' x length ($xl::s{about_title}) . "\n";
-    print $line;
+# version info
+sub print_version() {
     print $xl::s{about_title} . "\n";
     print $xl::s{about_version} . " $VERSION\n";
     print "Perl-GLib " . $Glib::VERSION;
@@ -1004,11 +1002,19 @@ sub print_help() {
 	          &Gtk2::minor_version, &Gtk2::micro_version);
     }
     print "\n";
+}
+
+# the command line help
+sub print_help() {
+    my $line = '-' x length ($xl::s{about_title}) . "\n";
+    print $line;
+    print $xl::s{about_title} . "\n";
     print $line;
     print _("Syntax:\n");
     print _("    clawsker [options]\n");
     print _("Options:\n");
     print _("    --help                         Prints this help screen.\n");
+    print _("    --version                      Prints version infos.\n");
     print _("    --verbose                      More messages on standard output.\n");
     print _("    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n");
     print _("    --clawsrc <file>               Uses <file> as full resource name.\n");
@@ -1029,6 +1035,10 @@ sub parse_command_line() {
         for ($ARGV[$arg]) {
             /--help/ && do { 
 	        &print_help; 
+                return FALSE;
+	    };
+            /--version/ && do { 
+	        &print_version; 
                 return FALSE;
 	    };
 	    /--verbose/ && do {

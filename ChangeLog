@@ -1,3 +1,8 @@
+2008-10-17 12:39  mones   0.5.0svn199
+
+	* clawsker
+		Separate version info option from help
+
 2008-10-17 03:57  mones   0.5.0svn198
 
 	* po/Makefile
