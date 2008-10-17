@@ -31,6 +31,9 @@ using Clawsker.
 --help
 	Shows a brief help screen.
 
+--version
+	Show information about program, Claws Mail and Perl-GTK versions.
+
 --verbose
 	Tells more on the standard output.
 
@@ -1002,6 +1005,11 @@ sub print_version() {
 	          &Gtk2::minor_version, &Gtk2::micro_version);
     }
     print "\n";
+    my $clawsver = &get_claws_version;
+    $clawsver = ($clawsver eq "") ? 
+                _("was not found!") : 
+                (_("returned version ") . $clawsver);
+    print "Claws Mail " . $clawsver . "\n";
 }
 
 # the command line help
