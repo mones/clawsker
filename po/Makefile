@@ -28,7 +28,7 @@ build:
 
 install: all install-dirs
 	for po in ${LINGUAS}; \
-	do install -m 0755 $${po}.mo ${DESTDIR}${LOCALEDIR}/$${po}/LC_MESSAGES/${NAME}.mo; \
+	do install -m 0644 $${po}.mo ${DESTDIR}${LOCALEDIR}/$${po}/LC_MESSAGES/${NAME}.mo; \
 	done
 
 install-dirs:

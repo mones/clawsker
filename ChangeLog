@@ -1,3 +1,8 @@
+2008-10-17 03:57  mones   0.5.0svn198
+
+	* po/Makefile
+		Fixed install mode for translations
+
 2008-07-22 10:17  mones   0.5.0svn147
 
 	* clawsker
