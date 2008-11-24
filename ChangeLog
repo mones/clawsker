@@ -1,3 +1,12 @@
+2008-11-24 07:23  mones   0.5.0svn207
+
+	* clawsker
+		Added suport for latest hidden preference
+		('primary_paste_unselects') in behaviour tab
+	* po/es.po
+	* po/clawsker.pot
+		Updated translation and template
+
 2008-10-17 16:09  mones   0.5.0svn200
 
 	* clawsker

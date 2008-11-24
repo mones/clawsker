@@ -195,6 +195,8 @@ sub _ {
     h_beh_warn_dnd => _('Display a confirmation dialogue on drag \'n\' drop of folders.'),
     l_beh_out_ascii => _('Ougoing messages fallback to ASCII'),
     h_beh_out_ascii => _('If content allows, ASCII will be used to encode outgoing messages, otherwise the user-defined encoding is enforced always.'),
+    l_beh_pp_unsel => _('Primary paste unselects selection'),
+    h_beh_pp_unsel => _('Controls how pasting using middle-click changes the selected text and insertion point.'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -846,6 +848,15 @@ sub new_gui_page() {
 	'1',
 	undef,
     ],
+    pp_unsel => [
+        'primary_paste_unselects',
+        $xl::s{l_beh_pp_unsel},
+        $xl::s{h_beh_pp_unsel},
+        'bool',
+        '3.6.1.35',
+        '0',
+        undef,
+    ],
 );
 
 sub new_behaviour_page() {
@@ -879,6 +890,7 @@ sub new_behaviour_page() {
     my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
     my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
     my $cb_out_ascii = &new_check_button_for (\%pr::beh, 'out_ascii');
+    my $cb_pp_unsel = &new_check_button_for (\%pr::beh, 'pp_unsel');
     my $vb2 = Gtk2::VBox->new (FALSE, 5);    
     $vb2->set_border_width (PAGE_SPC);
     $vb2->pack_start ($cb_flowed, FALSE, FALSE, 0);
@@ -886,6 +898,7 @@ sub new_behaviour_page() {
     $vb2->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_dangerous, FALSE, FALSE, 0);
     $vb2->pack_start ($cb_out_ascii, FALSE, FALSE, 0);
+    $vb2->pack_start ($cb_pp_unsel, FALSE, FALSE, 0);
     $msgs_frame->add ($vb2);
 
     $bf->pack_start ($dnd_frame, FALSE, FALSE, FRAME_SPC);
