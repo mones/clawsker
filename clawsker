@@ -88,6 +88,7 @@ my $PREFIX = '@PREFIX@';
 my $LIBDIR = '@LIBDIR@';
 my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
+my $CLAWSV = undef;
 my $main_window = undef;
 
 my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
@@ -1018,10 +1019,9 @@ sub print_version() {
 	          &Gtk2::minor_version, &Gtk2::micro_version);
     }
     print "\n";
-    my $clawsver = &get_claws_version;
-    $clawsver = ($clawsver eq "") ? 
+    my $clawsver = ($CLAWSV eq "") ? 
                 _("was not found!") : 
-                (_("returned version ") . $clawsver);
+                (_("returned version ") . $CLAWSV);
     print "Claws Mail " . $clawsver . "\n";
 }
 
@@ -1051,6 +1051,7 @@ sub command_line_fatal() {
 
 # parse the command line
 sub parse_command_line() {
+    $CLAWSV = &get_claws_version;
     my $arg = 0;
     while (defined($ARGV[$arg])) {
         for ($ARGV[$arg]) {
@@ -1065,6 +1066,14 @@ sub parse_command_line() {
 	    /--verbose/ && do {
 	        $VERBOSE = TRUE;
 		last;
+	    };
+	    /--use-claws-version/ && do {
+	        ++$arg;
+		&command_line_fatal ("required version")
+		    unless defined($ARGV[$arg]);
+		&command_line_fatal ("required a dotted numeric value")
+		    unless ($ARGV[$arg] =~ /[\d\.]+/);
+		$CLAWSV = $ARGV[$arg];
 	    };
 	    /--alternate-config-dir/ && do {
 	        ++$arg;

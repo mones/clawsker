@@ -1,3 +1,9 @@
+2008-12-12 12:53  mones   0.5.0svn209
+
+	* clawsker
+		Get claws-mail version as global
+		Add undocumented option to set it manually
+
 2008-11-24 07:23  mones   0.5.0svn207
 
 	* clawsker
