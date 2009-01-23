@@ -1,3 +1,10 @@
+2009-01-23 08:06  mones   0.5.0svn217
+
+	* AUTHORS
+	* po/it.po		**NEW**
+	* po/Makefile
+		Added Italian translation by Francesco Groccia (fgr)
+
 2009-01-12 08:48  mones   0.5.0svn215
 
 	* clawsker
