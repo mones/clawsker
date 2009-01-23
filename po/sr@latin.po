@@ -170,7 +170,7 @@ msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "Omogućava prikaz vodoravne trake za pomeranje u spisku poruka."
 
 #: ../clawsker:152
-msgid "Dislay To header in From field in Sent folder"
+msgid "Display To header in From field in Sent folder"
 msgstr "„Primalac“ u polju „Pošiljalac“ za fasciklu „Poslato“"
 
 #: ../clawsker:153

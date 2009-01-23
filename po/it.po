@@ -178,7 +178,7 @@ msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "Abilita la barra di scorrimento orizzontale nella lista dei messaggi."
 
 #: ../clawsker:153
-msgid "Dislay To header in From field in Sent folder"
+msgid "Display To header in From field in Sent folder"
 msgstr "Nella cartella Posta inviata, mostra l'intestazione \"To:\" nel campo \"From:\""
 
 #: ../clawsker:154

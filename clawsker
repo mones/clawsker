@@ -154,7 +154,7 @@ sub _ {
     h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look.'),
     l_gui_h_scroll => _('Enable horizontal scrollbar'),
     h_gui_h_scroll => _('Enable the horizontal scrollbar in the Message List.'),
-    l_gui_swp_from => _('Dislay To column instead From column in Sent folder'),
+    l_gui_swp_from => _('Display To column instead From column in Sent folder'),
     h_gui_swp_from => _('Display the recipient\'s email address in a To column of the Sent folder instead of the originator\'s one in a From column.'),
     l_gui_v_scroll => _('Folder List scrollbar behaviour'),
     h_gui_v_scroll => _('Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always.'),

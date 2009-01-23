@@ -177,7 +177,7 @@ msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "Actiar la barra de desplazamiento horizontal en la lista de mensajes."
 
 #: ../clawsker:156
-msgid "Dislay To column instead From column in Sent folder"
+msgid "Display To column instead From column in Sent folder"
 msgstr "Mostrar la cabecera «Para» en el campo «Desde» de la carpeta Enviado"
 
 #: ../clawsker:157
