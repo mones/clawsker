@@ -1,3 +1,10 @@
+2009-01-24 20:52  mones   0.5.0svn219
+
+	* clawsker
+		Enable or disable preferences according version returned 
+		by Claws Mail
+		Fix bug in command line parsing
+
 2009-01-23 08:15  mones   0.5.0svn218
 
 	* clawsker

@@ -246,7 +246,7 @@ use constant PAGE_SPC => 5;
 
 # version functions
 
-sub version_greater() {
+sub version_greater_or_equal() {
   my ($version, $refvers) = @_;
   my @version = split (/\./, $version);
   my @refvers = split (/\./, $refvers);
@@ -259,7 +259,7 @@ sub version_greater() {
     ++$idx;
   }
   return TRUE if (($idx > $#refvers) 
-               or (int ($version[$idx]) > int ($refvers[$idx])));
+               or (int ($version[$idx]) >= int ($refvers[$idx])));
   return FALSE;
 }
 
@@ -413,6 +413,11 @@ sub set_widget_hint() {
     }
 }
 
+sub set_widget_sens() {
+    my ($wdgt, $minver) = @_;
+    $wdgt->set_sensitive (&version_greater_or_equal ($CLAWSV, $minver));
+}
+
 # graphic element creation 
 
 sub new_check_button_for {
@@ -431,6 +436,7 @@ sub new_check_button_for {
 	    &handle_bool_value($w, $e, \$HPVALUE{$name});
         });
     &set_widget_hint ($cb, $$hash{$key}[DESC]);
+    &set_widget_sens ($cb, $$hash{$key}[CMVER]);
     $hbox->pack_start ($cb, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
@@ -457,6 +463,8 @@ sub new_text_box_for_int {
 	    &handle_int_value($w, $e, \$HPVALUE{$name});
         });
     &set_widget_hint ($gentry, $$hash{$key}[DESC]);
+    &set_widget_sens ($gentry, $$hash{$key}[CMVER]);
+    $glabel->set_sensitive ($gentry->sensitive);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
     #
@@ -480,6 +488,8 @@ sub new_color_button_for {
 	    &handle_color_value($w, $e, \$HPVALUE{$name}); 
         });
     &set_widget_hint ($button, $$hash{$key}[DESC]);
+    &set_widget_sens ($button, $$hash{$key}[CMVER]);
+    $glabel->set_sensitive ($button->sensitive);
     $hbox->pack_start ($button, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     #
@@ -506,6 +516,8 @@ sub new_selection_box_for {
         });
     $combo->set_active ($HPVALUE{$name});
     &set_widget_hint ($combo, $$hash{$key}[DESC]);
+    &set_widget_sens ($combo, $$hash{$key}[CMVER]);
+    $glabel->set_sensitive ($combo->sensitive);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
     #
@@ -1074,6 +1086,7 @@ sub parse_command_line() {
 		&command_line_fatal ("required a dotted numeric value")
 		    unless ($ARGV[$arg] =~ /[\d\.]+/);
 		$CLAWSV = $ARGV[$arg];
+		last;
 	    };
 	    /--alternate-config-dir/ && do {
 	        ++$arg;
