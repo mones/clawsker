@@ -1,3 +1,13 @@
+0.6.0:
+
+- Supported new hidden property 'primary_paste_unselects'
+  in Claws Mail 3.7.0
+- Enable or disable preferences according Claws Mail version
+- New --version info option separated from --help screen
+- New Italian translation by Francesco Groccia (fgr)
+- Updated Spanish translation
+- Other minor fixes, see ChangeLog 
+
 0.5.0:
 
 - Supported new hidden properties 'two_line_vertical' and
