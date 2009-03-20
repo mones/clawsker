@@ -14,8 +14,14 @@ LINGUAS = es sr sr@latin fr it
 
 all: build
 
-update-pot:
-	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o ./${NAME}.pot
+${NAME}.pot.0:
+	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o ./${NAME}.pot.0
+
+# remove bogus entry win_title
+update-pot: ${NAME}.pot.0
+	head -17 ./${NAME}.pot.0 > ./${NAME}.pot
+	tail -$(shell expr $(shell wc -l < ./${NAME}.pot.0) - 21 ) ./${NAME}.pot.0 >> ./${NAME}.pot
+	rm -f ./${NAME}.pot.0
 
 %.pox: %.po
 	msgmerge -o $@ --previous $< ${NAME}.pot 

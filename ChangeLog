@@ -1,3 +1,11 @@
+2009-03-20 13:06  mones   0.6.0svn240
+
+	* AUTHORS
+		Updated italian translator address
+	* po/clawsker.pot
+	* po/Makefile
+		Fix pot file by removing bogus win_title entry on creation
+
 2009-01-24 21:18  mones   0.6.0
 
 	* VERSION
