@@ -124,6 +124,7 @@ sub _ {
     tab_behaviour => _('Behaviour'),
     tab_gui => _('GUI'),
     tab_other => _('Other'),
+    tab_winpos => _('Windows'),
 
     ab_frame => _('Addressbook'),
     mem_frame => _('Memory'),
@@ -211,6 +212,20 @@ sub _ {
     h_col_log_out => _('Colour for messages sent to servers in log window.'),
     l_col_log_warn => _('Warnings'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
+
+    l_win_x => _('X position'),
+    h_win_x => _('X coordinate for window\'s top-left corner.'),
+    l_win_y => _('Y position'),
+    h_win_y => _('Y coordinate for window\'s top-left corner.'),
+    l_win_w => _('Width'),
+    h_win_w => _('Window\'s width in pixels.'),
+    l_win_h => _('Height'),
+    h_win_h => _('Window\'s height in pixels.'),
+
+    l_win_main_mx => _('Maximized'),
+    h_win_main_mx => _('Changes window maximized status.'),
+    l_win_main_fs => _('Full-screen'),
+    h_win_main_fs => _('Changes full screen status.'),
 
     e_error => _('Error: '),
     e_noclawsrc => _('resource file for Claws Mail was not found.'),
@@ -522,6 +537,34 @@ sub new_selection_box_for {
     $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
+}
+
+# more graphic helpers
+
+sub new_hbox_pack() {
+    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    $hbox->set_border_width (PAGE_SPC);
+    foreach my $item (@_) {
+        $hbox->pack_start ($item, FALSE, FALSE, 0);
+    }
+    return $hbox;
+}    
+
+sub new_vbox_pack() {
+    my $vbox = Gtk2::VBox->new (FALSE, 5);
+    $vbox->set_border_width (PAGE_SPC);
+    foreach my $item (@_) {
+        $vbox->pack_start ($item, FALSE, FALSE, 0);
+    }
+    return $vbox;
+}    
+
+sub new_subpage_frame () {
+    my ($box, $title, $notpacked) = @_;
+    my $frame = Gtk2::Frame->new ($title);
+    $frame->add ($box);    
+    return &new_vbox_pack ($frame) unless defined ($notpacked);
+    return $frame;
 }
 
 # preference maps and corresponding page creation subs
@@ -1012,6 +1055,748 @@ sub new_colours_page() {
     return $cf;
 }
 
+%pr::win = ( # tweak window positions and/or sizes
+    main_x => [
+        'mainwin_x',
+        $xl::s{l_win_x},
+        $xl::s{h_win_x},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'16',
+	undef,
+    ],
+    main_y => [
+        'mainwin_y',
+        $xl::s{l_win_y},
+        $xl::s{h_win_y},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'16',
+	undef,
+    ],
+    main_w => [
+        'mainwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'779',
+	undef,
+    ],
+    main_h => [
+        'mainwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'568',
+	undef,
+    ],
+    main_mx => [
+        'mainwin_maximised',
+        $xl::s{l_win_main_mx},
+        $xl::s{h_win_main_mx},
+        'bool',
+        '0.0.0',
+        '0',
+        undef,
+    ],
+    main_fs => [
+        'mainwin_fullscreen',
+        $xl::s{l_win_main_fs},
+        $xl::s{h_win_main_fs},
+        'bool',
+        '0.0.0',
+        '0',
+        undef,
+    ],
+    msgs_x => [
+        'main_messagewin_x',
+        $xl::s{l_win_x},
+        $xl::s{h_win_x},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'256',
+	undef,
+    ],
+    msgs_y => [
+        'main_messagewin_y',
+        $xl::s{l_win_y},
+        $xl::s{h_win_y},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'210',
+	undef,
+    ],
+    msgs_w => [
+        'messagewin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'600',
+	undef,
+    ],
+    msgs_h => [
+        'messagewin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'540',
+	undef,
+    ],
+    send_w => [
+        'sendwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '460',
+        undef,
+    ],
+    send_h => [
+        'sendwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '-1',
+        undef,
+    ],
+    recv_w => [
+        'receivewin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '460',
+        undef,
+    ],
+    recv_h => [
+        'receivewin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '-1',
+        undef,
+    ],
+    fold_x => [
+        'folderwin_x',
+        $xl::s{l_win_x},
+        $xl::s{h_win_x},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'16',
+	undef,
+    ],
+    fold_y => [
+        'folderwin_y',
+        $xl::s{l_win_y},
+        $xl::s{h_win_y},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'16',
+	undef,
+    ],
+    fold_w => [
+        'folderitemwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'500',
+	undef,
+    ],
+    fold_h => [
+        'folderitemwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    fsel_w => [
+        'folderselwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'300',
+	undef,
+    ],
+    fsel_h => [
+        'folderselwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    sour_w => [
+        'sourcewin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'600',
+	undef,
+    ],
+    sour_h => [
+        'sourcewin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'500',
+	undef,
+    ],
+    addr_w => [
+        'addressbookwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'520',
+	undef,
+    ],
+    addr_h => [
+        'addressbookwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    adep_w => [
+        'addressbookeditpersonwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'640',
+	undef,
+    ],
+    adep_h => [
+        'addressbookeditpersonwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'320',
+	undef,
+    ],
+    adeg_w => [
+        'addressbookeditgroupwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'580',
+	undef,
+    ],
+    adeg_h => [
+        'addressbookeditgroupwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'340',
+	undef,
+    ],
+    adda_w => [
+        'addressaddwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'300',
+	undef,
+    ],
+    adda_h => [
+        'addressaddwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    addf_w => [
+        'addressbook_folderselwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'300',
+	undef,
+    ],
+    addf_h => [
+        'addressbook_folderselwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    acce_w => [
+        'editaccountwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'500',
+	undef,
+    ],
+    acce_h => [
+        'editaccountwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    acco_w => [
+        'accountswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'500',
+	undef,
+    ],
+    acco_h => [
+        'accountswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    filt_w => [
+        'filteringwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'500',
+	undef,
+    ],
+    filt_h => [
+        'filteringwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    fila_w => [
+        'filteringactionwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'490',
+	undef,
+    ],
+    fila_h => [
+        'filteringactionwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    fild_w => [
+        'filtering_debugwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'600',
+	undef,
+    ],
+    fild_h => [
+        'filtering_debugwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    matc_w => [
+        'matcherwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'520',
+	undef,
+    ],
+    matc_h => [
+        'matcherwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    pref_w => [
+        'prefswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'600',
+	undef,
+    ],
+    pref_h => [
+        'prefswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    temp_w => [
+        'templateswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'480',
+	undef,
+    ],
+    temp_h => [
+        'templateswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    acti_w => [
+        'actionswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'486',
+	undef,
+    ],
+    acti_h => [
+        'actionswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    tags_w => [
+        'tagswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'486',
+	undef,
+    ],
+    tags_h => [
+        'tagswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    plug_w => [
+        'pluginswin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    plug_h => [
+        'pluginswin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    logw_w => [
+        'logwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'520',
+	undef,
+    ],
+    logw_h => [
+        'logwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+    prin_w => [
+        'print_previewwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'600',
+	undef,
+    ],
+    prin_h => [
+        'print_previewwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+	'int,0,3000', # 0 pixels - 3000 pixels
+	'0.0.0',
+	'-1',
+	undef,
+    ],
+);
+
+sub new_winpos_subpage_main() {
+    return &new_subpage_frame (
+               &new_vbox_pack (
+                   &new_text_box_for_int (\%pr::win, 'main_x'), 
+                   &new_text_box_for_int (\%pr::win, 'main_y'), 
+                   &new_text_box_for_int (\%pr::win, 'main_w'), 
+                   &new_text_box_for_int (\%pr::win, 'main_h'), 
+                   &new_hbox_pack (
+                       &new_check_button_for (\%pr::win, 'main_fs'), 
+                       &new_check_button_for (\%pr::win, 'main_mx'))),
+               _('Main window')
+           );
+}
+
+sub new_winpos_subpage_msgs() {
+    return &new_subpage_frame (
+               &new_vbox_pack (
+                   &new_text_box_for_int (\%pr::win, 'msgs_x'),
+                   &new_text_box_for_int (\%pr::win, 'msgs_y'),
+                   &new_text_box_for_int (\%pr::win, 'msgs_w'),
+                   &new_text_box_for_int (\%pr::win, 'msgs_h')),
+               _('Message window')
+           );
+}
+
+sub new_winpos_subpage_sendrecv() {
+    return &new_vbox_pack (
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_hbox_pack (
+                           &new_text_box_for_int (\%pr::win, 'send_w'),
+                           &new_text_box_for_int (\%pr::win, 'send_h'))),
+                   _('Send window'), 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_hbox_pack (
+                           &new_text_box_for_int (\%pr::win, 'recv_w'),
+                           &new_text_box_for_int (\%pr::win, 'recv_h'))),
+                   _('Receive window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_fold() {
+    return &new_vbox_pack (
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_text_box_for_int (\%pr::win, 'fold_x'), 
+                       &new_text_box_for_int (\%pr::win, 'fold_y'), 
+                       &new_text_box_for_int (\%pr::win, 'fold_w'), 
+                       &new_text_box_for_int (\%pr::win, 'fold_h')),
+                   _('Folder window'), 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_text_box_for_int (\%pr::win, 'fsel_w'),
+                       &new_text_box_for_int (\%pr::win, 'fsel_h')),
+                   _('Folder selection window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_sour() {
+    return &new_subpage_frame (
+               &new_vbox_pack (
+                   &new_text_box_for_int (\%pr::win, 'sour_w'),
+                   &new_text_box_for_int (\%pr::win, 'sour_h')),
+               _('View source window')
+           );
+}
+
+sub new_winpos_subpage_addrbook() {
+    return &new_vbox_pack (
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'addr_w'),
+                               &new_text_box_for_int (\%pr::win, 'addr_h'))),
+                     _('Addressbook main window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'adep_w'),
+                               &new_text_box_for_int (\%pr::win, 'adep_h'))),
+                     _('Edit person window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'adeg_w'),
+                               &new_text_box_for_int (\%pr::win, 'adeg_h'))),
+                     _('Edit group window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'adda_w'),
+                               &new_text_box_for_int (\%pr::win, 'adda_h'))),
+                     _('Add address window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'addf_w'),
+                               &new_text_box_for_int (\%pr::win, 'addf_h'))),
+                     _('Folder select window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_accounts() {
+    return &new_vbox_pack (
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'acco_w'),
+                               &new_text_box_for_int (\%pr::win, 'acco_h'))),
+                     _('Accounts window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'acce_w'),
+                               &new_text_box_for_int (\%pr::win, 'acce_h'))),
+                     _('Edit account window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_filtering() {
+    return &new_vbox_pack (
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'filt_w'),
+                               &new_text_box_for_int (\%pr::win, 'filt_h'))),
+                     _('Filtering window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'fila_w'),
+                               &new_text_box_for_int (\%pr::win, 'fila_h'))),
+                     _('Filtering actions window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'fild_w'),
+                               &new_text_box_for_int (\%pr::win, 'fild_h'))),
+                     _('Filtering debug window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'matc_w'),
+                               &new_text_box_for_int (\%pr::win, 'matc_h'))),
+                     _('Matcher window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_prefs() {
+    return &new_vbox_pack (
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'pref_w'),
+                               &new_text_box_for_int (\%pr::win, 'pref_h'))),
+                     _('Preferences window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'temp_w'),
+                               &new_text_box_for_int (\%pr::win, 'temp_h'))),
+                     _('Templates window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'acti_w'),
+                               &new_text_box_for_int (\%pr::win, 'acti_h'))),
+                     _('Actions window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'tags_w'),
+                               &new_text_box_for_int (\%pr::win, 'tags_h'))),
+                     _('Tags window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'plug_w'),
+                               &new_text_box_for_int (\%pr::win, 'plug_h'))),
+                     _('Plugins window'), 'not-packed')
+           );
+}
+
+sub new_winpos_subpage_misc() {
+    return &new_vbox_pack (
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'logw_w'),
+                               &new_text_box_for_int (\%pr::win, 'logw_h'))),
+                     _('Log window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_hbox_pack (
+                               &new_text_box_for_int (\%pr::win, 'prin_w'),
+                               &new_text_box_for_int (\%pr::win, 'prin_h'))),
+                     _('Print preview window'), 'not-packed')
+           );
+}
+
+sub new_winpos_page() {
+    my $winbook = Gtk2::Notebook->new;
+    $winbook->set_tab_pos ('right');
+    $winbook->append_page (&new_winpos_subpage_main, _('Main'));
+    $winbook->append_page (&new_winpos_subpage_msgs, _('Message'));
+    $winbook->append_page (&new_winpos_subpage_sendrecv, _('Send/Receive'));
+    $winbook->append_page (&new_winpos_subpage_fold, _('Folder'));
+    $winbook->append_page (&new_winpos_subpage_sour, _('View source'));
+    $winbook->append_page (&new_winpos_subpage_addrbook, _('Addressbook'));
+    $winbook->append_page (&new_winpos_subpage_accounts, _('Accounts'));
+    $winbook->append_page (&new_winpos_subpage_filtering, _('Filtering'));
+    $winbook->append_page (&new_winpos_subpage_prefs, _('Preferences'));
+    $winbook->append_page (&new_winpos_subpage_misc, _('Other'));
+    return $winbook;
+}
+
 # version info
 sub print_version() {
     print $xl::s{about_title} . "\n";
@@ -1120,7 +1905,7 @@ sub parse_command_line() {
 
 # update the hidden preferences status from loaded values
 sub init_hidden_preferences() {
-    foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth) {
+    foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth, \%pr::win) {
         foreach my $key (keys %$hash) { 
 	    $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
         }
@@ -1182,6 +1967,7 @@ sub new_notebook() {
     $nb->append_page (&new_colours_page, $xl::s{tab_colours});
     $nb->append_page (&new_gui_page, $xl::s{tab_gui});
     $nb->append_page (&new_other_page, $xl::s{tab_other});
+    $nb->append_page (&new_winpos_page, $xl::s{tab_winpos});
 
     return $nb;
 }
