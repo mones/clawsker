@@ -53,9 +53,15 @@ A running Claws Mail cannot be detected if using the --clawsrc option because
 the directory is not assumed to be a Claws Mail configuration dir. If that is 
 the case use the --alternate-config-dir option instead.
 
+=head1 SEE ALSO
+
+Clawsker homepage "L<http://www.claws-mail.org/clawsker>"
+
 =head1 AUTHOR
 
-Ricardo Mones E<lt>ricardo@mones.orgE<gt>
+Main author is Ricardo Mones E<lt>ricardo@mones.orgE<gt> with the help of
+others. See the AUTHORS file on source tarball for a detailed list of 
+contributors.
 
 =head1 LICENSE
 
@@ -1993,12 +1999,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     my $year = "2007-2009";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
+    my $url = "http://www.claws-mail.org/clawsker";
 
     my $dialog = Gtk2::MessageDialog->new_with_markup ($parent, 
                     [qw/modal destroy-with-parent/], 
 		    'info', 'close', 
 		    "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
-		    . "<span size=\"large\">$vers</span>\n"
+		    . "<span size=\"large\">$vers</span>\n\n"
+		    . "<span color=\"blue\" size=\"large\">$url</span>\n\n"
 		    . "<span>Copyright $year by $holder</span>\n\n"
 		    . "<span size=\"large\">$lic</span>\n\n"
 		    . "<span size=\"small\">$license</span>");
