@@ -615,37 +615,21 @@ sub new_subpage_frame () {
 );
 
 sub new_other_page() {
-    my $of = Gtk2::VBox->new (FALSE, 5);
-    $of->set_border_width (PAGE_SPC);
-
-    my $ab_frame = Gtk2::Frame->new ($xl::s{ab_frame}); 
-    my $cb_use_dlg = &new_check_button_for(\%pr::oth, 'use_dlg');
-    my $vb1 = Gtk2::VBox->new (FALSE, 5);
-    $vb1->set_border_width (PAGE_SPC); 
-    $vb1->pack_start ($cb_use_dlg, FALSE, FALSE, 0);
-    $ab_frame->add ($vb1);
-
-    my $mem_frame = Gtk2::Frame->new ($xl::s{mem_frame}); 
-    my $tb_max_use = &new_text_box_for_int(\%pr::oth, 'max_use');
-    my $tb_min_time = &new_text_box_for_int(\%pr::oth, 'min_time');
-    my $vb2 = Gtk2::VBox->new (FALSE, 5);
-    $vb2->set_border_width (PAGE_SPC); 
-    $vb2->pack_start ($tb_max_use, FALSE, FALSE, 0);
-    $vb2->pack_start ($tb_min_time, FALSE, FALSE, 0);
-    $mem_frame->add ($vb2);
-
-    my $netm_frame = Gtk2::Frame->new ($xl::s{netm_frame});
-    my $cb_use_netm = &new_check_button_for(\%pr::oth, 'use_netm');
-    my $vb3 = Gtk2::VBox->new (FALSE, 5);
-    $vb3->set_border_width (PAGE_SPC);
-    $vb3->pack_start ($cb_use_netm, FALSE, FALSE, 0);
-    $netm_frame->add ($vb3);
-
-    $of->pack_start ($ab_frame, FALSE, FALSE, FRAME_SPC);
-    $of->pack_start ($mem_frame, FALSE, FALSE, FRAME_SPC);
-    $of->pack_start ($netm_frame, FALSE, FALSE, FRAME_SPC);
-
-    return $of;
+    return &new_vbox_pack (
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_check_button_for(\%pr::oth, 'use_dlg')),
+                   $xl::s{ab_frame}, 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_text_box_for_int(\%pr::oth, 'max_use'),
+                       &new_text_box_for_int(\%pr::oth, 'min_time')),
+                   $xl::s{mem_frame}, 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_check_button_for(\%pr::oth, 'use_netm')),
+                   $xl::s{netm_frame}, 'not-packed')
+           );
 }
 
 %pr::gui = ( # gui bells and whistles
@@ -763,49 +747,36 @@ sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
-    my $stripes_frame = Gtk2::Frame->new ($xl::s{stripes_frame});
-    my $cb_strip_all = &new_check_button_for (\%pr::gui, 'strip_all');
-    my $cb_strip_sum = &new_check_button_for (\%pr::gui, 'strip_sum');
-    my $tb_strip_off = &new_text_box_for_int (\%pr::gui, 'strip_off');
-    my $vb1 = Gtk2::VBox->new (FALSE, 5);
-    $vb1->set_border_width (PAGE_SPC);
-    $vb1->pack_start ($cb_strip_all, FALSE, FALSE, 0);
-    $vb1->pack_start ($cb_strip_sum, FALSE, FALSE, 0);
-    $vb1->pack_start ($tb_strip_off, FALSE, FALSE, 0);
-    $stripes_frame->add ($vb1);
-
-    my $mlist_frame = Gtk2::Frame->new ($xl::s{mlist_frame});
-    my $cb_b_unread = &new_check_button_for (\%pr::gui, 'b_unread');
-    my $cb_swp_from = &new_check_button_for (\%pr::gui, 'swp_from');
-    my $vb3 = Gtk2::VBox->new (FALSE, 5);
-    $vb3->set_border_width (PAGE_SPC);
-    $vb3->pack_start ($cb_b_unread, FALSE, FALSE, 0);
-    $vb3->pack_start ($cb_swp_from, FALSE, FALSE, 0);
-    $mlist_frame->add ($vb3);
-
-    my $sbar_frame = Gtk2::Frame->new ($xl::s{sbar_frame});
-    my $cb_h_scroll = &new_check_button_for (\%pr::gui, 'h_scroll');
-    my $sb_v_scroll = &new_selection_box_for (\%pr::gui, 'v_scroll');
-    my $vb2 = Gtk2::VBox->new (FALSE, 5);
-    $vb2->set_border_width (PAGE_SPC);
-    $vb2->pack_start ($cb_h_scroll, FALSE, FALSE, 0);
-    $vb2->pack_start ($sb_v_scroll, FALSE, FALSE, 0);
-    $sbar_frame->add ($vb2);
-
     my $cb_no_markup = &new_check_button_for (\%pr::gui, 'no_markup'); 
     my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
     my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
     my $cb_two_linev = &new_check_button_for (\%pr::gui, 'two_linev');
 
-    $gf->pack_start ($stripes_frame, FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($mlist_frame, FALSE, FALSE, FRAME_SPC);
+    $gf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::gui, 'strip_all'),
+                             &new_check_button_for (\%pr::gui, 'strip_sum'),
+                             &new_text_box_for_int (\%pr::gui, 'strip_off')),
+                         $xl::s{stripes_frame}, 'not-packed'),
+                     FALSE, FALSE, FRAME_SPC);
+    $gf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::gui, 'b_unread'),
+                             &new_check_button_for (\%pr::gui, 'swp_from')),
+                         $xl::s{mlist_frame}, 'not-packed'), 
+                     FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_no_markup, FALSE, FALSE, 0);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
     $gf->pack_start ($cb_two_linev, FALSE, FALSE, 0);
-    $gf->pack_start ($sbar_frame, FALSE, FALSE, FRAME_SPC);
+    $gf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::gui, 'h_scroll'),
+                             &new_selection_box_for (\%pr::gui, 'v_scroll')),
+                         $xl::s{sbar_frame}, 'not-packed'),
+                     FALSE, FALSE, FRAME_SPC);
 
     return $gf;
 }
@@ -925,49 +896,33 @@ sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
     $bf->set_border_width (PAGE_SPC);
 
-    my $dnd_frame = Gtk2::Frame->new ($xl::s{dnd_frame});
-    my $tb_hoover_t = &new_text_box_for_int (\%pr::beh, 'hover_t');
-    my $cb_warn_dnd = &new_check_button_for (\%pr::beh, 'warn_dnd');
-    my $vb1 = Gtk2::VBox->new (FALSE, 5);
-    $vb1->set_border_width (PAGE_SPC);
-    $vb1->pack_start ($cb_warn_dnd, FALSE, FALSE, 0);
-    $vb1->pack_start ($tb_hoover_t, FALSE, FALSE, 0);
-    $dnd_frame->add ($vb1);
-
-    my $ssl_frame = Gtk2::Frame->new ($xl::s{ssl_frame});
-    my $cb_skip_ssl = &new_check_button_for (\%pr::beh, 'skip_ssl');
-    my $cb_unsafe_ssl = &new_check_button_for (\%pr::beh, 'unsafe_ssl');
-    my $hb1 = Gtk2::HBox->new (FALSE, 5);
-    $hb1->set_border_width (PAGE_SPC);
-    $hb1->pack_start ($cb_skip_ssl, FALSE, FALSE, 0);
-    $hb1->pack_start ($cb_unsafe_ssl, FALSE, FALSE, 0);
-    $ssl_frame->add ($hb1);
-
     my $tb_up_step = &new_text_box_for_int (\%pr::beh, 'up_step');
     my $tb_thread_a = &new_text_box_for_int (\%pr::beh, 'thread_a');
 
-    my $msgs_frame = Gtk2::Frame->new ($xl::s{msgs_frame});
-    my $cb_flowed = &new_check_button_for (\%pr::beh, 'flowed');
-    my $cb_parts_rw = &new_check_button_for (\%pr::beh, 'parts_rw');
-    my $cb_use_utf8 = &new_check_button_for (\%pr::beh, 'use_utf8');
-    my $cb_dangerous = &new_check_button_for (\%pr::beh, 'dangerous');
-    my $cb_out_ascii = &new_check_button_for (\%pr::beh, 'out_ascii');
-    my $cb_pp_unsel = &new_check_button_for (\%pr::beh, 'pp_unsel');
-    my $vb2 = Gtk2::VBox->new (FALSE, 5);    
-    $vb2->set_border_width (PAGE_SPC);
-    $vb2->pack_start ($cb_flowed, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_parts_rw, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_use_utf8, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_dangerous, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_out_ascii, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_pp_unsel, FALSE, FALSE, 0);
-    $msgs_frame->add ($vb2);
-
-    $bf->pack_start ($dnd_frame, FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start ($ssl_frame, FALSE, FALSE, FRAME_SPC);
+    $bf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_text_box_for_int (\%pr::beh, 'hover_t'),
+                             &new_check_button_for (\%pr::beh, 'warn_dnd')),
+                         $xl::s{dnd_frame}, 'not-packed'), 
+                     FALSE, FALSE, FRAME_SPC);
+    $bf->pack_start (&new_subpage_frame (
+                         &new_hbox_pack (
+                             &new_check_button_for (\%pr::beh, 'skip_ssl'),
+                             &new_check_button_for (\%pr::beh, 'unsafe_ssl')),
+                         $xl::s{ssl_frame}, 'not-packed'),
+                     FALSE, FALSE, FRAME_SPC);
     $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
     $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
-    $bf->pack_start ($msgs_frame, FALSE, FALSE, FRAME_SPC);
+    $bf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::beh, 'flowed'),
+                             &new_check_button_for (\%pr::beh, 'parts_rw'),
+                             &new_check_button_for (\%pr::beh, 'use_utf8'),
+                             &new_check_button_for (\%pr::beh, 'dangerous'),
+                             &new_check_button_for (\%pr::beh, 'out_ascii'),
+                             &new_check_button_for (\%pr::beh, 'pp_unsel')),
+                         $xl::s{msgs_frame}, 'not-packed'),
+                     FALSE, FALSE, FRAME_SPC);
 
     return $bf;
 }
@@ -1030,35 +985,20 @@ sub new_behaviour_page() {
 );
 
 sub new_colours_page() {
-    my $cf = Gtk2::VBox->new (FALSE, 5);
-    $cf->set_border_width (PAGE_SPC);
-
-    my $msgview_frame = Gtk2::Frame->new ($xl::s{msgview_frame}); 
-    my $cb_emphasis = &new_color_button_for (\%pr::col, 'emphasis');
-    my $vb1 = Gtk2::VBox->new (FALSE, 5);
-    $vb1->set_border_width (PAGE_SPC);
-    $vb1->pack_start ($cb_emphasis, FALSE, FALSE, 0);
-    $msgview_frame->add ($vb1);
-    
-    my $log_frame = Gtk2::Frame->new ($xl::s{log_frame}); 
-    my $cb_log_err = &new_color_button_for (\%pr::col, 'log_err');
-    my $cb_log_in = &new_color_button_for (\%pr::col, 'log_in');
-    my $cb_log_msg = &new_color_button_for (\%pr::col, 'log_msg');
-    my $cb_log_out = &new_color_button_for (\%pr::col, 'log_out');
-    my $cb_log_warn = &new_color_button_for (\%pr::col, 'log_warn');
-    my $vb2 = Gtk2::VBox->new (FALSE, 5);
-    $vb2->set_border_width (PAGE_SPC);
-    $vb2->pack_start ($cb_log_err, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_log_in, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_log_msg, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_log_out, FALSE, FALSE, 0);
-    $vb2->pack_start ($cb_log_warn, FALSE, FALSE, 0);
-    $log_frame->add ($vb2);
-
-    $cf->pack_start ($msgview_frame, FALSE, FALSE, 0);
-    $cf->pack_start ($log_frame, FALSE, FALSE, 0);
-
-    return $cf;
+    return &new_vbox_pack (
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_color_button_for (\%pr::col, 'emphasis')),
+                   $xl::s{msgview_frame}, 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_color_button_for (\%pr::col, 'log_err'),
+                       &new_color_button_for (\%pr::col, 'log_in'),
+                       &new_color_button_for (\%pr::col, 'log_msg'),
+                       &new_color_button_for (\%pr::col, 'log_out'),
+                       &new_color_button_for (\%pr::col, 'log_warn')),
+                   $xl::s{log_frame}, 'not-packed')
+           );
 }
 
 %pr::win = ( # tweak window positions and/or sizes
