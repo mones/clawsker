@@ -1585,15 +1585,6 @@ sub new_winpos_subpage_fold() {
            );
 }
 
-sub new_winpos_subpage_sour() {
-    return &new_subpage_frame (
-               &new_vbox_pack (
-                   &new_text_box_for_int (\%pr::win, 'sour_w'),
-                   &new_text_box_for_int (\%pr::win, 'sour_h')),
-               _('View source window')
-           );
-}
-
 sub new_winpos_subpage_addrbook() {
     return &new_vbox_pack (
                 &new_subpage_frame (
@@ -1723,7 +1714,12 @@ sub new_winpos_subpage_misc() {
                           &new_hbox_pack (
                                &new_text_box_for_int (\%pr::win, 'prin_w'),
                                &new_text_box_for_int (\%pr::win, 'prin_h'))),
-                     _('Print preview window'), 'not-packed')
+                     _('Print preview window'), 'not-packed'),
+                &new_subpage_frame (
+                     &new_vbox_pack (
+                          &new_text_box_for_int (\%pr::win, 'sour_w'),
+                          &new_text_box_for_int (\%pr::win, 'sour_h')),
+                     _('View source window'), 'not-packed')
            );
 }
 
@@ -1734,7 +1730,6 @@ sub new_winpos_page() {
     $winbook->append_page (&new_winpos_subpage_msgs, _('Message'));
     $winbook->append_page (&new_winpos_subpage_sendrecv, _('Send/Receive'));
     $winbook->append_page (&new_winpos_subpage_fold, _('Folder'));
-    $winbook->append_page (&new_winpos_subpage_sour, _('View source'));
     $winbook->append_page (&new_winpos_subpage_addrbook, _('Addressbook'));
     $winbook->append_page (&new_winpos_subpage_accounts, _('Accounts'));
     $winbook->append_page (&new_winpos_subpage_filtering, _('Filtering'));

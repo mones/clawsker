@@ -1,3 +1,11 @@
+2009-06-23 22:07  mones   0.6.0svn255
+
+	* clawsker
+		View source moved to other tab
+	* po/es.po
+	* po/clawsker.pot
+		Updated pot file and Spanish translation
+
 2009-06-23 01:03  mones   0.6.0svn254
 
 	* clawsker
