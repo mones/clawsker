@@ -1,652 +1,647 @@
-# French translation for clawsker
-# Copyright (C) 2008 Ricardo Mones
+# Indonesian Translations for clawsker.
+# Copyright (C) 2009 RICARDO MONES
 # This file is distributed under the same license as the clawsker package.
-# Tristan Chabredier (wwp) <subscript@free.fr>, 2008.
+# MSulchan Darmawan <bleketux@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 0.4.0svn101\n"
+"Project-Id-Version: clawsker 0.7.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2009-06-23 15:39+0200\n"
-"PO-Revision-Date: 2009-06-27 23:00+0100\n"
-"Last-Translator: Colin Leroy <colin@colino.net>\n"
-"Language-Team: Tristan Chabredier (wwp) <subscript@free.fr>\n"
+"PO-Revision-Date: 2009-06-29 13:09+0700\n"
+"Last-Translator: MSulchan Darmawan <bleketux@gmail.com>\n"
+"Language-Team:  <claws-mail-translators@dotsrc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../clawsker:123
 msgid "Claws Mail Hidden Preferences"
-msgstr "Options cachées de Claws Mail"
+msgstr "Preferensi tersembunyi Claws Mail"
 
 #: ../clawsker:124
 msgid "About..."
-msgstr "À propos..."
+msgstr "Tentang..."
 
 #: ../clawsker:125
 msgid "Clawsker :: A Claws Mail Tweaker"
-msgstr "Clawsker :: Éditeur d'options cachées de Claws Mail"
+msgstr "Clawsker :: Pengulik Claws Mail"
 
 #: ../clawsker:126
 msgid "License:"
-msgstr "Licence :"
+msgstr "Lisensi:"
 
 #: ../clawsker:127
 msgid "Version:"
-msgstr "Version :"
+msgstr "Versi:"
 
 #: ../clawsker:129
 msgid "Colours"
-msgstr "Couleurs"
+msgstr "Warna"
 
 #: ../clawsker:130
 msgid "Behaviour"
-msgstr "Comportement"
+msgstr "Tingkah laku"
 
 #: ../clawsker:131
 msgid "GUI"
-msgstr "Interface graphique"
+msgstr "Antarmuka"
 
 #: ../clawsker:132
 #: ../clawsker:1737
 msgid "Other"
-msgstr "Autres"
+msgstr "Lainnya"
 
 #: ../clawsker:133
 msgid "Windows"
-msgstr "Fenêtres"
+msgstr "Jendela"
 
 #: ../clawsker:135
 #: ../clawsker:1733
 msgid "Addressbook"
-msgstr "Carnet d'adresses"
+msgstr "Buku alamat"
 
 #: ../clawsker:136
 msgid "Memory"
-msgstr "Mémoire"
+msgstr "Memori"
 
 #: ../clawsker:137
 msgid "Message view"
-msgstr "Vue du message"
+msgstr "Tayangan Pesan"
 
 #: ../clawsker:138
 #: ../clawsker:1711
 msgid "Log window"
-msgstr "Fenêtre de traces"
+msgstr "Jendela pencatat"
 
 #: ../clawsker:139
 msgid "Drag 'n' drop"
-msgstr "Glisser-déposer"
+msgstr "Geser dan letakkan"
 
 #: ../clawsker:140
 msgid "Secure Sockets Layer"
-msgstr "Protocole sécurisé SSL (Secure Sockets Layer)"
+msgstr "Lapisan Soket Keamanan"
 
 #: ../clawsker:141
 msgid "Messages"
-msgstr "Messages"
+msgstr "Pesan"
 
 #: ../clawsker:142
 msgid "Coloured stripes"
-msgstr "Bandes colorées"
+msgstr "Strip berwarna"
 
 #: ../clawsker:143
 msgid "Scroll bars"
-msgstr "Barres de défilement"
+msgstr "Batang penggulir"
 
 #: ../clawsker:144
 msgid "Message List"
-msgstr "Liste des messages"
+msgstr "Daftar Pesan"
 
 #: ../clawsker:145
 msgid "NetworkManager"
-msgstr "NetworkManager (Gestionnaire Réseau)"
+msgstr "ManajerJaringan"
 
 #: ../clawsker:147
 msgid "Use detached address book edit dialogue"
-msgstr "Utiliser un dialogue flottant pour l'édition de contacts dans le carnet d'adresses"
+msgstr "Gunakan jendela dialog terlepas untuk sunting buku alamat"
 
 #: ../clawsker:148
 msgid "If true use a separate dialogue to edit a person's details. Otherwise will use a form embedded in the address book's main window."
-msgstr "Si l'option est active, l'édition des données d'un contact se fera par le biais d'un dialogue séparé dans le carnet d'adresses, sinon l'édition se fera dans une partie spécifique de la fenêtre du carnet d'adresse, sous la liste des contacts."
+msgstr "Jika benar gunakan dialog terpisah untuk menyunting detail orang. Jika tidak akan menggunakan form yang tertanam di jendela utama buku alamat."
 
 #: ../clawsker:149
 msgid "Maximum memory for message cache (kB)"
-msgstr "Mémoire maximum allouable au cache des messages (en Ko)"
+msgstr "Memori maksimum untuk tampungan pesan (kB)"
 
 #: ../clawsker:150
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
-msgstr "La valeur maximum de mémoire allouable pour l'utilisation du cache des messages, exprimée en Ko."
+msgstr "Jumlah memori maksimum yang digunakan untuk menampung pesan, dalam kilobyte."
 
 #: ../clawsker:151
 msgid "Minimun time for cache elements (minutes)"
-msgstr "Temps minimum alloué aux éléments en cache (en minutes)"
+msgstr "Waktu minimum untuk tampungan elemen (menit)"
 
 #: ../clawsker:152
 msgid "The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high."
-msgstr "La valeur minimum de temps alloué à la présence d'éléments en cache, exprimée en minutes."
+msgstr "Waktu minimum dalam menit untuk mempertahankan tampungan di memori. Tampungan terbaru tidak akan dihilangkan, walaupun penggunaan memori terlalu tinggi."
 
 #: ../clawsker:153
 msgid "Use NetworkManager"
-msgstr "Utiliser NetworkManager (Gestionnaire Réseau)"
+msgstr "Gunakan ManajerJaringan"
 
 #: ../clawsker:154
 msgid "Use NetworkManager to switch offline automatically."
-msgstr "Utiliser NetworkManager (Gestionnaire Réseau) pour passer en mode hors-ligne automatiquement."
+msgstr "Gunakan ManajerJaringan untuk pindah offline secara otomatis."
 
 #: ../clawsker:156
 msgid "Show unread messages with bold font"
-msgstr "Montrer les messages non lus en gras"
+msgstr "Tampilkan pesan belum dibaca dengan huruf tebal"
 
 #: ../clawsker:157
 msgid "Show unread messages in the Message List using a bold font."
-msgstr "Les messages non lus dans la liste des messages seront affichés en gras."
+msgstr "Tampilkan pesan belum dibaca pada Daftar Pesan dengan huruf tebal."
 
 #: ../clawsker:158
 msgid "Don't use markup in compose window"
-msgstr "Pas de mise en forme de texte dans la fenêtre de composition"
+msgstr "Jangan gunakan markup pada jendela tulis"
 
 #: ../clawsker:159
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
-msgstr "Ne pas utiliser la mise en forme de texte (gras, italique) dans la liste des comptes de la fenêtre de composition"
+msgstr "Jangan gunakan teks tebal dan miring dalam jendela tulis pada pemilihan akun."
 
 #: ../clawsker:160
 msgid "Use dotted lines in tree view components"
-msgstr "Utiliser les lignes en pointillés dans les vues arborescentes"
+msgstr "Gunakan garis titik pada komponen penampil pohon"
 
 #: ../clawsker:161
 msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
-msgstr "Activer les lignes en pointillés (ancien style) dans les vues arborescentes (liste des messages et des dossiers) en lieu et place du style moderne (sans lignes)."
+msgstr "Gunakan tampilan garis titik yang lama pada jendela utama penampil pohon (Direktori, Pesan dan daftar lainnya) selain tampilan tanpa garis modern."
 
 #: ../clawsker:162
 msgid "Enable horizontal scrollbar"
-msgstr "Montrer la barre de défilement horizontale"
+msgstr "Aktifkan batang penggulir horizontal"
 
 #: ../clawsker:163
 msgid "Enable the horizontal scrollbar in the Message List."
-msgstr "Activer la barre de défilement horizontale dans la liste des messages"
+msgstr "Aktifkan batang penggulir horizontal pada Daftar Pesan."
 
 #: ../clawsker:164
 msgid "Display To column instead From column in Sent folder"
-msgstr "Afficher le destinataire dans la colonne De du dossier des messages envoyés"
+msgstr "Tampilkan kolom Ke selain kolom Dari pada direktori Terkirim"
 
 #: ../clawsker:165
 msgid "Display the recipient's email address in a To column of the Sent folder instead of the originator's one in a From column."
-msgstr "Afficher la colonne des destinataires (\"À\") en lieu et place de la colonne \"De\" dans les dossiers des messages envoyés."
+msgstr "Tampilkan alamat email penerima di kolom Ke dari direktori Terkirim selain pengirim di kolom Dari."
 
 #: ../clawsker:166
 msgid "Folder List scrollbar behaviour"
-msgstr "Visibilité de la barre de défilement dans la liste des dossiers"
+msgstr "Tingkah laku batang penggulir Daftar Direktori"
 
 #: ../clawsker:167
 msgid "Specify the policy of vertical scrollbar of Folder List: show always, automatic or hide always."
-msgstr "Définit la façon dont la barre de défilement verticale dans la liste des dossiers se comporte: toujours visible, visible si nécessaire (automatiquement), jamais visible."
+msgstr "Tentukan kebijakan batang penggulir vertikal pada Daftar Direktori: selalu tampil, otomatis atau selalu sembunyi."
 
 #: ../clawsker:168
 msgid "Show always"
-msgstr "Toujours visible"
+msgstr "Selalu tampil"
 
 #: ../clawsker:169
 msgid "Automatic"
-msgstr "Visible si nécessaire (automatique)"
+msgstr "Otomatis"
 
 #: ../clawsker:170
 msgid "Hide always"
-msgstr "Jamais visible"
+msgstr "Selalu sembunyi"
 
 #: ../clawsker:171
 msgid "Coloured lines contrast"
-msgstr "Valeur de contraste"
+msgstr "Kontras garis berwarna"
 
 #: ../clawsker:172
 msgid "Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines."
-msgstr "Spécifiez ici la valeur de contraste pour les bandes utilisées pour faire ressortir les lignes dans les vues arborescentes. Une valeur petite indique un faible contraste dans l'alternance de couleur entre les bandes."
+msgstr "Tentukan nilai yang digunakan ketika membuat alternatif garis berwarna pada komponen penampil pohon. Semakin kecil nilai, semakin kurang perbedaan warna alternatif pada garis."
 
 #: ../clawsker:173
 msgid "Show Cursor in message view"
-msgstr "Curseur visible dans la vue du message"
+msgstr "Tampilkan kursor pada penampil pesan"
 
 #: ../clawsker:174
 msgid "Display the cursor in the message view."
-msgstr "Rendre le curseur visible dans la vue du message."
+msgstr "Tampilkan kursor pada penampil pesan."
 
 #: ../clawsker:175
 msgid "Detachable toolbars"
-msgstr "Barres d'outils détachables"
+msgstr "Batang alat dapat dilepas"
 
 #: ../clawsker:176
 msgid "Show handles in the toolbars."
-msgstr "Afficher les poignées des barres d'outils."
+msgstr "Tampilkan pegangan pada batang alat."
 
 #: ../clawsker:177
 msgid "Use stripes in all tree view components"
-msgstr "Bandes contrastées dans toutes les listes et vues arborescentes"
+msgstr "Gunakan strip di semua komponen penampil pohon"
 
 #: ../clawsker:178
 msgid "Enable alternately coloured lines in all tree view components."
-msgstr "Utiliser les bandes contrastées dans toutes les vues arborescentes."
+msgstr "Aktifkan garis berwarna alternatif di semua komponen penampil pohon."
 
 #: ../clawsker:179
 msgid "Use stripes in Folder List and Message List"
-msgstr "Bandes contrastées dans la liste des dossiers et la liste des messages"
+msgstr "Gunakan strip pada Daftar Direktori dan Daftar Pesan"
 
 #: ../clawsker:180
 msgid "Enable alternately coloured lines in Message list and Folder list."
-msgstr "Utiliser les bandes contrastées dans la liste des dossiers ainsi que dans la liste des messages"
+msgstr "Aktifkan garis berwarna alternatif di daftar Pesan dan daftar Direktori."
 
 #: ../clawsker:181
 msgid "2 lines per Message List item in 3-column layout"
-msgstr "2 lignes par message dans le mode 3-colonnes"
+msgstr "2 baris setiap item Daftar Pesan pada tata letak 3-Kolom"
 
 #: ../clawsker:182
 msgid "Spread Message List information over two lines when using the three column mode."
-msgstr "Afficher les informations du message sur deux lignes quand le mode trois-colonnes est utilisé."
+msgstr "Lebarkan informasi Daftar Pesan sampai dua baris jika menggunakan modus tiga kolom."
 
 #: ../clawsker:184
 msgid "Drag 'n' drop hover timeout (ms)"
-msgstr "Délai imparti pour le survol des dossiers lors du glisser-déposer (en ms)"
+msgstr "Waktu habis untuk tunggu geser dan letakkan (ms)"
 
 #: ../clawsker:185
 msgid "Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop."
-msgstr "Délai en milli-secondes imparti au survol du dossier de destination par le pointeur de la souris, lors d'un glisser-déposer. Au delà de ce délai, la sous-arborescence éventuelle du dossier sera déployée, permettant le \"déposer\" dans un sous-dossier."
+msgstr "Waktu dalam milidetik yang menyebabkan pohon direktori terbentang ketika kursor tetikus ada diatasnya saat geser dan letakkan."
 
 #: ../clawsker:186
 msgid "Don't confirm deletions (dangerous!)"
-msgstr "Effacement sans confirmation (dangereux!)"
+msgstr "Jangan konfirmasi penghapusan (berbahaya!)"
 
 #: ../clawsker:187
 msgid "Don't ask for confirmation before definitive deletion of emails."
-msgstr "Ne pas demander confirmation lors de l'effacement de messages (à vos risques et périls)."
+msgstr "Jangan tanya konformasi sebelum penghapusan email secara definitif."
 
 #: ../clawsker:188
 msgid "Respect format=flowed in messages"
-msgstr "Respecter le format=flowed des messages"
+msgstr "Respect format=flowed pada pesan"
 
 #: ../clawsker:189
 msgid "Respect format=flowed on text/plain message parts. This will cause some mails to have long lines, but will fix some URLs that would otherwise be wrapped."
-msgstr "Respecter le format=flowed des parties text/plain des messages. L'affichage de certains messages pourra comporter des lignes longues, mais cela pourra notamment éviter que des liens (URLs) soient coupés."
+msgstr "Respect format=flowed pada bagian pesan teks/datar. Ini akan menyebabkan beberapa surat memiliki baris panjang, namun akan memperbaiki beberapa URL yang dalam kondisi lain dipenggal."
 
 #: ../clawsker:190
 msgid "Allow writable temporary files"
-msgstr "Permettre la re-écriture des fichiers temporaires"
+msgstr "Perbolehkan penulisan berkas sementara"
 
 #: ../clawsker:191
 msgid "Saves temporary files when opening attachment with write bit set."
-msgstr "Permettre la re-écriture des fichiers temporaires utilisés pour l'ouverture des attachements."
+msgstr "Simpan berkas sementara ketika membuka lampiran dengan menulis set bit."
 
 #: ../clawsker:192
 msgid "Don't check SSL certificates"
-msgstr "Ne pas vérifier les certificats sécurisés (SSL)"
+msgstr "Jangan periksa sertifikat SSL"
 
 #: ../clawsker:193
 msgid "Disables the verification of SSL certificates."
-msgstr "Désactiver la vérification des certificats sécurisés (SSL)."
+msgstr "Nonaktifkan verifikasi sertifikat SSL"
 
 #: ../clawsker:194
 msgid "Progress bar update step (items)"
-msgstr "Valeur du pas dans les barres de progression"
+msgstr "Step perbaharui batang progress (item)"
 
 #: ../clawsker:195
 msgid "Update stepping in progress bars."
-msgstr "Régler la valeur du pas dans les barres de progression."
+msgstr "Perbaharui stepping pada batang progres."
 
 #: ../clawsker:196
 msgid "Maximum age when threading by subject (days)"
-msgstr "Âge maximum pour le tri par fil de discussion par sujet (en jours)"
+msgstr "Umur maksimum ketika thread berdasar subyek (hari)"
 
 #: ../clawsker:197
 msgid "Number of days to include a message in a thread when using \"Thread using subject in addition to standard headers\"."
-msgstr "Limite du nombre de jours (âge) pour inclure un message dans un fil de discussion quand l'option \"Utiliser aussi le sujet pour la création des fils de discussion\" est activée."
+msgstr "Jumlah hari untuk sertakan sebuah pesan pada thread saat menggunakan \"Thread menggunakan subyek sebagai tambahan header standar\"."
 
 #: ../clawsker:198
 msgid "Allow unsafe SSL certificates"
-msgstr "Autoriser les certificats sécurisés (SSL) peu sûrs"
+msgstr "Perbolehkan sertifikat SSL yang tidak aman"
 
 #: ../clawsker:199
 msgid "Allows Claws Mail to remember multiple SSL certificates for a given server/port."
-msgstr "Autoriser Claws Mail à garder plusieurs certificats sécurisés (SSL) pour un même serveur/port."
+msgstr "Perbolehkan Claws Mail untuk mengingat beberapa sertifikat SSL untuk server/port yang diberikan."
 
 #: ../clawsker:200
 msgid "Force UTF-8 for broken mails"
-msgstr "Forcer UTF-8 pour les messages corrompus"
+msgstr "Paksa UTF-8 untuk surat rusak"
 
 #: ../clawsker:201
 msgid "Use UTF-8 encoding for broken mails instead of current locale."
-msgstr "Forcer l'utilisation de l'encodage UTF-8 pour les messages dont le format est corrompu, au lieu de la locale courante."
+msgstr "Gunakan pengkodean UTF-8 untuk surat rusak daripada lokal aktif."
 
 #: ../clawsker:202
 msgid "Warn on drag 'n' drop"
-msgstr "Avertir en cas de glisser-déposer"
+msgstr "Peringatkan saat geser dan lepaskan"
 
 #: ../clawsker:203
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
-msgstr "Afficher un dialogue de confirmation en cas de glisser-déposer de dossiers."
+msgstr "Tampilkan dialog konfirmasi saat geser dan lepaskan direktori."
 
 #: ../clawsker:204
 msgid "Ougoing messages fallback to ASCII"
-msgstr "Utiliser l'encodage ASCII pour les messages sortants à défaut de mieux"
+msgstr "Pesan Outgoing kembali ke ASCII"
 
 #: ../clawsker:205
 msgid "If content allows, ASCII will be used to encode outgoing messages, otherwise the user-defined encoding is enforced always."
-msgstr "Selon le contenu du message, utiliser l'encodage ASCII pour l'envoi de messages, sinon utiliser l'encodage défini par l'utilisateur."
+msgstr "Jika konten diperbolehkan, ASCII akan digunakan untuk pengkodean pesan outgoing, jika tidak pengkodean berdasar pengguna akan selalu dipaksakan."
 
 #: ../clawsker:206
 msgid "Primary paste unselects selection"
-msgstr "Déselectionner après collage primaire"
+msgstr "Tempel primer menonaktifkan terpilih"
 
 #: ../clawsker:207
 msgid "Controls how pasting using middle-click changes the selected text and insertion point."
-msgstr "Contrôle comment le collage clic-milieu change la sélection et le point d'insertion."
+msgstr "Kontrol bagaimana menempel dengan klik-tengah merubah teks terpilih dan titik penyisipan."
 
 #: ../clawsker:209
 msgid "X-Mailer header"
-msgstr "En-tête X-Mailer"
+msgstr "Header X-Mailer"
 
 #: ../clawsker:210
 msgid "The colour used for the X-Mailer line when its value is Claws Mail."
-msgstr "Couleur utilisée pour l'affichage de l'en-tête X-Mailer quand sa valeur est Claws Mail."
+msgstr "Warna yang digunakan untuk baris X-Mailer jika nilainya Claws Mail."
 
 #: ../clawsker:211
 msgid "Error messages"
-msgstr "Messages d'erreur"
+msgstr "Pesan kesalahan"
 
 #: ../clawsker:212
 msgid "Colour for error messages in log window."
-msgstr "Couleur des messages d'erreur dans la fenêtre de traces."
+msgstr "Warna untuk pesan kesalahan di jendela pencatat."
 
 #: ../clawsker:213
 msgid "Server messages"
-msgstr "Messages du serveur"
+msgstr "Pesan server"
 
 #: ../clawsker:214
 msgid "Colour for messages received from servers in log window."
-msgstr "Couleur des messages reçus de serveurs dans la fenêtre de traces."
+msgstr "Warna untuk pesan yang diterima dari server pada jendela pencatat."
 
 #: ../clawsker:215
 msgid "Standard messages"
-msgstr "Messages standard"
+msgstr "Pesan standar"
 
 #: ../clawsker:216
 msgid "Colour for messages in log window."
-msgstr "Couleur des messages dans la fenêtre de traces."
+msgstr "Warna untuk pesan pada jendela pencatat."
 
 #: ../clawsker:217
 msgid "Client messages"
-msgstr "Messages du client"
+msgstr "Pesan klien"
 
 #: ../clawsker:218
 msgid "Colour for messages sent to servers in log window."
-msgstr "Couleur des messages envoyés aux serveurs dans la fenêtre de traces."
+msgstr "Warna untuk pesan yang dikirim ke server pada jendela pencatat."
 
 #: ../clawsker:219
 msgid "Warnings"
-msgstr "Avertissements"
+msgstr "Peringatan"
 
 #: ../clawsker:220
 msgid "Colour for warning messages in log window."
-msgstr "Couleur des messages d'avertissement dans la fenêtre de traces."
+msgstr "Warna untuk pesan peringatan pada jendela pencatat."
 
 #: ../clawsker:222
 msgid "X position"
-msgstr "Coordonnée X"
+msgstr "Posisi X"
 
 #: ../clawsker:223
 msgid "X coordinate for window's top-left corner."
-msgstr "Coordonnée X du coin haut-gauche de la fenêtre"
+msgstr "Koordinat X untuk pojok kiri-atas jendela."
 
 #: ../clawsker:224
 msgid "Y position"
-msgstr "Coordonnée Y"
+msgstr "Posisi Y"
 
 #: ../clawsker:225
 msgid "Y coordinate for window's top-left corner."
-msgstr "Coordonnée Y du coin haut-gauche de la fenêtre"
+msgstr "Koordinat Y untuk pojok kiri-atas jendela."
 
 #: ../clawsker:226
 msgid "Width"
-msgstr "Largeur"
+msgstr "Lebar"
 
 #: ../clawsker:227
 msgid "Window's width in pixels."
-msgstr "Largeur de la fenêtre en pixels"
+msgstr "Lebar jendela dalam piksel."
 
 #: ../clawsker:228
 msgid "Height"
-msgstr "Hauteur"
+msgstr "Tinggi"
 
 #: ../clawsker:229
 msgid "Window's height in pixels."
-msgstr "Hauteur de la fenêtre en pixels"
+msgstr "TInggi jendela dalam piksel."
 
 #: ../clawsker:231
 msgid "Maximized"
-msgstr "Maximisé"
+msgstr "Maksimum"
 
 #: ../clawsker:232
 msgid "Changes window maximized status."
-msgstr "Change le statut maximisé de la fenêtre."
+msgstr "Ganti status jendela maksimum."
 
 #: ../clawsker:233
 msgid "Full-screen"
-msgstr "Plein écran"
+msgstr "Layar-penuh"
 
 #: ../clawsker:234
 msgid "Changes full screen status."
-msgstr "Change le statut plein écran."
+msgstr "Ganti status layar penuh."
 
 #: ../clawsker:236
 msgid "Error: "
-msgstr "Erreur : "
+msgstr "Kesalahan:"
 
 #: ../clawsker:237
 msgid "resource file for Claws Mail was not found."
-msgstr "fichier de ressources de Claws Mail non trouvé."
+msgstr "Berkas sumberdaya untuk Claws Mail tidak ditemukan."
 
 #: ../clawsker:238
 msgid "seems Claws Mail is currently running, close it first."
-msgstr "il se pourrait qu'une instance de Claws Mail soit ouverte, il convient de la fermer avant d'exécuter Clawsker."
+msgstr "kelihatannya Claws Mail sedang berjalan, tutup dulu."
 
 #: ../clawsker:239
 msgid "option requires a directory name."
-msgstr "cette option requiert un nom de répertoire."
+msgstr "pilihan membutuhkan nama direktori."
 
 #: ../clawsker:240
 msgid "option requires a file name."
-msgstr "cette option requiert un nom de fichier."
+msgstr "pilihan membutuhkan nama berkas."
 
 #: ../clawsker:241
 msgid "specified name is not a directory or does not exist."
-msgstr "le nom passé en argument n'est pas un nom de répertoire ou est inexistant."
+msgstr "nama terpilih bukan sebuah direktori atau tidak ada."
 
 #: ../clawsker:242
 msgid "specified name is not a file or does not exist."
-msgstr "le nom passé en argument n'est pas un nom de fichier ou est inexistant."
+msgstr "nama terpilih bukan sebuah berkas atau tidak ada."
 
 #: ../clawsker:399
 msgid "Error message"
-msgstr "Message d'erreur"
+msgstr "Pesan kesalahan"
 
 #: ../clawsker:1539
 msgid "Main window"
-msgstr "Fenêtre principale"
+msgstr "Jendela utama"
 
 #: ../clawsker:1550
 msgid "Message window"
-msgstr "Fenêtre du message"
+msgstr "Jendela pesan"
 
 #: ../clawsker:1561
 msgid "Send window"
-msgstr "Fenêtre d'envoi"
+msgstr "Jendela kirim"
 
 #: ../clawsker:1567
 msgid "Receive window"
-msgstr "Fenêtre de réception"
+msgstr "Jendela terima"
 
 #: ../clawsker:1579
 msgid "Folder window"
-msgstr "Fenêtre des dossiers"
+msgstr "Jendela direktori"
 
 #: ../clawsker:1584
 msgid "Folder selection window"
-msgstr "Fenêtre de sélection de dossier"
+msgstr "Jendela pilihan direktori"
 
 #: ../clawsker:1595
 msgid "Addressbook main window"
-msgstr "Fenêtre du carnet d'adresses"
+msgstr "Jendela utama buku alamat"
 
 #: ../clawsker:1601
 msgid "Edit person window"
-msgstr "Fenêtre d'édition de contact"
+msgstr "Jendela penyuntingan orang"
 
 #: ../clawsker:1607
 msgid "Edit group window"
-msgstr "Fenêtre d'édition de groupe"
+msgstr "Jendela penyuntingan kelompok"
 
 #: ../clawsker:1613
 msgid "Add address window"
-msgstr "Fenêtre d'ajout d'adresse"
+msgstr "Jendela tambah alamat"
 
 #: ../clawsker:1619
 msgid "Folder select window"
-msgstr "Fenêtre de sélection de dossier"
+msgstr "Jendela pilih direktori"
 
 #: ../clawsker:1630
 msgid "Accounts window"
-msgstr "Fenêtre des comptes"
+msgstr "Jendela akun"
 
 #: ../clawsker:1636
 msgid "Edit account window"
-msgstr "Fenêtre d'édition de compte"
+msgstr "Jendela penyuntingan akun"
 
 #: ../clawsker:1647
 msgid "Filtering window"
-msgstr "Fenêtre de filtrage"
+msgstr "Jendela penyaringan"
 
 #: ../clawsker:1653
 msgid "Filtering actions window"
-msgstr "Fenêtre d'actions de filtrage"
+msgstr "Jendela aksi penyaringan"
 
 #: ../clawsker:1659
 msgid "Filtering debug window"
-msgstr "Fenêtre de débogguage de filtrage"
+msgstr "Jendela debug penyaringan"
 
 #: ../clawsker:1665
 msgid "Matcher window"
-msgstr "Fenêtre d'édition de règle"
+msgstr "Jendela penyocok"
 
 #: ../clawsker:1676
 msgid "Preferences window"
-msgstr "Fenêtre de préférences"
+msgstr "Jendela preferensi"
 
 #: ../clawsker:1682
 msgid "Templates window"
-msgstr "Fenêtre de modèles"
+msgstr "Jendela cetakan"
 
 #: ../clawsker:1688
 msgid "Actions window"
-msgstr "Fenêtre des actions"
+msgstr "Jendela aksi"
 
 #: ../clawsker:1694
 msgid "Tags window"
-msgstr "Fenêtre des étiquettes"
+msgstr "Jendela tag"
 
 #: ../clawsker:1700
 msgid "Plugins window"
-msgstr "Fenêtre des modules"
+msgstr "Jendela pengaya"
 
 #: ../clawsker:1717
 msgid "Print preview window"
-msgstr "Fenêtre de prévisualisation d'impression"
+msgstr "Jendela pratayang cetak"
 
 #: ../clawsker:1722
 msgid "View source window"
-msgstr "Fenêtre de source du message"
+msgstr "Jendela penampil sumber"
 
 #: ../clawsker:1729
 msgid "Main"
-msgstr "Principal"
+msgstr "Utama"
 
 #: ../clawsker:1730
 msgid "Message"
-msgstr "Message"
+msgstr "Pesan"
 
 #: ../clawsker:1731
 msgid "Send/Receive"
-msgstr "Envoyer/Recevoir"
+msgstr "Kirim/Terima"
 
 #: ../clawsker:1732
 msgid "Folder"
-msgstr "Dossier"
+msgstr "Direktori"
 
 #: ../clawsker:1734
 msgid "Accounts"
-msgstr "Comptes"
+msgstr "Akun"
 
 #: ../clawsker:1735
 msgid "Filtering"
-msgstr "Filtrage"
+msgstr "Penyaringan"
 
 #: ../clawsker:1736
 msgid "Preferences"
-msgstr "Préférences"
+msgstr "Preferensi"
 
 #: ../clawsker:1748
 #: ../clawsker:1755
 msgid ", built for "
-msgstr ", compilé pour "
+msgstr ", dibangun untuk"
 
 #: ../clawsker:1749
 #: ../clawsker:1756
 msgid ", running with "
-msgstr ", executé avec "
+msgstr ", berjalan dengan"
 
 #: ../clawsker:1761
 msgid "was not found!"
-msgstr "n'a pas été trouvé !"
+msgstr "tidak ditemukan!"
 
 #: ../clawsker:1762
 msgid "returned version "
-msgstr "version retournée"
+msgstr "versi pengembalian"
 
 #: ../clawsker:1772
 msgid "Syntax:\n"
-msgstr "Syntaxe :\n"
+msgstr "Sintaks:\n"
 
 #: ../clawsker:1773
 msgid "    clawsker [options]\n"
-msgstr "    clawsker [options]\n"
+msgstr "    clawsker [pilihan]\n"
 
 #: ../clawsker:1774
 msgid "Options:\n"
-msgstr "Options :\n"
+msgstr "Pilihan:\n"
 
 #: ../clawsker:1775
 msgid "    --help                         Prints this help screen.\n"
-msgstr "    --help                         Affiche cette page d'aide.\n"
+msgstr "    --help                         Cetak tampilan bantuan ini.\n"
 
 #: ../clawsker:1776
 msgid "    --version                      Prints version infos.\n"
-msgstr "    --version                         Affiche la version.\n"
+msgstr "    --version                      Cetak info versi.\n"
 
 #: ../clawsker:1777
 msgid "    --verbose                      More messages on standard output.\n"
-msgstr "    --verbose                      Plus d'informations en sortie standard.\n"
+msgstr "    --verbose                      Pesan lebih pada keluaran standar.\n"
 
 #: ../clawsker:1778
 msgid "    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n"
-msgstr "    --alternate-config-dir <dir>   Utilise <dir> comme répertoire de config. de Claws Mail.\n"
+msgstr "    --alternate-config-dir <dir>   Gunakan <dir> sebagai direktori konfig Claws Mail.\n"
 
 #: ../clawsker:1779
 msgid "    --clawsrc <file>               Uses <file> as full resource name.\n"
-msgstr "    --clawsrc <file>               Utilise <file> comme fichier de ressources.\n"
+msgstr "    --clawsrc <file>               Gunakan <file> sebagai nama sumberdaya.\n"
 
 #: ../clawsker:1839
 #, perl-brace-format
 msgid "unknown option '{opt}'.\n"
-msgstr "option inconnue : '{opt}'.\n"
-
-#~ msgid "Colour for input messages in log window."
-#~ msgstr "Couleur des messages reçus dans la fenêtre de traces."
-#~ msgid "Colour for output messages in log window."
-#~ msgstr "Couleur des messages émis dans la fenêtre de traces."
+msgstr "opsi tidak dikenal '{opt}'.\n"
 
