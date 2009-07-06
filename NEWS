@@ -1,3 +1,10 @@
+0.7.0
+- Implemented windows positioning and/or size edition for 
+  all windows which have these saved in Claws Mail 3.7.2
+- New Indonesian translation by MSulchan Darmawan
+- Updated French, Italian and Spanish translations
+- Other minor refactorisations and fixes, see ChangeLog
+
 0.6.0:
 
 - Supported new hidden property 'primary_paste_unselects'
