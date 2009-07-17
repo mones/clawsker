@@ -473,10 +473,7 @@ sub new_text_box_for_int {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
-    my $adjust = Gtk2::Adjustment->new (
-            $HPVALUE{$name}, $type[1], $type[2], 1, $pagei, 10
-	);
-    my $gentry = Gtk2::SpinButton->new ($adjust, 1, 0);
+    my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
     $gentry->set_numeric (TRUE);
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
