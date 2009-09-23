@@ -16,9 +16,8 @@ all: build
 
 build:
 	-mkdir build
-	sed -e "s,@PREFIX@,${PREFIX},;s,@LIBDIR@,${LIBDIR},;s,@VERSION@,${VERSION}," \
-		< ${NAME} > build/${NAME}
-	pod2man ${NAME} > build/${NAME}.1
+	sed -e "s,@PREFIX@,${PREFIX},;s,@LIBDIR@,${LIBDIR},;s,@VERSION@,${VERSION}," < ${NAME} > build/${NAME}
+	pod2man --release ${VERSION} -c '' ${NAME}.pod > build/${NAME}.1
 	${MAKE} -C po build
 	
 

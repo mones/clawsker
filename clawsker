@@ -1,87 +1,8 @@
 #!/usr/bin/perl -w
 #
+# Clawsker :: A Claws Mail Tweaker
 # $Id$
 #
-
-=pod
-
-=head1 NAME
-
-Clawsker - A Claws Mail Tweaker
-
-=head1 SYNOPSIS
-
-clawsker [options]
-
-=head1 DESCRIPTION
-
-Clawsker is an applet to edit the so called Claws Mail hidden preferences.
-
-Claws Mail is a fast, lightweight and feature-rich MUA with a high number 
-of configurable options. To keep the binary small and fast some of these 
-preferences which are not widely used are not provided with a graphical
-interface for inspection and/or modification.
-
-Users wanting to edit such preferences had to face raw editing of their 
-configuration files, now you can do it with a convenient GTK2 interface
-using Clawsker.
-
-=head1 OPTIONS
-
---help
-	Shows a brief help screen.
-
---version
-	Show information about program, Claws Mail and Perl-GTK versions.
-
---verbose
-	Tells more on the standard output.
-
---alternate-config-dir <dir>
-	Uses <dir> as Claws Mail configuration dir.
-
---clawsrc <file>
-	Uses <file> as Claws Mail resource configuration file. This sets
-	the full file name overriding any previous setting.
-
-Multiple options are allowed, although only the last one has effect. Weird
-option specifications may produce weird results (but otherwise correct).
-	
-=head1 LIMITATIONS
-
-A running Claws Mail cannot be detected if using the --clawsrc option because
-the directory is not assumed to be a Claws Mail configuration dir. If that is 
-the case use the --alternate-config-dir option instead.
-
-=head1 SEE ALSO
-
-Clawsker homepage "L<http://www.claws-mail.org/clawsker>"
-
-=head1 AUTHOR
-
-Main author is Ricardo Mones E<lt>ricardo@mones.orgE<gt> with the help of
-others. See the AUTHORS file on source tarball for a detailed list of 
-contributors.
-
-=head1 LICENSE
-
-Copyright (c) 2007-2009 by Ricardo Mones Lastra
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see E<lt>http://www.gnu.org/licenses/E<gt>.
-
-=cut
-
 use strict;
 use encoding 'utf8';
 use Glib qw(TRUE FALSE);
