@@ -1,4 +1,11 @@
-0.7.0
+0.7.1:
+
+- Split pod documentation from main script
+- Rearrange some widgets for consistency
+- Fix manpage header
+
+0.7.0:
+
 - Implemented windows positioning and/or size edition for 
   all windows which have these saved in Claws Mail 3.7.2
 - New Indonesian translation by MSulchan Darmawan
