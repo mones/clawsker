@@ -1,3 +1,12 @@
+2010-06-07 10:56  mones   0.7.1svn375
+
+	* clawsker
+		Add new hidden preference available in 3.7.6cvs7
+		version 'show_compose_margin' to the GUI panel
+	* clawsker.pod
+		Add URL to the list of hidden preferences (online manual)
+		Expand description to mention all preferences handled
+
 2010-06-07 10:28  mones   0.7.1svn374
 
 	* clawsker

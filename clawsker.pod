@@ -25,6 +25,10 @@ Users wanting to edit such preferences had to face raw editing of their
 configuration files, now you can do it with a convenient GTK2 interface
 using Clawsker.
 
+In adition to hidden features Clawsker can edit also some other settings
+which usually can only be set indirectly. These include currently the
+saved positions (and sizes when available) of Claws Mail windows.
+
 =head1 OPTIONS
 
 --help
@@ -55,6 +59,7 @@ the case use the --alternate-config-dir option instead.
 =head1 SEE ALSO
 
 Clawsker homepage "L<http://www.claws-mail.org/clawsker>"
+Hidden preferences list "L<http://www.claws-mail.org/manual/claws-mail-manual.html#adv_hidden>"
 
 =head1 AUTHOR
 

@@ -101,6 +101,8 @@ sub _ {
     h_gui_strip_sum => _('Enable alternately coloured lines in Message list and Folder list.'),
     l_gui_two_line_v => _('2 lines per Message List item in 3-column layout'),
     h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode.'),
+    l_gui_margin_co => _('Show compose margin'),
+    h_gui_margin_co => _('Shows a small margin in the compose view.'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
@@ -666,6 +668,15 @@ sub new_other_page() {
         '0',
         undef,
     ],
+    margin_co => [
+        'show_compose_margin',
+        $xl::s{l_gui_margin_co},
+        $xl::s{h_gui_margin_co},
+        'bool',
+        '3.7.6.7'
+        '0',
+        undef,
+    ],
 );
 
 sub new_gui_page() {
@@ -677,6 +688,7 @@ sub new_gui_page() {
     my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
     my $cb_two_linev = &new_check_button_for (\%pr::gui, 'two_linev');
+    my $cb_margin_co = &new_check_button_for (\%pr::gui, 'margin_co');
 
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
@@ -696,6 +708,7 @@ sub new_gui_page() {
     $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
     $gf->pack_start ($cb_two_linev, FALSE, FALSE, 0);
+    $gf->pack_start ($cb_margin_co, FALSE, FALSE, 0);
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
                              &new_check_button_for (\%pr::gui, 'h_scroll'),
