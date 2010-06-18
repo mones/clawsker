@@ -673,7 +673,7 @@ sub new_other_page() {
         $xl::s{l_gui_margin_co},
         $xl::s{h_gui_margin_co},
         'bool',
-        '3.7.6.7'
+        '3.7.6.7',
         '0',
         undef,
     ],
