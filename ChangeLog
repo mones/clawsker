@@ -1,7 +1,14 @@
+2010-06-19 18:27  mones   0.7.1svn378
+
+	* po/es.po
+		Updated translation
+	* po/clawsker.pot
+		Update pot file for release
+
 2010-06-18 09:27  mones   0.7.1svn376
 
 	* clawsker
-        Fix syntax typo, thanks Marco Villegas for noticing
+		Fix syntax typo, thanks Marco Villegas for noticing
 
 2010-06-07 10:56  mones   0.7.1svn375
 
