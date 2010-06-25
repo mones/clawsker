@@ -1,0 +1,214 @@
+#!/usr/bin/perl -w
+# 
+# ucl - update changelog for subversion projects (perl version)
+# 
+# Copyright (c) 2005-2010 by Ricardo Mones <ricardo@mones.org>
+#
+# Permission  is hereby granted, free of  charge, to any  person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without  restriction, including without limitation
+# the  rights to use, copy, modify, merge, publish,  distribute, sublicense,
+# and/or sell  copies of the  Software, and to  permit  persons to  whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above  copyright  notice and this  permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED,  INCLUDING BUT NOT LIMITED TO THE  WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A  PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO  EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY,  WHETHER IN AN  ACTION OF CONTRACT, TORT OR  OTHERWISE, ARISING
+# FROM,  OUT OF OR  IN  CONNECTION  WITH  THE SOFTWARE OR  THE USE OR  OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+
+use strict;
+
+my $PROJECT = "clawsker"; # project name under trunk
+my $REPO = "https://svn.mones.org/svn"; # repository base URL
+my $CL = './ChangeLog'; # changelog file
+my $VF = './VERSION'; # version file
+my $SF = '.ucl.status'; # status file
+my $PCL = '.ucl.prev'; # previous changelog
+my @NOTFORRELEASE = ( "ucl" ); 
+my $release = undef;
+
+sub tag_new_release {
+  my $relnum = shift;
+  $_ = $relnum;
+  die "Invalid release version\n" unless (/^\d+\.\d+\.\d+$/);
+  my $namevers = "$PROJECT-$relnum";
+  my $sourceurl = "$REPO/trunk/$PROJECT";
+  my $targeturl = "$REPO/tags/$PROJECT/$namevers";
+  my $commitmsg = "'tag release $relnum'";
+  qx/svn cp $sourceurl $targeturl -m $commitmsg/;
+}
+
+sub tarball_from_release_tag {
+  my $relnum = shift;
+  $_ = $relnum;
+  die "Invalid release version\n" unless (/^\d+\.\d+\.\d+$/);
+  my $namevers = "$PROJECT-$relnum";
+  my $targeturl = "$REPO/tags/$PROJECT/$namevers";
+  qx/svn export $targeturl/;
+  foreach my $file (@NOTFORRELEASE) {
+    if (-f "$namevers/$file") {
+      unlink("$namevers/$file");
+    }
+  }
+  qx/tar czf $namevers.tar.gz $namevers/;
+}
+
+sub parse_options {
+  if (defined($ARGV[0])) {
+    $_ = $ARGV[0];
+    if (/-r/) {
+      die "Undefined release version\n" unless defined ($ARGV[1]);
+      $_ = $ARGV[1];
+      die "Invalid release version\n" unless (/^\d+\.\d+\.\d+$/);
+      $release = $_;
+    }
+    elsif (/-t/) {
+      die "Undefined release version\n" unless defined ($ARGV[1]);
+      &tag_new_release ($ARGV[1]);
+      exit 0;
+    }
+    elsif (/-T/) {
+      die "Undefined release version\n" unless defined ($ARGV[1]);
+      &tarball_from_release_tag ($ARGV[1]);
+      exit 0;
+    }
+    elsif (/-\?/) {
+      my $help = <<'ENDOFHELP'
+Description:
+    ucl          Update changelog for Subversion repository
+Syntax:
+    ucl [options]
+Where options are:
+    -r x.y.z     Update is for release version x.y.z
+    -t x.y.z     Tags current trunk as release x.y.z on repository
+    -T x.y.z     Makes x.y.z release tarball
+ENDOFHELP
+      ;
+      print $help;
+      exit 0;
+    }
+    else {
+      die "Unknown option. Try -? for help\n";
+    }
+  }
+}
+
+sub get_changelog_date {
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday) = localtime();
+  $year += 1900;
+  $mon += 1;
+  $hour = ($hour < 10)? "0$hour": "$hour";
+  $min = ($min < 10)? "0$min": "$min";
+  $mon = ($mon < 10)? "0$mon": "$mon";
+  $mday = ($mday < 10)? "0$mday": "$mday";
+  return "$year-$mon-$mday $hour:$min";
+}
+
+sub main {
+  # check we're in the right place
+  -e "$CL" or die "Oops, no ChangeLog here\n";
+  -e "$VF" or die "Oops, no VERSION here\n";
+  &parse_options;
+  # parser VERSION file or $release argument
+  my ($major, $minor, $micro, $extra) = (undef, undef, undef, undef);
+  if (not defined ($release)) { # got number it from version file
+    open (VTF, "<$VF");
+    $_ = <VTF>;
+    chomp;
+    close (VTF);
+  }
+  else {
+    $_ = $release;
+  }
+  if (/^(\d+)\.(\d+)\.(\d+)$/) {
+    ($major, $minor, $micro, $extra) = ($1, $2, $3, "");
+  }
+  if (/^(\d+)\.(\d+)\.(\d+)svn(\d+)$/) {
+    ($major, $minor, $micro, $extra) = ($1, $2, $3, $4);
+  }
+  # update directory to be sure we're at the last rev
+  $_ = qx/LANGUAGE=C svn up/;
+  my @updateout = split /\\n/;
+  # get last revision from repository
+  $_ = qx/LANGUAGE=C svn info | grep "Revision"/;
+  @_ = split (':');
+  my $lastrev = $_[1];
+  $lastrev =~ s/\s+//;
+  # calculate modifications
+  qx/svn status > $SF/;
+  my @modifs = ();
+  open (STF, "<$SF");
+  while (<STF>) {
+    chomp;
+    if (/^MM?\s+(.*)$/) {
+      push (@modifs, "\t* $1");
+    }
+    if (/^AM?\s+(.*)$/) {
+      push (@modifs, "\t* $1\t\t**NEW**");
+    }
+    if (/^D\s+(.*)$/) {
+      push (@modifs, "\t* $1\t\t**REMOVED**");
+    }
+    if (/^\?\s+(.*)$/) {
+      print "Info: not versioned: $1\n";
+    }
+  }
+  close (STF);
+  unlink ($SF); # remove the status file
+  # save previous changelog
+  rename ($CL, $PCL);
+  # write new entry header
+  open (NCL, ">$CL");
+  my $cldate = &get_changelog_date;
+  my $cluser = $ENV{USER};
+  my $clvers = "$major.$minor.$micro";
+  if ($release eq "") {
+    if ($extra ne "") {
+      $clvers = ($clvers . "svn" . (1 + $lastrev));
+    }
+  }
+  # write new entry modifications
+  print NCL "$cldate  $cluser   $clvers\n\n";
+  foreach my $modif (@modifs) {
+    print NCL "$modif\n";
+  }
+  print NCL "\n";
+  # and previous entries
+  open (PCL, "<$PCL");
+  while (<PCL>) { print NCL $_; }
+  close (PCL);
+  close (NCL);
+  # and keep a digest for checking
+  my $oldmd5 = qx/md5sum $CL | cut -f1 -d" "/;
+  # edit changelog
+  my $editor = 'vim'; # (defined($ENV{DISPLAY}))? 'gvim -f': 'vim';
+  if (defined($ENV{EDITOR})) {
+    $editor = $ENV{EDITOR};
+  }
+  my @editor = ($editor, $CL);
+  system (@editor);
+  # check for changes
+  my $newmd5 = qx/md5sum $CL | cut -f1 -d" "/;
+  if ($oldmd5 eq $newmd5) {
+    print "Unmodified ChangeLog, discarding changes.\n";
+    unlink ($CL);
+    rename ($PCL, $CL);
+  }
+  else {
+    unlink ($PCL);
+    # update new version after changes
+    qx/echo $clvers > $VF/;
+  }
+}
+
+main;
+
+exit 0;
+
