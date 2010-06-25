@@ -1,3 +1,8 @@
+0.7.2:
+- Fix typo for running properly
+- Support for new hidden property 'show_compose_margin'
+- Updated Spanish translation
+
 0.7.1:
 
 - Split pod documentation from main script
