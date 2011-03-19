@@ -1,3 +1,10 @@
+2011-03-19 19:59  mones   0.7.2svn443
+
+	* clawsker
+        Add support for new hidden properties
+        'msgview_date_format' and 'show_inline_attachments'
+        Fix some window names
+
 2011-03-19 19:30  mones   0.7.2svn442
 
 	* clawsker

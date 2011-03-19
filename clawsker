@@ -55,7 +55,7 @@ sub _ {
 
     ab_frame => _('Addressbook'),
     mem_frame => _('Memory'),
-    msgview_frame => _('Message view'),
+    msgview_frame => _('Message View'),
     log_frame => _('Log window'),
     dnd_frame => _('Drag \'n\' drop'),
     ssl_frame => _('Secure Sockets Layer'),
@@ -94,17 +94,19 @@ sub _ {
     l_gui_strip_off => _('Coloured lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
     l_gui_cursor_v => _('Show cursor in message view'),
-    h_gui_cursor_v => _('Display the cursor in the message view.'),
+    h_gui_cursor_v => _('Display the cursor in the Message View.'),
     l_gui_toolbar_d => _('Detachable toolbars'),
     h_gui_toolbar_d => _('Show handles in the toolbars.'),
     l_gui_strip_all => _('Use stripes in all tree view components'),
     h_gui_strip_all => _('Enable alternately coloured lines in all tree view components.'),
     l_gui_strip_sum => _('Use stripes in Folder List and Message List'),
-    h_gui_strip_sum => _('Enable alternately coloured lines in Message list and Folder list.'),
+    h_gui_strip_sum => _('Enable alternately coloured lines in Message List and Folder List.'),
     l_gui_two_line_v => _('2 lines per Message List item in 3-column layout'),
     h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode.'),
     l_gui_margin_co => _('Show compose margin'),
-    h_gui_margin_co => _('Shows a small margin in the compose view.'),
+    h_gui_margin_co => _('Shows a small margin in the Compose View.'),
+    l_gui_mview_date => _('Don\'t display localized date in Message View'),
+    h_gui_mview_date => _('Toggles localization of date format in Message View'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
@@ -130,6 +132,8 @@ sub _ {
     h_beh_out_ascii => _('If content allows, ASCII will be used to encode outgoing messages, otherwise the user-defined encoding is enforced always.'),
     l_beh_pp_unsel => _('Primary paste unselects selection'),
     h_beh_pp_unsel => _('Controls how pasting using middle-click changes the selected text and insertion point.'),
+    l_beh_inline_at => _('Show inline attachments'),
+    h_beh_inline_at => _('Allows hiding inline attachments already shown in mail structure view'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -679,6 +683,15 @@ sub new_other_page() {
         '0',
         undef,
     ],
+    mview_date => [
+        'msgview_date_format',
+        $xl::s{l_gui_mview_date},
+        $xl::s{h_gui_mview_date},
+        'bool',
+        '3.7.8.42',
+        '0',
+        undef,
+    ],
 );
 
 sub new_gui_page() {
@@ -704,7 +717,8 @@ sub new_gui_page() {
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
-                             &new_check_button_for (\%pr::gui, 'cursor_v')),
+                             &new_check_button_for (\%pr::gui, 'cursor_v'),
+                             &new_check_button_for (\%pr::gui, 'mview_date')),
                          $xl::s{mview_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (&new_subpage_frame (
@@ -834,6 +848,15 @@ sub new_gui_page() {
         '0',
         undef,
     ],
+    inline_at => [
+        'show_inline_attachments',
+        $xl::s{l_beh_inline_at},
+        $xl::s{h_beh_inline_at},
+        'bool',
+        '3.7.8.48',
+        '1',
+        undef,
+    ],
 );
 
 sub new_behaviour_page() {
@@ -864,7 +887,8 @@ sub new_behaviour_page() {
                              &new_check_button_for (\%pr::beh, 'use_utf8'),
                              &new_check_button_for (\%pr::beh, 'dangerous'),
                              &new_check_button_for (\%pr::beh, 'out_ascii'),
-                             &new_check_button_for (\%pr::beh, 'pp_unsel')),
+                             &new_check_button_for (\%pr::beh, 'pp_unsel'),
+                             &new_check_button_for (\%pr::beh, 'inline_at')),
                          $xl::s{msgs_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
 
