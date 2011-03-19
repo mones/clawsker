@@ -63,6 +63,8 @@ sub _ {
     stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
     mlist_frame => _('Message List'),
+    mview_frame => _('Message View'),
+    compo_frame => _('Compose window'),
     netm_frame => _('NetworkManager'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
@@ -91,7 +93,7 @@ sub _ {
     l_gui_v_scroll_hide => _('Hide always'),
     l_gui_strip_off => _('Coloured lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
-    l_gui_cursor_v => _('Show Cursor in message view'),
+    l_gui_cursor_v => _('Show cursor in message view'),
     h_gui_cursor_v => _('Display the cursor in the message view.'),
     l_gui_toolbar_d => _('Detachable toolbars'),
     h_gui_toolbar_d => _('Show handles in the toolbars.'),
@@ -683,12 +685,8 @@ sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
-    my $cb_no_markup = &new_check_button_for (\%pr::gui, 'no_markup'); 
     my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
-    my $cb_cursor_v = &new_check_button_for (\%pr::gui, 'cursor_v');
     my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
-    my $cb_two_linev = &new_check_button_for (\%pr::gui, 'two_linev');
-    my $cb_margin_co = &new_check_button_for (\%pr::gui, 'margin_co');
 
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
@@ -700,15 +698,23 @@ sub new_gui_page() {
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
                              &new_check_button_for (\%pr::gui, 'b_unread'),
-                             &new_check_button_for (\%pr::gui, 'swp_from')),
+                             &new_check_button_for (\%pr::gui, 'swp_from'),
+                             &new_check_button_for (\%pr::gui, 'two_linev')),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($cb_no_markup, FALSE, FALSE, 0);
+    $gf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::gui, 'cursor_v')),
+                         $xl::s{mview_frame}, 'not-packed'), 
+                     FALSE, FALSE, FRAME_SPC);
+    $gf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::gui, 'no_markup'),
+                             &new_check_button_for (\%pr::gui, 'margin_co')),
+                         $xl::s{compo_frame}, 'not-packed'), 
+                     FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_cursor_v, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_two_linev, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_margin_co, FALSE, FALSE, 0);
     $gf->pack_start (&new_subpage_frame (
                          &new_vbox_pack (
                              &new_check_button_for (\%pr::gui, 'h_scroll'),
