@@ -28,7 +28,7 @@ update-pot: ${NAME}.pot.0
 
 build:
 	for po in ${LINGUAS}; \
-	do msgfmt -c -o t-$${po} $${po}.po && mv -f t-$${po} $${po}.mo; \
+	do msgfmt -v --statistics -c -o t-$${po} $${po}.po && mv -f t-$${po} $${po}.mo; \
 	done
 	
 

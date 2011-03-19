@@ -1,3 +1,12 @@
+2011-03-19 20:47  mones   0.7.2svn444
+
+	* po/clawsker.pot
+        Update potfile
+	* po/es.po
+        Update Spanish translation
+	* po/Makefile
+        Be more verbose when building translations
+
 2011-03-19 19:59  mones   0.7.2svn443
 
 	* clawsker
