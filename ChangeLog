@@ -1,23 +1,28 @@
+2011-03-26 14:27  mones   0.7.2svn445
+
+	* po/clawsker.pot
+		Set release version for translators
+
 2011-03-19 20:47  mones   0.7.2svn444
 
 	* po/clawsker.pot
-        Update potfile
+		Update potfile
 	* po/es.po
-        Update Spanish translation
+		Update Spanish translation
 	* po/Makefile
-        Be more verbose when building translations
+		Be more verbose when building translations
 
 2011-03-19 19:59  mones   0.7.2svn443
 
 	* clawsker
-        Add support for new hidden properties
-        'msgview_date_format' and 'show_inline_attachments'
-        Fix some window names
+		Add support for new hidden properties
+		'msgview_date_format' and 'show_inline_attachments'
+		Fix some window names
 
 2011-03-19 19:30  mones   0.7.2svn442
 
 	* clawsker
-        Refactor GUI tab adding more frames
+		Refactor GUI tab adding more frames
 
 2010-09-30 08:51  mones   0.7.2svn406
 
