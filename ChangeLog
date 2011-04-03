@@ -1,3 +1,9 @@
+2011-04-03 20:50  devel   0.7.2git446
+
+	* VC		**NEW**
+	* ucl
+		Enhance ucl to support git projects
+
 2011-03-26 14:27  mones   0.7.2svn445
 
 	* po/clawsker.pot
