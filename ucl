@@ -29,6 +29,7 @@ use strict;
 my $PROJECT = 'clawsker';	# project name
 my $TYPE = 'git';		# either 'git' or 'svn'
 my $REPO = 'git@github.com:mones/clawsker.git'; # repository base URL
+my $USER = "mones";
 # project files
 my $CL = './ChangeLog';		# changelog file
 my $VF = './VERSION';		# version file
@@ -261,7 +262,7 @@ sub get_newer_version {
 sub get_newer_header {
   my $newversion = shift;
   my $cldate = &get_changelog_date;
-  my $cluser = $ENV{USER};
+  my $cluser = $USER; # $ENV{USER};
   return "$cldate  $cluser   $newversion";
 }
 

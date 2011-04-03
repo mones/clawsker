@@ -1,4 +1,15 @@
-2011-04-03 20:50  devel   0.7.2git446
+2011-04-03 20:59  mones   0.7.2git447
+
+	* po/fr.po
+		Updated French translation thanks to wwp
+	* po/Makefile
+	* po/pt_BR.po	**NEW**
+		New Brazilian Portuguese translation thanks
+		to Frederico Gonçalves Guimarães
+	* ucl
+		Fix user name as global, not from environment
+
+2011-04-03 20:50  mones   0.7.2git446
 
 	* VC		**NEW**
 	* ucl
