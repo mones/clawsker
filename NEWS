@@ -1,3 +1,10 @@
+0.7.5:
+- Supported new hidden properties for Claws Mail 3.7.9:
+  'msgview_date_format' and 'show_inline_attachments'
+- New Brazilian Portuguese translation
+- Updated French and Spanish translations
+- Development repository migrated to github.com/mones
+
 0.7.2:
 - Fix typo for running properly
 - Support for new hidden property 'show_compose_margin'

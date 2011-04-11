@@ -1886,7 +1886,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
-    my $year = "2007-2010";
+    my $year = "2007-2011";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
     my $url = "http://www.claws-mail.org/clawsker";
 
