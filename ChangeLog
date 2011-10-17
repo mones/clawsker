@@ -1,3 +1,12 @@
+2011-10-17 16:10  mones   0.7.5git451
+
+	* po/Makefile
+		Fix calculation of spurious entry removal
+	* po/clawsker.pot
+		Update potfile
+	* po/es.po
+		Update Spanish translation
+
 2011-10-17 15:53  mones   0.7.5git450
 
 	* clawsker
