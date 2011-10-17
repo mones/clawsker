@@ -90,6 +90,11 @@ sub _ {
     l_gui_v_scroll_show => _('Show always'),
     l_gui_v_scroll_auto => _('Automatic'),
     l_gui_v_scroll_hide => _('Hide always'),
+    l_gui_from_show => _('From column displays'),
+    h_gui_from_show => _('Selects the data displayed in the From column of the Message List: name, address or both'),
+    l_gui_from_show_name => _('Name only'),
+    l_gui_from_show_addr => _('Address only'),
+    l_gui_from_show_both => _('Both name and address'),
     l_gui_strip_off => _('Coloured lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
     l_gui_cursor_v => _('Show cursor'),
@@ -619,6 +624,15 @@ sub new_other_page() {
         '0',
         undef,
     ],
+    from_show => [
+        'summary_from_show',
+        $xl::s{l_gui_from_show},
+        $xl::s{h_gui_from_show},
+        '0=l_gui_from_show_name;1=l_gui_from_show_addr;2=l_gui_from_show_both',
+        '3.7.10',
+        '0',
+        undef,
+    ],
     strip_off => [
         'stripes_color_offset',
         $xl::s{l_gui_strip_off},
@@ -711,7 +725,8 @@ sub new_gui_page() {
                          &new_vbox_pack (
                              &new_check_button_for (\%pr::gui, 'b_unread'),
                              &new_check_button_for (\%pr::gui, 'swp_from'),
-                             &new_check_button_for (\%pr::gui, 'two_linev')),
+                             &new_check_button_for (\%pr::gui, 'two_linev'),
+                             &new_selection_box_for (\%pr::gui, 'from_show')),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (&new_subpage_frame (

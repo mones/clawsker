@@ -1,3 +1,9 @@
+2011-10-17 15:53  mones   0.7.5git450
+
+	* clawsker
+		Add support for new hidden property 'summary_from_show'
+		added in 3.7.10cvs2
+
 2011-10-17 14:53  mones   0.7.5git449
 
 	* clawsker
