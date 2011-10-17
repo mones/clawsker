@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 #
 # Clawsker :: A Claws Mail Tweaker
-# $Id$
 #
 use strict;
 use encoding 'utf8';
@@ -93,7 +92,7 @@ sub _ {
     l_gui_v_scroll_hide => _('Hide always'),
     l_gui_strip_off => _('Coloured lines contrast'),
     h_gui_strip_off => _('Specify the value to use when creating alternately coloured lines in tree view components. The smaller the value, the less visible the difference in the alternating colours of the lines.'),
-    l_gui_cursor_v => _('Show cursor in message view'),
+    l_gui_cursor_v => _('Show cursor'),
     h_gui_cursor_v => _('Display the cursor in the Message View.'),
     l_gui_toolbar_d => _('Detachable toolbars'),
     h_gui_toolbar_d => _('Show handles in the toolbars.'),
@@ -105,7 +104,7 @@ sub _ {
     h_gui_two_line_v => _('Spread Message List information over two lines when using the three column mode.'),
     l_gui_margin_co => _('Show compose margin'),
     h_gui_margin_co => _('Shows a small margin in the Compose View.'),
-    l_gui_mview_date => _('Don\'t display localized date in Message View'),
+    l_gui_mview_date => _('Don\'t display localized date'),
     h_gui_mview_date => _('Toggles localization of date format in Message View'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
@@ -716,13 +715,13 @@ sub new_gui_page() {
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
+                         &new_hbox_pack (
                              &new_check_button_for (\%pr::gui, 'cursor_v'),
                              &new_check_button_for (\%pr::gui, 'mview_date')),
                          $xl::s{mview_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
+                         &new_hbox_pack (
                              &new_check_button_for (\%pr::gui, 'no_markup'),
                              &new_check_button_for (\%pr::gui, 'margin_co')),
                          $xl::s{compo_frame}, 'not-packed'), 
