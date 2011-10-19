@@ -1,3 +1,9 @@
+2011-10-19 15:38  mones   0.7.5git452
+
+	* clawsker
+		Fix bug on Windows tab: values of spinboxes not initialized
+		
+
 2011-10-17 16:10  mones   0.7.5git451
 
 	* po/Makefile

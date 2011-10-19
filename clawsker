@@ -406,6 +406,7 @@ sub new_text_box_for_int {
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
     $gentry->set_numeric (TRUE);
+    $gentry->set_value ($HPVALUE{$name});
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
