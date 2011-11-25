@@ -1,3 +1,8 @@
+2011-11-25 01:32  mones   0.7.5git453
+
+	* clawsker
+		Put a more reasonable upper limit, 10k is too low
+
 2011-10-19 15:38  mones   0.7.5git452
 
 	* clawsker

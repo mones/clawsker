@@ -638,7 +638,7 @@ sub new_other_page() {
         'stripes_color_offset',
         $xl::s{l_gui_strip_off},
         $xl::s{h_gui_strip_off},
-        'int,0,10000', # no idea what this number means
+        'int,0,40000', # no idea what this number means
         '0.0.0',
         '4000',
         undef,
