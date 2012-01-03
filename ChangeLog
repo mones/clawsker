@@ -1,3 +1,10 @@
+2012-01-03 02:41  mones   0.7.5git454
+
+	* AUTHORS
+	* po/Makefile
+	* po/sv.po
+		New Swedish translation thanks to Andreas Rönnquist
+
 2011-11-25 01:32  mones   0.7.5git453
 
 	* clawsker
