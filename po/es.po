@@ -1,5 +1,5 @@
 # Clawsker Spanish translation.
-# Copyright (C) 2007-2011 Ricardo Mones
+# Copyright (C) 2007-2012 Ricardo Mones
 # This file is distributed under the same license as the Clawsker package.
 # Ricardo Mones <ricardo@mones.org>, 2007.
 #
