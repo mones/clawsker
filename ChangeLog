@@ -1,3 +1,12 @@
+2012-01-09 00:57  mones   0.7.5git455
+
+	* clawsker
+		Fix bug: --help option was not showing proper UTF-8 
+	* clawsker.pod
+	* po/es.po
+	* ucl
+		Update year in dates to current
+
 2012-01-03 02:41  mones   0.7.5git454
 
 	* AUTHORS

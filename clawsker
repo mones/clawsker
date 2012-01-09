@@ -8,6 +8,7 @@ use Glib qw(TRUE FALSE);
 use Gtk2 -init;
 use POSIX qw(setlocale);
 use Locale::gettext;
+use Encode;
 
 my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
@@ -35,7 +36,7 @@ sub _ {
             $xla =~ s/\{$key\}/$par{$key}/g;
         }
     }
-    return $xla;
+    return decode_utf8($xla);
 }
 
 # default messages
