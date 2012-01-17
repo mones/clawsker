@@ -1,3 +1,8 @@
+2012-01-17 01:48  mones   0.7.5git456
+
+	* clawsker
+		Support forgotten property 'zero_replacement_char'
+
 2012-01-09 00:57  mones   0.7.5git455
 
 	* clawsker
