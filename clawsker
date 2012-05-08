@@ -1949,7 +1949,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     my $year = "2007-2012";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
-    my $url = "http://www.claws-mail.org/clawsker";
+    my $url = "http://www.claws-mail.org/clawsker.php";
 
     my $dialog = Gtk2::MessageDialog->new_with_markup ($parent, 
                     [qw/modal destroy-with-parent/], 

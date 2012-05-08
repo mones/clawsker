@@ -1,3 +1,9 @@
+2012-05-09 00:44  mones   0.7.5git458
+
+	* README
+	* clawsker
+		Update homepage URL, fixes #1
+
 2012-05-08 15:09  mones   0.7.5git457
 
 	* po/clawsker.pot

@@ -10,7 +10,7 @@ Claws Mail is a fast and lightweight Mail User Agent by the Claws Mail Team.
 
 You can download the latest version from Clawsker homepage:
 
-  http://www.claws-mail.org/clawsker
+  http://www.claws-mail.org/clawsker.php
 
 Dependencies
 ------------
@@ -61,7 +61,8 @@ Contributing
 ------------
 
 Patches, bug fixes, and specially, new translations (or updates to the 
-existing ones) are welcome.
+existing ones) are welcome. Development uses git as VCS and takes place on
+http://github.com/mones/clawsker/.
 
 To create a new translation just change to 'po' directory, copy 'clawsker.pot'
 into 'xx.po' or 'xx_YY.po',  and fill the empty strings and placeholder values. 
@@ -82,7 +83,7 @@ test it as above (no need to modify the Makefile this time).
 Bugs
 ----
 
-You can send bug reports to the Issues list on http://clawsker.googlecode.com/
+You can send bug reports on http://github.com/mones/clawsker/issues/ list.
 Also directly by mail to me or in the Claws Mail mailing list, but the Issues
 list is the preferred way.
 
@@ -94,6 +95,7 @@ Thanks
 * The Perl-GTK2 folks and Phillip Vandry
 * Dirk van der Walt, for his Gtk2-Perl Study Guide [0]
 * Debian, for the Operating System
+* GitHub Inc., for providing the git hosting and more
 
 [0] http://gtk2-perl.sourceforge.net/doc/gtk2-perl-study-guide/
 
