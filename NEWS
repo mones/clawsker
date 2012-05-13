@@ -1,7 +1,14 @@
+0.7.7:
+- Supported new hidden property for Claws Mail 3.8.0:
+  'summary_from_show', and old one: 'zero_replacement_char'
+- New Swedish translation by Andreas Rönnquist
+- Updated French and Spanish translations
+- GUI page has been sligthly improved, and some other fixes
+
 0.7.5:
 - Supported new hidden properties for Claws Mail 3.7.9:
   'msgview_date_format' and 'show_inline_attachments'
-- New Brazilian Portuguese translation
+- New Brazilian Portuguese translation by Frederico Gonçalves Guimarães
 - Updated French and Spanish translations
 - Development repository migrated to github.com/mones
 

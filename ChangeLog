@@ -1,3 +1,12 @@
+2012-05-14 01:34  mones   0.7.7
+
+        * po/fr.po
+        * po/sv.po
+                Update French and Swedish translations, thanks to
+                Tristan Chabredier (wwp) and Andreas Rönnquist
+        * NEWS
+                Release 0.7.7
+
 2012-05-09 00:44  mones   0.7.5git458
 
 	* README
