@@ -66,6 +66,7 @@ sub _ {
     mview_frame => _('Message View'),
     compo_frame => _('Compose window'),
     netm_frame => _('NetworkManager'),
+    diff_frame => _('Viewing patches'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -154,6 +155,13 @@ sub _ {
     h_col_log_out => _('Colour for messages sent to servers in log window.'),
     l_col_log_warn => _('Warnings'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
+
+    l_col_diff_add => _('Added lines'),
+    h_col_diff_add => _('Colour for added lines in patches.'),
+    l_col_diff_del => _('Deleted lines'),
+    h_col_diff_del => _('Colour for deleted lines in patches.'),
+    l_col_diff_hunk => _('Hunk lines'),
+    h_col_diff_hunk => _('Color for hunk headers in patches.'),
 
     l_win_x => _('X position'),
     h_win_x => _('X coordinate for window\'s top-left corner.'),
@@ -1011,6 +1019,33 @@ sub new_behaviour_page() {
         '#af0000',
         undef,
     ],
+    diff_add => [
+        'diff_added_color',
+        $xl::s{l_col_diff_add},
+        $xl::s{h_col_diff_add},
+        'color',
+        '3.8.0.54',
+        '#008b8b',
+        undef,
+    ],
+    diff_del => [
+        'diff_deleted_color',
+        $xl::s{l_col_diff_del},
+        $xl::s{h_col_diff_del},
+        'color',
+        '3.8.0.54',
+        '#6a5acd',
+        undef,
+    ],
+    diff_hunk => [
+        'diff_hunk_color',
+        $xl::s{l_col_diff_hunk},
+        $xl::s{h_col_diff_hunk},
+        'color',
+        '3.8.0.54',
+        '#a52a2a',
+        undef,
+    ],
 );
 
 sub new_colours_page() {
@@ -1026,7 +1061,13 @@ sub new_colours_page() {
                        &new_color_button_for (\%pr::col, 'log_msg'),
                        &new_color_button_for (\%pr::col, 'log_out'),
                        &new_color_button_for (\%pr::col, 'log_warn')),
-                   $xl::s{log_frame}, 'not-packed')
+                   $xl::s{log_frame}, 'not-packed'),
+               &new_subpage_frame (
+                   &new_vbox_pack (
+                       &new_color_button_for (\%pr::col, 'diff_add'),
+                       &new_color_button_for (\%pr::col, 'diff_del'),
+                       &new_color_button_for (\%pr::col, 'diff_hunk')),
+                   $xl::s{diff_frame}, 'not-packed')
            );
 }
 
