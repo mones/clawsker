@@ -1,3 +1,10 @@
+2012-06-25 16:14  mones   0.7.7git460
+
+	* po/fr.po
+	* po/sv.po
+                Update French and Swedish translations, thanks to
+                Andreas Rönnquist and Tristan Chabredier (wwp)
+
 2012-06-20 15:13  mones   0.7.7git459
 
 	* clawsker
