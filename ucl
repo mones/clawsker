@@ -35,7 +35,7 @@ my $CL = './ChangeLog';		# changelog file
 my $VF = './VERSION';		# version file
 my $VC = './VC';		# revision counter
 # excluded files
-my @NOTFORRELEASE = ( 'ucl', 'VC' ); 
+my @NOTFORRELEASE = ( 'ucl', 'VC', '.gitignore' ); 
 
 # temporary files
 my $SF = '.ucl.status';		# status file
