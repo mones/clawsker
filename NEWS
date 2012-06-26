@@ -1,3 +1,8 @@
+0.7.8:
+- Supported new hidden properties for Claws Mail 3.8.1
+  for coloured display of patch attachments
+- Updated French, Spanish and Swedish translations
+
 0.7.7:
 - Supported new hidden property for Claws Mail 3.8.0:
   'summary_from_show', and old one: 'zero_replacement_char'
