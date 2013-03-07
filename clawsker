@@ -9,6 +9,7 @@ use Gtk2 -init;
 use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
+use Digest::MD5 qw(md5_hex);
 
 my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
@@ -352,16 +353,26 @@ sub error_dialog {
     $errordlg->destroy;
 }
 
+sub claws_is_running() {
+    my $emsg = "$xl::s{e_error}$xl::s{e_running}";
+    log_message ($emsg);
+    error_dialog ($emsg);
+    return FALSE;
+}
+
 sub check_claws_not_running() {
     my $socket = (not $ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
     $socket .= "claws-mail-$<";
-    -S $socket and do {
-        my $emsg = "$xl::s{e_error}$xl::s{e_running}";
-        log_message ($emsg);
-        error_dialog ($emsg);
-        return FALSE;
-     };
-     return TRUE;
+    -S $socket and return &claws_is_running;
+    # since 3.9.0cvs36
+    my $lockdir = "/tmp/claws-mail-$<";
+    -d $lockdir and do { 
+	$_ = $CONFIGDIR;
+	s/\/$//;
+        $socket = "$lockdir/" . md5_hex($_);
+	-S $socket and return &claws_is_running;
+    };
+    return TRUE;
 }
 
 sub check_rc_file() {

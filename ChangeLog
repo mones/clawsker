@@ -1,3 +1,10 @@
+2013-03-08 00:23  mones   0.7.8git462
+
+	* clawsker
+		Detect running claws-mail equal or greater
+		than 3.9.0cvs36 version, when location and
+		format of lock socket changed
+
 2013-03-08 00:08  mones   0.7.8git461
 
 	* clawsker
