@@ -1,10 +1,9 @@
 #
 # Clawsker makefile
-# $Id$
 #
 
 NAME = clawsker
-VERSION = $(shell cat VERSION)
+VERSION ?= 0.7.9
 PREFIX ?= /usr/local
 BINDIR = ${PREFIX}/bin
 DATADIR = ${PREFIX}/share
@@ -36,6 +35,15 @@ uninstall:
 	rm -f ${DESTDIR}${MAN1DIR}/${NAME}.1
 	${MAKE} -C po uninstall
 
+dist:
+	rm -rf ${NAME}-${VERSION}
+	mkdir ${NAME}-${VERSION}
+	cp -p AUTHORS ChangeLog.old clawsker clawsker.pod \
+		COPYING Makefile NEWS README ${NAME}-${VERSION}
+	cp -rp po ${NAME}-${VERSION}
+	tar czf ${NAME}-${VERSION}.tar.gz ${NAME}-${VERSION} \
+		&& rm -rf ${NAME}-${VERSION}
+
 clean-build:
 	rm -rf build
 
@@ -43,5 +51,5 @@ clean: clean-build
 	rm -f *~
 	${MAKE} -C po clean
 
-.PHONY: all build install install-dirs uninstall clean clean-build
+.PHONY: all build install install-dirs uninstall clean clean-build dist
 
