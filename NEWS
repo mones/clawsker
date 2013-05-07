@@ -1,3 +1,8 @@
+0.7.9:
+- Support detection of running Claws Mail up to 3.9.1
+- Updated Brazilian Portuguese translation
+- ChangeLog file obsoleted, kept as ChangeLog.old
+
 0.7.8:
 - Supported new hidden properties for Claws Mail 3.8.1
   for coloured display of patch attachments
