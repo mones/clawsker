@@ -1,6 +1,5 @@
 #
 # Clawsker manual page
-# $Id$
 #
 =pod
 
