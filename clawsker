@@ -61,6 +61,7 @@ sub _ {
     dnd_frame => _('Drag \'n\' drop'),
     ssl_frame => _('Secure Sockets Layer'),
     msgs_frame => _('Messages'),
+    swc_frame => _('Completion'),
     stripes_frame => _('Coloured stripes'),
     sbar_frame => _('Scroll bars'),
     mlist_frame => _('Message List'),
@@ -143,6 +144,10 @@ sub _ {
     h_beh_pp_unsel => _('Controls how pasting using middle-click changes the selected text and insertion point.'),
     l_beh_inline_at => _('Show inline attachments'),
     h_beh_inline_at => _('Allows hiding inline attachments already shown in mail structure view'),
+    l_beh_addr_swc => _('Address search in compose window matches any'),
+    h_beh_addr_swc => _('On Tab-key completion, address text will match any part of the string or only the from the start'),
+    l_beh_fold_swc => _('Folder search in folder selector matches any'),
+    h_beh_fold_swc => _('On folder name completion text will match any part of the string or only from the start'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -945,6 +950,24 @@ sub new_gui_page() {
         '1',
         undef,
     ],
+    addr_swc => [
+        'address_search_wildcard',
+        $xl::s{l_beh_addr_swc},
+        $xl::s{h_beh_addr_sw1},
+        'bool',
+        '3.9.3.18',
+        '0',
+        undef,
+    ],
+    fold_swc => [
+        'folder_search_wildcard',
+        $xl::s{l_beh_fold_swc},
+        $xl::s{h_beh_fold_sw1},
+        'bool',
+        '3.9.3.18',
+        '0',
+        undef,
+    ],
 );
 
 sub new_behaviour_page() {
@@ -979,7 +1002,12 @@ sub new_behaviour_page() {
                              &new_check_button_for (\%pr::beh, 'inline_at')),
                          $xl::s{msgs_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
-
+    $bf->pack_start (&new_subpage_frame (
+                         &new_vbox_pack (
+                             &new_check_button_for (\%pr::beh, 'addr_swc'),
+                             &new_check_button_for (\%pr::beh, 'fold_swc')),
+                         $xl::s{swc_frame}, 'not-packed'),
+                     FALSE, FALSE, FRAME_SPC);
     return $bf;
 }
 
