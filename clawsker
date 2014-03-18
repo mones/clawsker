@@ -1967,7 +1967,7 @@ sub load_preferences() {
     while (<RCF>) {
         chomp;
         if (/^([8a-z_]+)=(.*)$/) {
-            $PREFS{$1} = "$2";
+            $PREFS{$1} = decode('UTF-8', $2);
         }
     }
     close (RCF);
