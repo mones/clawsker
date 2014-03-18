@@ -217,7 +217,7 @@ use constant PAGE_SPC => 5;
 
 # version functions
 
-sub version_greater_or_equal() {
+sub version_greater_or_equal {
     my ($version, $refvers) = @_;
     my @version = split (/\./, $version);
     my @refvers = split (/\./, $refvers);
@@ -234,7 +234,7 @@ sub version_greater_or_equal() {
     return FALSE;
 }
 
-sub get_claws_version() {
+sub get_claws_version {
     my @cmbin = (
         'claws-mail',
     );
@@ -319,7 +319,7 @@ sub str_from_gdk_color {
 sub handle_color_value {
     my ($widget, $event, $dataref) = @_;
     my $newcol = $widget->get_color;
-    $$dataref = &str_from_gdk_color ($newcol);
+    $$dataref = str_from_gdk_color ($newcol);
 }
 
 sub handle_selection_value {
@@ -358,29 +358,29 @@ sub error_dialog {
     $errordlg->destroy;
 }
 
-sub claws_is_running() {
+sub claws_is_running {
     my $emsg = "$xl::s{e_error}$xl::s{e_running}";
     log_message ($emsg);
     error_dialog ($emsg);
     return FALSE;
 }
 
-sub check_claws_not_running() {
+sub check_claws_not_running {
     my $socket = (not $ALTCONFIGDIR)? "/tmp/": $CONFIGDIR;
     $socket .= "claws-mail-$<";
-    -S $socket and return &claws_is_running;
+    -S $socket and return claws_is_running ();
     # since 3.9.0cvs36
     my $lockdir = "/tmp/claws-mail-$<";
     -d $lockdir and do { 
 	$_ = $CONFIGDIR;
 	s/\/$//;
-        $socket = "$lockdir/" . md5_hex($_);
-	-S $socket and return &claws_is_running;
+        $socket = "$lockdir/" . md5_hex ($_);
+	-S $socket and return claws_is_running ();
     };
     return TRUE;
 }
 
-sub check_rc_file() {
+sub check_rc_file {
     my ($rcfile) = @_;
     (defined($rcfile) && -f $rcfile) or do {
        my $emsg = "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
@@ -391,7 +391,7 @@ sub check_rc_file() {
     return TRUE;
 }
 
-sub set_widget_hint() {
+sub set_widget_hint {
     if ($SHOWHINTS) {
         my ($wdgt, $hint) = @_;    
         $wdgt->set_tooltip_text ($hint);
@@ -399,16 +399,16 @@ sub set_widget_hint() {
     }
 }
 
-sub set_widget_sens() {
+sub set_widget_sens {
     my ($wdgt, $versions) = @_;
     my @ver = split(/,/, $versions);
     if ($#ver == 1) {
       $wdgt->set_sensitive (
-        &version_greater_or_equal ($CLAWSV, $ver[0])
-        and &version_greater_or_equal ($ver[1], $CLAWSV)
+        version_greater_or_equal ($CLAWSV, $ver[0])
+        and version_greater_or_equal ($ver[1], $CLAWSV)
       );
     } else {
-        $wdgt->set_sensitive (&version_greater_or_equal ($CLAWSV, $ver[0]));
+        $wdgt->set_sensitive (version_greater_or_equal ($CLAWSV, $ver[0]));
     }
 }
 
@@ -427,10 +427,10 @@ sub new_check_button_for {
     }
     $cb->signal_connect (clicked => sub {
             my ($w, $e) = @_;
-            &handle_bool_value($w, $e, \$HPVALUE{$name});
+            handle_bool_value ($w, $e, \$HPVALUE{$name});
         });
-    &set_widget_hint ($cb, $$hash{$key}[DESC]);
-    &set_widget_sens ($cb, $$hash{$key}[CMVER]);
+    set_widget_hint ($cb, $$hash{$key}[DESC]);
+    set_widget_sens ($cb, $$hash{$key}[CMVER]);
     $hbox->pack_start ($cb, FALSE, FALSE, HBOX_SPC);
     #
     return $hbox;
@@ -452,10 +452,10 @@ sub new_text_box_for_int {
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
-            &handle_int_value($w, $e, \$HPVALUE{$name});
+            handle_int_value ($w, $e, \$HPVALUE{$name});
         });
-    &set_widget_hint ($gentry, $$hash{$key}[DESC]);
-    &set_widget_sens ($gentry, $$hash{$key}[CMVER]);
+    set_widget_hint ($gentry, $$hash{$key}[DESC]);
+    set_widget_sens ($gentry, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($gentry->sensitive);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
@@ -477,10 +477,10 @@ sub new_text_box_for_nchar {
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('key-release-event' => sub {
             my ($w, $e) = @_;
-            &handle_nchar_value($w, $e, \$HPVALUE{$name}, $type[1]);
+            handle_nchar_value ($w, $e, \$HPVALUE{$name}, $type[1]);
         });
-    &set_widget_hint ($gentry, $$hash{$key}[DESC]);
-    &set_widget_sens ($gentry, $$hash{$key}[CMVER]);
+    set_widget_hint ($gentry, $$hash{$key}[DESC]);
+    set_widget_sens ($gentry, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($gentry->sensitive);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
@@ -493,7 +493,7 @@ sub new_color_button_for {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $col = &gdk_color_from_str ($HPVALUE{$name});
+    my $col = gdk_color_from_str ($HPVALUE{$name});
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $button = Gtk2::ColorButton->new_with_color ($col);
@@ -502,10 +502,10 @@ sub new_color_button_for {
     $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
             my ($w, $e) = @_;
-            &handle_color_value($w, $e, \$HPVALUE{$name}); 
+            handle_color_value ($w, $e, \$HPVALUE{$name});
         });
-    &set_widget_hint ($button, $$hash{$key}[DESC]);
-    &set_widget_sens ($button, $$hash{$key}[CMVER]);
+    set_widget_hint ($button, $$hash{$key}[DESC]);
+    set_widget_sens ($button, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($button->sensitive);
     $hbox->pack_start ($button, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
@@ -529,11 +529,11 @@ sub new_selection_box_for {
     }
     $combo->signal_connect ('changed' => sub {
             my ($w, $e) = @_;
-            &handle_selection_value($w, $e, \$HPVALUE{$name});
+            handle_selection_value ($w, $e, \$HPVALUE{$name});
         });
     $combo->set_active ($HPVALUE{$name});
-    &set_widget_hint ($combo, $$hash{$key}[DESC]);
-    &set_widget_sens ($combo, $$hash{$key}[CMVER]);
+    set_widget_hint ($combo, $$hash{$key}[DESC]);
+    set_widget_sens ($combo, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($combo->sensitive);
     $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
@@ -543,7 +543,7 @@ sub new_selection_box_for {
 
 # more graphic helpers
 
-sub new_hbox_pack() {
+sub new_hbox_pack {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     $hbox->set_border_width (PAGE_SPC);
     foreach my $item (@_) {
@@ -552,7 +552,7 @@ sub new_hbox_pack() {
     return $hbox;
 }    
 
-sub new_vbox_pack() {
+sub new_vbox_pack {
     my $vbox = Gtk2::VBox->new (FALSE, 5);
     $vbox->set_border_width (PAGE_SPC);
     foreach my $item (@_) {
@@ -561,7 +561,7 @@ sub new_vbox_pack() {
     return $vbox;
 }    
 
-sub new_vbox_pack_compact() {
+sub new_vbox_pack_compact {
     my $vbox = Gtk2::VBox->new (FALSE, 0);
     $vbox->set_border_width (0);
     foreach my $item (@_) {
@@ -570,11 +570,11 @@ sub new_vbox_pack_compact() {
     return $vbox;
 }    
 
-sub new_subpage_frame () {
+sub new_subpage_frame {
     my ($box, $title, $notpacked) = @_;
     my $frame = Gtk2::Frame->new ($title);
     $frame->add ($box);    
-    return &new_vbox_pack ($frame) unless defined ($notpacked);
+    return new_vbox_pack ($frame) unless defined ($notpacked);
     return $frame;
 }
 
@@ -620,19 +620,19 @@ sub new_subpage_frame () {
 );
 
 sub new_other_page() {
-    return &new_vbox_pack (
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_check_button_for(\%pr::oth, 'use_dlg')),
+    return new_vbox_pack (
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_check_button_for(\%pr::oth, 'use_dlg')),
                    $xl::s{ab_frame}, 'not-packed'),
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_text_box_for_int(\%pr::oth, 'max_use'),
-                       &new_text_box_for_int(\%pr::oth, 'min_time')),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_text_box_for_int(\%pr::oth, 'max_use'),
+                       new_text_box_for_int(\%pr::oth, 'min_time')),
                    $xl::s{mem_frame}, 'not-packed'),
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_check_button_for(\%pr::oth, 'use_netm')),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_check_button_for(\%pr::oth, 'use_netm')),
                    $xl::s{netm_frame}, 'not-packed')
            );
 }
@@ -788,43 +788,43 @@ sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
-    my $cb_dot_lines = &new_check_button_for (\%pr::gui, 'dot_lines'); 
-    my $cb_toolbar_d = &new_check_button_for (\%pr::gui, 'toolbar_d');
-    my $tb_zero_char = &new_text_box_for_nchar (\%pr::gui, 'zero_char');
+    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines');
+    my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d');
+    my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char');
 
-    $gf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_check_button_for (\%pr::gui, 'strip_all'),
-                             &new_check_button_for (\%pr::gui, 'strip_sum'),
-                             &new_text_box_for_int (\%pr::gui, 'strip_off')),
+    $gf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_check_button_for (\%pr::gui, 'strip_all'),
+                             new_check_button_for (\%pr::gui, 'strip_sum'),
+                             new_text_box_for_int (\%pr::gui, 'strip_off')),
                          $xl::s{stripes_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_check_button_for (\%pr::gui, 'b_unread'),
-                             &new_check_button_for (\%pr::gui, 'swp_from'),
-                             &new_check_button_for (\%pr::gui, 'two_linev'),
-                             &new_selection_box_for (\%pr::gui, 'from_show')),
+    $gf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_check_button_for (\%pr::gui, 'b_unread'),
+                             new_check_button_for (\%pr::gui, 'swp_from'),
+                             new_check_button_for (\%pr::gui, 'two_linev'),
+                             new_selection_box_for (\%pr::gui, 'from_show')),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (&new_subpage_frame (
-                         &new_hbox_pack (
-                             &new_check_button_for (\%pr::gui, 'cursor_v'),
-                             &new_check_button_for (\%pr::gui, 'mview_date')),
+    $gf->pack_start (new_subpage_frame (
+                         new_hbox_pack (
+                             new_check_button_for (\%pr::gui, 'cursor_v'),
+                             new_check_button_for (\%pr::gui, 'mview_date')),
                          $xl::s{mview_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (&new_subpage_frame (
-                         &new_hbox_pack (
-                             &new_check_button_for (\%pr::gui, 'no_markup'),
-                             &new_check_button_for (\%pr::gui, 'margin_co')),
+    $gf->pack_start (new_subpage_frame (
+                         new_hbox_pack (
+                             new_check_button_for (\%pr::gui, 'no_markup'),
+                             new_check_button_for (\%pr::gui, 'margin_co')),
                          $xl::s{compo_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
-    $gf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_check_button_for (\%pr::gui, 'h_scroll'),
-                             &new_selection_box_for (\%pr::gui, 'v_scroll')),
+    $gf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_check_button_for (\%pr::gui, 'h_scroll'),
+                             new_selection_box_for (\%pr::gui, 'v_scroll')),
                          $xl::s{sbar_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($tb_zero_char, FALSE, FALSE, 0);
@@ -974,38 +974,38 @@ sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
     $bf->set_border_width (PAGE_SPC);
 
-    my $tb_up_step = &new_text_box_for_int (\%pr::beh, 'up_step');
-    my $tb_thread_a = &new_text_box_for_int (\%pr::beh, 'thread_a');
+    my $tb_up_step = new_text_box_for_int (\%pr::beh, 'up_step');
+    my $tb_thread_a = new_text_box_for_int (\%pr::beh, 'thread_a');
 
-    $bf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_text_box_for_int (\%pr::beh, 'hover_t'),
-                             &new_check_button_for (\%pr::beh, 'warn_dnd')),
+    $bf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_text_box_for_int (\%pr::beh, 'hover_t'),
+                             new_check_button_for (\%pr::beh, 'warn_dnd')),
                          $xl::s{dnd_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start (&new_subpage_frame (
-                         &new_hbox_pack (
-                             &new_check_button_for (\%pr::beh, 'skip_ssl'),
-                             &new_check_button_for (\%pr::beh, 'unsafe_ssl')),
+    $bf->pack_start (new_subpage_frame (
+                         new_hbox_pack (
+                             new_check_button_for (\%pr::beh, 'skip_ssl'),
+                             new_check_button_for (\%pr::beh, 'unsafe_ssl')),
                          $xl::s{ssl_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
     $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
-    $bf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_check_button_for (\%pr::beh, 'flowed'),
-                             &new_check_button_for (\%pr::beh, 'parts_rw'),
-                             &new_check_button_for (\%pr::beh, 'use_utf8'),
-                             &new_check_button_for (\%pr::beh, 'dangerous'),
-                             &new_check_button_for (\%pr::beh, 'out_ascii'),
-                             &new_check_button_for (\%pr::beh, 'pp_unsel'),
-                             &new_check_button_for (\%pr::beh, 'inline_at')),
+    $bf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_check_button_for (\%pr::beh, 'flowed'),
+                             new_check_button_for (\%pr::beh, 'parts_rw'),
+                             new_check_button_for (\%pr::beh, 'use_utf8'),
+                             new_check_button_for (\%pr::beh, 'dangerous'),
+                             new_check_button_for (\%pr::beh, 'out_ascii'),
+                             new_check_button_for (\%pr::beh, 'pp_unsel'),
+                             new_check_button_for (\%pr::beh, 'inline_at')),
                          $xl::s{msgs_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start (&new_subpage_frame (
-                         &new_vbox_pack (
-                             &new_check_button_for (\%pr::beh, 'addr_swc'),
-                             &new_check_button_for (\%pr::beh, 'fold_swc')),
+    $bf->pack_start (new_subpage_frame (
+                         new_vbox_pack (
+                             new_check_button_for (\%pr::beh, 'addr_swc'),
+                             new_check_button_for (\%pr::beh, 'fold_swc')),
                          $xl::s{swc_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     return $bf;
@@ -1096,24 +1096,24 @@ sub new_behaviour_page() {
 );
 
 sub new_colours_page() {
-    return &new_vbox_pack (
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_color_button_for (\%pr::col, 'emphasis')),
+    return new_vbox_pack (
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_color_button_for (\%pr::col, 'emphasis')),
                    $xl::s{msgview_frame}, 'not-packed'),
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_color_button_for (\%pr::col, 'log_err'),
-                       &new_color_button_for (\%pr::col, 'log_in'),
-                       &new_color_button_for (\%pr::col, 'log_msg'),
-                       &new_color_button_for (\%pr::col, 'log_out'),
-                       &new_color_button_for (\%pr::col, 'log_warn')),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_color_button_for (\%pr::col, 'log_err'),
+                       new_color_button_for (\%pr::col, 'log_in'),
+                       new_color_button_for (\%pr::col, 'log_msg'),
+                       new_color_button_for (\%pr::col, 'log_out'),
+                       new_color_button_for (\%pr::col, 'log_warn')),
                    $xl::s{log_frame}, 'not-packed'),
-               &new_subpage_frame (
-                   &new_vbox_pack (
-                       &new_color_button_for (\%pr::col, 'diff_add'),
-                       &new_color_button_for (\%pr::col, 'diff_del'),
-                       &new_color_button_for (\%pr::col, 'diff_hunk')),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_color_button_for (\%pr::col, 'diff_add'),
+                       new_color_button_for (\%pr::col, 'diff_del'),
+                       new_color_button_for (\%pr::col, 'diff_hunk')),
                    $xl::s{diff_frame}, 'not-packed')
            );
 }
@@ -1644,184 +1644,184 @@ sub new_colours_page() {
 );
 
 sub new_winpos_subpage_main() {
-    return &new_subpage_frame (
-               &new_vbox_pack_compact (
-                   &new_vbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'main_x'), 
-                       &new_text_box_for_int (\%pr::win, 'main_y')), 
-                   &new_hbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'main_w'), 
-                       &new_text_box_for_int (\%pr::win, 'main_h')), 
-                   &new_vbox_pack (
-                       &new_check_button_for (\%pr::win, 'main_fs'), 
-                       &new_check_button_for (\%pr::win, 'main_mx'))),
+    return new_subpage_frame (
+               new_vbox_pack_compact (
+                   new_vbox_pack (
+                       new_text_box_for_int (\%pr::win, 'main_x'),
+                       new_text_box_for_int (\%pr::win, 'main_y')),
+                   new_hbox_pack (
+                       new_text_box_for_int (\%pr::win, 'main_w'),
+                       new_text_box_for_int (\%pr::win, 'main_h')),
+                   new_vbox_pack (
+                       new_check_button_for (\%pr::win, 'main_fs'),
+                       new_check_button_for (\%pr::win, 'main_mx'))),
                _('Main window')
            );
 }
 
 sub new_winpos_subpage_msgs() {
-    return &new_subpage_frame (
-               &new_vbox_pack_compact (
-                   &new_vbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'msgs_x'),
-                       &new_text_box_for_int (\%pr::win, 'msgs_y')),
-                   &new_hbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'msgs_w'),
-                       &new_text_box_for_int (\%pr::win, 'msgs_h'))),
+    return new_subpage_frame (
+               new_vbox_pack_compact (
+                   new_vbox_pack (
+                       new_text_box_for_int (\%pr::win, 'msgs_x'),
+                       new_text_box_for_int (\%pr::win, 'msgs_y')),
+                   new_hbox_pack (
+                       new_text_box_for_int (\%pr::win, 'msgs_w'),
+                       new_text_box_for_int (\%pr::win, 'msgs_h'))),
                _('Message window')
            );
 }
 
 sub new_winpos_subpage_sendrecv() {
-    return &new_vbox_pack (
-               &new_subpage_frame (
-                   &new_hbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'send_w'),
-                       &new_text_box_for_int (\%pr::win, 'send_h')),
+    return new_vbox_pack (
+               new_subpage_frame (
+                   new_hbox_pack (
+                       new_text_box_for_int (\%pr::win, 'send_w'),
+                       new_text_box_for_int (\%pr::win, 'send_h')),
                    _('Send window'), 'not-packed'),
-               &new_subpage_frame (
-                   &new_hbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'recv_w'),
-                       &new_text_box_for_int (\%pr::win, 'recv_h')),
+               new_subpage_frame (
+                   new_hbox_pack (
+                       new_text_box_for_int (\%pr::win, 'recv_w'),
+                       new_text_box_for_int (\%pr::win, 'recv_h')),
                    _('Receive window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_fold() {
-    return &new_vbox_pack (
-               &new_subpage_frame (
-                   &new_vbox_pack_compact (
-                       &new_vbox_pack (
-                            &new_text_box_for_int (\%pr::win, 'fold_x'), 
-                            &new_text_box_for_int (\%pr::win, 'fold_y')), 
-                       &new_hbox_pack (
-                           &new_text_box_for_int (\%pr::win, 'fold_w'), 
-                           &new_text_box_for_int (\%pr::win, 'fold_h'))),
+    return new_vbox_pack (
+               new_subpage_frame (
+                   new_vbox_pack_compact (
+                       new_vbox_pack (
+                            new_text_box_for_int (\%pr::win, 'fold_x'),
+                            new_text_box_for_int (\%pr::win, 'fold_y')),
+                       new_hbox_pack (
+                           new_text_box_for_int (\%pr::win, 'fold_w'),
+                           new_text_box_for_int (\%pr::win, 'fold_h'))),
                    _('Folder window'), 'not-packed'),
-               &new_subpage_frame (
-                   &new_hbox_pack (
-                       &new_text_box_for_int (\%pr::win, 'fsel_w'),
-                       &new_text_box_for_int (\%pr::win, 'fsel_h')),
+               new_subpage_frame (
+                   new_hbox_pack (
+                       new_text_box_for_int (\%pr::win, 'fsel_w'),
+                       new_text_box_for_int (\%pr::win, 'fsel_h')),
                    _('Folder selection window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_addrbook() {
-    return &new_vbox_pack (
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'addr_w'),
-                          &new_text_box_for_int (\%pr::win, 'addr_h')),
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'addr_w'),
+                          new_text_box_for_int (\%pr::win, 'addr_h')),
                      _('Addressbook main window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'adep_w'),
-                          &new_text_box_for_int (\%pr::win, 'adep_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'adep_w'),
+                          new_text_box_for_int (\%pr::win, 'adep_h')),
                      _('Edit person window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'adeg_w'),
-                          &new_text_box_for_int (\%pr::win, 'adeg_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'adeg_w'),
+                          new_text_box_for_int (\%pr::win, 'adeg_h')),
                      _('Edit group window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'adda_w'),
-                          &new_text_box_for_int (\%pr::win, 'adda_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'adda_w'),
+                          new_text_box_for_int (\%pr::win, 'adda_h')),
                      _('Add address window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'addf_w'),
-                          &new_text_box_for_int (\%pr::win, 'addf_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'addf_w'),
+                          new_text_box_for_int (\%pr::win, 'addf_h')),
                      _('Folder select window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_accounts() {
-    return &new_vbox_pack (
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'acco_w'),
-                          &new_text_box_for_int (\%pr::win, 'acco_h')),
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'acco_w'),
+                          new_text_box_for_int (\%pr::win, 'acco_h')),
                      _('Accounts window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'acce_w'),
-                          &new_text_box_for_int (\%pr::win, 'acce_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'acce_w'),
+                          new_text_box_for_int (\%pr::win, 'acce_h')),
                      _('Edit account window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_filtering() {
-    return &new_vbox_pack (
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'filt_w'),
-                          &new_text_box_for_int (\%pr::win, 'filt_h')),
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'filt_w'),
+                          new_text_box_for_int (\%pr::win, 'filt_h')),
                      _('Filtering window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'fila_w'),
-                          &new_text_box_for_int (\%pr::win, 'fila_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'fila_w'),
+                          new_text_box_for_int (\%pr::win, 'fila_h')),
                      _('Filtering actions window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'fild_w'),
-                          &new_text_box_for_int (\%pr::win, 'fild_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'fild_w'),
+                          new_text_box_for_int (\%pr::win, 'fild_h')),
                      _('Filtering debug window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'matc_w'),
-                          &new_text_box_for_int (\%pr::win, 'matc_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'matc_w'),
+                          new_text_box_for_int (\%pr::win, 'matc_h')),
                      _('Matcher window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_prefs() {
-    return &new_vbox_pack (
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'pref_w'),
-                          &new_text_box_for_int (\%pr::win, 'pref_h')),
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'pref_w'),
+                          new_text_box_for_int (\%pr::win, 'pref_h')),
                      _('Preferences window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'temp_w'),
-                          &new_text_box_for_int (\%pr::win, 'temp_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'temp_w'),
+                          new_text_box_for_int (\%pr::win, 'temp_h')),
                      _('Templates window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'acti_w'),
-                          &new_text_box_for_int (\%pr::win, 'acti_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'acti_w'),
+                          new_text_box_for_int (\%pr::win, 'acti_h')),
                      _('Actions window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'tags_w'),
-                          &new_text_box_for_int (\%pr::win, 'tags_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'tags_w'),
+                          new_text_box_for_int (\%pr::win, 'tags_h')),
                      _('Tags window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'plug_w'),
-                          &new_text_box_for_int (\%pr::win, 'plug_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'plug_w'),
+                          new_text_box_for_int (\%pr::win, 'plug_h')),
                      _('Plugins window'), 'not-packed')
            );
 }
 
 sub new_winpos_subpage_misc() {
-    return &new_vbox_pack (
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'logw_w'),
-                          &new_text_box_for_int (\%pr::win, 'logw_h')),
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'logw_w'),
+                          new_text_box_for_int (\%pr::win, 'logw_h')),
                      _('Log window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'prin_w'),
-                          &new_text_box_for_int (\%pr::win, 'prin_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'prin_w'),
+                          new_text_box_for_int (\%pr::win, 'prin_h')),
                      _('Print preview window'), 'not-packed'),
-                &new_subpage_frame (
-                     &new_hbox_pack (
-                          &new_text_box_for_int (\%pr::win, 'sour_w'),
-                          &new_text_box_for_int (\%pr::win, 'sour_h')),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'sour_w'),
+                          new_text_box_for_int (\%pr::win, 'sour_h')),
                      _('View source window'), 'not-packed')
            );
 }
@@ -1829,15 +1829,15 @@ sub new_winpos_subpage_misc() {
 sub new_winpos_page() {
     my $winbook = Gtk2::Notebook->new;
     $winbook->set_tab_pos ('right');
-    $winbook->append_page (&new_winpos_subpage_main, _('Main'));
-    $winbook->append_page (&new_winpos_subpage_msgs, _('Message'));
-    $winbook->append_page (&new_winpos_subpage_sendrecv, _('Send/Receive'));
-    $winbook->append_page (&new_winpos_subpage_fold, _('Folder'));
-    $winbook->append_page (&new_winpos_subpage_addrbook, _('Addressbook'));
-    $winbook->append_page (&new_winpos_subpage_accounts, _('Accounts'));
-    $winbook->append_page (&new_winpos_subpage_filtering, _('Filtering'));
-    $winbook->append_page (&new_winpos_subpage_prefs, _('Preferences'));
-    $winbook->append_page (&new_winpos_subpage_misc, _('Other'));
+    $winbook->append_page (new_winpos_subpage_main, _('Main'));
+    $winbook->append_page (new_winpos_subpage_msgs, _('Message'));
+    $winbook->append_page (new_winpos_subpage_sendrecv, _('Send/Receive'));
+    $winbook->append_page (new_winpos_subpage_fold, _('Folder'));
+    $winbook->append_page (new_winpos_subpage_addrbook, _('Addressbook'));
+    $winbook->append_page (new_winpos_subpage_accounts, _('Accounts'));
+    $winbook->append_page (new_winpos_subpage_filtering, _('Filtering'));
+    $winbook->append_page (new_winpos_subpage_prefs, _('Preferences'));
+    $winbook->append_page (new_winpos_subpage_misc, _('Other'));
     return $winbook;
 }
 
@@ -1883,7 +1883,7 @@ sub print_help() {
 }
 
 # handle errors which don't allow to run
-sub command_line_fatal() {
+sub command_line_fatal {
     my $reason = shift;
     my $emsg = $xl::s{e_error} . $reason;
     error_dialog ($emsg);
@@ -1891,17 +1891,17 @@ sub command_line_fatal() {
 }
 
 # parse the command line
-sub parse_command_line() {
-    $CLAWSV = &get_claws_version;
+sub parse_command_line {
+    $CLAWSV = get_claws_version ();
     my $arg = 0;
     while (defined($ARGV[$arg])) {
         for ($ARGV[$arg]) {
             /--help/ && do { 
-                &print_help; 
+                print_help ();
                 return FALSE;
             };
             /--version/ && do { 
-                &print_version; 
+                print_version ();
                 return FALSE;
             };
             /--verbose/ && do {
@@ -1910,18 +1910,18 @@ sub parse_command_line() {
             };
             /--use-claws-version/ && do {
                 ++$arg;
-                &command_line_fatal ("required version")
+                command_line_fatal ("required version")
                     unless defined($ARGV[$arg]);
-                &command_line_fatal ("required a dotted numeric value")
+                command_line_fatal ("required a dotted numeric value")
                     unless ($ARGV[$arg] =~ /[\d\.]+/);
                 $CLAWSV = $ARGV[$arg];
                 last;
             };
             /--alternate-config-dir/ && do {
                 ++$arg;
-                &command_line_fatal ($xl::s{e_requireddir})
+                command_line_fatal ($xl::s{e_requireddir})
                     unless defined($ARGV[$arg]);
-                &command_line_fatal ($xl::s{e_notadir})
+                command_line_fatal ($xl::s{e_notadir})
                     unless -d $ARGV[$arg];
                 $CONFIGDIR = $ARGV[$arg];
                 $CONFIGDIR .= "/" 
@@ -1931,14 +1931,14 @@ sub parse_command_line() {
             };
             /--clawsrc/ && do {
                 ++$arg;
-                &command_line_fatal($xl::s{e_requiredfile}) 
+                command_line_fatal($xl::s{e_requiredfile})
                     unless defined($ARGV[$arg]);
-                &command_line_fatal($xl::s{e_notafile}) 
+                command_line_fatal($xl::s{e_notafile})
                     unless -f $ARGV[$arg];
-                &set_rc_filename ($ARGV[$arg]);
+                set_rc_filename ($ARGV[$arg]);
                 last;
             };
-            /.*/ && &command_line_fatal (
+            /.*/ && command_line_fatal (
                 _("unknown option '{opt}'.\n", opt => $ARGV[$arg]));
         }
         ++$arg;
@@ -1948,7 +1948,7 @@ sub parse_command_line() {
 }
 
 # update the hidden preferences status from loaded values
-sub init_hidden_preferences() {
+sub init_hidden_preferences {
     foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth, \%pr::win) {
         foreach my $key (keys %$hash) { 
             $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
@@ -1958,11 +1958,11 @@ sub init_hidden_preferences() {
 }
 
 # load current status from disc
-sub load_preferences() {
-    my $rc = &get_rc_filename;
-    &log_message ("Loading preferences from $rc\n");
-    return FALSE unless &check_rc_file ($rc);
-    return FALSE unless &check_claws_not_running;
+sub load_preferences {
+    my $rc = get_rc_filename ();
+    log_message ("Loading preferences from $rc\n");
+    return FALSE unless check_rc_file ($rc);
+    return FALSE unless check_claws_not_running ();
     open (RCF, "<$rc");
     while (<RCF>) {
         chomp;
@@ -1975,11 +1975,11 @@ sub load_preferences() {
 }
 
 # save current preferences to disc
-sub save_preferences() {
-    my $rc = &get_rc_filename;
-    &log_message ("Saving preferences to $rc\n");
-    return FALSE unless &check_rc_file ($rc);
-    return FALSE unless &check_claws_not_running;
+sub save_preferences {
+    my $rc = get_rc_filename ();
+    log_message ("Saving preferences to $rc\n");
+    return FALSE unless check_rc_file ($rc);
+    return FALSE unless check_claws_not_running ();
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
     open (RCF, ">$rc");
@@ -2004,20 +2004,20 @@ sub save_preferences() {
 }
 
 # create notebook
-sub new_notebook() {
+sub new_notebook {
     my $nb = Gtk2::Notebook->new;
     # 
-    $nb->append_page (&new_behaviour_page, $xl::s{tab_behaviour});
-    $nb->append_page (&new_colours_page, $xl::s{tab_colours});
-    $nb->append_page (&new_gui_page, $xl::s{tab_gui});
-    $nb->append_page (&new_other_page, $xl::s{tab_other});
-    $nb->append_page (&new_winpos_page, $xl::s{tab_winpos});
+    $nb->append_page (new_behaviour_page (), $xl::s{tab_behaviour});
+    $nb->append_page (new_colours_page (), $xl::s{tab_colours});
+    $nb->append_page (new_gui_page (), $xl::s{tab_gui});
+    $nb->append_page (new_other_page (), $xl::s{tab_other});
+    $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
 
     return $nb;
 }
 
 # create an about dialog
-sub new_about_dialog() {
+sub new_about_dialog {
     my ($parent) = @_;
     my $title = $xl::s{about_title};
     my $lic = $xl::s{about_license};
@@ -2054,7 +2054,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
 }
 
 # create buttons box
-sub new_button_box() {
+sub new_button_box {
     my ($parent, $adlg) = @_;
     my $b_about = Gtk2::Button->new_from_stock ('gtk-about');
     my $b_exit = Gtk2::Button->new_from_stock ('gtk-quit');
@@ -2064,8 +2064,8 @@ sub new_button_box() {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     # signal handlers 
     $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
-    $b_apply->signal_connect (clicked => sub { &save_preferences ($parent) });
-    # $b_undo->signal_connect (clicked => sub { &undo_current_changes });
+    $b_apply->signal_connect (clicked => sub { save_preferences ($parent) });
+    # $b_undo->signal_connect (clicked => sub { undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
     # package them
     $hbox->pack_end ($b_apply, FALSE, FALSE, 0);
@@ -2078,15 +2078,15 @@ sub new_button_box() {
 
 # initialise
 $main_window = Gtk2::Window->new ('toplevel');
-exit unless &parse_command_line;
-exit unless &load_preferences;
-exit unless &init_hidden_preferences;
+exit unless parse_command_line ();
+exit unless load_preferences ();
+exit unless init_hidden_preferences ();
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
-my $about = &new_about_dialog;
-$box->pack_start (&new_notebook, FALSE, FALSE, 0);
-$box->pack_end (&new_button_box ($main_window, $about), FALSE, FALSE, 0);
+my $about = new_about_dialog ();
+$box->pack_start (new_notebook (), FALSE, FALSE, 0);
+$box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
 $main_window->signal_connect (delete_event => sub { Gtk2->main_quit });
 $main_window->set_title ($xl::s{win_title});
 $main_window->add ($box);
