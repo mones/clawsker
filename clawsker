@@ -1,6 +1,9 @@
 #!/usr/bin/perl -w
 #
 # Clawsker :: A Claws Mail Tweaker
+# Copyright 2007-2014 Ricardo Mones <ricardo@mones.org>
+# See COPYING file for license details.
+# See AUTHORS file for a complete list of contributors.
 #
 use strict;
 use utf8;
