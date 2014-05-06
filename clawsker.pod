@@ -57,7 +57,7 @@ the case use the --alternate-config-dir option instead.
 
 =head1 SEE ALSO
 
-Clawsker homepage "L<http://www.claws-mail.org/clawsker>"
+Clawsker homepage "L<http://www.claws-mail.org/clawsker.php>"
 Hidden preferences list "L<http://www.claws-mail.org/manual/claws-mail-manual.html#adv_hidden>"
 
 =head1 AUTHOR
