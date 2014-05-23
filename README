@@ -64,6 +64,10 @@ Patches, bug fixes, and specially, new translations (or updates to the
 existing ones) are welcome. Development uses git as VCS and takes place on
 http://github.com/mones/clawsker/.
 
+If a Feature is new and supported by Claws-Mail version xyz or not supported anymore, update the corresponding array accordingly.
+See "dot_lines" in clawsker as an example.
+
+
 To create a new translation just change to 'po' directory, copy 'clawsker.pot'
 into 'xx.po' or 'xx_YY.po',  and fill the empty strings and placeholder values. 
 The 'xx' is your language code (e.g.: 'en' for English, 'fr' for French, etc.)

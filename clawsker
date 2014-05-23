@@ -660,12 +660,12 @@ sub new_other_page() {
         undef,
     ],
     dot_lines => [
-        'enable_dotted_lines',
-        $xl::s{l_gui_dot_lines},
-        $xl::s{h_gui_dot_lines},
-        'bool',
-        '0.0.0',
-        '0',
+        'enable_dotted_lines', #button/checkbox/whatever name
+        $xl::s{l_gui_dot_lines}, #label text
+        $xl::s{h_gui_dot_lines}, #tooltip text
+        'bool',                 #format of value
+        '0.0.0, 3.9.2',         #supported from version 0.0.0 to 3.9.2
+        '0',                    #standard value
         undef,
     ],
     h_scroll => [
