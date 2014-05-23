@@ -155,17 +155,17 @@ msgstr "Non usare markup nella finestra di composizione"
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "Non usare grassetto e corsivo nella selezione dell'account nella finestra di composizione."
 
-#: ../clawsker:160
-msgid "Use dotted lines in tree view components"
-msgstr "Usa linee tratteggiate nelle viste ad albero"
-
-#: ../clawsker:161
-msgid ""
-"Use the old dotted line look in the main window tree views (Folder, Message "
-"and other lists) instead of the modern lineless look."
-msgstr ""
-"Usa il vecchio stile con linee tratteggiate nelle viste ad albero della "
-"finestra principale (Cartelle, Messaggi ed altro) invece del nuovo stile senza linee."
+##: ../clawsker:160
+#msgid "Use dotted lines in tree view components"
+#msgstr "Usa linee tratteggiate nelle viste ad albero"
+#
+##: ../clawsker:161
+#msgid ""
+#"Use the old dotted line look in the main window tree views (Folder, Message "
+#"and other lists) instead of the modern lineless look."
+#msgstr ""
+#"Usa il vecchio stile con linee tratteggiate nelle viste ad albero della "
+#"finestra principale (Cartelle, Messaggi ed altro) invece del nuovo stile senza linee."
 
 #: ../clawsker:162
 msgid "Enable horizontal scrollbar"

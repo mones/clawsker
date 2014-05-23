@@ -86,8 +86,8 @@ sub _ {
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
     l_gui_no_markup => _('Don\'t use markup in compose window'),
     h_gui_no_markup => _('Don\'t use bold and italic text in Compose dialogue\'s account selector.'),
-    l_gui_dot_lines => _('Use dotted lines in tree view components'),
-    h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look.'),
+#    l_gui_dot_lines => _('Use dotted lines in tree view components'),
+#    h_gui_dot_lines => _('Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look.'),
     l_gui_h_scroll => _('Enable horizontal scrollbar'),
     h_gui_h_scroll => _('Enable the horizontal scrollbar in the Message List.'),
     l_gui_swp_from => _('Display To column instead From column in Sent folder'),
@@ -659,15 +659,15 @@ sub new_other_page() {
         '0',
         undef,
     ],
-    dot_lines => [
-        'enable_dotted_lines',
-        $xl::s{l_gui_dot_lines},
-        $xl::s{h_gui_dot_lines},
-        'bool',
-        '0.0.0',
-        '0',
-        undef,
-    ],
+#    dot_lines => [
+#        'enable_dotted_lines',
+#        $xl::s{l_gui_dot_lines},
+#        $xl::s{h_gui_dot_lines},
+#        'bool',
+#        '0.0.0',
+#        '0',
+#        undef,
+#    ],
     h_scroll => [
         'enable_hscrollbar',
         $xl::s{l_gui_h_scroll},
@@ -791,7 +791,7 @@ sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
-    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines');
+#    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines');
     my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d');
     my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char');
 
@@ -822,7 +822,7 @@ sub new_gui_page() {
                              new_check_button_for (\%pr::gui, 'margin_co')),
                          $xl::s{compo_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
+#    $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (

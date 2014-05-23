@@ -159,14 +159,14 @@ msgstr "Använd inte markup i komponera-fönstret"
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "Använd inte fetstil och kursiv text i komponera-dialogens konto-väljare"
 
-#: ../clawsker:84
-msgid "Use dotted lines in tree view components"
-msgstr "Använd streckade linjer i trädvy-komponenter"
-
-#: ../clawsker:85
-msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
-msgstr "Använd det gamla utseendet med sträckade linjer i huvudfönstrets trädvyer (Mapp, Meddelande och andra listor) istället för det moderna utseendet utan linjer"
-
+##: ../clawsker:84
+#msgid "Use dotted lines in tree view components"
+#msgstr "Använd streckade linjer i trädvy-komponenter"
+#
+##: ../clawsker:85
+#msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
+#msgstr "Använd det gamla utseendet med sträckade linjer i huvudfönstrets trädvyer (Mapp, Meddelande och andra listor) istället för det moderna utseendet utan linjer"
+#
 #: ../clawsker:86
 msgid "Enable horizontal scrollbar"
 msgstr "Aktivera horisontell rullningslist"

@@ -160,15 +160,15 @@ msgstr ""
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr ""
 
-#: ../clawsker:85
-msgid "Use dotted lines in tree view components"
-msgstr ""
+##: ../clawsker:85
+#msgid "Use dotted lines in tree view components"
+#msgstr ""
 
-#: ../clawsker:86
-msgid ""
-"Use the old dotted line look in the main window tree views (Folder, Message "
-"and other lists) instead of the modern lineless look."
-msgstr ""
+##: ../clawsker:86
+#msgid ""
+#"Use the old dotted line look in the main window tree views (Folder, Message "
+#"and other lists) instead of the modern lineless look."
+#msgstr ""
 
 #: ../clawsker:87
 msgid "Enable horizontal scrollbar"

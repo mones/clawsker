@@ -159,14 +159,14 @@ msgstr "Pas de mise en forme de texte dans la fenêtre de composition"
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "Ne pas utiliser la mise en forme de texte (gras, italique) dans la liste des comptes de la fenêtre de composition"
 
-#: ../clawsker:84
-msgid "Use dotted lines in tree view components"
-msgstr "Utiliser les lignes en pointillés dans les vues arborescentes"
-
-#: ../clawsker:85
-msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
-msgstr "Activer les lignes en pointillés (ancien style) dans les vues arborescentes (liste des messages et des dossiers) en lieu et place du style moderne (sans lignes)."
-
+##: ../clawsker:84
+#msgid "Use dotted lines in tree view components"
+#msgstr "Utiliser les lignes en pointillés dans les vues arborescentes"
+#
+##: ../clawsker:85
+#msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
+#msgstr "Activer les lignes en pointillés (ancien style) dans les vues arborescentes (liste des messages et des dossiers) en lieu et place du style moderne (sans lignes)."
+#
 #: ../clawsker:86
 msgid "Enable horizontal scrollbar"
 msgstr "Montrer la barre de défilement horizontale"
