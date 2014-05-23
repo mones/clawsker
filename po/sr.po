@@ -151,15 +151,15 @@ msgstr "Без наглашавања у прозору за састављањ�
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "На дијалогу за састављање порука у изборнику налога не користи се подебљани и курзивни текст."
 
-#: ../clawsker:148
-msgid "Use dotted lines in tree views"
-msgstr "Користи тачкасте линије у стаблима"
-
-#: ../clawsker:149
-msgid ""
-"Use the old dotted line look in the main window tree views (folder and "
-"message lists) instead of the modern lineless look."
-msgstr "Уместо модерног изгледа без линија у списку порука фасцикли и порука, користи се стари начин повезивања фасцикли тачкастим линијама."
+##: ../clawsker:148
+#msgid "Use dotted lines in tree views"
+#msgstr "Користи тачкасте линије у стаблима"
+#
+##: ../clawsker:149
+#msgid ""
+#"Use the old dotted line look in the main window tree views (folder and "
+#"message lists) instead of the modern lineless look."
+#msgstr "Уместо модерног изгледа без линија у списку порука фасцикли и порука, користи се стари начин повезивања фасцикли тачкастим линијама."
 
 #: ../clawsker:150
 msgid "Enable horizontal scrollbar"

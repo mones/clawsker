@@ -169,17 +169,17 @@ msgstr ""
 "No usar negrita ni cursiva en el texto del selector de cuentas de la ventana "
 "de composición."
 
-#: ../clawsker:84
-msgid "Use dotted lines in tree view components"
-msgstr "Usar líneas punteadas en los componentes de árboles"
-
-#: ../clawsker:85
-msgid ""
-"Use the old dotted line look in the main window tree views (Folder, Message "
-"and other lists) instead of the modern lineless look."
-msgstr ""
-"Usar la apariencia antigua con líneas punteadas en los árboles de la ventana "
-"principal (carpetas, mensajes y otras) en vez de la moderna sin líneas."
+##: ../clawsker:84
+#msgid "Use dotted lines in tree view components"
+#msgstr "Usar líneas punteadas en los componentes de árboles"
+#
+##: ../clawsker:85
+#msgid ""
+#"Use the old dotted line look in the main window tree views (Folder, Message "
+#"and other lists) instead of the modern lineless look."
+#msgstr ""
+#"Usar la apariencia antigua con líneas punteadas en los árboles de la ventana "
+#"principal (carpetas, mensajes y otras) en vez de la moderna sin líneas."
 
 #: ../clawsker:86
 msgid "Enable horizontal scrollbar"

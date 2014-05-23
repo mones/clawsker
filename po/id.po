@@ -150,14 +150,14 @@ msgstr "Jangan gunakan markup pada jendela tulis"
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "Jangan gunakan teks tebal dan miring dalam jendela tulis pada pemilihan akun."
 
-#: ../clawsker:160
-msgid "Use dotted lines in tree view components"
-msgstr "Gunakan garis titik pada komponen penampil pohon"
-
-#: ../clawsker:161
-msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
-msgstr "Gunakan tampilan garis titik yang lama pada jendela utama penampil pohon (Direktori, Pesan dan daftar lainnya) selain tampilan tanpa garis modern."
-
+##: ../clawsker:160
+#msgid "Use dotted lines in tree view components"
+#msgstr "Gunakan garis titik pada komponen penampil pohon"
+#
+##: ../clawsker:161
+#msgid "Use the old dotted line look in the main window tree views (Folder, Message and other lists) instead of the modern lineless look."
+#msgstr "Gunakan tampilan garis titik yang lama pada jendela utama penampil pohon (Direktori, Pesan dan daftar lainnya) selain tampilan tanpa garis modern."
+#
 #: ../clawsker:162
 msgid "Enable horizontal scrollbar"
 msgstr "Aktifkan batang penggulir horizontal"
