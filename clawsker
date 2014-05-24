@@ -209,7 +209,7 @@ use constant NAME  => 0; # the name on the rc file
 use constant LABEL => 1; # the label on the GUI
 use constant DESC  => 2; # the description for the hint/help
 use constant TYPE  => 3; # data type: bool, int, float, string, color
-use constant CMVER => 4; # lowest Claws Mail version the feature exists
+use constant CMVER => 4; # lowest[,highest] Claws Mail version(s) the feature exists
 use constant CMDEF => 5; # default value for the preference in Claws Mail
 use constant GUI   => 6; # GUI element
 
