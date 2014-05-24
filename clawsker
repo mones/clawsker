@@ -664,7 +664,7 @@ sub new_other_page() {
         $xl::s{l_gui_dot_lines},
         $xl::s{h_gui_dot_lines},
         'bool',
-        '0.0.0',
+        '0.0.0,3.7.10.44',
         '0',
         undef,
     ],
