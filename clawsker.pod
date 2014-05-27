@@ -1,5 +1,13 @@
 #
 # Clawsker manual page
+# Copyright 2007-2014 Ricardo Mones <ricardo@mones.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# See COPYING file for license details.
 #
 =pod
 
@@ -9,7 +17,7 @@ Clawsker - A Claws Mail Tweaker
 
 =head1 SYNOPSIS
 
-clawsker [options]
+B<clawsker> [options]
 
 =head1 DESCRIPTION
 
@@ -30,35 +38,44 @@ saved positions (and sizes when available) of Claws Mail windows.
 
 =head1 OPTIONS
 
---help
-	Shows a brief help screen.
+=over 4
 
---version
-	Show information about program, Claws Mail and Perl-GTK versions.
+=item B<--help>
 
---verbose
-	Tells more on the standard output.
+Shows a brief help screen.
 
---alternate-config-dir <dir>
-	Uses <dir> as Claws Mail configuration dir.
+=item B<--version>
 
---clawsrc <file>
-	Uses <file> as Claws Mail resource configuration file. This sets
-	the full file name overriding any previous setting.
+Show information about program, Claws Mail and Perl-GTK versions.
 
-Multiple options are allowed, although only the last one has effect. Weird
+=item B<--verbose>
+
+Tells more on the standard output.
+
+=item B<--alternate-config-dir> I<dirname>
+
+Uses I<dirname> as Claws Mail configuration directory.
+
+=item B<--clawsrc> I<filename>
+
+Uses I<filename> as Claws Mail resource configuration file. This sets
+the full file name overriding any previous setting.
+
+=back
+
+Repeated options are allowed, although only the last one has effect. Weird
 option specifications may produce weird results (but otherwise correct).
 	
 =head1 LIMITATIONS
 
-A running Claws Mail cannot be detected if using the --clawsrc option because
-the directory is not assumed to be a Claws Mail configuration dir. If that is 
-the case use the --alternate-config-dir option instead.
+A running Claws Mail cannot be detected if using the B<--clawsrc> option
+because the directory is not assumed to be a Claws Mail configuration dir.
+If that is  the case use the B<--alternate-config-dir> option instead.
 
 =head1 SEE ALSO
 
-Clawsker homepage "L<http://www.claws-mail.org/clawsker.php>"
-Hidden preferences list "L<http://www.claws-mail.org/manual/claws-mail-manual.html#adv_hidden>"
+L<Clawsker homepage|http://www.claws-mail.org/clawsker.php>,
+L<List of hidden preferences|http://www.claws-mail.org/manual/claws-mail-manual.html#adv_hidden>
 
 =head1 AUTHOR
 
@@ -66,9 +83,11 @@ Main author is Ricardo Mones E<lt>ricardo@mones.orgE<gt> with the help of
 others. See the AUTHORS file on source tarball for a detailed list of 
 contributors.
 
-=head1 LICENSE
+=head1 COPYRIGHT
 
-Copyright (c) 2007-2014 by Ricardo Mones Lastra
+2007-2014 by Ricardo Mones Lastra
+
+=head1 LICENSE
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
