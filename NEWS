@@ -1,3 +1,10 @@
+0.7.11:
+  - Support new hidden preferences added in Claws Mail 3.10.0:
+    'address_search_wildcard' and 'folder_search_wildcard'
+  - Fix reading UTF-8 values from clawsrc file
+  - Updated French, Swedish and Spanish translations
+  - Updated manpage, perl code style and some other minor fixes
+
 0.7.10:
 - Fix stupid bug which caused program not to start
 
