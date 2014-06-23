@@ -11,6 +11,9 @@
 # See COPYING file for license details.
 # See AUTHORS file for a complete list of contributors.
 #
+
+binmode STDOUT, ":encoding(utf8)";
+
 use strict;
 use utf8;
 use Glib qw(TRUE FALSE);
