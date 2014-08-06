@@ -1,3 +1,7 @@
+0.7.12:
+  - New Dutch translation
+  - Fix output encoding and some translation warnings
+
 0.7.11:
   - Support new hidden preferences added in Claws Mail 3.10.0:
     'address_search_wildcard' and 'folder_search_wildcard'
