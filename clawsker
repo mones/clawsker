@@ -362,7 +362,7 @@ sub error_dialog {
     my ($emsg) = @_;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
     my $errordlg = Gtk2::MessageDialog->new_with_markup ($main_window, 'modal', 'error', 'cancel', $markup);
-    $errordlg->set_title (_('Error message'));
+    $errordlg->set_title (_('Clawsker error'));
     $errordlg->run;
     $errordlg->destroy;
 }
@@ -1903,7 +1903,14 @@ sub parse_command_line {
             'r|clawsrc=s' => \&opt_clawsrc)
         or die _("try -h or --help for syntax.\n");
     };
-    die _("Error in options: {msg}\n", msg => $@) if $@;
+    if ($@) {
+        my $msg = _("Error in options: {msg}\n", msg => $@);
+        if (defined $ENV{'DISPLAY'} and $ENV{'DISPLAY'} ne '') {
+            eval { Gtk2->init };
+            error_dialog ($msg) unless $@;
+        }
+        die $msg;
+    }
     return $cont;
 }
 
