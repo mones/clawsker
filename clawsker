@@ -17,11 +17,12 @@ binmode STDOUT, ":encoding(utf8)";
 use strict;
 use utf8;
 use Glib qw(TRUE FALSE);
-use Gtk2 -init;
+use Gtk2;
 use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
 use Digest::MD5 qw(md5_hex);
+use Getopt::Long;
 
 my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
@@ -198,10 +199,6 @@ sub _ {
     e_error => _('Error: '),
     e_noclawsrc => _('resource file for Claws Mail was not found.'),
     e_running => _('seems Claws Mail is currently running, close it first.'),
-    e_requireddir => _('option requires a directory name.'),
-    e_requiredfile => _('option requires a file name.'),
-    e_notadir => _('specified name is not a directory or does not exist.'),
-    e_notafile => _('specified name is not a file or does not exist.'),
 );
 
 # all preferences read by load_preferences
@@ -395,7 +392,7 @@ sub check_claws_not_running {
 sub check_rc_file {
     my ($rcfile) = @_;
     (defined($rcfile) && -f $rcfile) or do {
-       my $emsg = "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+        my $emsg = "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
         log_message ($emsg);
         error_dialog ($emsg);
         return FALSE;
@@ -1885,78 +1882,52 @@ sub print_help() {
     print $xl::s{about_title} . "\n";
     print $line;
     print _("Syntax:\n");
-    print _("    clawsker [options]\n");
+    print _("  clawsker [options]\n");
     print _("Options:\n");
-    print _("    --help                         Prints this help screen.\n");
-    print _("    --version                      Prints version infos.\n");
-    print _("    --verbose                      More messages on standard output.\n");
-    print _("    --alternate-config-dir <dir>   Uses <dir> as Claws Mail config dir.\n");
-    print _("    --clawsrc <file>               Uses <file> as full resource name.\n");
+    print _("  -h|--help                        Prints this help screen.\n");
+    print _("  -v|--version                     Prints version infos.\n");
+    print _("  -b|--verbose                     More messages on standard output.\n");
+    print _("  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n");
+    print _("  -c|--clawsrc <file>              Uses <file> as full resource name.\n");
 }
 
-# handle errors which don't allow to run
-sub command_line_fatal {
-    my $reason = shift;
-    my $emsg = $xl::s{e_error} . $reason;
-    error_dialog ($emsg);
-    log_message ("$emsg", 'die');
-}
-
-# parse the command line
 sub parse_command_line {
+    my $cont = TRUE;
     $CLAWSV = get_claws_version ();
-    my $arg = 0;
-    while (defined($ARGV[$arg])) {
-        for ($ARGV[$arg]) {
-            /--help/ && do { 
-                print_help ();
-                return FALSE;
-            };
-            /--version/ && do { 
-                print_version ();
-                return FALSE;
-            };
-            /--verbose/ && do {
-                $VERBOSE = TRUE;
-                last;
-            };
-            /--use-claws-version/ && do {
-                ++$arg;
-                command_line_fatal ("required version")
-                    unless defined($ARGV[$arg]);
-                command_line_fatal ("required a dotted numeric value")
-                    unless ($ARGV[$arg] =~ /[\d\.]+/);
-                $CLAWSV = $ARGV[$arg];
-                last;
-            };
-            /--alternate-config-dir/ && do {
-                ++$arg;
-                command_line_fatal ($xl::s{e_requireddir})
-                    unless defined($ARGV[$arg]);
-                command_line_fatal ($xl::s{e_notadir})
-                    unless -d $ARGV[$arg];
-                $CONFIGDIR = $ARGV[$arg];
-                $CONFIGDIR .= "/" 
-                    unless ($CONFIGDIR =~ /.*\/$/);
-                $ALTCONFIGDIR = TRUE;
-                last;
-            };
-            /--clawsrc/ && do {
-                ++$arg;
-                command_line_fatal($xl::s{e_requiredfile})
-                    unless defined($ARGV[$arg]);
-                command_line_fatal($xl::s{e_notafile})
-                    unless -f $ARGV[$arg];
-                set_rc_filename ($ARGV[$arg]);
-                last;
-            };
-            /.*/ && command_line_fatal (
-                _("unknown option '{opt}'.\n", opt => $ARGV[$arg]));
-        }
-        ++$arg;
-    }
-    # eveything continues...
-    return TRUE;
+    eval {
+        GetOptions('h|help' => sub { print_help (); $cont = FALSE },
+            'v|version' => sub { print_version (); $cont = FALSE },
+            'b|verbose' => sub { $VERBOSE = TRUE },
+            'u|use-claws-version=s' => \&opt_use_claws_version,
+            'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
+            'r|clawsrc=s' => \&opt_clawsrc)
+        or die _("try -h or --help for syntax.\n");
+    };
+    die _("Error in options: {msg}\n", msg => $@) if $@;
+    return $cont;
+}
+
+sub opt_use_claws_version {
+    my ($name, $value) = @_;
+    die _("Error: {opt} requires a dotted numeric value argument\n", opt => $name)
+        unless ($value =~ /^[\d\.]+$/);
+    $CLAWSV = $value;
+}
+
+sub opt_alternate_config_dir {
+    my ($name, $value) = @_;
+    die _("Error: '{dir}' is not a directory or does not exist\n", dir => $value)
+        unless -d $value;
+    $CONFIGDIR = $value;
+    $CONFIGDIR .= "/" unless ($CONFIGDIR =~ /.*\/$/);
+    $ALTCONFIGDIR = TRUE;
+}
+
+sub opt_clawsrc {
+    my ($name, $value) = @_;
+    die _("Error: '{value}' is not a file or does not exist", value => $value)
+        unless -f $value;
+    set_rc_filename ($value);
 }
 
 # update the hidden preferences status from loaded values
@@ -2089,8 +2060,9 @@ sub new_button_box {
 }
 
 # initialise
-$main_window = Gtk2::Window->new ('toplevel');
 exit unless parse_command_line ();
+Gtk2->init;
+$main_window = Gtk2::Window->new ('toplevel');
 exit unless load_preferences ();
 exit unless init_hidden_preferences ();
 # create main GUI
