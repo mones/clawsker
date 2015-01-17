@@ -54,11 +54,11 @@ msgstr "Øvrig"
 
 #: ../clawsker:68
 msgid "Windows"
-msgstr "Vindu"
+msgstr "Vinduer"
 
 #: ../clawsker:70 ../clawsker:1847
 msgid "Addressbook"
-msgstr "Addressebok"
+msgstr "Adressebok"
 
 #: ../clawsker:71
 msgid "Memory"
@@ -110,19 +110,19 @@ msgstr "NetworkManager"
 
 #: ../clawsker:84
 msgid "Viewing patches"
-msgstr "Patchvisning"
+msgstr "Patch-visning"
 
 #: ../clawsker:86
 msgid "Use detached address book edit dialogue"
-msgstr "Bruk egen dialog for å editere addressebok"
+msgstr "Bruk egen dialog for å editere adressebok"
 
 #: ../clawsker:87
 msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
 msgstr ""
-"Bruk egen dialog for å editere en persjons detaljer. Ellers vil "
-"en dialog i addressebokens hovedvindu anvendes."
+"Bruk egen dialog for å editere en persons detaljer. Ellers vil "
+"en dialog i adressebokens hovedvindu anvendes."
 
 #: ../clawsker:88
 msgid "Maximum memory for message cache (kB)"
@@ -170,14 +170,14 @@ msgstr "Ikke bruk fet og kursiv text i komponerings-dialogens konto-velger."
 
 #: ../clawsker:99
 msgid "Use dotted lines in tree view components"
-msgstr "Bruk stiplet linje i tree-view komponenter"
+msgstr "Bruk stiplet linje i trevisnings-komponenter"
 
 #: ../clawsker:100
 msgid ""
 "Use the old dotted line look in the main window tree views (Folder, Message "
 "and other lists) instead of the modern lineless look."
 msgstr ""
-"Bruk gammelt utseende med stiplet linje i hovedvinduets tree views (Mappe, "
+"Bruk gammelt utseende med stiplet linje i hovedvinduets trevisninger (Mappe, "
 "Meldinger og andre lister) istedet for det moderne utseendet uten linjer."
 
 #: ../clawsker:101
@@ -186,7 +186,7 @@ msgstr "Aktiver horisontal scrollbar"
 
 #: ../clawsker:102
 msgid "Enable the horizontal scrollbar in the Message List."
-msgstr "Aktiver horisontal scrollbar i meldings-listen."
+msgstr "Aktiver horisontal scrollbar i Meldings-listen."
 
 #: ../clawsker:103
 msgid "Display To column instead From column in Sent folder"
@@ -202,14 +202,14 @@ msgstr ""
 
 #: ../clawsker:105
 msgid "Folder List scrollbar behaviour"
-msgstr "Oppførsel for meldings-listens scrollbar"
+msgstr "Oppførsel for Meldings-listens scrollbar"
 
 #: ../clawsker:106
 msgid ""
 "Specify the policy of vertical scrollbar of Folder List: show always, "
 "automatic or hide always."
 msgstr ""
-"Spesifiser oppførsel for vertikal scrollbar i meldings-liste: Vis alltid, "
+"Spesifiser oppførsel for vertikal scrollbar i Meldings-liste: Vis alltid, "
 "automatisk eller skjul alltid."
 
 #: ../clawsker:107
@@ -259,7 +259,7 @@ msgid ""
 "the alternating colours of the lines."
 msgstr ""
 "Spesifiser verdien som brukes for å lage linjer med alternerende farger "
-"i tree-view komponenter. Mindre verdi gir mindre synlig forskjell i "
+"i trevisnings-komponenter. Mindre verdi gir mindre synlig forskjell i "
 "de alternerende fargene på linjene."
 
 #: ../clawsker:117
@@ -272,19 +272,19 @@ msgstr "Vis markør i Meldings-vindu."
 
 #: ../clawsker:119
 msgid "Detachable toolbars"
-msgstr "Avtagbare toolbars"
+msgstr "Avtagbare verktøyslinjer"
 
 #: ../clawsker:120
 msgid "Show handles in the toolbars."
-msgstr "Vis håndtak på toolbars."
+msgstr "Vis håndtak på verktøyslinjer."
 
 #: ../clawsker:121
 msgid "Use stripes in all tree view components"
-msgstr "Bruk striper i alle tree view komponenter"
+msgstr "Bruk striper i alle trevisnings-komponenter"
 
 #: ../clawsker:122
 msgid "Enable alternately coloured lines in all tree view components."
-msgstr "Bruk alternerende fargede linjer i alle tree view komponenter."
+msgstr "Bruk alternerende fargede linjer i alle trevisnings-komponenter."
 
 #: ../clawsker:123
 msgid "Use stripes in Folder List and Message List"
@@ -360,7 +360,7 @@ msgid ""
 "to have long lines, but will fix some URLs that would otherwise be wrapped."
 msgstr ""
 "Respekter format=flowed i text/plain meldinger. Dette forårsaker at noen "
-"mailer får lange linjer, men vil fikse noen linker som ellers ville brytes."
+"mailer får lange linjer, men vil fikse noen URL'er som ellers ville brytes."
 
 #: ../clawsker:140
 msgid "Allow writable temporary files"
@@ -440,14 +440,14 @@ msgstr ""
 
 #: ../clawsker:156
 msgid "Primary paste unselects selection"
-msgstr "Primær paste avmarkerer valg"
+msgstr "Primær lim avmarkerer valg"
 
 #: ../clawsker:157
 msgid ""
 "Controls how pasting using middle-click changes the selected text and "
 "insertion point."
 msgstr ""
-"Kontrollerer hvordan paste ved midt-knappen endrer valgt tekst og "
+"Kontrollerer hvordan å lime inn med midt-knappen endrer valgt tekst og "
 "insettningspunkt."
 
 #: ../clawsker:158
@@ -460,7 +460,7 @@ msgstr "Tillater å skjule inline-vedlegg som allerede vises i mail-vindu"
 
 #: ../clawsker:160
 msgid "Address search in compose window matches any"
-msgstr "Adressesøk i komponeringsvind matcher alle"
+msgstr "Adressesøk i komponeringsvindu matcher alle"
 
 #: ../clawsker:161
 msgid ""
@@ -676,7 +676,7 @@ msgstr "Filter-vindu"
 
 #: ../clawsker:1776
 msgid "Filtering actions window"
-msgstr "Filter-actions vindu"
+msgstr "Filter-handlinger vindu"
 
 #: ../clawsker:1781
 msgid "Filtering debug window"
@@ -740,7 +740,7 @@ msgstr "Filtrering"
 
 #: ../clawsker:1850
 msgid "Preferences"
-msgstr "Instillinger"
+msgstr "Innstillinger"
 
 #: ../clawsker:1862 ../clawsker:1869
 msgid ", built for "
@@ -760,7 +760,7 @@ msgstr "returnerte versjon"
 
 #: ../clawsker:1886
 msgid "Syntax:\n"
-msgstr "Syntax:\n"
+msgstr "Syntaks:\n"
 
 #: ../clawsker:1887
 msgid "  clawsker [options]\n"
@@ -794,7 +794,7 @@ msgstr "  -c|--clawsrc <fil>		   Bruker <fil> som fullt ressurs-navn.\n"
 
 #: ../clawsker:1906
 msgid "try -h or --help for syntax.\n"
-msgstr "prøv -h eller --help for syntax.\n"
+msgstr "prøv -h eller --help for syntaks.\n"
 
 #: ../clawsker:1909
 #, perl-brace-format
