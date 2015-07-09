@@ -1934,7 +1934,7 @@ sub opt_alternate_config_dir {
 
 sub opt_clawsrc {
     my ($name, $value) = @_;
-    die _("Error: '{value}' is not a file or does not exist", value => $value)
+    die _("Error: '{value}' is not a file or does not exist\n", value => $value)
         unless -f $value;
     set_rc_filename ($value);
 }
