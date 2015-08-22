@@ -19,7 +19,7 @@ Dependencies
 
   Nothing special: make, sed, install, gettext and pod2man.
 
-  On Debian systems:
+  On Debian systems and derivatives:
   # apt-get install make sed coreutils gettext perl
   (Although you probably already have some of these installed)
 
