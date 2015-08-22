@@ -1,3 +1,9 @@
+0.7.13:
+  - New Norwegian Bokmål translation
+  - Honor TMPDIR environment variable
+  - Added short version of options and some minor fixes
+  - Updated Spanish translation
+
 0.7.12:
   - New Dutch translation
   - Fix output encoding and some translation warnings
