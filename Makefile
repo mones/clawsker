@@ -49,7 +49,7 @@ dist:
 	cp -p AUTHORS ChangeLog.old clawsker clawsker.pod \
 		COPYING Makefile NEWS README ${NAME}-${VERSION}
 	cp -rp po ${NAME}-${VERSION}
-	tar czf ${NAME}-${VERSION}.tar.gz ${NAME}-${VERSION} \
+	tar cJf ${NAME}-${VERSION}.tar.xz ${NAME}-${VERSION} \
 		&& rm -rf ${NAME}-${VERSION}
 
 clean-build:
