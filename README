@@ -40,7 +40,7 @@ Install
 
 After downloading the tarball:
 
-  tar xzf clawsker-VERSION.tar.gz
+  tar xJf clawsker-VERSION.tar.xz
   cd clawsker-VERSION
   make
 
