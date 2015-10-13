@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 0.7.13-5-gdc75b39\n"
+"Project-Id-Version: clawsker 0.7.13-7-g347b07d\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2015-10-14 01:20+0200\n"
+"POT-Creation-Date: 2015-10-14 01:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,7 +221,7 @@ msgstr ""
 #: ../clawsker:111
 msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
-"address or both"
+"address or both."
 msgstr ""
 
 #: ../clawsker:112
@@ -302,7 +302,7 @@ msgid "Don't display localized date"
 msgstr ""
 
 #: ../clawsker:130
-msgid "Toggles localization of date format in Message View"
+msgid "Toggles localization of date format in Message View."
 msgstr ""
 
 #: ../clawsker:131
@@ -310,7 +310,7 @@ msgid "Zero replacement character"
 msgstr ""
 
 #: ../clawsker:132
-msgid "Replaces '0' with the given character in Folder List"
+msgid "Replaces '0' with the given character in Folder List."
 msgstr ""
 
 #: ../clawsker:133
@@ -320,7 +320,7 @@ msgstr ""
 #: ../clawsker:134
 msgid ""
 "Allows to manually type any value in Compose Window header entries or just "
-"select from the available choices in the associated dropdown list"
+"select from the available choices in the associated dropdown list."
 msgstr ""
 
 #: ../clawsker:136
@@ -436,7 +436,7 @@ msgid "Show inline attachments"
 msgstr ""
 
 #: ../clawsker:161
-msgid "Allows hiding inline attachments already shown in mail structure view"
+msgid "Allows hiding inline attachments already shown in mail structure view."
 msgstr ""
 
 #: ../clawsker:162
@@ -446,7 +446,7 @@ msgstr ""
 #: ../clawsker:163
 msgid ""
 "On Tab-key completion, address text will match any part of the string or only "
-"the from the start"
+"the from the start."
 msgstr ""
 
 #: ../clawsker:164
@@ -456,7 +456,7 @@ msgstr ""
 #: ../clawsker:165
 msgid ""
 "On folder name completion text will match any part of the string or only from "
-"the start"
+"the start."
 msgstr ""
 
 #: ../clawsker:167
