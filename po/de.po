@@ -122,7 +122,7 @@ msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
 msgstr ""
-"Der Dialog zum Bearbeiten der Details eines Adressbucheintrages in einem separaten Dialogfenster angezeigt. "
+"Der Dialog zum Bearbeiten der Details eines Adressbucheintrages wird in einem separaten Dialogfenster angezeigt. "
 "Andernfalls wird der Dialog in das Hauptfenster des Adressbuchs eingebettet."
 
 #: ../clawsker:88
@@ -184,7 +184,7 @@ msgstr ""
 
 #: ../clawsker:101
 msgid "Enable horizontal scrollbar"
-msgstr "Horizontale Bildlaufleisten"
+msgstr "Horizontale Bildlaufleiste"
 
 #: ../clawsker:102
 msgid "Enable the horizontal scrollbar in the Message List."
@@ -234,7 +234,7 @@ msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
 "address or both"
 msgstr ""
-"Auswahl der angezeigtebn Daten in der Spalte \"Von:\" in der Liste der Nachrichten: "
+"Auswahl der angezeigten Daten in der Spalte \"Von:\" in der Liste der Nachrichten: "
 "Nur Name, Nur Adresse oder Beides"
 
 #: ../clawsker:112
@@ -339,7 +339,7 @@ msgid ""
 "Time in milliseconds that will cause a folder tree to expand when the mouse "
 "cursor is held over it during drag and drop."
 msgstr ""
-"Zeitspanne in Milliskeunden, nach der ein Ordner ausgeklappt wird, "
+"Zeitspanne in Millisekunden, nach der ein Ordner ausgeklappt wird, "
 "sofern sich beim \"Ziehen und Ablegen\" der Nauszeiger direkt über einem Ordner befindet."
 
 #: ../clawsker:136
@@ -511,7 +511,7 @@ msgstr "Servernachrichten"
 
 #: ../clawsker:170
 msgid "Colour for messages received from servers in log window."
-msgstr "Farbe der vom Server zum Client gesendete Nachrichten im Protokollfenster."
+msgstr "Farbe der vom Server zum Client gesendeten Nachrichten im Protokollfenster."
 
 #: ../clawsker:171
 msgid "Standard messages"
@@ -519,7 +519,7 @@ msgstr "Standard"
 
 #: ../clawsker:172
 msgid "Colour for messages in log window."
-msgstr "Standardarbe der Ausgabe im Protokollfenstern."
+msgstr "Standardfarbe der Ausgabe im Protokollfenstern."
 
 #: ../clawsker:173
 msgid "Client messages"
@@ -543,7 +543,7 @@ msgstr "Hinzugefügte Zeilen"
 
 #: ../clawsker:179
 msgid "Colour for added lines in patches."
-msgstr "Farbe von hinzugefügten Zeilen Patchdateien"
+msgstr "Farbe von hinzugefügten Zeilen in Patchdateien"
 
 #: ../clawsker:180
 msgid "Deleted lines"
@@ -551,7 +551,7 @@ msgstr "Entfernte Zeilen"
 
 #: ../clawsker:181
 msgid "Colour for deleted lines in patches."
-msgstr "Farbe von entfernten Zeilen Patchdateien"
+msgstr "Farbe von entfernten Zeilen in Patchdateien"
 
 #: ../clawsker:182
 msgid "Hunk lines"
