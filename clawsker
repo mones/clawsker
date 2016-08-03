@@ -82,6 +82,7 @@ sub _ {
     compo_frame => _('Compose window'),
     netm_frame => _('NetworkManager'),
     diff_frame => _('Viewing patches'),
+    mpass_frame => _('Master passphrase'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -91,6 +92,8 @@ sub _ {
     h_oth_min_time => _('The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.'),
     l_oth_use_netm => _('Use NetworkManager'),
     h_oth_use_netm => _('Use NetworkManager to switch offline automatically.'),
+    l_oth_mp_rounds => _('Rounds for PBKDF2 function'),
+    h_oth_mp_rounds => _('Specify the number of iterations the key derivation function will be applied on master passphrase computation. Does not modify currently stored passphrase, only master passphrases computed after changing this value are affected.'),
     
     l_gui_b_unread => _('Show unread messages with bold font'),
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
@@ -632,6 +635,15 @@ sub new_subpage_frame {
         '1',
         undef,
     ],
+    mp_rounds => [
+        'master_passphrase_pbkdf2_rounds',
+        $xl::s{l_oth_mp_rounds},
+        $xl::s{h_oth_mp_rounds},
+        'int,50000,1000000',
+        '3.13.2.110',
+        '50000',
+        undef,
+    ],
 );
 
 sub new_other_page() {
@@ -648,7 +660,11 @@ sub new_other_page() {
                new_subpage_frame (
                    new_vbox_pack (
                        new_check_button_for(\%pr::oth, 'use_netm')),
-                   $xl::s{netm_frame}, 'not-packed')
+                   $xl::s{netm_frame}, 'not-packed'),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_text_box_for_int(\%pr::oth, 'mp_rounds')),
+                   $xl::s{mpass_frame}, 'not-packed')
            );
 }
 
