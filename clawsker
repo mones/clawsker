@@ -132,6 +132,8 @@ sub _ {
     h_gui_zero_char => _('Replaces \'0\' with the given character in Folder List.'),
     l_gui_type_any => _('Editable headers'),
     h_gui_type_any => _('Allows to manually type any value in Compose Window header entries or just select from the available choices in the associated dropdown list.'),
+    l_gui_next_del => _('Select next message on delete'),
+    h_gui_next_del => _('When deleting a message, toggles between selecting the next one (newer message) or the previous one (older message).'),
 
     l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
@@ -804,6 +806,15 @@ sub new_other_page() {
         '0',
         undef,
     ],
+    next_del => [
+        'next_on_delete',
+        $xl::s{l_gui_next_del},
+        $xl::s{h_gui_next_del},
+        'bool',
+        '3.13.0.5',
+        '0',
+        undef,
+    ],
 );
 
 sub new_gui_page() {
@@ -826,6 +837,7 @@ sub new_gui_page() {
                              new_check_button_for (\%pr::gui, 'b_unread'),
                              new_check_button_for (\%pr::gui, 'swp_from'),
                              new_check_button_for (\%pr::gui, 'two_linev'),
+                             new_check_button_for (\%pr::gui, 'next_del'),
                              new_selection_box_for (\%pr::gui, 'from_show')),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
