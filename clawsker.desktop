@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=Clawsker
+Comment=A Claws Mail tweaker
+Comment[ca]=Un configurador del Claws Mail
+Comment[de]=Editor für Claws Mails "versteckte" Einstellung
+Comment[es]=Un ajustador de Claws Mail
+Comment[fr]=Éditeur d'options cachées de Claws Mail
+Comment[id]=Pengulik Claws Mail
+Comment[it]=Un tweaker per Claws Mail
+Comment[nb]=Tweaker For Claws Mail
+Comment[nl]=Een Claws Mail Tweaker
+Comment[pt_BR]=Ajustes finos no Claws Mail
+Comment[sr@latin]=Fino štelovanje skrivenih postavki za Claws Mail
+Comment[sr]=Фино штеловање скривених поставки за Claws Mail
+Comment[sv]=Tweaker för Claws Mail
+Exec=clawsker
+Icon=clawsker
+Type=Application
+Categories=Utility;GTK;
