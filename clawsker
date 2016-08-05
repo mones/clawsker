@@ -269,7 +269,7 @@ sub get_claws_version {
     my @ver = split (/\./, $fver[3]);
     $res .= "$ver[0].";
     $res .= "$ver[1].";
-    if ($ver[2] =~ /(\d+)cvs(\d+)/) {
+    if ($ver[2] =~ /(\d+)git(\d+)/) {
         $res .= "$1.$2";
     }
     else {
