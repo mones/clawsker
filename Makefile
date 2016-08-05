@@ -18,6 +18,7 @@ DATADIR = ${PREFIX}/share
 LIBDIR = ${PREFIX}/lib/${NAME}
 MANDIR = ${DATADIR}/man
 MAN1DIR = ${MANDIR}/man1
+APPSDIR = ${DATADIR}/applications
 THEMEDIR = ${DATADIR}/icons/hicolor
 ICONRES = 64 128
 
@@ -33,11 +34,13 @@ build:
 install: all install-dirs install-icons
 	install -m 0755 build/${NAME} ${DESTDIR}${BINDIR}
 	install -m 0644 build/${NAME}.1 ${DESTDIR}${MAN1DIR}
+	install -m 0644 ${NAME}.desktop ${DESTDIR}${APPSDIR}
 	${MAKE} -C po install
 
 install-dirs: install-icons-dirs
 	install -d ${DESTDIR}${BINDIR}
 	install -d ${DESTDIR}${MAN1DIR}
+	install -d ${DESTDIR}${APPSDIR}
 	${MAKE} -C po install-dirs
 
 install-icons-dirs:
@@ -59,12 +62,13 @@ uninstall-icons:
 uninstall: uninstall-icons
 	rm -f ${DESTDIR}${BINDIR}/${NAME}
 	rm -f ${DESTDIR}${MAN1DIR}/${NAME}.1
+	rm -f ${DESTDIR}${APPSDIR}/${NAME}.desktop
 	${MAKE} -C po uninstall
 
 dist:
 	rm -rf ${NAME}-${VERSION}
 	mkdir ${NAME}-${VERSION}
-	cp -p AUTHORS ChangeLog.old clawsker clawsker.pod \
+	cp -p AUTHORS ChangeLog.old ${NAME} ${NAME}.pod ${NAME}.desktop \
 		COPYING Makefile NEWS README ${NAME}-${VERSION}
 	cp -rp po ${NAME}-${VERSION}
 	cp -rp icons ${NAME}-${VERSION}
