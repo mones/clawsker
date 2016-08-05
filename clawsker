@@ -27,6 +27,7 @@ use Getopt::Long;
 my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
 my $LIBDIR = '@LIBDIR@';
+my $DATADIR = '@DATADIR@';
 my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
 my $CLAWSV = undef;
