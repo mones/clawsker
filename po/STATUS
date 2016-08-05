@@ -1,0 +1,7 @@
+#!/bin/bash
+k=`grep -c '^msgstr ""$' ./*.pot`
+make 2>&1 \
+ | grep translated \
+ | awk -v k=$k '{t=$1;n=$2; printf "%d / %.2f%% - %s\n", n, (n/(k-1))*100, t}' \
+ | sed 's,:$,,' \
+ | sort
