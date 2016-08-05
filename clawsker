@@ -2109,6 +2109,20 @@ sub new_button_box {
     return $hbox;
 }
 
+sub get_app_icons {
+    my $dir = $DATADIR . '/icons/hicolor';
+    my @names = map {
+      join ('/', ($dir, , $_ . 'x' . $_, 'apps', $NAME . '.png'))
+    } (64, 128);
+    my @icons = ();
+    foreach (@names) {
+        my $icon = undef;
+        $icon = Gtk2::Gdk::Pixbuf->new_from_file($_) if (-f $_);
+        push @icons, $icon if ($icon);
+    }
+    return @icons;
+}
+
 # initialise
 exit unless parse_command_line ();
 Gtk2->init;
@@ -2123,6 +2137,7 @@ $box->pack_start (new_notebook (), FALSE, FALSE, 0);
 $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
 $main_window->signal_connect (delete_event => sub { Gtk2->main_quit });
 $main_window->set_title ($xl::s{win_title});
+$main_window->set_icon_list (get_app_icons ());
 $main_window->add ($box);
 $main_window->show_all;
 Gtk2->main;
