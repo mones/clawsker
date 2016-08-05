@@ -18,6 +18,8 @@ DATADIR = ${PREFIX}/share
 LIBDIR = ${PREFIX}/lib/${NAME}
 MANDIR = ${DATADIR}/man
 MAN1DIR = ${MANDIR}/man1
+THEMEDIR = ${DATADIR}/icons/hicolor
+ICONRES = 64 128
 
 all: build
 
@@ -28,17 +30,33 @@ build:
 	${MAKE} -C po build
 	
 
-install: all install-dirs
+install: all install-dirs install-icons
 	install -m 0755 build/${NAME} ${DESTDIR}${BINDIR}
 	install -m 0644 build/${NAME}.1 ${DESTDIR}${MAN1DIR}
 	${MAKE} -C po install
 
-install-dirs:
+install-dirs: install-icons-dirs
 	install -d ${DESTDIR}${BINDIR}
 	install -d ${DESTDIR}${MAN1DIR}
 	${MAKE} -C po install-dirs
 
-uninstall:
+install-icons-dirs:
+	install -d ${DESTDIR}${THEMEDIR}
+	for res in ${ICONRES}; do \
+		install -d ${DESTDIR}${THEMEDIR}/$${res}x$${res}/apps; \
+	done
+
+install-icons:
+	for res in ${ICONRES}; do \
+		install -m 0644 icons/${NAME}-$${res}.png ${DESTDIR}${THEMEDIR}/$${res}x$${res}/apps/${NAME}.png; \
+	done
+
+uninstall-icons:
+	for res in ${ICONRES}; do \
+		rm -f ${DESTDIR}${THEMEDIR}/$${res}x$${res}/apps/${NAME}.png; \
+	done
+
+uninstall: uninstall-icons
 	rm -f ${DESTDIR}${BINDIR}/${NAME}
 	rm -f ${DESTDIR}${MAN1DIR}/${NAME}.1
 	${MAKE} -C po uninstall
@@ -49,6 +67,7 @@ dist:
 	cp -p AUTHORS ChangeLog.old clawsker clawsker.pod \
 		COPYING Makefile NEWS README ${NAME}-${VERSION}
 	cp -rp po ${NAME}-${VERSION}
+	cp -rp icons ${NAME}-${VERSION}
 	tar cJf ${NAME}-${VERSION}.tar.xz ${NAME}-${VERSION} \
 		&& rm -rf ${NAME}-${VERSION}
 
