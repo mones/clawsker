@@ -7,118 +7,122 @@ msgid ""
 msgstr ""
 "Project-Id-Version: clawsker 0.7.11-14-gb9a89a0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-07-12 09:10+0200\n"
-"PO-Revision-Date: 2016-08-03 10:14+0200\n"
+"POT-Creation-Date: 2016-08-08 08:54+0200\n"
+"PO-Revision-Date: 2016-08-08 09:42+0200\n"
+"Last-Translator: David Medina <opensusecatala@gmail.com>\n"
 "Language-Team: \n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.8\n"
-"Last-Translator: David Medina <opensusecatala@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: ca\n"
 
-#: ../clawsker:58
+#: ../clawsker:59
 msgid "Claws Mail Hidden Preferences"
 msgstr "Preferències amagades del Claws Mail"
 
-#: ../clawsker:59
+#: ../clawsker:60
 msgid "About..."
 msgstr "Quant a..."
 
-#: ../clawsker:60
+#: ../clawsker:61
 msgid "Clawsker :: A Claws Mail Tweaker"
 msgstr "Clawsker :: Un configurador del Claws Mail"
 
-#: ../clawsker:61
+#: ../clawsker:62
 msgid "License:"
 msgstr "Llicència:"
 
-#: ../clawsker:62
+#: ../clawsker:63
 msgid "Version:"
 msgstr "Versió:"
 
-#: ../clawsker:64
+#: ../clawsker:65
 msgid "Colours"
 msgstr "Colors"
 
-#: ../clawsker:65
+#: ../clawsker:66
 msgid "Behaviour"
 msgstr "Comportament"
 
-#: ../clawsker:66
+#: ../clawsker:67
 msgid "GUI"
 msgstr "GUI"
 
-#: ../clawsker:67 ../clawsker:1851
+#: ../clawsker:68 ../clawsker:1892
 msgid "Other"
 msgstr "Altres"
 
-#: ../clawsker:68
+#: ../clawsker:69
 msgid "Windows"
 msgstr "Finestres"
 
-#: ../clawsker:70 ../clawsker:1847
+#: ../clawsker:71 ../clawsker:1888
 msgid "Addressbook"
 msgstr "Llibreta d'adreces"
 
-#: ../clawsker:71
+#: ../clawsker:72
 msgid "Memory"
 msgstr "Memòria"
 
-#: ../clawsker:72 ../clawsker:81
+#: ../clawsker:73 ../clawsker:82
 msgid "Message View"
 msgstr "Visualització de missatges"
 
-#: ../clawsker:73 ../clawsker:1826
+#: ../clawsker:74 ../clawsker:1867
 msgid "Log window"
 msgstr "Finestra de registre"
 
-#: ../clawsker:74
+#: ../clawsker:75
 msgid "Drag 'n' drop"
 msgstr "Arrossegar i deixar anar"
 
-#: ../clawsker:75
+#: ../clawsker:76
 msgid "Secure Sockets Layer"
 msgstr "Capa de sòcols segurs"
 
-#: ../clawsker:76
+#: ../clawsker:77
 msgid "Messages"
 msgstr "Missatges"
 
-#: ../clawsker:77
+#: ../clawsker:78
 msgid "Completion"
 msgstr "Compleció"
 
-#: ../clawsker:78
+#: ../clawsker:79
 msgid "Coloured stripes"
 msgstr "Línies de colors"
 
-#: ../clawsker:79
+#: ../clawsker:80
 msgid "Scroll bars"
 msgstr "Barres de desplaçament"
 
-#: ../clawsker:80
+#: ../clawsker:81
 msgid "Message List"
 msgstr "Llista de missatges"
 
-#: ../clawsker:82
-msgid "Compose window"
-msgstr "Finestra de redacció"
-
 #: ../clawsker:83
+msgid "Compose window"
+msgstr "Finestra d'escriptura"
+
+#: ../clawsker:84
 msgid "NetworkManager"
 msgstr "Gestor de xarxa"
 
-#: ../clawsker:84
+#: ../clawsker:85
 msgid "Viewing patches"
 msgstr "Pedaços de visualització"
 
 #: ../clawsker:86
+msgid "Master passphrase"
+msgstr "Contrasenya mestra"
+
+#: ../clawsker:88
 msgid "Use detached address book edit dialogue"
 msgstr "Usa un diàleg d'edició de la llibreta d'adreces separat"
 
-#: ../clawsker:87
+#: ../clawsker:89
 msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
@@ -127,20 +131,20 @@ msgstr ""
 "identitat. Si no, s'usa un formulari encastat a la finestra principal de la "
 "llibreta d'adreces."
 
-#: ../clawsker:88
+#: ../clawsker:90
 msgid "Maximum memory for message cache (kB)"
 msgstr "Memòria màxima per a la cau dels missatges (kB)"
 
-#: ../clawsker:89
+#: ../clawsker:91
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
 msgstr ""
 "La memòria màxima per desar els missatges a la memòria cau , en kilobytes."
 
-#: ../clawsker:90
+#: ../clawsker:92
 msgid "Minimun time for cache elements (minutes)"
 msgstr "L'estona mínima per desar elements a la memòria cau (en minuts)"
 
-#: ../clawsker:91
+#: ../clawsker:93
 msgid ""
 "The minimum time in minutes to keep a cache in memory. Caches more recent "
 "than this time will not be freed, even if the memory usage is too high."
@@ -148,36 +152,52 @@ msgstr ""
 "L'estona mínima en minuts per mantenir la cau a la memòria. No s'alliberaran "
 "caus més recents, fins i tot si l'ús de memòria és massa elevat."
 
-#: ../clawsker:92
+#: ../clawsker:94
 msgid "Use NetworkManager"
 msgstr "Usa el NetworkManager"
 
-#: ../clawsker:93
+#: ../clawsker:95
 msgid "Use NetworkManager to switch offline automatically."
 msgstr "Usa el NetworkManager per commutar a fora de línia automàticament."
 
-#: ../clawsker:95
+#: ../clawsker:96
+msgid "Rounds for PBKDF2 function"
+msgstr "Rondes per a la funció PBKDF2"
+
+#: ../clawsker:97
+msgid ""
+"Specify the number of iterations the key derivation function will be applied "
+"on master passphrase computation. Does not modify currently stored "
+"passphrase, only master passphrases computed after changing this value are "
+"affected."
+msgstr ""
+"Especifiqueu el nombre d'iteracions de la funció de derivació de claus que "
+"s'aplicarà en el càlcul contrasenya mestra. No modifica la contrasenya "
+"emmagatzemada en l'actualitat, només afecta les contrasenyes mestres "
+"calculades després de canviar aquest valor."
+
+#: ../clawsker:99
 msgid "Show unread messages with bold font"
 msgstr "Mostra els missatges no llegits en negreta"
 
-#: ../clawsker:96
+#: ../clawsker:100
 msgid "Show unread messages in the Message List using a bold font."
 msgstr "Mostra els missatges no llegits en negreta a la llista de missatges."
 
-#: ../clawsker:97
-msgid "Don't use markup in compose window"
-msgstr "No usis el marcatge a la finestra de redacció"
+#: ../clawsker:101
+msgid "Don't use markup"
+msgstr "No usis el marcatge"
 
-#: ../clawsker:98
+#: ../clawsker:102
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr ""
-"No usis negreta ni cursiva al selector de comptes del diàleg de redacció."
+"No usis negreta ni cursiva al selector de comptes del diàleg d'escriptura."
 
-#: ../clawsker:99
+#: ../clawsker:103
 msgid "Use dotted lines in tree view components"
 msgstr "Usa línies de punts a la visualització de components de vista d'arbre."
 
-#: ../clawsker:100
+#: ../clawsker:104
 msgid ""
 "Use the old dotted line look in the main window tree views (Folder, Message "
 "and other lists) instead of the modern lineless look."
@@ -186,21 +206,21 @@ msgstr ""
 "principal (carpetes, missatges i altres llistes) en comptes de l'aparença "
 "moderna sense línies."
 
-#: ../clawsker:101
+#: ../clawsker:105
 msgid "Enable horizontal scrollbar"
 msgstr "Habilita el desplaçament horitzontal"
 
-#: ../clawsker:102
+#: ../clawsker:106
 msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "Habilita el desplaçament horitzontal a la llista de missatges."
 
-#: ../clawsker:103
+#: ../clawsker:107
 msgid "Display To column instead From column in Sent folder"
 msgstr ""
 "Mostra la columna \"Per a\" en comptes de la columna \"De\" a la carpeta "
 "d'enviats."
 
-#: ../clawsker:104
+#: ../clawsker:108
 msgid ""
 "Display the recipient's email address in a To column of the Sent folder "
 "instead of the originator's one in a From column."
@@ -209,11 +229,11 @@ msgstr ""
 "a\" de la carpeta d'enviats en lloc de l'adreça de l'originador en una "
 "columna \"De\"."
 
-#: ../clawsker:105
+#: ../clawsker:109
 msgid "Folder List scrollbar behaviour"
 msgstr "Comportament del desplaçament a la llista de carpetes"
 
-#: ../clawsker:106
+#: ../clawsker:110
 msgid ""
 "Specify the policy of vertical scrollbar of Folder List: show always, "
 "automatic or hide always."
@@ -221,47 +241,47 @@ msgstr ""
 "Especifiqueu la política del desplaçament vertical de la llista de carpetes: "
 "mostra-ho sempre, automàtic o amaga-ho sempre."
 
-#: ../clawsker:107
+#: ../clawsker:111
 msgid "Show always"
 msgstr "Mostra-ho sempre"
 
-#: ../clawsker:108
+#: ../clawsker:112
 msgid "Automatic"
 msgstr "Automàtic"
 
-#: ../clawsker:109
+#: ../clawsker:113
 msgid "Hide always"
 msgstr "Amaga-ho sempre"
 
-#: ../clawsker:110
+#: ../clawsker:114
 msgid "From column displays"
 msgstr "Visualització de la columna \"De\""
 
-#: ../clawsker:111
+#: ../clawsker:115
 msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
-"address or both"
+"address or both."
 msgstr ""
-"Seleccioneu les dades que es mostren a la columna \"De\" de la llista de "
-"missatges: nom, adreça o ambdós."
+"Selecciona la dades mostrades a la columna \"De\" de la llista de missatges: "
+"nom, adreça o ambdós."
 
-#: ../clawsker:112
+#: ../clawsker:116
 msgid "Name only"
 msgstr "Només el nom"
 
-#: ../clawsker:113
+#: ../clawsker:117
 msgid "Address only"
 msgstr "Només l'adreça"
 
-#: ../clawsker:114
+#: ../clawsker:118
 msgid "Both name and address"
 msgstr "El nom i l'adreça"
 
-#: ../clawsker:115
+#: ../clawsker:119
 msgid "Coloured lines contrast"
 msgstr "Contrast de les línies de color"
 
-#: ../clawsker:116
+#: ../clawsker:120
 msgid ""
 "Specify the value to use when creating alternately coloured lines in tree "
 "view components. The smaller the value, the less visible the difference in "
@@ -271,46 +291,46 @@ msgstr ""
 "alternativament en components de vista d'arbre. Com més baix sigui el valor, "
 "menys visible serà la diferència en l'alternança dels colors de les línies."
 
-#: ../clawsker:117
+#: ../clawsker:121
 msgid "Show cursor"
 msgstr "Mostra el cursor"
 
-#: ../clawsker:118
+#: ../clawsker:122
 msgid "Display the cursor in the Message View."
 msgstr "Mostra el cursor a la visualització del missatge."
 
-#: ../clawsker:119
+#: ../clawsker:123
 msgid "Detachable toolbars"
 msgstr "Barres d'eines desacoblables"
 
-#: ../clawsker:120
+#: ../clawsker:124
 msgid "Show handles in the toolbars."
 msgstr "Mostra nanses a les barres d'eines."
 
-#: ../clawsker:121
+#: ../clawsker:125
 msgid "Use stripes in all tree view components"
 msgstr "Usa ratlles a tots els components de vista d'arbre."
 
-#: ../clawsker:122
+#: ../clawsker:126
 msgid "Enable alternately coloured lines in all tree view components."
 msgstr "Habilita línies de colors alterns en tots els components d'arbre."
 
-#: ../clawsker:123
+#: ../clawsker:127
 msgid "Use stripes in Folder List and Message List"
 msgstr "Usa ratlles a la llista de carpetes i missatges"
 
-#: ../clawsker:124
+#: ../clawsker:128
 msgid "Enable alternately coloured lines in Message List and Folder List."
 msgstr ""
 "Habilita línies de colors alterns a la llista de missatges i a la llista de "
 "carpetes."
 
-#: ../clawsker:125
+#: ../clawsker:129
 msgid "2 lines per Message List item in 3-column layout"
 msgstr ""
-"2 línies per cada element de la llista de missatges al disseny de 3 columnes"
+"2 línies per element de la llista de missatges al disseny de 3 columnes"
 
-#: ../clawsker:126
+#: ../clawsker:130
 msgid ""
 "Spread Message List information over two lines when using the three column "
 "mode."
@@ -318,36 +338,61 @@ msgstr ""
 "Estén la informació de la llista de missatges de més de dues línies quan "
 "s'utilitzi el mode de tres columnes."
 
-#: ../clawsker:127
-msgid "Show compose margin"
-msgstr "Mostra el marge de composició"
+#: ../clawsker:131
+msgid "Show margin"
+msgstr "Mostra el marge"
 
-#: ../clawsker:128
+#: ../clawsker:132
 msgid "Shows a small margin in the Compose View."
 msgstr "Mostra un petit marge a la vista d'escriptura."
 
-#: ../clawsker:129
+#: ../clawsker:133
 msgid "Don't display localized date"
-msgstr "No mostris la data traduïda."
+msgstr "No mostris la data traduïda"
 
-#: ../clawsker:130
-msgid "Toggles localization of date format in Message View"
-msgstr "Commuta la localització del format de la data a la vista de missatge"
+#: ../clawsker:134
+msgid "Toggles localization of date format in Message View."
+msgstr "Commuta la llengua del format de la data a la vista del missatge."
 
-#: ../clawsker:131
+#: ../clawsker:135
 msgid "Zero replacement character"
 msgstr "Caràcter de reemplaçament del zero"
 
-#: ../clawsker:132
-msgid "Replaces '0' with the given character in Folder List"
+#: ../clawsker:136
+msgid "Replaces '0' with the given character in Folder List."
 msgstr ""
-"Reemplaça el \"0\" amb el caràcter proporcionat a la llista de carpetes"
+"Reemplaça el \"0\" amb el caràcter proporcionat a la llista de carpetes."
 
-#: ../clawsker:134
+#: ../clawsker:137
+msgid "Editable headers"
+msgstr "Capçaleres editables"
+
+#: ../clawsker:138
+msgid ""
+"Allows to manually type any value in Compose Window header entries or just "
+"select from the available choices in the associated dropdown list."
+msgstr ""
+"Permet escriure manualment qualsevol valor a la capçalera de la finestra "
+"d'escriptura o simplement seleccioneu una de les opcions disponibles a la "
+"llista desplegable associada."
+
+#: ../clawsker:139
+msgid "Select next message on delete"
+msgstr "Selecciona el missatge següent en esborrar"
+
+#: ../clawsker:140
+msgid ""
+"When deleting a message, toggles between selecting the next one (newer "
+"message) or the previous one (older message)."
+msgstr ""
+"Quan s'esborri un missatge, commuta entre seleccionar-ne el següent "
+"(missatge més recent) o l'anterior (més antic)."
+
+#: ../clawsker:142
 msgid "Drag 'n' drop hover timeout (ms)"
-msgstr "Temps d'espera per arrossegar i deixar (ms)"
+msgstr "Temps d'espera per arrossegar i deixar anar (ms)"
 
-#: ../clawsker:135
+#: ../clawsker:143
 msgid ""
 "Time in milliseconds that will cause a folder tree to expand when the mouse "
 "cursor is held over it during drag and drop."
@@ -356,19 +401,19 @@ msgstr ""
 "el cursor del ratolí es mantingui a sobre durant una acció d'arrossegar i "
 "deixar anar."
 
-#: ../clawsker:136
+#: ../clawsker:144
 msgid "Don't confirm deletions (dangerous!)"
 msgstr "No confirmis les eliminacions (perillós!)"
 
-#: ../clawsker:137
+#: ../clawsker:145
 msgid "Don't ask for confirmation before definitive deletion of emails."
 msgstr "No demanis cap confirmació abans d'eliminar missatges definitivament."
 
-#: ../clawsker:138
+#: ../clawsker:146
 msgid "Respect format=flowed in messages"
 msgstr "Respecta el format=flux als missatges"
 
-#: ../clawsker:139
+#: ../clawsker:147
 msgid ""
 "Respect format=flowed on text/plain message parts. This will cause some "
 "mails to have long lines, but will fix some URLs that would otherwise be "
@@ -378,36 +423,36 @@ msgstr ""
 "provocarà que alguns missatges tinguin línies llargues, però corregirà "
 "alguns URL que d'altra manera s'ajustarien."
 
-#: ../clawsker:140
+#: ../clawsker:148
 msgid "Allow writable temporary files"
 msgstr "Permet els fitxers temporals d'escriptura."
 
-#: ../clawsker:141
+#: ../clawsker:149
 msgid "Saves temporary files when opening attachment with write bit set."
 msgstr ""
 "Desa fitxers temporals quan s'obrin els adjunts amb permís d'escriptura."
 
-#: ../clawsker:142
+#: ../clawsker:150
 msgid "Don't check SSL certificates"
 msgstr "No comprovis els certificats SSL"
 
-#: ../clawsker:143
+#: ../clawsker:151
 msgid "Disables the verification of SSL certificates."
 msgstr "Inhabilita la verificació de certificats SSL."
 
-#: ../clawsker:144
+#: ../clawsker:152
 msgid "Progress bar update step (items)"
-msgstr "Pas per actualitzar de la barra de progrés (ítems)"
+msgstr "Pas per actualitzar la barra de progrés (ítems)"
 
-#: ../clawsker:145
+#: ../clawsker:153
 msgid "Update stepping in progress bars."
 msgstr "Passos per actualitzar la barra de progrés."
 
-#: ../clawsker:146
+#: ../clawsker:154
 msgid "Maximum age when threading by subject (days)"
 msgstr "Antiguitat màxima d'associació per assumpte (dies)"
 
-#: ../clawsker:147
+#: ../clawsker:155
 msgid ""
 "Number of days to include a message in a thread when using \"Thread using "
 "subject in addition to standard headers\"."
@@ -415,11 +460,11 @@ msgstr ""
 "Nombre de dies per incloure un missatge en un fil quan s'usi \"Associa usant "
 "l'assumpte a més de les capçaleres estàndards\"."
 
-#: ../clawsker:148
+#: ../clawsker:156
 msgid "Allow unsafe SSL certificates"
 msgstr "Permet certificats SSL no segurs"
 
-#: ../clawsker:149
+#: ../clawsker:157
 msgid ""
 "Allows Claws Mail to remember multiple SSL certificates for a given server/"
 "port."
@@ -427,29 +472,29 @@ msgstr ""
 "Permet al Claws Mail recordar múltiples certificats SSL per a un port/"
 "servidor concret."
 
-#: ../clawsker:150
+#: ../clawsker:158
 msgid "Force UTF-8 for broken mails"
 msgstr "Força UTF-8 per a missatges malmesos"
 
-#: ../clawsker:151
+#: ../clawsker:159
 msgid "Use UTF-8 encoding for broken mails instead of current locale."
 msgstr ""
 "Usa la codificació UTF-8 per a missatges malmesos en comptes de la llengua "
 "actual."
 
-#: ../clawsker:152
+#: ../clawsker:160
 msgid "Warn on drag 'n' drop"
 msgstr "Avisa en arrossegar i deixar anar."
 
-#: ../clawsker:153
+#: ../clawsker:161
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
 msgstr "Mostra un diàleg de confirmació en arrossegar i deixar anar carpetes."
 
-#: ../clawsker:154
+#: ../clawsker:162
 msgid "Outgoing messages fallback to ASCII"
 msgstr "Els missatges de sortida tenen ASCII com a alternativa."
 
-#: ../clawsker:155
+#: ../clawsker:163
 msgid ""
 "If content allows, ASCII will be used to encode outgoing messages, otherwise "
 "the user-defined encoding is enforced always."
@@ -457,11 +502,11 @@ msgstr ""
 "Si el contingut ho permet, s'usarà ASCII per codificar els missatges de "
 "sortida; si no, sempre s'imposa la codificació definida per l'usuari."
 
-#: ../clawsker:156
+#: ../clawsker:164
 msgid "Primary paste unselects selection"
 msgstr "L'enganxament primari desmarca la selecció"
 
-#: ../clawsker:157
+#: ../clawsker:165
 msgid ""
 "Controls how pasting using middle-click changes the selected text and "
 "insertion point."
@@ -469,378 +514,419 @@ msgstr ""
 "Controla com l'enganxament amb el clic del mig canvia el text seleccionat i "
 "el punt d'inserció."
 
-#: ../clawsker:158
+#: ../clawsker:166
 msgid "Show inline attachments"
 msgstr "Mostra els adjunts encastats"
 
-#: ../clawsker:159
-msgid "Allows hiding inline attachments already shown in mail structure view"
+#: ../clawsker:167
+msgid "Allows hiding inline attachments already shown in mail structure view."
 msgstr ""
-"Permet amagar els adjunts encastats que ja es mostrin a la vista de "
+"Permet amagar fitxers adjunts incorporats que ja es mostren a la vista de "
 "l'estructura del missatge."
 
-#: ../clawsker:160
+#: ../clawsker:168
 msgid "Address search in compose window matches any"
 msgstr "La cerca d'adreces a la finestra d'escriptura coincideix amb qualsevol"
 
-#: ../clawsker:161
+#: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start"
+"only the from the start."
 msgstr ""
-"Quan es completa amb el tabulador, el text de l'adreça coincidirà amb "
-"qualsevol part de la cadena o només amb l'inici."
+"A la compleció del tabulador, el text de l'adreça coincidirà amb qualsevol "
+"part de la cadena o només des de l'inici."
 
-#: ../clawsker:162
+#: ../clawsker:170
 msgid "Folder search in folder selector matches any"
 msgstr "La cerca de carpetes al selector de carpetes coincideix amb qualsevol"
 
-#: ../clawsker:163
+#: ../clawsker:171
 msgid ""
 "On folder name completion text will match any part of the string or only "
-"from the start"
+"from the start."
 msgstr ""
-"Quan es completi el nom d'una carpeta, el text coincidirà amb qualsevol part "
-"de la cadena o només amb l'inici."
+"A la compleció del nom de carpeta, el text coincidirà amb qualsevol part de "
+"la cadena o només des de l'inici."
 
-#: ../clawsker:165
+#: ../clawsker:173
 msgid "X-Mailer header"
 msgstr "Capçalera X-Mailer"
 
-#: ../clawsker:166
+#: ../clawsker:174
 msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr ""
 "El color usat per a la línia d'X-Mailer quan el valor sigui \"Claws Mail\"."
 
-#: ../clawsker:167
+#: ../clawsker:175
 msgid "Error messages"
 msgstr "Missatges d'error"
 
-#: ../clawsker:168
+#: ../clawsker:176
 msgid "Colour for error messages in log window."
 msgstr "Color per als missatges d'error a la finestra de registre."
 
-#: ../clawsker:169
+#: ../clawsker:177
 msgid "Server messages"
 msgstr "Missatges del servidor"
 
-#: ../clawsker:170
+#: ../clawsker:178
 msgid "Colour for messages received from servers in log window."
 msgstr ""
 "Color per als missatges rebuts dels servidors a la finestra de registre."
 
-#: ../clawsker:171
+#: ../clawsker:179
 msgid "Standard messages"
 msgstr "Missatges estàndards"
 
-#: ../clawsker:172
+#: ../clawsker:180
 msgid "Colour for messages in log window."
 msgstr "Color per als missatges a la finestra de registre."
 
-#: ../clawsker:173
+#: ../clawsker:181
 msgid "Client messages"
 msgstr "Missatges del client"
 
-#: ../clawsker:174
+#: ../clawsker:182
 msgid "Colour for messages sent to servers in log window."
 msgstr "Color per als missatges enviats a servidors a la finestra de registre."
 
-#: ../clawsker:175
+#: ../clawsker:183
 msgid "Warnings"
 msgstr "Avisos"
 
-#: ../clawsker:176
+#: ../clawsker:184
 msgid "Colour for warning messages in log window."
 msgstr "Color per als missatges d'avís a la finestra de registre."
 
-#: ../clawsker:178
+#: ../clawsker:186
 msgid "Added lines"
 msgstr "Línies afegides"
 
-#: ../clawsker:179
+#: ../clawsker:187
 msgid "Colour for added lines in patches."
 msgstr "Color per a línies afegides als pedaços."
 
-#: ../clawsker:180
+#: ../clawsker:188
 msgid "Deleted lines"
 msgstr "Línies esborrades"
 
-#: ../clawsker:181
+#: ../clawsker:189
 msgid "Colour for deleted lines in patches."
 msgstr "Color per a les línies esborrades als pedaços."
 
-#: ../clawsker:182
+#: ../clawsker:190
 msgid "Hunk lines"
 msgstr "Línies de capçalera"
 
-#: ../clawsker:183
+#: ../clawsker:191
 msgid "Color for hunk headers in patches."
 msgstr "Color per a les línies de capçalera als pedaços."
 
-#: ../clawsker:185
+#: ../clawsker:193
 msgid "X position"
 msgstr "Posició X"
 
-#: ../clawsker:186
+#: ../clawsker:194
 msgid "X coordinate for window's top-left corner."
 msgstr "Coordenada X per a la cantonada superior esquerra de la finestra."
 
-#: ../clawsker:187
+#: ../clawsker:195
 msgid "Y position"
 msgstr "Posició Y"
 
-#: ../clawsker:188
+#: ../clawsker:196
 msgid "Y coordinate for window's top-left corner."
 msgstr "Coordenada Y per a la cantonada superior esquerra de la finestra."
 
-#: ../clawsker:189
+#: ../clawsker:197
 msgid "Width"
 msgstr "Amplada"
 
-#: ../clawsker:190
+#: ../clawsker:198
 msgid "Window's width in pixels."
 msgstr "Amplada de la finestra en píxels."
 
-#: ../clawsker:191
+#: ../clawsker:199
 msgid "Height"
 msgstr "Alçada"
 
-#: ../clawsker:192
+#: ../clawsker:200
 msgid "Window's height in pixels."
 msgstr "Alçada de la finestra en píxels."
 
-#: ../clawsker:194
+#: ../clawsker:202
 msgid "Maximized"
 msgstr "Maximització"
 
-#: ../clawsker:195
+#: ../clawsker:203
 msgid "Changes window maximized status."
 msgstr "Canvia l'estat maximitzat de la finestra."
 
-#: ../clawsker:196
+#: ../clawsker:204
 msgid "Full-screen"
 msgstr "Pantalla completa"
 
-#: ../clawsker:197
+#: ../clawsker:205
 msgid "Changes full screen status."
 msgstr "Canvia l'estat de pantalla completa."
 
-#: ../clawsker:199
+#: ../clawsker:207
 msgid "Error: "
 msgstr "Error: "
 
-#: ../clawsker:200
+#: ../clawsker:208
 msgid "resource file for Claws Mail was not found."
 msgstr "no es troba el fitxer de configuració del Claws Mail."
 
-#: ../clawsker:201
+#: ../clawsker:209
 msgid "seems Claws Mail is currently running, close it first."
 msgstr "sembla que el Claws Mail ara s'està executant, tanqueu-lo primer."
 
-#: ../clawsker:365
+#: ../clawsker:373
 msgid "Clawsker error"
 msgstr "Error del Clawsker"
 
-#: ../clawsker:1669
+#: ../clawsker:1710
 msgid "Main window"
 msgstr "Finestra principal"
 
-#: ../clawsker:1682
+#: ../clawsker:1723
 msgid "Message window"
 msgstr "Finestra de missatges"
 
-#: ../clawsker:1692
+#: ../clawsker:1733
 msgid "Send window"
 msgstr "Finestra d'enviament"
 
-#: ../clawsker:1697
+#: ../clawsker:1738
 msgid "Receive window"
 msgstr "Finestra de recepció"
 
-#: ../clawsker:1711
+#: ../clawsker:1752
 msgid "Folder window"
 msgstr "Finestra de carpetes"
 
-#: ../clawsker:1716
+#: ../clawsker:1757
 msgid "Folder selection window"
 msgstr "Finestra de selecció de carpetes"
 
-#: ../clawsker:1726
+#: ../clawsker:1767
 msgid "Addressbook main window"
 msgstr "Finestra principal de la llibreta d'adreces"
 
-#: ../clawsker:1731
+#: ../clawsker:1772
 msgid "Edit person window"
 msgstr "Finestra d'edició de persona"
 
-#: ../clawsker:1736
+#: ../clawsker:1777
 msgid "Edit group window"
 msgstr "Finestra d'edició de grup"
 
-#: ../clawsker:1741
+#: ../clawsker:1782
 msgid "Add address window"
 msgstr "Finestra d'addició d'adreça"
 
-#: ../clawsker:1746
+#: ../clawsker:1787
 msgid "Folder select window"
 msgstr "Finestra de selecció de carpeta"
 
-#: ../clawsker:1756
+#: ../clawsker:1797
 msgid "Accounts window"
 msgstr "Finestra de comptes"
 
-#: ../clawsker:1761
+#: ../clawsker:1802
 msgid "Edit account window"
 msgstr "Finestra d'edició de comptes"
 
-#: ../clawsker:1771
+#: ../clawsker:1812
 msgid "Filtering window"
 msgstr "Finestra de filtratge"
 
-#: ../clawsker:1776
+#: ../clawsker:1817
 msgid "Filtering actions window"
 msgstr "Finestra d'accions de filtratge"
 
-#: ../clawsker:1781
+#: ../clawsker:1822
 msgid "Filtering debug window"
 msgstr "Finestra de depuració de filtratge"
 
-#: ../clawsker:1786
+#: ../clawsker:1827
 msgid "Matcher window"
 msgstr "Finestra del selector"
 
-#: ../clawsker:1796
+#: ../clawsker:1837
 msgid "Preferences window"
 msgstr "Finestra de les preferències"
 
-#: ../clawsker:1801
+#: ../clawsker:1842
 msgid "Templates window"
 msgstr "Finestra de les plantilles"
 
-#: ../clawsker:1806
+#: ../clawsker:1847
 msgid "Actions window"
 msgstr "Finestra de les accions"
 
-#: ../clawsker:1811
+#: ../clawsker:1852
 msgid "Tags window"
 msgstr "Finestra de les etiquetes"
 
-#: ../clawsker:1816
+#: ../clawsker:1857
 msgid "Plugins window"
 msgstr "Finestra dels connectors"
 
-#: ../clawsker:1831
+#: ../clawsker:1872
 msgid "Print preview window"
 msgstr "Finestra de previsualització d'impressió"
 
-#: ../clawsker:1836
+#: ../clawsker:1877
 msgid "View source window"
-msgstr "Finestra de font del missatge"
+msgstr "Finestra de visualització de codi font"
 
-#: ../clawsker:1843
+#: ../clawsker:1884
 msgid "Main"
 msgstr "Principal"
 
-#: ../clawsker:1844
+#: ../clawsker:1885
 msgid "Message"
 msgstr "Missatge"
 
-#: ../clawsker:1845
+#: ../clawsker:1886
 msgid "Send/Receive"
 msgstr "Enviament / Recepció"
 
-#: ../clawsker:1846
+#: ../clawsker:1887
 msgid "Folder"
 msgstr "Carpeta"
 
-#: ../clawsker:1848
+#: ../clawsker:1889
 msgid "Accounts"
 msgstr "Comptes"
 
-#: ../clawsker:1849
+#: ../clawsker:1890
 msgid "Filtering"
 msgstr "Filtratge"
 
-#: ../clawsker:1850
+#: ../clawsker:1891
 msgid "Preferences"
 msgstr "Preferències"
 
-#: ../clawsker:1862 ../clawsker:1869
+#: ../clawsker:1903 ../clawsker:1910
 msgid ", built for "
 msgstr ", construït per a "
 
-#: ../clawsker:1863 ../clawsker:1870
+#: ../clawsker:1904 ../clawsker:1911
 msgid ", running with "
 msgstr ", en execució amb "
 
-#: ../clawsker:1875
+#: ../clawsker:1916
 msgid "was not found!"
 msgstr "no s'ha trobat!"
 
-#: ../clawsker:1876
+#: ../clawsker:1917
 msgid "returned version "
 msgstr "versió de resposta "
 
-#: ../clawsker:1886
+#: ../clawsker:1927
 msgid "Syntax:\n"
 msgstr "Sintaxi:\n"
 
-#: ../clawsker:1887
+#: ../clawsker:1928
 msgid "  clawsker [options]\n"
 msgstr "  clawsker [opcions]\n"
 
-#: ../clawsker:1888
+#: ../clawsker:1929
 msgid "Options:\n"
 msgstr "Opcions:\n"
 
-#: ../clawsker:1889
+#: ../clawsker:1930
 msgid "  -h|--help                        Prints this help screen.\n"
 msgstr "  -h|--help                        Imprimeix aquesta pàgina d'ajuda.\n"
 
-#: ../clawsker:1890
+#: ../clawsker:1931
 msgid "  -v|--version                     Prints version infos.\n"
 msgstr ""
 "  -v|--version                     Imprimeix informació de la versió.\n"
 
-#: ../clawsker:1891
+#: ../clawsker:1932
 msgid "  -b|--verbose                     More messages on standard output.\n"
 msgstr ""
 "  -b|--verbose                     Més missatges a la sortida estàndard.\n"
 
-#: ../clawsker:1892
+#: ../clawsker:1933
 msgid ""
 "  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n"
 msgstr ""
 "  -a|--alternate-config-dir <dir>  Usa <dir> com a dir. de config. del Claws "
 "Mail.\n"
 
-#: ../clawsker:1893
+#: ../clawsker:1934
 msgid "  -c|--clawsrc <file>              Uses <file> as full resource name.\n"
 msgstr ""
 "  -c|--clawsrc <file>              Usa <fitxer> com a fitxer de "
 "configuració.\n"
 
-#: ../clawsker:1906
+#: ../clawsker:1947
 msgid "try -h or --help for syntax.\n"
 msgstr "intenteu -h o --help per a la sintaxi.\n"
 
-#: ../clawsker:1909
+#: ../clawsker:1950
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Error a les opcions: {msg}\n"
 
-#: ../clawsker:1921
+#: ../clawsker:1962
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr ""
 "Error: {opt} requireix un valor numèric separat per punts com a argument\n"
 
-#: ../clawsker:1928
+#: ../clawsker:1969
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "Error: '{dir}' no és un directori o no existeix\n"
 
-#: ../clawsker:1937
+#: ../clawsker:1978
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "Error: '{value}' no és un fitxer o no existeix\n"
+
+#~ msgid "Don't use markup in compose window"
+#~ msgstr "No usis el marcatge a la finestra de redacció"
+
+#~ msgid ""
+#~ "Selects the data displayed in the From column of the Message List: name, "
+#~ "address or both"
+#~ msgstr ""
+#~ "Seleccioneu les dades que es mostren a la columna \"De\" de la llista de "
+#~ "missatges: nom, adreça o ambdós."
+
+#~ msgid "Show compose margin"
+#~ msgstr "Mostra el marge de composició"
+
+#~ msgid "Toggles localization of date format in Message View"
+#~ msgstr ""
+#~ "Commuta la localització del format de la data a la vista de missatge"
+
+#~ msgid "Replaces '0' with the given character in Folder List"
+#~ msgstr ""
+#~ "Reemplaça el \"0\" amb el caràcter proporcionat a la llista de carpetes"
+
+#~ msgid ""
+#~ "Allows hiding inline attachments already shown in mail structure view"
+#~ msgstr ""
+#~ "Permet amagar els adjunts encastats que ja es mostrin a la vista de "
+#~ "l'estructura del missatge."
+
+#~ msgid ""
+#~ "On Tab-key completion, address text will match any part of the string or "
+#~ "only the from the start"
+#~ msgstr ""
+#~ "Quan es completa amb el tabulador, el text de l'adreça coincidirà amb "
+#~ "qualsevol part de la cadena o només amb l'inici."
+
+#~ msgid ""
+#~ "On folder name completion text will match any part of the string or only "
+#~ "from the start"
+#~ msgstr ""
+#~ "Quan es completi el nom d'una carpeta, el text coincidirà amb qualsevol "
+#~ "part de la cadena o només amb l'inici."
