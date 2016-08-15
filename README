@@ -3,7 +3,7 @@ Clawsker - A Claws Mail Tweaker
 -------------------------------
 
 Clawsker is a Perl-GTK2 applet to edit hidden preferences for Claws Mail,
-and to do it in a safe and user friendly way, preventing users from raw 
+and to do it in a safe and user friendly way, preventing users from raw
 editing of configuration files.
 
 Claws Mail is a fast and lightweight Mail User Agent by the Claws Mail Team.
@@ -27,7 +27,7 @@ Dependencies
 
   Perl - http://www.perl.com (>= 5.8)
   GTK+2 bindings for Perl - http://gtk2-perl.sourceforge.net (>= 1.161) built
-  with GTK+ >= 2.12 (lower GTK+ versions do not support widget tooltips and 
+  with GTK+ >= 2.12 (lower GTK+ versions do not support widget tooltips and
   a warning is issued).
   Locale::gettext - http://search.cpan.org/~pvandry/gettext-1.05/ (>= 1.05)
   Claws Mail - http://www.claws-mail.org (>= 3.1.0)
@@ -60,25 +60,11 @@ Optionally you can provide also a DESTDIR as a root tree for the installation.
 Contributing
 ------------
 
-Patches, bug fixes, and specially, new translations (or updates to the 
-existing ones) are welcome. Development uses git as VCS and takes place on
-http://github.com/mones/clawsker/.
+Patches, bug fixes, and specially, new translations (or updates to the
+existing ones) are welcome. Development uses git as VCS and takes place
+on http://github.com/mones/clawsker/.
 
-To create a new translation just change to 'po' directory, copy 'clawsker.pot'
-into 'xx.po' or 'xx_YY.po',  and fill the empty strings and placeholder values. 
-The 'xx' is your language code (e.g.: 'en' for English, 'fr' for French, etc.)
-and, optionally, 'YY' defines your country variant (e.g.: 'de_CH' for German
-variant in Switzerland). Country should be used only if your translation is
-really specific to that location, otherwise, and specially for new languages,
-try use the generic language (you can always submit a specific one later).
-
-Once finished you can test your new translation by adding your 'xx' or 'xx_YY'
-code to the LINGUAS variable in Makefile and running make. A new .mo file
-with the same name of your .po file should be created if everything is right.
-
-To update an existing translation just type 'make xx.pox' or 'make xx_YY.pox'
-and update the new .pox file created, copy the .pox file to the .po file and
-test it as above (no need to modify the Makefile this time).
+Translators please read po/README file for details about translations.
 
 Bugs
 ----

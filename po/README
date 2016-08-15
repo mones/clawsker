@@ -1,0 +1,64 @@
+
+Translating Clawsker - A Claws Mail Tweaker
+-------------------------------------------
+
+If you want to contribute a translation or update send it directly to
+me: ricardo@mones.org
+
+If you have questions or just want to get in touch with other
+translators of the project you can subscribe to the Claws Mail
+translators' mailing list:
+http://lists.claws-mail.org/cgi-bin/mailman/listinfo/translators
+
+New translations
+~~~~~~~~~~~~~~~~
+
+To create a new translation just change to 'po' directory, copy the
+'clawsker.pot' file into 'xx.po' or 'xx_YY.po', and fill the empty
+strings and placeholder values (strings in CAPS). See how is done
+in other translations for example.
+
+The pot file can be obtained from a git clone or a release tarball.
+
+The 'xx' is your language code (e.g.: 'en' for English, 'fr' for
+French, etc.) and, optionally, 'YY' defines your country variant
+(e.g.: 'de_CH' for German variant in Switzerland).
+
+Country should be used only if your translation is really specific to
+that location, otherwise, and specially for new languages, try use the
+generic language (you can always submit a specific one later).
+
+Updating existing translation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To update an existing translation just type 'make xx.pox' or 'make
+xx_YY.pox' to merge changes in pot file.
+
+Update the new .pox file created and copy the .pox file into
+the .po file.
+
+If you intend to update a translation made by other and it has been
+recently updated it's probably a good idea to contact first with last
+translator.
+
+Testing a translation
+~~~~~~~~~~~~~~~~~~~~~
+
+Once finished the new translation or the update you should test your
+translation.
+
+New translations need adding your 'xx' or 'xx_YY' code to the LINGUAS
+variable in Makefile. Existing translation already have it.
+
+Then type 'make'. A new .mo file with the same name of your .po file
+should be created if everything is right.
+
+Translations not maintained
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a translation is not updated in several releases and the number of
+translated strings drops below certain level it will be moved to the
+directory 'po/unmaint'. Check there before making a new translation.
+
+These translations will be also included in release tarballs but won't
+be built or installed.
