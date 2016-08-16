@@ -465,7 +465,7 @@ msgstr "Adressesøk i komponeringsvindu matcher alle"
 #: ../clawsker:161
 msgid ""
 "On Tab-key completion, address text will match any part of the string or only "
-"the from the start"
+"from the start"
 msgstr ""
 "Ved Tab-komplettering kommer adresse-teksten til å matche enhver del av "
 "strengen eller bare fra begynnelsen"

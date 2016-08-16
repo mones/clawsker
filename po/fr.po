@@ -500,7 +500,7 @@ msgstr ""
 #: ../clawsker:151
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start"
+"only from the start"
 msgstr ""
 "La complétion utilisant le carnet d'adresses trouvera non seulement les "
 "adresses qui commencent par ce qui est saisi mais aussi celles qui "

@@ -537,7 +537,7 @@ msgstr ""
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start."
+"only from the start."
 msgstr ""
 "Ao usar a completação por Tab, o texto digitado poderá corresponder a "
 "qualquer parte do endereço ou somente ao início."

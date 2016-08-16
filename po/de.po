@@ -514,7 +514,7 @@ msgstr ""
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start."
+"only from the start."
 msgstr ""
 "Bei Autovervollständigung im Adressfeld des \"Verfassen\"-Fensters "
 "werden Treffer auch innerhalb von Adressen und nicht "

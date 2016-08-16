@@ -528,7 +528,7 @@ msgstr ""
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start."
+"only from the start."
 msgstr ""
 "Cuando se completa con el tabulador, el texto de la dirección coincidirá con "
 "cualquier parte de la cadena o sólo con el inicio."

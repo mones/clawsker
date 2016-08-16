@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: clawsker 0.7.14\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-08-07 01:36+0200\n"
+"POT-Creation-Date: 2016-08-16 11:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -472,7 +472,7 @@ msgstr ""
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or only "
-"the from the start."
+"from the start."
 msgstr ""
 
 #: ../clawsker:170

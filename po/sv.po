@@ -516,7 +516,7 @@ msgstr "Adresssökning i \"Skriv meddelande\"-fönster matchar vilken som helst"
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start."
+"only from the start."
 msgstr ""
 "Vid komplettering via Tab-tangenten kommer addresstexten att matcha vilken "
 "del av strängen som helst, eller bara från början."

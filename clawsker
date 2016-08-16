@@ -166,7 +166,7 @@ sub _ {
     l_beh_inline_at => _('Show inline attachments'),
     h_beh_inline_at => _('Allows hiding inline attachments already shown in mail structure view.'),
     l_beh_addr_swc => _('Address search in compose window matches any'),
-    h_beh_addr_swc => _('On Tab-key completion, address text will match any part of the string or only the from the start.'),
+    h_beh_addr_swc => _('On Tab-key completion, address text will match any part of the string or only from the start.'),
     l_beh_fold_swc => _('Folder search in folder selector matches any'),
     h_beh_fold_swc => _('On folder name completion text will match any part of the string or only from the start.'),
 

@@ -522,7 +522,7 @@ msgstr "Adres zoeken in opstelvenster komt overeen met alles"
 #: ../clawsker:169
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
-"only the from the start."
+"only from the start."
 msgstr ""
 "Met Tab-toets aanvullen, moet de adres-tekst overeenkomen met elk deel van "
 "de regel of alleen met het begin."
