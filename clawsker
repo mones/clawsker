@@ -1005,7 +1005,7 @@ sub new_gui_page() {
     addr_swc => [
         'address_search_wildcard',
         $xl::s{l_beh_addr_swc},
-        $xl::s{h_beh_addr_sw1},
+        $xl::s{h_beh_addr_swc},
         'bool',
         '3.9.3.18',
         '0',
@@ -1014,7 +1014,7 @@ sub new_gui_page() {
     fold_swc => [
         'folder_search_wildcard',
         $xl::s{l_beh_fold_swc},
-        $xl::s{h_beh_fold_sw1},
+        $xl::s{h_beh_fold_swc},
         'bool',
         '3.9.3.18',
         '0',
