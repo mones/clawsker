@@ -1,3 +1,14 @@
+0.7.14:
+  - Use xz compression format in release tarball
+  - Support hidden preferences 'next_on_delete' (since Claws Mail
+    3.13.1) and 'master_passphrase_pbkdf2_rounds' (since 3.14.0)
+  - Added application icon and desktop file
+  - Translations:
+    • New: German, Catalan and Turkish
+    • Updated: Dutch, Brazilian Portuguese, Swedish, French and Spanish
+    • Dropped: Serbian latin and Serbian cyrillic
+  - Added translators README and other minor fixes, see git log
+
 0.7.13:
   - New Norwegian Bokmål translation
   - Honor TMPDIR environment variable
