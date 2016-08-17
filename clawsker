@@ -14,6 +14,7 @@
 
 binmode STDOUT, ":encoding(utf8)";
 
+use 5.010_000;
 use strict;
 use utf8;
 use Glib qw(TRUE FALSE);
@@ -466,8 +467,10 @@ sub new_text_box_for_int {
     my $glabel = Gtk2::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
+    my $value = $HPVALUE{$name};
+    $value //= $type[1];
     $gentry->set_numeric (TRUE);
-    $gentry->set_value ($HPVALUE{$name});
+    $gentry->set_value ($value);
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
