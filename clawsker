@@ -386,16 +386,12 @@ sub claws_is_running {
 sub check_claws_not_running {
     my $tmpdir = (defined $ENV{TMPDIR})? $ENV{TMPDIR}: '/tmp';
     $tmpdir = '/tmp' if ($tmpdir eq '');
-    my $socket = (not $ALTCONFIGDIR)? $tmpdir: $CONFIGDIR;
-    $socket .= "/claws-mail-$<";
-    -S $socket and return claws_is_running ();
-    # since 3.9.0cvs36
     my $lockdir = "$tmpdir/claws-mail-$<";
     -d $lockdir and do { 
-	$_ = $CONFIGDIR;
-	s/\/$//;
-        $socket = "$lockdir/" . md5_hex ($_);
-	-S $socket and return claws_is_running ();
+        $_ = $CONFIGDIR;
+        s/\/$//;
+        my $socket = "$lockdir/" . md5_hex ($_);
+        -S $socket and return claws_is_running ();
     };
     return TRUE;
 }
