@@ -508,12 +508,12 @@ sub new_text_box_for_nchar($$$) {
     return $hbox;
 }
 
-sub new_color_button_for {
-    my ($hash, $key) = @_;
+sub new_color_button_for($$$) {
+    my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $value = $HPVALUE{$name};
+    my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     my $col = gdk_color_from_str ($value);
     my $hbox = Gtk2::HBox->new (FALSE, 5);
@@ -524,7 +524,7 @@ sub new_color_button_for {
     $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
             my ($w, $e) = @_;
-            handle_color_value ($w, $e, \$HPVALUE{$name});
+            handle_color_value ($w, $e, \$$vhash{$name});
         });
     set_widget_hint ($button, $$hash{$key}[DESC]);
     set_widget_sens ($button, $$hash{$key}[CMVER]);
@@ -1156,21 +1156,21 @@ sub new_colours_page() {
     return new_vbox_pack (
                new_subpage_frame (
                    new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'emphasis')),
+                       new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE)),
                    $xl::s{msgview_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'log_err'),
-                       new_color_button_for (\%pr::col, 'log_in'),
-                       new_color_button_for (\%pr::col, 'log_msg'),
-                       new_color_button_for (\%pr::col, 'log_out'),
-                       new_color_button_for (\%pr::col, 'log_warn')),
+                       new_color_button_for (\%pr::col, 'log_err', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'log_in', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'log_msg', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'log_out', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'log_warn', \%HPVALUE)),
                    $xl::s{log_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'diff_add'),
-                       new_color_button_for (\%pr::col, 'diff_del'),
-                       new_color_button_for (\%pr::col, 'diff_hunk')),
+                       new_color_button_for (\%pr::col, 'diff_add', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'diff_del', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'diff_hunk', \%HPVALUE)),
                    $xl::s{diff_frame}, 'not-packed')
            );
 }
