@@ -481,8 +481,8 @@ sub new_text_box_for_int {
     return $hbox;
 }
 
-sub new_text_box_for_nchar {
-    my ($hash, $key) = @_;
+sub new_text_box_for_nchar($$$) {
+    my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen
@@ -491,13 +491,13 @@ sub new_text_box_for_nchar {
     my $gentry = Gtk2::Entry->new ();
     $gentry->set_max_length($type[2]) if defined ($type[2]);
     $gentry->set_width_chars(int ($type[2]) + 2) if defined ($type[2]);
-    my $value = $HPVALUE{$name};
+    my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_text ($value);
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('key-release-event' => sub {
             my ($w, $e) = @_;
-            handle_nchar_value ($w, $e, \$HPVALUE{$name}, $type[1]);
+            handle_nchar_value ($w, $e, \$$vhash{$name}, $type[1]);
         });
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
@@ -845,7 +845,7 @@ sub new_gui_page() {
 
     my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines');
     my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d');
-    my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char');
+    my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char', \%HPVALUE);
 
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (
