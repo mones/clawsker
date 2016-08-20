@@ -430,20 +430,20 @@ sub set_widget_sens {
 
 # graphic element creation 
 
-sub new_check_button_for {
-    my ($hash, $key) = @_;
+sub new_check_button_for($$$) {
+    my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
     $$hash{$key}[GUI] = $cb;
-    my $value = $HPVALUE{$name};
+    my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $cb->set_active ($value eq '1');
     $cb->signal_connect (clicked => sub {
             my ($w, $e) = @_;
-            handle_bool_value ($w, $e, \$HPVALUE{$name});
+            handle_bool_value ($w, $e, \$$vhash{$name});
         });
     set_widget_hint ($cb, $$hash{$key}[DESC]);
     set_widget_sens ($cb, $$hash{$key}[CMVER]);
@@ -656,7 +656,7 @@ sub new_other_page() {
     return new_vbox_pack (
                new_subpage_frame (
                    new_vbox_pack (
-                       new_check_button_for(\%pr::oth, 'use_dlg')),
+                       new_check_button_for(\%pr::oth, 'use_dlg', \%HPVALUE)),
                    $xl::s{ab_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
@@ -665,7 +665,7 @@ sub new_other_page() {
                    $xl::s{mem_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
-                       new_check_button_for(\%pr::oth, 'use_netm')),
+                       new_check_button_for(\%pr::oth, 'use_netm', \%HPVALUE)),
                    $xl::s{netm_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
@@ -843,44 +843,44 @@ sub new_gui_page() {
     my $gf = Gtk2::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
-    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines');
-    my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d');
+    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines', \%HPVALUE);
+    my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d', \%HPVALUE);
     my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char', \%HPVALUE);
 
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'strip_all'),
-                             new_check_button_for (\%pr::gui, 'strip_sum'),
+                             new_check_button_for (\%pr::gui, 'strip_all', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'strip_sum', \%HPVALUE),
                              new_text_box_for_int (\%pr::gui, 'strip_off')),
                          $xl::s{stripes_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'b_unread'),
-                             new_check_button_for (\%pr::gui, 'swp_from'),
-                             new_check_button_for (\%pr::gui, 'two_linev'),
-                             new_check_button_for (\%pr::gui, 'next_del'),
+                             new_check_button_for (\%pr::gui, 'b_unread', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'swp_from', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'two_linev', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'next_del', \%HPVALUE),
                              new_selection_box_for (\%pr::gui, 'from_show')),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
                          new_hbox_pack (
-                             new_check_button_for (\%pr::gui, 'cursor_v'),
-                             new_check_button_for (\%pr::gui, 'mview_date')),
+                             new_check_button_for (\%pr::gui, 'cursor_v', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'mview_date', \%HPVALUE)),
                          $xl::s{mview_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
                          new_hbox_pack (
-                             new_check_button_for (\%pr::gui, 'no_markup'),
-                             new_check_button_for (\%pr::gui, 'margin_co'),
-                             new_check_button_for (\%pr::gui, 'type_any')),
+                             new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE),
+                             new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE)),
                          $xl::s{compo_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'h_scroll'),
+                             new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE),
                              new_selection_box_for (\%pr::gui, 'v_scroll')),
                          $xl::s{sbar_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
@@ -1037,32 +1037,32 @@ sub new_behaviour_page() {
     $bf->pack_start (new_subpage_frame (
                          new_vbox_pack (
                              new_text_box_for_int (\%pr::beh, 'hover_t'),
-                             new_check_button_for (\%pr::beh, 'warn_dnd')),
+                             new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE)),
                          $xl::s{dnd_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start (new_subpage_frame (
                          new_hbox_pack (
-                             new_check_button_for (\%pr::beh, 'skip_ssl'),
-                             new_check_button_for (\%pr::beh, 'unsafe_ssl')),
+                             new_check_button_for (\%pr::beh, 'skip_ssl', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'unsafe_ssl', \%HPVALUE)),
                          $xl::s{ssl_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
     $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
     $bf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_check_button_for (\%pr::beh, 'flowed'),
-                             new_check_button_for (\%pr::beh, 'parts_rw'),
-                             new_check_button_for (\%pr::beh, 'use_utf8'),
-                             new_check_button_for (\%pr::beh, 'dangerous'),
-                             new_check_button_for (\%pr::beh, 'out_ascii'),
-                             new_check_button_for (\%pr::beh, 'pp_unsel'),
-                             new_check_button_for (\%pr::beh, 'inline_at')),
+                             new_check_button_for (\%pr::beh, 'flowed', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'parts_rw', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'use_utf8', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'dangerous', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'out_ascii', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'pp_unsel', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE)),
                          $xl::s{msgs_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_check_button_for (\%pr::beh, 'addr_swc'),
-                             new_check_button_for (\%pr::beh, 'fold_swc')),
+                             new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'fold_swc', \%HPVALUE)),
                          $xl::s{swc_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     return $bf;
@@ -1710,8 +1710,8 @@ sub new_winpos_subpage_main() {
                        new_text_box_for_int (\%pr::win, 'main_w'),
                        new_text_box_for_int (\%pr::win, 'main_h')),
                    new_vbox_pack (
-                       new_check_button_for (\%pr::win, 'main_fs'),
-                       new_check_button_for (\%pr::win, 'main_mx'))),
+                       new_check_button_for (\%pr::win, 'main_fs', \%HPVALUE),
+                       new_check_button_for (\%pr::win, 'main_mx', \%HPVALUE))),
                _('Main window')
            );
 }
