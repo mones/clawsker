@@ -452,8 +452,8 @@ sub new_check_button_for($$$) {
     return $hbox;
 }
 
-sub new_text_box_for_int {
-    my ($hash, $key) = @_;
+sub new_text_box_for_int($$$) {
+    my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]);
@@ -463,14 +463,14 @@ sub new_text_box_for_int {
     my $glabel = Gtk2::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
-    my $value = $HPVALUE{$name};
+    my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_numeric (TRUE);
     $gentry->set_value ($value);
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
-            handle_int_value ($w, $e, \$HPVALUE{$name});
+            handle_int_value ($w, $e, \$$vhash{$name});
         });
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
@@ -660,8 +660,8 @@ sub new_other_page() {
                    $xl::s{ab_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
-                       new_text_box_for_int(\%pr::oth, 'max_use'),
-                       new_text_box_for_int(\%pr::oth, 'min_time')),
+                       new_text_box_for_int(\%pr::oth, 'max_use', \%HPVALUE),
+                       new_text_box_for_int(\%pr::oth, 'min_time', \%HPVALUE)),
                    $xl::s{mem_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
@@ -669,7 +669,7 @@ sub new_other_page() {
                    $xl::s{netm_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
-                       new_text_box_for_int(\%pr::oth, 'mp_rounds')),
+                       new_text_box_for_int(\%pr::oth, 'mp_rounds', \%HPVALUE)),
                    $xl::s{mpass_frame}, 'not-packed')
            );
 }
@@ -851,7 +851,7 @@ sub new_gui_page() {
                          new_vbox_pack (
                              new_check_button_for (\%pr::gui, 'strip_all', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'strip_sum', \%HPVALUE),
-                             new_text_box_for_int (\%pr::gui, 'strip_off')),
+                             new_text_box_for_int (\%pr::gui, 'strip_off', \%HPVALUE)),
                          $xl::s{stripes_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
@@ -1031,12 +1031,12 @@ sub new_behaviour_page() {
     my $bf = Gtk2::VBox->new (FALSE, 5);
     $bf->set_border_width (PAGE_SPC);
 
-    my $tb_up_step = new_text_box_for_int (\%pr::beh, 'up_step');
-    my $tb_thread_a = new_text_box_for_int (\%pr::beh, 'thread_a');
+    my $tb_up_step = new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE);
+    my $tb_thread_a = new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE);
 
     $bf->pack_start (new_subpage_frame (
                          new_vbox_pack (
-                             new_text_box_for_int (\%pr::beh, 'hover_t'),
+                             new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE),
                              new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE)),
                          $xl::s{dnd_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
@@ -1704,11 +1704,11 @@ sub new_winpos_subpage_main() {
     return new_subpage_frame (
                new_vbox_pack_compact (
                    new_vbox_pack (
-                       new_text_box_for_int (\%pr::win, 'main_x'),
-                       new_text_box_for_int (\%pr::win, 'main_y')),
+                       new_text_box_for_int (\%pr::win, 'main_x', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'main_y', \%HPVALUE)),
                    new_hbox_pack (
-                       new_text_box_for_int (\%pr::win, 'main_w'),
-                       new_text_box_for_int (\%pr::win, 'main_h')),
+                       new_text_box_for_int (\%pr::win, 'main_w', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'main_h', \%HPVALUE)),
                    new_vbox_pack (
                        new_check_button_for (\%pr::win, 'main_fs', \%HPVALUE),
                        new_check_button_for (\%pr::win, 'main_mx', \%HPVALUE))),
@@ -1720,11 +1720,11 @@ sub new_winpos_subpage_msgs() {
     return new_subpage_frame (
                new_vbox_pack_compact (
                    new_vbox_pack (
-                       new_text_box_for_int (\%pr::win, 'msgs_x'),
-                       new_text_box_for_int (\%pr::win, 'msgs_y')),
+                       new_text_box_for_int (\%pr::win, 'msgs_x', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'msgs_y', \%HPVALUE)),
                    new_hbox_pack (
-                       new_text_box_for_int (\%pr::win, 'msgs_w'),
-                       new_text_box_for_int (\%pr::win, 'msgs_h'))),
+                       new_text_box_for_int (\%pr::win, 'msgs_w', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'msgs_h', \%HPVALUE))),
                _('Message window')
            );
 }
@@ -1733,13 +1733,13 @@ sub new_winpos_subpage_sendrecv() {
     return new_vbox_pack (
                new_subpage_frame (
                    new_hbox_pack (
-                       new_text_box_for_int (\%pr::win, 'send_w'),
-                       new_text_box_for_int (\%pr::win, 'send_h')),
+                       new_text_box_for_int (\%pr::win, 'send_w', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'send_h', \%HPVALUE)),
                    _('Send window'), 'not-packed'),
                new_subpage_frame (
                    new_hbox_pack (
-                       new_text_box_for_int (\%pr::win, 'recv_w'),
-                       new_text_box_for_int (\%pr::win, 'recv_h')),
+                       new_text_box_for_int (\%pr::win, 'recv_w', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'recv_h', \%HPVALUE)),
                    _('Receive window'), 'not-packed')
            );
 }
@@ -1749,16 +1749,16 @@ sub new_winpos_subpage_fold() {
                new_subpage_frame (
                    new_vbox_pack_compact (
                        new_vbox_pack (
-                            new_text_box_for_int (\%pr::win, 'fold_x'),
-                            new_text_box_for_int (\%pr::win, 'fold_y')),
+                            new_text_box_for_int (\%pr::win, 'fold_x', \%HPVALUE),
+                            new_text_box_for_int (\%pr::win, 'fold_y', \%HPVALUE)),
                        new_hbox_pack (
-                           new_text_box_for_int (\%pr::win, 'fold_w'),
-                           new_text_box_for_int (\%pr::win, 'fold_h'))),
+                           new_text_box_for_int (\%pr::win, 'fold_w', \%HPVALUE),
+                           new_text_box_for_int (\%pr::win, 'fold_h', \%HPVALUE))),
                    _('Folder window'), 'not-packed'),
                new_subpage_frame (
                    new_hbox_pack (
-                       new_text_box_for_int (\%pr::win, 'fsel_w'),
-                       new_text_box_for_int (\%pr::win, 'fsel_h')),
+                       new_text_box_for_int (\%pr::win, 'fsel_w', \%HPVALUE),
+                       new_text_box_for_int (\%pr::win, 'fsel_h', \%HPVALUE)),
                    _('Folder selection window'), 'not-packed')
            );
 }
@@ -1767,28 +1767,28 @@ sub new_winpos_subpage_addrbook() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'addr_w'),
-                          new_text_box_for_int (\%pr::win, 'addr_h')),
+                          new_text_box_for_int (\%pr::win, 'addr_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'addr_h', \%HPVALUE)),
                      _('Addressbook main window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'adep_w'),
-                          new_text_box_for_int (\%pr::win, 'adep_h')),
+                          new_text_box_for_int (\%pr::win, 'adep_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'adep_h', \%HPVALUE)),
                      _('Edit person window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'adeg_w'),
-                          new_text_box_for_int (\%pr::win, 'adeg_h')),
+                          new_text_box_for_int (\%pr::win, 'adeg_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'adeg_h', \%HPVALUE)),
                      _('Edit group window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'adda_w'),
-                          new_text_box_for_int (\%pr::win, 'adda_h')),
+                          new_text_box_for_int (\%pr::win, 'adda_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'adda_h', \%HPVALUE)),
                      _('Add address window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'addf_w'),
-                          new_text_box_for_int (\%pr::win, 'addf_h')),
+                          new_text_box_for_int (\%pr::win, 'addf_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'addf_h', \%HPVALUE)),
                      _('Folder select window'), 'not-packed')
            );
 }
@@ -1797,13 +1797,13 @@ sub new_winpos_subpage_accounts() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'acco_w'),
-                          new_text_box_for_int (\%pr::win, 'acco_h')),
+                          new_text_box_for_int (\%pr::win, 'acco_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'acco_h', \%HPVALUE)),
                      _('Accounts window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'acce_w'),
-                          new_text_box_for_int (\%pr::win, 'acce_h')),
+                          new_text_box_for_int (\%pr::win, 'acce_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'acce_h', \%HPVALUE)),
                      _('Edit account window'), 'not-packed')
            );
 }
@@ -1812,23 +1812,23 @@ sub new_winpos_subpage_filtering() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'filt_w'),
-                          new_text_box_for_int (\%pr::win, 'filt_h')),
+                          new_text_box_for_int (\%pr::win, 'filt_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'filt_h', \%HPVALUE)),
                      _('Filtering window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'fila_w'),
-                          new_text_box_for_int (\%pr::win, 'fila_h')),
+                          new_text_box_for_int (\%pr::win, 'fila_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'fila_h', \%HPVALUE)),
                      _('Filtering actions window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'fild_w'),
-                          new_text_box_for_int (\%pr::win, 'fild_h')),
+                          new_text_box_for_int (\%pr::win, 'fild_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'fild_h', \%HPVALUE)),
                      _('Filtering debug window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'matc_w'),
-                          new_text_box_for_int (\%pr::win, 'matc_h')),
+                          new_text_box_for_int (\%pr::win, 'matc_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'matc_h', \%HPVALUE)),
                      _('Matcher window'), 'not-packed')
            );
 }
@@ -1837,28 +1837,28 @@ sub new_winpos_subpage_prefs() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'pref_w'),
-                          new_text_box_for_int (\%pr::win, 'pref_h')),
+                          new_text_box_for_int (\%pr::win, 'pref_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'pref_h', \%HPVALUE)),
                      _('Preferences window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'temp_w'),
-                          new_text_box_for_int (\%pr::win, 'temp_h')),
+                          new_text_box_for_int (\%pr::win, 'temp_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'temp_h', \%HPVALUE)),
                      _('Templates window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'acti_w'),
-                          new_text_box_for_int (\%pr::win, 'acti_h')),
+                          new_text_box_for_int (\%pr::win, 'acti_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'acti_h', \%HPVALUE)),
                      _('Actions window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'tags_w'),
-                          new_text_box_for_int (\%pr::win, 'tags_h')),
+                          new_text_box_for_int (\%pr::win, 'tags_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'tags_h', \%HPVALUE)),
                      _('Tags window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'plug_w'),
-                          new_text_box_for_int (\%pr::win, 'plug_h')),
+                          new_text_box_for_int (\%pr::win, 'plug_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'plug_h', \%HPVALUE)),
                      _('Plugins window'), 'not-packed')
            );
 }
@@ -1867,18 +1867,18 @@ sub new_winpos_subpage_misc() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'logw_w'),
-                          new_text_box_for_int (\%pr::win, 'logw_h')),
+                          new_text_box_for_int (\%pr::win, 'logw_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'logw_h', \%HPVALUE)),
                      _('Log window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'prin_w'),
-                          new_text_box_for_int (\%pr::win, 'prin_h')),
+                          new_text_box_for_int (\%pr::win, 'prin_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'prin_h', \%HPVALUE)),
                      _('Print preview window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'sour_w'),
-                          new_text_box_for_int (\%pr::win, 'sour_h')),
+                          new_text_box_for_int (\%pr::win, 'sour_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'sour_h', \%HPVALUE)),
                      _('View source window'), 'not-packed')
            );
 }
