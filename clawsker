@@ -535,8 +535,8 @@ sub new_color_button_for($$$) {
     return $hbox;
 }
 
-sub new_selection_box_for {
-    my ($hash, $key) = @_;
+sub new_selection_box_for($$$) {
+    my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
@@ -551,9 +551,9 @@ sub new_selection_box_for {
     }
     $combo->signal_connect ('changed' => sub {
             my ($w, $e) = @_;
-            handle_selection_value ($w, $e, \$HPVALUE{$name});
+            handle_selection_value ($w, $e, \$$vhash{$name});
         });
-    my $value = $HPVALUE{$name};
+    my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $combo->set_active ($value);
     set_widget_hint ($combo, $$hash{$key}[DESC]);
@@ -860,7 +860,7 @@ sub new_gui_page() {
                              new_check_button_for (\%pr::gui, 'swp_from', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'two_linev', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'next_del', \%HPVALUE),
-                             new_selection_box_for (\%pr::gui, 'from_show')),
+                             new_selection_box_for (\%pr::gui, 'from_show', \%HPVALUE)),
                          $xl::s{mlist_frame}, 'not-packed'), 
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
@@ -881,7 +881,7 @@ sub new_gui_page() {
     $gf->pack_start (new_subpage_frame (
                          new_vbox_pack (
                              new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE),
-                             new_selection_box_for (\%pr::gui, 'v_scroll')),
+                             new_selection_box_for (\%pr::gui, 'v_scroll', \%HPVALUE)),
                          $xl::s{sbar_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($tb_zero_char, FALSE, FALSE, 0);
