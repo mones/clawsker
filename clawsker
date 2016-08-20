@@ -438,9 +438,9 @@ sub new_check_button_for {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
     $$hash{$key}[GUI] = $cb;
-    if (defined ($HPVALUE{$name})) {
-        $cb->set_active ($HPVALUE{$name} eq '1');
-    }
+    my $value = $HPVALUE{$name};
+    $value //= $$hash{$key}[CMDEF];
+    $cb->set_active ($value eq '1');
     $cb->signal_connect (clicked => sub {
             my ($w, $e) = @_;
             handle_bool_value ($w, $e, \$HPVALUE{$name});
@@ -464,7 +464,7 @@ sub new_text_box_for_int {
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
     my $value = $HPVALUE{$name};
-    $value //= $type[1];
+    $value //= $$hash{$key}[CMDEF];
     $gentry->set_numeric (TRUE);
     $gentry->set_value ($value);
     $$hash{$key}[GUI] = $gentry;
@@ -491,7 +491,9 @@ sub new_text_box_for_nchar {
     my $gentry = Gtk2::Entry->new ();
     $gentry->set_max_length($type[2]) if defined ($type[2]);
     $gentry->set_width_chars(int ($type[2]) + 2) if defined ($type[2]);
-    $gentry->set_text ($HPVALUE{$name});
+    my $value = $HPVALUE{$name};
+    $value //= $$hash{$key}[CMDEF];
+    $gentry->set_text ($value);
     $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('key-release-event' => sub {
             my ($w, $e) = @_;
@@ -511,7 +513,9 @@ sub new_color_button_for {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $col = gdk_color_from_str ($HPVALUE{$name});
+    my $value = $HPVALUE{$name};
+    $value //= $$hash{$key}[CMDEF];
+    my $col = gdk_color_from_str ($value);
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $button = Gtk2::ColorButton->new_with_color ($col);
@@ -549,7 +553,9 @@ sub new_selection_box_for {
             my ($w, $e) = @_;
             handle_selection_value ($w, $e, \$HPVALUE{$name});
         });
-    $combo->set_active ($HPVALUE{$name});
+    my $value = $HPVALUE{$name};
+    $value //= $$hash{$key}[CMDEF];
+    $combo->set_active ($value);
     set_widget_hint ($combo, $$hash{$key}[DESC]);
     set_widget_sens ($combo, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($combo->sensitive);
