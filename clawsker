@@ -437,7 +437,6 @@ sub new_check_button_for($$$) {
     #
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
-    $$hash{$key}[GUI] = $cb;
     my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $cb->set_active ($value eq '1');
@@ -467,7 +466,6 @@ sub new_text_box_for_int($$$) {
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_numeric (TRUE);
     $gentry->set_value ($value);
-    $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('value-changed' => sub {
             my ($w, $e) = @_;
             handle_int_value ($w, $e, \$$vhash{$name});
@@ -494,7 +492,6 @@ sub new_text_box_for_nchar($$$) {
     my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_text ($value);
-    $$hash{$key}[GUI] = $gentry;
     $gentry->signal_connect('key-release-event' => sub {
             my ($w, $e) = @_;
             handle_nchar_value ($w, $e, \$$vhash{$name}, $type[1]);
@@ -519,7 +516,6 @@ sub new_color_button_for($$$) {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $button = Gtk2::ColorButton->new_with_color ($col);
-    $$hash{$key}[GUI] = $button;
     $button->set_title ($label);
     $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
@@ -543,7 +539,6 @@ sub new_selection_box_for($$$) {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $combo = Gtk2::ComboBox->new_text;
-    $$hash{$key}[GUI] = $combo;
     my @options = split (';', $$hash{$key}[TYPE]);
     foreach my $opt (@options) {
         my ($index, $textkey) = split ('=', $opt);
