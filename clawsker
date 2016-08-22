@@ -253,16 +253,10 @@ sub version_greater_or_equal {
 }
 
 sub get_claws_version {
-    my @cmbin = (
-        'claws-mail',
-    );
-    my $res = "";
-    foreach my $bin (@cmbin) {
-        $_ = qx/which $bin/;
-        chomp;
-        last if ($_ ne "");
-    }
+    $_ = qx/which claws-mail/;
+    chomp;
     return "" unless ($_); # not installed
+    my $res = "";
     $_ = qx/$_ -v/;
     chomp;
     my @fver = split (/ /);
