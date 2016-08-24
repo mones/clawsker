@@ -215,6 +215,7 @@ my %PREFS = ();
 my %ACPREFS = ();
 # values of all preferences handled by clawsker
 my %HPVALUE = ();
+my %ACHPVALUE = ();
 # default config dir and file name
 my $ALTCONFIGDIR = FALSE;
 my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
@@ -2043,6 +2044,40 @@ sub save_preferences {
         if (/^([8a-z_]+)=(.*)$/) {
             if (defined($HPVALUE{$1})) {
                 print RCF $1 . "=" . $HPVALUE{$1} . "\n";
+            }
+            else {
+                print RCF $_ . "\n";
+            }
+        }
+        else {
+            print RCF $_ . "\n";
+        }
+    }
+    close (RCB);
+    close (RCF);
+    return TRUE;
+}
+
+sub save_ac_preferences {
+    my $rc = get_ac_rc_filename ();
+    log_message ("Saving account preferences to $rc\n");
+    return FALSE unless check_rc_file ($rc);
+    return FALSE unless check_claws_not_running ();
+    my $rcbak = "$rc.backup";
+    rename ($rc, $rcbak);
+    open (RCF, ">$rc");
+    open (RCB, "<$rcbak");
+    my $akey;
+    while (<RCB>) {
+        chomp;
+        if (/^\[Account: (\d+)\]$/) {
+          $akey = $1;
+          print RCF $_ . "\n";
+          next;
+        }
+        if (/^([8a-z_]+)=(.*)$/) {
+            if (defined($ACHPVALUE{$akey}{$1})) {
+                print RCF $1 . "=" . $ACHPVALUE{$akey}{$1} . "\n";
             }
             else {
                 print RCF $_ . "\n";
