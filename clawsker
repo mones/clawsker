@@ -68,6 +68,7 @@ sub _ {
     tab_gui => _('GUI'),
     tab_other => _('Other'),
     tab_winpos => _('Windows'),
+    tab_accounts => _('Accounts'),
 
     ab_frame => _('Addressbook'),
     mem_frame => _('Memory'),
@@ -204,6 +205,11 @@ sub _ {
     h_win_main_mx => _('Changes window maximized status.'),
     l_win_main_fs => _('Full-screen'),
     h_win_main_fs => _('Changes full screen status.'),
+
+    l_acc_gtls_set => _('Use custom GnuTLS priority'),
+    h_acc_gtls_set => _('Enables using user provided GnuTLS priority string.'),
+    l_acc_gtls_pri => _('GnuTLS priority'),
+    h_acc_gtls_pri => _('Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored.'),
 
     e_error => _('Error: '),
     e_noclawsrc => _('resource file for Claws Mail was not found.'),
@@ -1894,6 +1900,48 @@ sub new_winpos_page() {
     return $winbook;
 }
 
+%pr::acc = ( # per account hidden preferences
+    tls_set => [
+        'gnutls_set_priority',
+        $xl::s{l_acc_gtls_set},
+        $xl::s{h_acc_gtls_set},
+        'bool',
+        '3.9.0.181',
+        '0',
+        undef,
+    ],
+    tls_pri => [
+        'gnutls_priority',
+        $xl::s{l_acc_gtls_pri},
+        $xl::s{h_acc_gtls_pri},
+        'char,32,32',
+        '3.9.0.181',
+        '0',
+        undef,
+    ],
+);
+
+sub new_account_subpage($) {
+    my ($akey) = @_;
+    return new_vbox_pack (
+                new_subpage_frame (
+                    new_vbox_pack (
+                        new_check_button_for (\%pr::acc, 'tls_set', $ACHPVALUE{$akey}),
+                        new_text_box_for_nchar (\%pr::acc, 'tls_pri', $ACHPVALUE{$akey})),
+                    _('GnuTLS priority'), 'not-packed')
+           );
+}
+
+sub new_accounts_page() {
+    my $accbook = Gtk2::Notebook->new;
+    $accbook->set_tab_pos ('right');
+    foreach (keys %ACPREFS) {
+        my $name = $ACPREFS{$_}{'account_name'};
+        $accbook->append_page (new_account_subpage ($_), $name);
+    }
+    return $accbook;
+}
+
 # version info
 sub print_version() {
     print $xl::s{about_title} . "\n";
@@ -1986,6 +2034,16 @@ sub init_hidden_preferences {
     foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth, \%pr::win) {
         foreach my $key (keys %$hash) { 
             $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
+        }
+    }
+    return TRUE;
+}
+
+sub init_ac_hidden_preferences {
+    foreach my $akey (keys %ACPREFS) {
+        foreach my $key (keys %pr::acc) {
+            my $pname = $pr::acc{$key}[NAME];
+            $ACHPVALUE{$akey}{$pname} = $ACPREFS{$akey}{$pname};
         }
     }
     return TRUE;
@@ -2101,6 +2159,7 @@ sub new_notebook {
     $nb->append_page (new_gui_page (), $xl::s{tab_gui});
     $nb->append_page (new_other_page (), $xl::s{tab_other});
     $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
+    $nb->append_page (new_accounts_page (), $xl::s{tab_accounts});
 
     return $nb;
 }
@@ -2153,7 +2212,10 @@ sub new_button_box {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     # signal handlers 
     $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
-    $b_apply->signal_connect (clicked => sub { save_preferences ($parent) });
+    $b_apply->signal_connect (clicked => sub {
+        save_preferences ($parent);
+        save_ac_preferences ($parent);
+    });
     # $b_undo->signal_connect (clicked => sub { undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
     # package them
@@ -2184,7 +2246,9 @@ exit unless parse_command_line ();
 Gtk2->init;
 $main_window = Gtk2::Window->new ('toplevel');
 exit unless load_preferences ();
+exit unless load_ac_preferences ();
 exit unless init_hidden_preferences ();
+exit unless init_ac_hidden_preferences ();
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
