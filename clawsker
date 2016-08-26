@@ -309,8 +309,8 @@ sub handle_string_value {
 }
 
 sub handle_nchar_value {
-    my ($widget, $event, $dataref, $minlen) = @_;
-    $_ = substr ($widget->get_text (), 0, $minlen);
+    my ($widget, $event, $dataref, $minlen, $maxlen) = @_;
+    $_ = substr ($widget->get_text (), 0, $maxlen);
     $widget->set_text ($_);
     $$dataref = $_;
 }
@@ -490,18 +490,20 @@ sub new_text_box_for_nchar($$$) {
     my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
-    my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen
+    my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen,width
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $gentry = Gtk2::Entry->new ();
     $gentry->set_max_length($type[2]) if defined ($type[2]);
-    $gentry->set_width_chars(int ($type[2]) + 2) if defined ($type[2]);
+    my $width = $type[3];
+    $width //= $type[2];
+    $gentry->set_width_chars(int ($width) + 2) if defined ($width);
     my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_text ($value);
     $gentry->signal_connect('key-release-event' => sub {
             my ($w, $e) = @_;
-            handle_nchar_value ($w, $e, \$$vhash{$name}, $type[1]);
+            handle_nchar_value ($w, $e, \$$vhash{$name}, $type[1], $type[2]);
         });
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
@@ -1914,7 +1916,7 @@ sub new_winpos_page() {
         'gnutls_priority',
         $xl::s{l_acc_gtls_pri},
         $xl::s{h_acc_gtls_pri},
-        'char,32,32',
+        'char,0,256,32',
         '3.9.0.181',
         '0',
         undef,
