@@ -1994,7 +1994,7 @@ sub parse_command_line {
             'b|verbose' => sub { $VERBOSE = TRUE },
             'u|use-claws-version=s' => \&opt_use_claws_version,
             'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
-            'r|clawsrc=s' => \&opt_clawsrc)
+            'c|clawsrc=s' => \&opt_clawsrc)
         or die _("try -h or --help for syntax.\n");
     };
     if ($@) {
