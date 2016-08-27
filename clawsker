@@ -31,6 +31,7 @@ my $LIBDIR = '@LIBDIR@';
 my $DATADIR = '@DATADIR@';
 my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
+my $READONLY = FALSE;
 my $CLAWSV = undef;
 my $main_window = undef;
 
@@ -391,6 +392,7 @@ sub claws_is_running {
 }
 
 sub check_claws_not_running {
+    return TRUE if $READONLY;
     my $tmpdir = (defined $ENV{TMPDIR})? $ENV{TMPDIR}: '/tmp';
     $tmpdir = '/tmp' if ($tmpdir eq '');
     my $lockdir = "$tmpdir/claws-mail-$<";
@@ -1992,6 +1994,7 @@ sub parse_command_line {
         GetOptions('h|help' => sub { print_help (); $cont = FALSE },
             'v|version' => sub { print_version (); $cont = FALSE },
             'b|verbose' => sub { $VERBOSE = TRUE },
+            'r|read-only' => sub { $READONLY = TRUE },
             'u|use-claws-version=s' => \&opt_use_claws_version,
             'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
             'c|clawsrc=s' => \&opt_clawsrc)
@@ -2214,6 +2217,7 @@ sub new_button_box {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     # signal handlers 
     $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
+    $b_apply->set_sensitive (not $READONLY);
     $b_apply->signal_connect (clicked => sub {
         save_preferences ($parent);
         save_ac_preferences ($parent);
