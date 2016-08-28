@@ -40,6 +40,19 @@ saved positions (and sizes when available) of Claws Mail windows.
 
 =over 4
 
+=item B<-a> | B<--alternate-config-dir> I<dirname>
+
+Uses I<dirname> as Claws Mail configuration directory.
+
+=item B<-b> | B<--verbose>
+
+Tells more on the standard output.
+
+=item B<-c> | B<--clawsrc> I<filename>
+
+Uses I<filename> as Claws Mail resource configuration file. This sets
+the full file name overriding any previous setting.
+
 =item B<-h> | B<--help>
 
 Shows a brief help screen.
@@ -47,19 +60,6 @@ Shows a brief help screen.
 =item B<-v> | B<--version>
 
 Show information about program, Claws Mail and Perl-GTK versions.
-
-=item B<-b> | B<--verbose>
-
-Tells more on the standard output.
-
-=item B<-a> | B<--alternate-config-dir> I<dirname>
-
-Uses I<dirname> as Claws Mail configuration directory.
-
-=item B<-c> | B<--clawsrc> I<filename>
-
-Uses I<filename> as Claws Mail resource configuration file. This sets
-the full file name overriding any previous setting.
 
 =back
 
