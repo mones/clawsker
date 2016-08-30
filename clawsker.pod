@@ -57,6 +57,11 @@ the full file name overriding any previous setting.
 
 Shows a brief help screen.
 
+=item B<-r> | B<--read-only>
+
+Allows to edit hidden preferences without saving the changes. It also
+works when Claws Mail is running.
+
 =item B<-v> | B<--version>
 
 Show information about program, Claws Mail and Perl-GTK versions.
