@@ -24,12 +24,14 @@ ICONRES = 64 128
 
 all: build
 
-build:
+build: ${NAME}.1
 	-mkdir build
 	sed -e "s,@PREFIX@,${PREFIX},;s,@LIBDIR@,${LIBDIR},;s,@VERSION@,${VERSION},;s,@DATADIR@,${DATADIR}," < ${NAME} > build/${NAME}
-	pod2man --release ${VERSION} -c '' ${NAME}.pod > build/${NAME}.1
+	cp -p $< build/$<
 	${MAKE} -C po build
-	
+
+${NAME}.1: ${NAME}.pod
+	pod2man --release ${VERSION} -c '' $< > $@
 
 install: all install-dirs install-icons
 	install -m 0755 build/${NAME} ${DESTDIR}${BINDIR}
@@ -76,6 +78,7 @@ dist:
 		&& rm -rf ${NAME}-${VERSION}
 
 clean-build:
+	rm -f ${NAME}.1
 	rm -rf build
 
 clean: clean-build
