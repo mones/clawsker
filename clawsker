@@ -98,7 +98,7 @@ sub _ {
     h_oth_use_netm => _('Use NetworkManager to switch offline automatically.'),
     l_oth_mp_rounds => _('Rounds for PBKDF2 function'),
     h_oth_mp_rounds => _('Specify the number of iterations the key derivation function will be applied on master passphrase computation. Does not modify currently stored passphrase, only master passphrases computed after changing this value are affected.'),
-    
+
     l_gui_b_unread => _('Show unread messages with bold font'),
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
     l_gui_no_markup => _('Don\'t use markup'),
@@ -253,7 +253,7 @@ sub version_greater_or_equal {
         push (@version, '0');
     }
     my $idx = 0;
-    while (($idx <= $#refvers) 
+    while (($idx <= $#refvers)
             and (int ($version[$idx]) == int ($refvers[$idx]))) {
         ++$idx;
     }
@@ -322,7 +322,7 @@ sub gdk_color_from_str {
     $_ = uc ($str);
     if (/\#([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])/) {
         $rr = hex($1) * 256;
-        $gg = hex($2) * 256; 
+        $gg = hex($2) * 256;
         $bb = hex($3) * 256;
     }
     my $color = Gtk2::Gdk::Color->new ($rr, $gg, $bb);
@@ -396,7 +396,7 @@ sub check_claws_not_running {
     my $tmpdir = (defined $ENV{TMPDIR})? $ENV{TMPDIR}: '/tmp';
     $tmpdir = '/tmp' if ($tmpdir eq '');
     my $lockdir = "$tmpdir/claws-mail-$<";
-    -d $lockdir and do { 
+    -d $lockdir and do {
         $_ = $CONFIGDIR;
         s/\/$//;
         my $socket = "$lockdir/" . md5_hex ($_);
@@ -418,7 +418,7 @@ sub check_rc_file {
 
 sub set_widget_hint {
     if ($SHOWHINTS) {
-        my ($wdgt, $hint) = @_;    
+        my ($wdgt, $hint) = @_;
         $wdgt->set_tooltip_text ($hint);
         $wdgt->set_has_tooltip (TRUE);
     }
@@ -437,7 +437,7 @@ sub set_widget_sens {
     }
 }
 
-# graphic element creation 
+# graphic element creation
 
 sub new_check_button_for($$$) {
     my ($hash, $key, $vhash) = @_;
@@ -465,7 +465,7 @@ sub new_text_box_for_int($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]);
-    push (@type, 0), push (@type, 10000) unless ($#type > 0); 
+    push (@type, 0), push (@type, 10000) unless ($#type > 0);
     #
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
@@ -580,7 +580,7 @@ sub new_hbox_pack {
         $hbox->pack_start ($item, FALSE, FALSE, 0);
     }
     return $hbox;
-}    
+}
 
 sub new_vbox_pack {
     my $vbox = Gtk2::VBox->new (FALSE, 5);
@@ -589,7 +589,7 @@ sub new_vbox_pack {
         $vbox->pack_start ($item, FALSE, FALSE, 0);
     }
     return $vbox;
-}    
+}
 
 sub new_vbox_pack_compact {
     my $vbox = Gtk2::VBox->new (FALSE, 0);
@@ -598,12 +598,12 @@ sub new_vbox_pack_compact {
         $vbox->pack_start ($item, FALSE, FALSE, 0);
     }
     return $vbox;
-}    
+}
 
 sub new_subpage_frame {
     my ($box, $title, $notpacked) = @_;
     my $frame = Gtk2::Frame->new ($title);
-    $frame->add ($box);    
+    $frame->add ($box);
     return new_vbox_pack ($frame) unless defined ($notpacked);
     return $frame;
 }
@@ -611,7 +611,7 @@ sub new_subpage_frame {
 # preference maps and corresponding page creation subs
 
 %pr::oth = ( # other preferences
-    use_dlg => [ 
+    use_dlg => [
         'addressbook_use_editaddress_dialog',
         $xl::s{l_oth_use_dlg},
         $xl::s{h_oth_use_dlg},
@@ -681,7 +681,7 @@ sub new_other_page() {
 }
 
 %pr::gui = ( # gui bells and whistles
-    b_unread => [ 
+    b_unread => [
         'bold_unread',
         $xl::s{l_gui_b_unread},
         $xl::s{h_gui_b_unread},
@@ -867,20 +867,20 @@ sub new_gui_page() {
                              new_check_button_for (\%pr::gui, 'two_linev', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'next_del', \%HPVALUE),
                              new_selection_box_for (\%pr::gui, 'from_show', \%HPVALUE)),
-                         $xl::s{mlist_frame}, 'not-packed'), 
+                         $xl::s{mlist_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
                          new_hbox_pack (
                              new_check_button_for (\%pr::gui, 'cursor_v', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'mview_date', \%HPVALUE)),
-                         $xl::s{mview_frame}, 'not-packed'), 
+                         $xl::s{mview_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
                          new_hbox_pack (
                              new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE),
                              new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE)),
-                         $xl::s{compo_frame}, 'not-packed'), 
+                         $xl::s{compo_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
     $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
@@ -1044,7 +1044,7 @@ sub new_behaviour_page() {
                          new_vbox_pack (
                              new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE),
                              new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE)),
-                         $xl::s{dnd_frame}, 'not-packed'), 
+                         $xl::s{dnd_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start (new_subpage_frame (
                          new_hbox_pack (
@@ -1953,20 +1953,20 @@ sub print_version() {
     print "Perl-GLib " . $Glib::VERSION;
     # version info stuff appeared in 1.040
     if ($Glib::VERSION >= 1.040) {
-        print _(", built for ") . join(".", Glib->GET_VERSION_INFO) 
-              . _(", running with ") . join(".", &Glib::major_version, 
+        print _(", built for ") . join(".", Glib->GET_VERSION_INFO)
+              . _(", running with ") . join(".", &Glib::major_version,
               &Glib::minor_version, &Glib::micro_version);
     }
     print "\n";
     print "Perl-GTK2 " . $Gtk2::VERSION;
     if ($Gtk2::VERSION >= 1.040) {
         print _(", built for ") . join(".", Gtk2->GET_VERSION_INFO)
-              . _(", running with ") . join(".", &Gtk2::major_version, 
+              . _(", running with ") . join(".", &Gtk2::major_version,
               &Gtk2::minor_version, &Gtk2::micro_version);
     }
     print "\n";
-    my $clawsver = ($CLAWSV eq "") ? 
-                _("was not found!") : 
+    my $clawsver = ($CLAWSV eq "") ?
+                _("was not found!") :
                 (_("returned version ") . $CLAWSV);
     print "Claws Mail " . $clawsver . "\n";
 }
@@ -2037,7 +2037,7 @@ sub opt_clawsrc {
 # update the hidden preferences status from loaded values
 sub init_hidden_preferences {
     foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth, \%pr::win) {
-        foreach my $key (keys %$hash) { 
+        foreach my $key (keys %$hash) {
             $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
         }
     }
@@ -2158,7 +2158,7 @@ sub save_ac_preferences {
 # create notebook
 sub new_notebook {
     my $nb = Gtk2::Notebook->new;
-    # 
+    #
     $nb->append_page (new_behaviour_page (), $xl::s{tab_behaviour});
     $nb->append_page (new_colours_page (), $xl::s{tab_colours});
     $nb->append_page (new_gui_page (), $xl::s{tab_gui});
@@ -2175,7 +2175,7 @@ sub new_about_dialog {
     my $title = $xl::s{about_title};
     my $lic = $xl::s{about_license};
     my $vers = $xl::s{about_version} . " $VERSION";
-    my $license = 
+    my $license =
 "This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -2192,9 +2192,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
     my $url = "http://www.claws-mail.org/clawsker.php";
 
-    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent, 
-                    [qw/modal destroy-with-parent/], 
-                    'info', 'close', 
+    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent,
+                    [qw/modal destroy-with-parent/],
+                    'info', 'close',
                     "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
                     . "<span size=\"large\">$vers</span>\n\n"
                     . "<span color=\"blue\" size=\"large\">$url</span>\n\n"
@@ -2215,7 +2215,7 @@ sub new_button_box {
     # disable button until is really implemented
     # my $b_undo = Gtk2::Button->new_from_stock ('gtk-undo');
     my $hbox = Gtk2::HBox->new (FALSE, 5);
-    # signal handlers 
+    # signal handlers
     $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
     $b_apply->set_sensitive (not $READONLY);
     $b_apply->signal_connect (clicked => sub {
