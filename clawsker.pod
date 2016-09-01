@@ -1,13 +1,7 @@
 #
 # Clawsker manual page
-# Copyright 2007-2016 Ricardo Mones <ricardo@mones.org>
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# See COPYING file for license details.
+# See COPYRIGHT and LICENSE sections below and COPYING file for details.
 #
 =pod
 
@@ -64,7 +58,7 @@ works when Claws Mail is running.
 
 =item B<-v> | B<--version>
 
-Show information about program, Claws Mail and Perl-GTK versions.
+Shows version information for program, Perl-GTK and Claws Mail.
 
 =back
 
@@ -75,7 +69,7 @@ option specifications may produce weird results (but otherwise correct).
 
 A running Claws Mail cannot be detected if using the B<--clawsrc> option
 because the directory is not assumed to be a Claws Mail configuration dir.
-If that is  the case use the B<--alternate-config-dir> option instead.
+If that is the case use the B<--alternate-config-dir> option instead.
 
 =head1 SEE ALSO
 
@@ -85,12 +79,12 @@ L<List of hidden preferences|http://www.claws-mail.org/manual/claws-mail-manual.
 =head1 AUTHOR
 
 Main author is Ricardo Mones E<lt>ricardo@mones.orgE<gt> with the help of
-others. See the AUTHORS file on source tarball for a detailed list of 
-contributors.
+others. See the AUTHORS file on source tarball or git for a detailed list
+of contributors.
 
 =head1 COPYRIGHT
 
-2007-2016 by Ricardo Mones Lastra
+Clawsker is Copyright 2007-2016 by Ricardo Mones Lastra.
 
 =head1 LICENSE
 
@@ -101,11 +95,11 @@ the Free Software Foundation, either version 3 of the License, or
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see E<lt>http://www.gnu.org/licenses/E<gt>.
+along with this program. If not, see E<lt>http://www.gnu.org/licenses/E<gt>.
 
 =cut
 
