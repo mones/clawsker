@@ -13,6 +13,7 @@ Comment[pt_BR]=Ajustes finos no Claws Mail
 Comment[sr@latin]=Fino štelovanje skrivenih postavki za Claws Mail
 Comment[sr]=Фино штеловање скривених поставки за Claws Mail
 Comment[sv]=Tweaker för Claws Mail
+Comment[tr]=Claws Mail Aracı
 Exec=clawsker
 Icon=clawsker
 Type=Application
