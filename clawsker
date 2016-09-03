@@ -236,7 +236,6 @@ use constant DESC  => 2; # the description for the hint/help
 use constant TYPE  => 3; # data type: bool, int, float, string, color
 use constant CMVER => 4; # lowest[,highest] Claws Mail version(s) the feature exists
 use constant CMDEF => 5; # default value for the preference in Claws Mail
-use constant GUI   => 6; # GUI element
 
 # constants for GUI spacing
 use constant HBOX_SPC => 5;
@@ -618,7 +617,6 @@ sub new_subpage_frame {
         'bool',
         '2.7.0',
         '0',
-        undef,
     ],
     max_use => [
         'cache_max_mem_usage',
@@ -627,7 +625,6 @@ sub new_subpage_frame {
         'int,0,262144', # 0 Kb - 256 Mb
         '0.0.0',
         '4096',
-        undef,
     ],
     min_time => [
         'cache_min_keep_time',
@@ -636,7 +633,6 @@ sub new_subpage_frame {
         'int,0,120', # 0 minutes - 2 hours
         '0.0.0',
         '15',
-        undef,
     ],
     use_netm => [
         'use_networkmanager',
@@ -645,7 +641,6 @@ sub new_subpage_frame {
         'bool',
         '3.3.1',
         '1',
-        undef,
     ],
     mp_rounds => [
         'master_passphrase_pbkdf2_rounds',
@@ -654,7 +649,6 @@ sub new_subpage_frame {
         'int,50000,1000000',
         '3.13.2.110',
         '50000',
-        undef,
     ],
 );
 
@@ -688,7 +682,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '1',
-        undef,
     ],
     no_markup => [
         'compose_no_markup',
@@ -697,7 +690,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     dot_lines => [
         'enable_dotted_lines',
@@ -706,7 +698,6 @@ sub new_other_page() {
         'bool',
         '0.0.0,3.7.10.44',
         '0',
-        undef,
     ],
     h_scroll => [
         'enable_hscrollbar',
@@ -715,7 +706,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '1',
-        undef,
     ],
     swp_from => [
         'enable_swap_from',
@@ -724,7 +714,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     v_scroll => [
         'folderview_vscrollbar_policy',
@@ -733,7 +722,6 @@ sub new_other_page() {
         '0=l_gui_v_scroll_show;1=l_gui_v_scroll_auto;2=l_gui_v_scroll_hide',
         '0.0.0',
         '0',
-        undef,
     ],
     from_show => [
         'summary_from_show',
@@ -742,7 +730,6 @@ sub new_other_page() {
         '0=l_gui_from_show_name;1=l_gui_from_show_addr;2=l_gui_from_show_both',
         '3.7.10',
         '0',
-        undef,
     ],
     strip_off => [
         'stripes_color_offset',
@@ -751,7 +738,6 @@ sub new_other_page() {
         'int,0,40000', # no idea what this number means
         '0.0.0',
         '4000',
-        undef,
     ],
     cursor_v => [
         'textview_cursor_visible',
@@ -760,7 +746,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     toolbar_d => [
         'toolbar_detachable',
@@ -769,7 +754,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     strip_all => [
         'use_stripes_everywhere',
@@ -778,7 +762,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '1',
-        undef,
     ],
     strip_sum => [
         'use_stripes_in_summaries',
@@ -787,7 +770,6 @@ sub new_other_page() {
         'bool',
         '0.0.0',
         '1',
-        undef,
     ],
     two_linev => [
         'two_line_vertical',
@@ -796,7 +778,6 @@ sub new_other_page() {
         'bool',
         '3.4.0.7',
         '0',
-        undef,
     ],
     margin_co => [
         'show_compose_margin',
@@ -805,7 +786,6 @@ sub new_other_page() {
         'bool',
         '3.7.6.7',
         '0',
-        undef,
     ],
     mview_date => [
         'msgview_date_format',
@@ -814,7 +794,6 @@ sub new_other_page() {
         'bool',
         '3.7.8.42',
         '0',
-        undef,
     ],
     zero_char => [
         'zero_replacement_char',
@@ -823,7 +802,6 @@ sub new_other_page() {
         'char,1,1',
         '2.8.1.77',
         '0',
-        undef,
     ],
     type_any => [
         'type_any_header',
@@ -832,7 +810,6 @@ sub new_other_page() {
         'bool',
         '3.12.0.44',
         '0',
-        undef,
     ],
     next_del => [
         'next_on_delete',
@@ -841,7 +818,6 @@ sub new_other_page() {
         'bool',
         '3.13.0.5',
         '0',
-        undef,
     ],
 );
 
@@ -903,7 +879,6 @@ sub new_gui_page() {
         'int,100,3000', # 0.1 seconds - 3 seconds
         '0.0.0',
         '500',
-        undef,
     ],
     dangerous => [
         'live_dangerously',
@@ -912,7 +887,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     flowed => [
         'respect_flowed_format',
@@ -921,7 +895,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     parts_rw => [
         'save_parts_readwrite',
@@ -930,7 +903,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     skip_ssl => [
         'skip_ssl_cert_check',
@@ -939,7 +911,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     up_step => [
         'statusbar_update_step',
@@ -948,7 +919,6 @@ sub new_gui_page() {
         'int,1,200', # 1 item - 200 items
         '0.0.0',
         '10',
-        undef,
     ],
     thread_a => [
         'thread_by_subject_max_age',
@@ -957,7 +927,6 @@ sub new_gui_page() {
         'int,1,30', # 1 day - 30 days
         '0.0.0',
         '10',
-        undef,
     ],
     unsafe_ssl => [
         'unsafe_ssl_certs',
@@ -966,7 +935,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     use_utf8 => [
         'utf8_instead_of_locale_for_broken_mail',
@@ -975,7 +943,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     warn_dnd => [
         'warn_dnd',
@@ -984,7 +951,6 @@ sub new_gui_page() {
         'bool',
         '0.0.0',
         '1',
-        undef,
     ],
     out_ascii => [
         'outgoing_fallback_to_ascii',
@@ -993,7 +959,6 @@ sub new_gui_page() {
         'bool',
         '3.4.0.37',
         '1',
-        undef,
     ],
     pp_unsel => [
         'primary_paste_unselects',
@@ -1002,7 +967,6 @@ sub new_gui_page() {
         'bool',
         '3.6.1.35',
         '0',
-        undef,
     ],
     inline_at => [
         'show_inline_attachments',
@@ -1011,7 +975,6 @@ sub new_gui_page() {
         'bool',
         '3.7.8.48',
         '1',
-        undef,
     ],
     addr_swc => [
         'address_search_wildcard',
@@ -1020,7 +983,6 @@ sub new_gui_page() {
         'bool',
         '3.9.3.18',
         '0',
-        undef,
     ],
     fold_swc => [
         'folder_search_wildcard',
@@ -1029,7 +991,6 @@ sub new_gui_page() {
         'bool',
         '3.9.3.18',
         '0',
-        undef,
     ],
 );
 
@@ -1082,7 +1043,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#0000cf',
-        undef,
     ],
     log_err => [
         'log_error_color',
@@ -1091,7 +1051,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#af0000',
-        undef,
     ],
     log_in => [
         'log_in_color',
@@ -1100,7 +1059,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#000000',
-        undef,
     ],
     log_msg => [
         'log_msg_color',
@@ -1109,7 +1067,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#00af00',
-        undef,
     ],
     log_out => [
         'log_out_color',
@@ -1118,7 +1075,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#0000ef',
-        undef,
     ],
     log_warn => [
         'log_warn_color',
@@ -1127,7 +1083,6 @@ sub new_behaviour_page() {
         'color',
         '0.0.0',
         '#af0000',
-        undef,
     ],
     diff_add => [
         'diff_added_color',
@@ -1136,7 +1091,6 @@ sub new_behaviour_page() {
         'color',
         '3.8.0.54',
         '#008b8b',
-        undef,
     ],
     diff_del => [
         'diff_deleted_color',
@@ -1145,7 +1099,6 @@ sub new_behaviour_page() {
         'color',
         '3.8.0.54',
         '#6a5acd',
-        undef,
     ],
     diff_hunk => [
         'diff_hunk_color',
@@ -1154,7 +1107,6 @@ sub new_behaviour_page() {
         'color',
         '3.8.0.54',
         '#a52a2a',
-        undef,
     ],
 );
 
@@ -1189,7 +1141,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '16',
-        undef,
     ],
     main_y => [
         'mainwin_y',
@@ -1198,7 +1149,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '16',
-        undef,
     ],
     main_w => [
         'mainwin_width',
@@ -1207,7 +1157,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '779',
-        undef,
     ],
     main_h => [
         'mainwin_height',
@@ -1216,7 +1165,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '568',
-        undef,
     ],
     main_mx => [
         'mainwin_maximised',
@@ -1225,7 +1173,6 @@ sub new_colours_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     main_fs => [
         'mainwin_fullscreen',
@@ -1234,7 +1181,6 @@ sub new_colours_page() {
         'bool',
         '0.0.0',
         '0',
-        undef,
     ],
     msgs_x => [
         'main_messagewin_x',
@@ -1243,7 +1189,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '256',
-        undef,
     ],
     msgs_y => [
         'main_messagewin_y',
@@ -1252,7 +1197,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '210',
-        undef,
     ],
     msgs_w => [
         'messagewin_width',
@@ -1261,7 +1205,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '600',
-        undef,
     ],
     msgs_h => [
         'messagewin_height',
@@ -1270,7 +1213,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '540',
-        undef,
     ],
     send_w => [
         'sendwin_width',
@@ -1279,7 +1221,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '460',
-        undef,
     ],
     send_h => [
         'sendwin_height',
@@ -1288,7 +1229,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     recv_w => [
         'receivewin_width',
@@ -1297,7 +1237,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '460',
-        undef,
     ],
     recv_h => [
         'receivewin_height',
@@ -1306,7 +1245,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     fold_x => [
         'folderwin_x',
@@ -1315,7 +1253,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '16',
-        undef,
     ],
     fold_y => [
         'folderwin_y',
@@ -1324,7 +1261,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '16',
-        undef,
     ],
     fold_w => [
         'folderitemwin_width',
@@ -1333,7 +1269,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '500',
-        undef,
     ],
     fold_h => [
         'folderitemwin_height',
@@ -1342,7 +1277,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     fsel_w => [
         'folderselwin_width',
@@ -1351,7 +1285,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '300',
-        undef,
     ],
     fsel_h => [
         'folderselwin_height',
@@ -1360,7 +1293,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     sour_w => [
         'sourcewin_width',
@@ -1369,7 +1301,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '600',
-        undef,
     ],
     sour_h => [
         'sourcewin_height',
@@ -1378,7 +1309,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '500',
-        undef,
     ],
     addr_w => [
         'addressbookwin_width',
@@ -1387,7 +1317,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '520',
-        undef,
     ],
     addr_h => [
         'addressbookwin_height',
@@ -1396,7 +1325,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     adep_w => [
         'addressbookeditpersonwin_width',
@@ -1405,7 +1333,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '640',
-        undef,
     ],
     adep_h => [
         'addressbookeditpersonwin_height',
@@ -1414,7 +1341,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '320',
-        undef,
     ],
     adeg_w => [
         'addressbookeditgroupwin_width',
@@ -1423,7 +1349,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '580',
-        undef,
     ],
     adeg_h => [
         'addressbookeditgroupwin_height',
@@ -1432,7 +1357,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '340',
-        undef,
     ],
     adda_w => [
         'addressaddwin_width',
@@ -1441,7 +1365,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '300',
-        undef,
     ],
     adda_h => [
         'addressaddwin_height',
@@ -1450,7 +1373,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     addf_w => [
         'addressbook_folderselwin_width',
@@ -1459,7 +1381,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '300',
-        undef,
     ],
     addf_h => [
         'addressbook_folderselwin_height',
@@ -1468,7 +1389,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     acce_w => [
         'editaccountwin_width',
@@ -1477,7 +1397,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '500',
-        undef,
     ],
     acce_h => [
         'editaccountwin_height',
@@ -1486,7 +1405,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     acco_w => [
         'accountswin_width',
@@ -1495,7 +1413,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '500',
-        undef,
     ],
     acco_h => [
         'accountswin_height',
@@ -1504,7 +1421,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     filt_w => [
         'filteringwin_width',
@@ -1513,7 +1429,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '500',
-        undef,
     ],
     filt_h => [
         'filteringwin_height',
@@ -1522,7 +1437,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     fila_w => [
         'filteringactionwin_width',
@@ -1531,7 +1445,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '490',
-        undef,
     ],
     fila_h => [
         'filteringactionwin_height',
@@ -1540,7 +1453,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     fild_w => [
         'filtering_debugwin_width',
@@ -1549,7 +1461,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '600',
-        undef,
     ],
     fild_h => [
         'filtering_debugwin_height',
@@ -1558,7 +1469,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     matc_w => [
         'matcherwin_width',
@@ -1567,7 +1477,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '520',
-        undef,
     ],
     matc_h => [
         'matcherwin_height',
@@ -1576,7 +1485,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     pref_w => [
         'prefswin_width',
@@ -1585,7 +1493,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '600',
-        undef,
     ],
     pref_h => [
         'prefswin_height',
@@ -1594,7 +1501,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     temp_w => [
         'templateswin_width',
@@ -1603,7 +1509,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '480',
-        undef,
     ],
     temp_h => [
         'templateswin_height',
@@ -1612,7 +1517,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     acti_w => [
         'actionswin_width',
@@ -1621,7 +1525,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '486',
-        undef,
     ],
     acti_h => [
         'actionswin_height',
@@ -1630,7 +1533,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     tags_w => [
         'tagswin_width',
@@ -1639,7 +1541,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '486',
-        undef,
     ],
     tags_h => [
         'tagswin_height',
@@ -1648,7 +1549,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     plug_w => [
         'pluginswin_width',
@@ -1657,7 +1557,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     plug_h => [
         'pluginswin_height',
@@ -1666,7 +1565,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     logw_w => [
         'logwin_width',
@@ -1675,7 +1573,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '520',
-        undef,
     ],
     logw_h => [
         'logwin_height',
@@ -1684,7 +1581,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
     prin_w => [
         'print_previewwin_width',
@@ -1693,7 +1589,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '600',
-        undef,
     ],
     prin_h => [
         'print_previewwin_height',
@@ -1702,7 +1597,6 @@ sub new_colours_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '0.0.0',
         '-1',
-        undef,
     ],
 );
 
@@ -1912,7 +1806,6 @@ sub new_winpos_page() {
         'bool',
         '3.9.0.181',
         '0',
-        undef,
     ],
     tls_pri => [
         'gnutls_priority',
@@ -1921,7 +1814,6 @@ sub new_winpos_page() {
         'char,0,256,32',
         '3.9.0.181',
         '0',
-        undef,
     ],
 );
 
