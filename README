@@ -25,12 +25,12 @@ Dependencies
 
   - Running:
 
-  Perl - http://www.perl.com (>= 5.8)
+  Perl - http://www.perl.com (>= 5.10)
   GTK+2 bindings for Perl - http://gtk2-perl.sourceforge.net (>= 1.161) built
   with GTK+ >= 2.12 (lower GTK+ versions do not support widget tooltips and
   a warning is issued).
   Locale::gettext - http://search.cpan.org/~pvandry/gettext-1.05/ (>= 1.05)
-  Claws Mail - http://www.claws-mail.org (>= 3.1.0)
+  Claws Mail - http://www.claws-mail.org (>= 3.9.1)
 
   On Debian systems:
   # apt-get install libgtk2-perl liblocale-gettext-perl claws-mail
