@@ -85,5 +85,5 @@ clean: clean-build
 	rm -f *~
 	${MAKE} -C po clean
 
-.PHONY: all build install install-dirs uninstall clean clean-build dist
+.PHONY: all build install install-dirs install-icons-dirs install-icons uninstall uninstall-icons clean clean-build dist
 
