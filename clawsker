@@ -1838,6 +1838,28 @@ sub new_accounts_page() {
     return $accbook;
 }
 
+%pr::plu = ( # plugins hidden preferences
+    # att_remover
+    arm_winw => [
+        'win_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.9.0.74',
+        '-1',
+        undef,
+    ],
+    arm_winh => [
+        'win_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.9.0.74',
+        '-1',
+        undef,
+    ],
+);
+
 # version info
 sub print_version() {
     print $xl::s{about_title} . "\n";
