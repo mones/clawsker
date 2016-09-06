@@ -212,6 +212,9 @@ sub _ {
     l_acc_gtls_pri => _('GnuTLS priority'),
     h_acc_gtls_pri => _('Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored.'),
 
+    l_plu_lav_burl => _('Base URL'),
+    h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
+
     e_error => _('Error: '),
     e_noclawsrc => _('resource file for Claws Mail was not found.'),
     e_running => _('seems Claws Mail is currently running, close it first.'),
@@ -1856,6 +1859,16 @@ sub new_accounts_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '3.9.0.74',
         '-1',
+        undef,
+    ],
+    # libravatar
+    lav_burl => [
+        'base_url',
+        $xl::s{l_plu_lav_burl},
+        $xl::s{h_plu_lav_burl},
+        'char,0,1024,32',
+        '3.9.3.32',
+        'http://cdn.libravatar.org/avatar',
         undef,
     ],
 );
