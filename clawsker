@@ -1856,7 +1856,6 @@ sub new_accounts_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '3.9.0.74',
         '-1',
-        undef,
     ],
     arm_winh => [
         'win_height',
@@ -1865,7 +1864,6 @@ sub new_accounts_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '3.9.0.74',
         '-1',
-        undef,
     ],
     # libravatar
     lav_burl => [
@@ -1875,7 +1873,6 @@ sub new_accounts_page() {
         'char,0,1024,32',
         '3.9.3.32',
         'http://cdn.libravatar.org/avatar',
-        undef,
     ],
     # perl
     prl_flvb => [
@@ -1885,7 +1882,6 @@ sub new_accounts_page() {
         '0=l_plu_prl_none;1=l_plu_prl_manual;2=l_plu_prl_action;3=l_plu_prl_match',
         '3.9.0.75',
         '2',
-        undef,
     ],
 );
 
