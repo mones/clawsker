@@ -214,6 +214,12 @@ sub _ {
 
     l_plu_lav_burl => _('Base URL'),
     h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
+    l_plu_prl_flvb => _('Log level'),
+    h_plu_prl_flvb => _('Verbosity level of log, acumulative.'),
+    l_plu_prl_none => _('None'),
+    l_plu_prl_manual => _('Manual'),
+    l_plu_prl_action => _('Actions'),
+    l_plu_prl_match => _('Matches'),
 
     e_error => _('Error: '),
     e_noclawsrc => _('resource file for Claws Mail was not found.'),
@@ -1869,6 +1875,16 @@ sub new_accounts_page() {
         'char,0,1024,32',
         '3.9.3.32',
         'http://cdn.libravatar.org/avatar',
+        undef,
+    ],
+    # perl
+    prl_flvb => [
+        'filter_log_verbosity',
+        $xl::s{l_plu_prl_flvb},
+        $xl::s{h_plu_prl_flvb},
+        '0=l_plu_prl_none;1=l_plu_prl_manual;2=l_plu_prl_action;3=l_plu_prl_match',
+        '3.9.0.75',
+        '2',
         undef,
     ],
 );
