@@ -70,6 +70,7 @@ sub _ {
     tab_other => _('Other'),
     tab_winpos => _('Windows'),
     tab_accounts => _('Accounts'),
+    tab_plugins => _('Plugins'),
 
     ab_frame => _('Addressbook'),
     mem_frame => _('Memory'),
@@ -1885,6 +1886,24 @@ sub new_accounts_page() {
     ],
 );
 
+sub new_plugins_page() {
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::plu, 'arm_winw', \%HPVALUE),
+                          new_text_box_for_int (\%pr::plu, 'arm_winh', \%HPVALUE)),
+                     _('Attachment remover'), 'not-packed'),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_nchar (\%pr::plu, 'lav_burl', \%HPVALUE)),
+                     _('Libravatar'), 'not-packed'),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_selection_box_for (\%pr::plu, 'prl_flvb', \%HPVALUE)),
+                     _('Perl'), 'not-packed')
+           );
+}
+
 # version info
 sub print_version() {
     print $xl::s{about_title} . "\n";
@@ -2104,6 +2123,7 @@ sub new_notebook {
     $nb->append_page (new_other_page (), $xl::s{tab_other});
     $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
     $nb->append_page (new_accounts_page (), $xl::s{tab_accounts});
+    $nb->append_page (new_plugins_page (), $xl::s{tab_plugins});
 
     return $nb;
 }
