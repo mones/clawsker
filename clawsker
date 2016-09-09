@@ -2012,6 +2012,54 @@ sub init_ac_hidden_preferences {
     return TRUE;
 }
 
+# generic load/save resource files
+sub load_resource {
+    my $rc = shift;
+    my %data = ();
+    open (RCF, '<:encoding(utf8)', $rc)
+        or die _("Error: opening '{file}' for reading", file => $rc) . ": $!";
+    my $section = '_'; # default unnamed section
+    while (<RCF>) {
+        chomp;
+        next if (/^\s*$/);
+        if (/^\[([^\]]+)\]$/) { # new section
+            $section = $1;
+            die _("Error: duplicate section '{sect}' in resource file '{file}'\n",
+                sect => $section, file => $rc) if ($data{$section});
+            $data{$section} = {};
+        }
+        elsif (/^([0-9a-z_]+)=(.*)$/) { # key=value
+            $data{$section}{$1} = $2;
+        }
+        elsif (/^(.*)$/) { # lone value
+            push (@{$data{$section}{'_'}}, $1);
+        }
+    }
+    close (RCF);
+    return \%data;
+}
+
+sub save_resource {
+    my ($rc, $data) = @_;
+    open (RCF, '>:utf8', $rc)
+        or die _("Error: opening '{file}' for writing", file => $rc) . ": $!";
+    foreach my $section (keys %$data) {
+        say RCF "[$section]";
+        if (ref ($data->{$section}{'_'}) eq 'ARRAY') {
+            foreach my $val (@{$data->{$section}{'_'}}) {
+                say RCF $val;
+            }
+        } else {
+            foreach my $key (keys %{$data->{$section}}) {
+                my $val = $data->{$section}{$key};
+                say RCF "$key=$val";
+            }
+        }
+        say RCF "";
+    }
+    close (RCF);
+}
+
 # load current status from disc
 sub load_preferences {
     my $rc = get_rc_filename ();
