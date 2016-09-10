@@ -2016,41 +2016,58 @@ sub init_ac_hidden_preferences {
 sub load_resource {
     my $rc = shift;
     my %data = ();
+    my %meta = ();
+    my $line = 0;
     open (RCF, '<:encoding(utf8)', $rc)
         or die _("Error: opening '{file}' for reading", file => $rc) . ": $!";
     my $section = '_'; # default unnamed section
     while (<RCF>) {
         chomp;
+        ++$line;
         next if (/^\s*$/);
         if (/^\[([^\]]+)\]$/) { # new section
             $section = $1;
             die _("Error: duplicate section '{sect}' in resource file '{file}'\n",
                 sect => $section, file => $rc) if ($data{$section});
             $data{$section} = {};
+            $meta{$section}{'#'} = $line;
         }
         elsif (/^([0-9a-z_]+)=(.*)$/) { # key=value
             $data{$section}{$1} = $2;
+            $meta{$section}{$1} = $line;
         }
         elsif (/^(.*)$/) { # lone value
             push (@{$data{$section}{'_'}}, $1);
         }
     }
     close (RCF);
-    return \%data;
+    return (\%data, \%meta);
 }
 
 sub save_resource {
-    my ($rc, $data) = @_;
+    my ($rc, $data, $meta) = @_;
     open (RCF, '>:utf8', $rc)
         or die _("Error: opening '{file}' for writing", file => $rc) . ": $!";
-    foreach my $section (keys %$data) {
+    my @sections = keys %$data;
+    if (defined $meta) {
+        @sections = sort {
+            $meta->{$a}{'#'} <=> $meta->{$b}{'#'}
+        } @sections
+    }
+    foreach my $section (@sections) {
         say RCF "[$section]";
         if (ref ($data->{$section}{'_'}) eq 'ARRAY') {
             foreach my $val (@{$data->{$section}{'_'}}) {
                 say RCF $val;
             }
         } else {
-            foreach my $key (keys %{$data->{$section}}) {
+            my @keys = keys %{$data->{$section}};
+            if (defined $meta) {
+                @keys = sort {
+                    $meta->{$section}{$a} <=> $meta->{$section}{$b}
+                } @keys
+            }
+            foreach my $key (@keys) {
                 my $val = $data->{$section}{$key};
                 say RCF "$key=$val";
             }
