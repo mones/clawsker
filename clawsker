@@ -227,6 +227,11 @@ sub _ {
     e_running => _('seems Claws Mail is currently running, close it first.'),
 );
 
+# data and metadata of resource files
+my $CONFIGDATA;
+my $CONFIGMETA;
+my $ACCOUNTDATA;
+my $ACCOUNTMETA;
 # all preferences read by load_preferences
 my %PREFS = ();
 my %ACPREFS = ();
@@ -2083,14 +2088,10 @@ sub load_preferences {
     log_message ("Loading preferences from $rc\n");
     return FALSE unless check_rc_file ($rc);
     return FALSE unless check_claws_not_running ();
-    open (RCF, "<$rc");
-    while (<RCF>) {
-        chomp;
-        if (/^([8a-z_]+)=(.*)$/) {
-            $PREFS{$1} = decode('UTF-8', $2);
-        }
+    ($CONFIGDATA, $CONFIGMETA) = load_resource ($rc);
+    foreach (keys %{$CONFIGDATA->{'Common'}}) {
+        $PREFS{$_} = $CONFIGDATA->{'Common'}{$_};
     }
-    close (RCF);
     return TRUE;
 }
 
@@ -2099,19 +2100,14 @@ sub load_ac_preferences {
     log_message ("Loading account preferences from $rc\n");
     return FALSE unless check_rc_file ($rc);
     return FALSE unless check_claws_not_running ();
-    open (RCF, "<$rc");
-    my $akey;
-    while (<RCF>) {
-        chomp;
-        if (/^\[Account: (\d+)\]$/) {
-          $akey = $1;
-          next;
-        }
-        if (/^([8a-z_]+)=(.*)$/) {
-            $ACPREFS{$akey}{$1} = decode('UTF-8', $2);
+    ($ACCOUNTDATA, $ACCOUNTMETA) = load_resource ($rc);
+    foreach my $asect (keys %$ACCOUNTDATA) {
+        if ($asect =~ /^Account: (\d+)$/) {
+            foreach (keys %{$ACCOUNTDATA->{$asect}}) {
+                $ACPREFS{$1}{$_} = $ACCOUNTDATA->{$asect}{$_};
+            }
         }
     }
-    close (RCF);
     return TRUE;
 }
 
