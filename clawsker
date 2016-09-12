@@ -2119,24 +2119,12 @@ sub save_preferences {
     return FALSE unless check_claws_not_running ();
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
-    open (RCF, ">$rc");
-    open (RCB, "<$rcbak");
-    while (<RCB>) {
-        chomp;
-        if (/^([8a-z_]+)=(.*)$/) {
-            if (defined($HPVALUE{$1})) {
-                print RCF $1 . "=" . $HPVALUE{$1} . "\n";
-            }
-            else {
-                print RCF $_ . "\n";
-            }
-        }
-        else {
-            print RCF $_ . "\n";
+    foreach (keys %PREFS) {
+        if (defined $HPVALUE{$_}) {
+            $CONFIGDATA->{'Common'}{$_} = $HPVALUE{$_};
         }
     }
-    close (RCB);
-    close (RCF);
+    save_resource ($rc, $CONFIGDATA, $CONFIGMETA);
     return TRUE;
 }
 
@@ -2147,30 +2135,16 @@ sub save_ac_preferences {
     return FALSE unless check_claws_not_running ();
     my $rcbak = "$rc.backup";
     rename ($rc, $rcbak);
-    open (RCF, ">$rc");
-    open (RCB, "<$rcbak");
-    my $akey;
-    while (<RCB>) {
-        chomp;
-        if (/^\[Account: (\d+)\]$/) {
-          $akey = $1;
-          print RCF $_ . "\n";
-          next;
-        }
-        if (/^([8a-z_]+)=(.*)$/) {
-            if (defined($ACHPVALUE{$akey}{$1})) {
-                print RCF $1 . "=" . $ACHPVALUE{$akey}{$1} . "\n";
+    foreach my $asect (keys %$ACCOUNTDATA) {
+        if ($asect =~ /^Account: (\d+)$/) {
+            foreach (keys %{$ACCOUNTDATA->{$asect}}) {
+                if (defined $ACHPVALUE{$1}{$_}) {
+                    $ACCOUNTDATA->{$asect}{$_} = $ACHPVALUE{$1}{$_};
+                }
             }
-            else {
-                print RCF $_ . "\n";
-            }
-        }
-        else {
-            print RCF $_ . "\n";
         }
     }
-    close (RCB);
-    close (RCF);
+    save_resource ($rc, $ACCOUNTDATA, $ACCOUNTMETA);
     return TRUE;
 }
 
