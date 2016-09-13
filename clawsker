@@ -235,9 +235,11 @@ my $ACCOUNTMETA;
 # all preferences read by load_preferences
 my %PREFS = ();
 my %ACPREFS = ();
+my %PLPREFS = ();
 # values of all preferences handled by clawsker
 my %HPVALUE = ();
 my %ACHPVALUE = ();
+my %PLHPVALUE = ();
 # default config dir and file name
 my $ALTCONFIGDIR = FALSE;
 my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
@@ -251,6 +253,7 @@ use constant DESC  => 2; # the description for the hint/help
 use constant TYPE  => 3; # data type: bool, int, float, string, color
 use constant CMVER => 4; # lowest[,highest] Claws Mail version(s) the feature exists
 use constant CMDEF => 5; # default value for the preference in Claws Mail
+use constant PLUGIN => 6; # plugin section (only in plugin preferences)
 
 # constants for GUI spacing
 use constant HBOX_SPC => 5;
@@ -1862,6 +1865,7 @@ sub new_accounts_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '3.9.0.74',
         '-1',
+        'AttRemover',
     ],
     arm_winh => [
         'win_height',
@@ -1870,6 +1874,7 @@ sub new_accounts_page() {
         'int,0,3000', # 0 pixels - 3000 pixels
         '3.9.0.74',
         '-1',
+        'AttRemover',
     ],
     # libravatar
     lav_burl => [
@@ -1879,6 +1884,7 @@ sub new_accounts_page() {
         'char,0,1024,32',
         '3.9.3.32',
         'http://cdn.libravatar.org/avatar',
+        'Libravatar',
     ],
     # perl
     prl_flvb => [
@@ -1888,6 +1894,7 @@ sub new_accounts_page() {
         '0=l_plu_prl_none;1=l_plu_prl_manual;2=l_plu_prl_action;3=l_plu_prl_match',
         '3.9.0.75',
         '2',
+        'PerlPlugin',
     ],
 );
 
@@ -1895,16 +1902,16 @@ sub new_plugins_page() {
     return new_vbox_pack (
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_int (\%pr::plu, 'arm_winw', \%HPVALUE),
-                          new_text_box_for_int (\%pr::plu, 'arm_winh', \%HPVALUE)),
+                          new_text_box_for_int (\%pr::plu, 'arm_winw', $PLHPVALUE{'AttRemover'}),
+                          new_text_box_for_int (\%pr::plu, 'arm_winh', $PLHPVALUE{'AttRemover'})),
                      _('Attachment remover'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_text_box_for_nchar (\%pr::plu, 'lav_burl', \%HPVALUE)),
+                          new_text_box_for_nchar (\%pr::plu, 'lav_burl', $PLHPVALUE{'Libravatar'})),
                      _('Libravatar'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
-                          new_selection_box_for (\%pr::plu, 'prl_flvb', \%HPVALUE)),
+                          new_selection_box_for (\%pr::plu, 'prl_flvb', $PLHPVALUE{'PerlPlugin'})),
                      _('Perl'), 'not-packed')
            );
 }
@@ -2017,6 +2024,15 @@ sub init_ac_hidden_preferences {
     return TRUE;
 }
 
+sub init_plu_hidden_preferences {
+    foreach my $key (keys %pr::plu) {
+        my $plugin = $pr::plu{$key}[PLUGIN];
+        my $pname = $pr::plu{$key}[NAME];
+        $PLHPVALUE{$plugin}{$pname} = $PLPREFS{$plugin}{$pname};
+    }
+    return TRUE;
+}
+
 # generic load/save resource files
 sub load_resource {
     my $rc = shift;
@@ -2092,6 +2108,11 @@ sub load_preferences {
     foreach (keys %{$CONFIGDATA->{'Common'}}) {
         $PREFS{$_} = $CONFIGDATA->{'Common'}{$_};
     }
+    foreach my $plugin (qw(AttRemover Libravatar PerlPlugin)) {
+        foreach (keys %{$CONFIGDATA->{$plugin}}) {
+            $PLPREFS{$plugin}{$_} = $CONFIGDATA->{$plugin}{$_};
+        }
+    }
     return TRUE;
 }
 
@@ -2122,6 +2143,13 @@ sub save_preferences {
     foreach (keys %PREFS) {
         if (defined $HPVALUE{$_}) {
             $CONFIGDATA->{'Common'}{$_} = $HPVALUE{$_};
+        }
+    }
+    foreach my $plugin (qw(AttRemover Libravatar PerlPlugin)) {
+        foreach (keys %{$CONFIGDATA->{$plugin}}) {
+            if (defined $PLHPVALUE{$plugin}{$_}) {
+                $CONFIGDATA->{$plugin}{$_} = $PLHPVALUE{$plugin}{$_};
+            }
         }
     }
     save_resource ($rc, $CONFIGDATA, $CONFIGMETA);
@@ -2249,6 +2277,7 @@ exit unless load_preferences ();
 exit unless load_ac_preferences ();
 exit unless init_hidden_preferences ();
 exit unless init_ac_hidden_preferences ();
+exit unless init_plu_hidden_preferences ();
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
