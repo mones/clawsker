@@ -1876,6 +1876,25 @@ sub new_accounts_page() {
         '-1',
         'AttRemover',
     ],
+    # managesieve
+    msv_winw => [
+        'manager_win_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.11.1.210',
+        '-1',
+        'ManageSieve',
+    ],
+    msv_winh => [
+        'manager_win_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.11.1.210',
+        '-1',
+        'ManageSieve',
+    ],
     # libravatar
     lav_burl => [
         'base_url',
@@ -1905,6 +1924,11 @@ sub new_plugins_page() {
                           new_text_box_for_int (\%pr::plu, 'arm_winw', $PLHPVALUE{'AttRemover'}),
                           new_text_box_for_int (\%pr::plu, 'arm_winh', $PLHPVALUE{'AttRemover'})),
                      _('Attachment remover'), 'not-packed'),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::plu, 'msv_winw', $PLHPVALUE{'ManageSieve'}),
+                          new_text_box_for_int (\%pr::plu, 'msv_winh', $PLHPVALUE{'ManageSieve'})),
+                     _('Sieve manager'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
                           new_text_box_for_nchar (\%pr::plu, 'lav_burl', $PLHPVALUE{'Libravatar'})),
@@ -2108,7 +2132,7 @@ sub load_preferences {
     foreach (keys %{$CONFIGDATA->{'Common'}}) {
         $PREFS{$_} = $CONFIGDATA->{'Common'}{$_};
     }
-    foreach my $plugin (qw(AttRemover Libravatar PerlPlugin)) {
+    foreach my $plugin (qw(AttRemover Libravatar ManageSieve PerlPlugin)) {
         foreach (keys %{$CONFIGDATA->{$plugin}}) {
             $PLPREFS{$plugin}{$_} = $CONFIGDATA->{$plugin}{$_};
         }
@@ -2145,7 +2169,7 @@ sub save_preferences {
             $CONFIGDATA->{'Common'}{$_} = $HPVALUE{$_};
         }
     }
-    foreach my $plugin (qw(AttRemover Libravatar PerlPlugin)) {
+    foreach my $plugin (qw(AttRemover Libravatar ManageSieve PerlPlugin)) {
         foreach (keys %{$CONFIGDATA->{$plugin}}) {
             if (defined $PLHPVALUE{$plugin}{$_}) {
                 $CONFIGDATA->{$plugin}{$_} = $PLHPVALUE{$plugin}{$_};
