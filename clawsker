@@ -213,6 +213,8 @@ sub _ {
     l_acc_gtls_pri => _('GnuTLS priority'),
     h_acc_gtls_pri => _('Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored.'),
 
+    l_plu_gpg_alimit => _('Autocompletion limit'),
+    h_plu_gpg_alimit => _('Limits the number of addresses obtained from from keyring through autocompletion. Use 0 to get all matches.'),
     l_plu_lav_burl => _('Base URL'),
     h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
     l_plu_prl_flvb => _('Log level'),
@@ -246,7 +248,7 @@ my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
 my $CONFIGRC = 'clawsrc';
 my $ACCOUNTRC = 'accountrc';
 # supported and available plugins lists
-my @PLUGINS = qw(AttRemover Libravatar ManageSieve PerlPlugin);
+my @PLUGINS = qw(AttRemover GPG ManageSieve Libravatar PerlPlugin);
 my @AVPLUGINS = ();
 
 # index constants for preference arrays
@@ -1879,6 +1881,16 @@ sub new_accounts_page() {
         '-1',
         'AttRemover',
     ],
+    # GPG
+    gpg_alimit => [
+        'autocompletion_limit',
+        $xl::s{l_plu_gpg_alimit},
+        $xl::s{h_plu_gpg_alimit},
+        'int,0,100',
+        '3.12.0.75',
+        '0',
+        'GPG',
+    ],
     # managesieve
     msv_winw => [
         'manager_win_width',
@@ -1928,6 +1940,11 @@ sub new_plugins_page() {
                           new_text_box_for_int (\%pr::plu, 'arm_winw', $PLHPVALUE{'AttRemover'}),
                           new_text_box_for_int (\%pr::plu, 'arm_winh', $PLHPVALUE{'AttRemover'})),
                      _('Attachment remover'), 'not-packed');
+    $frame{'GPG'} =
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::plu, 'gpg_alimit', $PLHPVALUE{'GPG'})),
+                     _('GPG'), 'not-packed');
     $frame{'ManageSieve'} =
                 new_subpage_frame (
                      new_hbox_pack (
@@ -1949,6 +1966,7 @@ sub new_plugins_page() {
     }
     return new_vbox_pack (
                 $frame{'AttRemover'},
+                $frame{'GPG'},
                 $frame{'ManageSieve'},
                 $frame{'Libravatar'},
                 $frame{'PerlPlugin'});
