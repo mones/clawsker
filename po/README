@@ -8,7 +8,11 @@ me: ricardo@mones.org
 If you have questions or just want to get in touch with other
 translators of the project you can subscribe to the Claws Mail
 translators' mailing list:
+
 http://lists.claws-mail.org/cgi-bin/mailman/listinfo/translators
+
+Calls for translation updates before a new release are also sent to
+this list.
 
 New translations
 ~~~~~~~~~~~~~~~~
@@ -19,6 +23,10 @@ strings and placeholder values (strings in CAPS). See how is done
 in other translations for example.
 
 The pot file can be obtained from a git clone or a release tarball.
+The pot file in git it's only updated when a new release is near,
+therefore, you may need to update it manually to get all the
+translatable strings. Use 'make update-pot' for updating it before
+copying to your language po file.
 
 The 'xx' is your language code (e.g.: 'en' for English, 'fr' for
 French, etc.) and, optionally, 'YY' defines your country variant
@@ -56,7 +64,7 @@ should be created if everything is right.
 Translations not maintained
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a translation is not updated in several releases and the number of
+If a translation is not updated for several releases and the number of
 translated strings drops below certain level it will be moved to the
 directory 'po/unmaint'. Check there before making a new translation.
 
