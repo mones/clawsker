@@ -2006,11 +2006,12 @@ sub print_help() {
     print _("Syntax:\n");
     print _("  clawsker [options]\n");
     print _("Options:\n");
-    print _("  -h|--help                        Prints this help screen.\n");
-    print _("  -v|--version                     Prints version infos.\n");
-    print _("  -b|--verbose                     More messages on standard output.\n");
     print _("  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n");
+    print _("  -b|--verbose                     More messages on standard output.\n");
     print _("  -c|--clawsrc <file>              Uses <file> as full resource name.\n");
+    print _("  -h|--help                        Prints this help screen.\n");
+    print _("  -r|--read-only                   Disables writing changes to disk.\n");
+    print _("  -v|--version                     Prints version infos.\n");
 }
 
 sub parse_command_line {
