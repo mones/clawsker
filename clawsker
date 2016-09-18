@@ -1973,23 +1973,35 @@ sub new_plugins_page() {
 }
 
 # version info
+sub get_toolkit_versions {
+    my %versions = ();
+    $versions{'glib'} = $Glib::VERSION;
+    # version info stuff appeared in 1.040
+    if ($Glib::VERSION >= 1.040) {
+        $versions{'glib-b'} = join('.', Glib->GET_VERSION_INFO);
+        $versions{'glib-r'} = join('.',
+            &Glib::major_version, &Glib::minor_version, &Glib::micro_version);
+    }
+    $versions{'gtk2'} = $Gtk2::VERSION;
+    if ($Gtk2::VERSION >= 1.040) {
+        $versions{'gtk2-b'} = join('.', Gtk2->GET_VERSION_INFO);
+        $versions{'gtk2-r'} = join('.',
+            &Gtk2::major_version, &Gtk2::minor_version, &Gtk2::micro_version);
+    }
+    return \%versions;
+}
+
 sub print_version() {
     print $xl::s{about_title} . "\n";
     print $xl::s{about_version} . " $VERSION\n";
-    print "Perl-GLib " . $Glib::VERSION;
-    # version info stuff appeared in 1.040
-    if ($Glib::VERSION >= 1.040) {
-        print _(", built for ") . join(".", Glib->GET_VERSION_INFO)
-              . _(", running with ") . join(".", &Glib::major_version,
-              &Glib::minor_version, &Glib::micro_version);
-    }
+    my $v = get_toolkit_versions ();
+    print "Perl-GLib " . $v->{'glib'};
+    print _(", built for ") . $v->{'glib-b'}
+        . _(", running with ") . $v->{'glib-r'} if $v->{'glib-b'};
     print "\n";
-    print "Perl-GTK2 " . $Gtk2::VERSION;
-    if ($Gtk2::VERSION >= 1.040) {
-        print _(", built for ") . join(".", Gtk2->GET_VERSION_INFO)
-              . _(", running with ") . join(".", &Gtk2::major_version,
-              &Gtk2::minor_version, &Gtk2::micro_version);
-    }
+    print "Perl-GTK2 " . $v->{'gtk2'};
+    print _(", built for ") . $v->{'gtk2-b'}
+        . _(", running with ") . $v->{'gtk2-r'} if $v->{'gtk2-b'};
     print "\n";
     my $clawsver = ($CLAWSV eq "") ?
                 _("was not found!") :
