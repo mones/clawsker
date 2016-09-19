@@ -1856,7 +1856,13 @@ sub new_accounts_page() {
     $accbook->set_tab_pos ('right');
     foreach (keys %ACPREFS) {
         my $name = $ACPREFS{$_}{'account_name'};
-        $accbook->append_page (new_account_subpage ($_), $name);
+        my $isdef = ($ACPREFS{$_}{'is_default'} eq '1');
+        my $page = new_account_subpage ($_);
+        $accbook->append_page ($page, $isdef? '<b>' . $name . '</b>': $name);
+        if ($isdef) {
+            my $label = $accbook->get_tab_label ($page);
+            $label->set_use_markup (TRUE);
+        }
     }
     return $accbook;
 }
