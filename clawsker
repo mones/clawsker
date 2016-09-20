@@ -1854,7 +1854,10 @@ sub new_account_subpage($) {
 sub new_accounts_page() {
     my $accbook = Gtk2::Notebook->new;
     $accbook->set_tab_pos ('right');
-    foreach (keys %ACPREFS) {
+    my @akeys = sort {
+        $ACPREFS{$a}{'account_name'} cmp $ACPREFS{$b}{'account_name'}
+    } keys %ACPREFS;
+    foreach (@akeys) {
         my $name = $ACPREFS{$_}{'account_name'};
         my $isdef = ($ACPREFS{$_}{'is_default'} eq '1');
         my $page = new_account_subpage ($_);
