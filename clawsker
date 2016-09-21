@@ -71,6 +71,7 @@ sub _ {
     tab_winpos => _('Windows'),
     tab_accounts => _('Accounts'),
     tab_plugins => _('Plugins'),
+    tab_info => _('Info'),
 
     ab_frame => _('Addressbook'),
     mem_frame => _('Memory'),
@@ -1981,6 +1982,50 @@ sub new_plugins_page() {
                 $frame{'PerlPlugin'});
 }
 
+sub new_info_page() {
+    my $t0 = Gtk2::Table->new (7, 2, FALSE);
+    my $v = get_toolkit_versions ();
+    my %labels = (
+        'glib' => 'Perl-GLib',
+        'glib-r' => _('GLib runtime'),
+        'glib-b' => _('GLib built'),
+        'gtk2' => 'Perl-GTK2',
+        'gtk2-r' => _('GTK2 runtime'),
+        'gtk2-b' => _('GTK2 built'),
+    );
+    my $row = 0;
+    foreach (sort keys %$v) {
+        if (defined $v->{$_}) {
+            my $label = Gtk2::Label->new ($labels{$_});
+            my $value = Gtk2::Label->new ('<b>' . $v->{$_} . '</b>');
+            $label->set_alignment (0, 0.5);
+            $value->set_alignment (0, 0.5);
+            $value->set_use_markup (TRUE);
+            $t0->attach ($label, 0, 1, $row, $row + 1, 'fill', 'shrink', 8, 6);
+            $t0->attach ($value, 1, 2, $row, $row + 1, 'fill', 'shrink', 8, 6);
+            ++$row;
+        }
+    }
+    my $t1 = Gtk2::Table->new (2, 2, FALSE);
+    my @lbl = map { $_->set_alignment (0, 0.5); $_ } (
+        Gtk2::Label->new (_('Binary')),
+        Gtk2::Label->new (_('Configuration'))
+    );
+    my $cfgv = $CONFIGDATA->{'Common'}{'config_version'};
+    $cfgv //= '';
+    my @val = map { $_->set_alignment (0, 0.5); $_->set_use_markup (TRUE); $_ } (
+        Gtk2::Label->new ('<b>' . $CLAWSV . '</b>'),
+        Gtk2::Label->new ('<b>' . $cfgv . '</b>')
+    );
+    for (my $i = 0; $i <= $#lbl; ++$i) {
+        $t1->attach ($lbl[$i], 0, 1, $i, $i + 1, 'fill', 'shrink', 8, 6);
+        $t1->attach ($val[$i], 1, 2, $i, $i + 1, 'fill', 'shrink', 8, 6);
+    }
+    return new_vbox_pack (
+                new_subpage_frame ($t0, _('Library versions'), 'not-packed'),
+                new_subpage_frame ($t1, _('Claws Mail versions'), 'not-packed'));
+}
+
 # version info
 sub get_toolkit_versions {
     my %versions = ();
@@ -2270,6 +2315,7 @@ sub new_notebook {
     $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
     $nb->append_page (new_accounts_page (), $xl::s{tab_accounts});
     $nb->append_page (new_plugins_page (), $xl::s{tab_plugins});
+    $nb->append_page (new_info_page (), $xl::s{tab_info});
 
     return $nb;
 }
