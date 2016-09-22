@@ -251,6 +251,8 @@ my $ACCOUNTRC = 'accountrc';
 # supported and available plugins lists
 my @PLUGINS = qw(AttRemover GPG ManageSieve Libravatar PerlPlugin);
 my @AVPLUGINS = ();
+# loaded icons
+my @APPICONS = ();
 
 # index constants for preference arrays
 use constant NAME  => 0; # the name on the rc file
@@ -2385,17 +2387,24 @@ sub new_button_box {
 }
 
 sub get_app_icons {
-    my $dir = $DATADIR . '/icons/hicolor';
-    my @names = map {
-      join ('/', ($dir, , $_ . 'x' . $_, 'apps', $NAME . '.png'))
-    } (64, 128);
-    my @icons = ();
+    return @APPICONS if (@APPICONS);
+    my @names;
+    if (-d $DATADIR) { # installed
+        my $dir = $DATADIR . '/icons/hicolor';
+        @names = map {
+            join ('/', ($dir, $_ . 'x' . $_, 'apps', $NAME . '.png'))
+        } (64, 128);
+    } else { # unpacked tarball or git clone
+        @names = map {
+            join ('/', ('./icons', $NAME . '-' . $_ . '.png'));
+        } (64, 128);
+    }
     foreach (@names) {
         my $icon = undef;
         $icon = Gtk2::Gdk::Pixbuf->new_from_file($_) if (-f $_);
-        push @icons, $icon if ($icon);
+        push @APPICONS, $icon if ($icon);
     }
-    return @icons;
+    return @APPICONS;
 }
 
 # initialise
