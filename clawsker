@@ -2355,6 +2355,13 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
                     . "<span size=\"large\">$lic</span>\n\n"
                     . "<span size=\"small\">$license</span>");
     $dialog->set_title ($xl::s{about});
+    if (Gtk2->CHECK_VERSION (2, 10, 0)) {
+        my @icons = get_app_icons ();
+        my $image = Gtk2::Image->new_from_pixbuf ($icons[1]);
+        $image->show ();
+        $image->set_alignment (0, 0);
+        $dialog->set_image ($image);
+    }
     #
     return $dialog;
 }
