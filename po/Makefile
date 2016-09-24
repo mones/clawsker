@@ -11,7 +11,7 @@
 #
 
 NAME = clawsker
-VERSION = $(shell cat ../VERSION)
+VERSION ?= $(shell git describe)
 PREFIX ?= /usr/local
 DATADIR = ${PREFIX}/share
 LOCALEDIR = ${DATADIR}/locale
