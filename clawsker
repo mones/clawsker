@@ -215,7 +215,7 @@ sub _ {
     h_acc_gtls_pri => _('Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored.'),
 
     l_plu_gpg_alimit => _('Autocompletion limit'),
-    h_plu_gpg_alimit => _('Limits the number of addresses obtained from from keyring through autocompletion. Use 0 to get all matches.'),
+    h_plu_gpg_alimit => _('Limits the number of addresses obtained from keyring through autocompletion. Use 0 to get all matches.'),
     l_plu_lav_burl => _('Base URL'),
     h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
     l_plu_prl_flvb => _('Log level'),
