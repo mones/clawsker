@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: clawsker 1.0.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-09-25 01:38+0200\n"
+"POT-Creation-Date: 2016-09-26 01:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -641,8 +641,8 @@ msgstr ""
 
 #: ../clawsker:218
 msgid ""
-"Limits the number of addresses obtained from from keyring through "
-"autocompletion. Use 0 to get all matches."
+"Limits the number of addresses obtained from keyring through autocompletion. "
+"Use 0 to get all matches."
 msgstr ""
 
 #: ../clawsker:219
