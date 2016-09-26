@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: clawsker 1.0.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-09-26 01:29+0200\n"
+"POT-Creation-Date: 2016-09-26 20:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "GUI"
 msgstr ""
 
-#: ../clawsker:70 ../clawsker:1823
+#: ../clawsker:70 ../clawsker:1834
 msgid "Other"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Windows"
 msgstr ""
 
-#: ../clawsker:72 ../clawsker:1820
+#: ../clawsker:72 ../clawsker:1831
 msgid "Accounts"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: ../clawsker:76 ../clawsker:1819
+#: ../clawsker:76 ../clawsker:1830
 msgid "Addressbook"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 msgid "Message View"
 msgstr ""
 
-#: ../clawsker:79 ../clawsker:1798
+#: ../clawsker:79 ../clawsker:1809
 msgid "Log window"
 msgstr ""
 
@@ -497,464 +497,474 @@ msgid ""
 "the start."
 msgstr ""
 
-#: ../clawsker:178
-msgid "X-Mailer header"
+#: ../clawsker:177
+msgid "Rewrite first 'From' using QP encoding"
 msgstr ""
 
-#: ../clawsker:179
-msgid "The colour used for the X-Mailer line when its value is Claws Mail."
+#: ../clawsker:178
+msgid ""
+"Workaround some servers which convert first 'From' to '>From' by using Quoted-"
+"Printable transfer encoding instead of 7bit/8bit encoding."
 msgstr ""
 
 #: ../clawsker:180
-msgid "Error messages"
+msgid "X-Mailer header"
 msgstr ""
 
 #: ../clawsker:181
-msgid "Colour for error messages in log window."
+msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr ""
 
 #: ../clawsker:182
-msgid "Server messages"
+msgid "Error messages"
 msgstr ""
 
 #: ../clawsker:183
-msgid "Colour for messages received from servers in log window."
+msgid "Colour for error messages in log window."
 msgstr ""
 
 #: ../clawsker:184
-msgid "Standard messages"
+msgid "Server messages"
 msgstr ""
 
 #: ../clawsker:185
-msgid "Colour for messages in log window."
+msgid "Colour for messages received from servers in log window."
 msgstr ""
 
 #: ../clawsker:186
-msgid "Client messages"
+msgid "Standard messages"
 msgstr ""
 
 #: ../clawsker:187
-msgid "Colour for messages sent to servers in log window."
+msgid "Colour for messages in log window."
 msgstr ""
 
 #: ../clawsker:188
-msgid "Warnings"
+msgid "Client messages"
 msgstr ""
 
 #: ../clawsker:189
-msgid "Colour for warning messages in log window."
+msgid "Colour for messages sent to servers in log window."
+msgstr ""
+
+#: ../clawsker:190
+msgid "Warnings"
 msgstr ""
 
 #: ../clawsker:191
-msgid "Added lines"
-msgstr ""
-
-#: ../clawsker:192
-msgid "Colour for added lines in patches."
+msgid "Colour for warning messages in log window."
 msgstr ""
 
 #: ../clawsker:193
-msgid "Deleted lines"
+msgid "Added lines"
 msgstr ""
 
 #: ../clawsker:194
-msgid "Colour for deleted lines in patches."
+msgid "Colour for added lines in patches."
 msgstr ""
 
 #: ../clawsker:195
-msgid "Hunk lines"
+msgid "Deleted lines"
 msgstr ""
 
 #: ../clawsker:196
-msgid "Color for hunk headers in patches."
+msgid "Colour for deleted lines in patches."
+msgstr ""
+
+#: ../clawsker:197
+msgid "Hunk lines"
 msgstr ""
 
 #: ../clawsker:198
-msgid "X position"
-msgstr ""
-
-#: ../clawsker:199
-msgid "X coordinate for window's top-left corner."
+msgid "Color for hunk headers in patches."
 msgstr ""
 
 #: ../clawsker:200
-msgid "Y position"
+msgid "X position"
 msgstr ""
 
 #: ../clawsker:201
-msgid "Y coordinate for window's top-left corner."
+msgid "X coordinate for window's top-left corner."
 msgstr ""
 
 #: ../clawsker:202
-msgid "Width"
+msgid "Y position"
 msgstr ""
 
 #: ../clawsker:203
-msgid "Window's width in pixels."
+msgid "Y coordinate for window's top-left corner."
 msgstr ""
 
 #: ../clawsker:204
-msgid "Height"
+msgid "Width"
 msgstr ""
 
 #: ../clawsker:205
-msgid "Window's height in pixels."
+msgid "Window's width in pixels."
+msgstr ""
+
+#: ../clawsker:206
+msgid "Height"
 msgstr ""
 
 #: ../clawsker:207
-msgid "Maximized"
-msgstr ""
-
-#: ../clawsker:208
-msgid "Changes window maximized status."
+msgid "Window's height in pixels."
 msgstr ""
 
 #: ../clawsker:209
-msgid "Full-screen"
+msgid "Maximized"
 msgstr ""
 
 #: ../clawsker:210
-msgid "Changes full screen status."
+msgid "Changes window maximized status."
+msgstr ""
+
+#: ../clawsker:211
+msgid "Full-screen"
 msgstr ""
 
 #: ../clawsker:212
+msgid "Changes full screen status."
+msgstr ""
+
+#: ../clawsker:214
 msgid "Use custom GnuTLS priority"
 msgstr ""
 
-#: ../clawsker:213
+#: ../clawsker:215
 msgid "Enables using user provided GnuTLS priority string."
 msgstr ""
 
-#: ../clawsker:214 ../clawsker:1853
+#: ../clawsker:216 ../clawsker:1864
 msgid "GnuTLS priority"
 msgstr ""
 
-#: ../clawsker:215
+#: ../clawsker:217
 msgid ""
 "Value to use as GnuTLS priority string if custom priority check is enabled. "
 "Otherwise this value is ignored."
 msgstr ""
 
-#: ../clawsker:217
+#: ../clawsker:219
 msgid "Autocompletion limit"
 msgstr ""
 
-#: ../clawsker:218
+#: ../clawsker:220
 msgid ""
 "Limits the number of addresses obtained from keyring through autocompletion. "
 "Use 0 to get all matches."
 msgstr ""
 
-#: ../clawsker:219
+#: ../clawsker:221
 msgid "Base URL"
 msgstr ""
 
-#: ../clawsker:220
+#: ../clawsker:222
 msgid ""
 "This is the URL where avatar requests are sent. You can use the one of your "
 "own libravatar server, if available."
 msgstr ""
 
-#: ../clawsker:221
+#: ../clawsker:223
 msgid "Log level"
 msgstr ""
 
-#: ../clawsker:222
+#: ../clawsker:224
 msgid "Verbosity level of log, acumulative."
 msgstr ""
 
-#: ../clawsker:223
+#: ../clawsker:225
 msgid "None"
 msgstr ""
 
-#: ../clawsker:224
+#: ../clawsker:226
 msgid "Manual"
 msgstr ""
 
-#: ../clawsker:225
+#: ../clawsker:227
 msgid "Actions"
 msgstr ""
 
-#: ../clawsker:226
+#: ../clawsker:228
 msgid "Matches"
 msgstr ""
 
-#: ../clawsker:228
+#: ../clawsker:230
 msgid "Error: "
 msgstr ""
 
-#: ../clawsker:229
+#: ../clawsker:231
 msgid "resource file for Claws Mail was not found."
 msgstr ""
 
-#: ../clawsker:230
+#: ../clawsker:232
 msgid "seems Claws Mail is currently running, close it first."
 msgstr ""
 
-#: ../clawsker:407
+#: ../clawsker:409
 msgid "Clawsker error"
 msgstr ""
 
-#: ../clawsker:1641
+#: ../clawsker:1652
 msgid "Main window"
 msgstr ""
 
-#: ../clawsker:1654
+#: ../clawsker:1665
 msgid "Message window"
 msgstr ""
 
-#: ../clawsker:1664
+#: ../clawsker:1675
 msgid "Send window"
 msgstr ""
 
-#: ../clawsker:1669
+#: ../clawsker:1680
 msgid "Receive window"
 msgstr ""
 
-#: ../clawsker:1683
+#: ../clawsker:1694
 msgid "Folder window"
 msgstr ""
 
-#: ../clawsker:1688
+#: ../clawsker:1699
 msgid "Folder selection window"
 msgstr ""
 
-#: ../clawsker:1698
+#: ../clawsker:1709
 msgid "Addressbook main window"
 msgstr ""
 
-#: ../clawsker:1703
+#: ../clawsker:1714
 msgid "Edit person window"
 msgstr ""
 
-#: ../clawsker:1708
+#: ../clawsker:1719
 msgid "Edit group window"
 msgstr ""
 
-#: ../clawsker:1713
+#: ../clawsker:1724
 msgid "Add address window"
 msgstr ""
 
-#: ../clawsker:1718
+#: ../clawsker:1729
 msgid "Folder select window"
 msgstr ""
 
-#: ../clawsker:1728
+#: ../clawsker:1739
 msgid "Accounts window"
 msgstr ""
 
-#: ../clawsker:1733
+#: ../clawsker:1744
 msgid "Edit account window"
 msgstr ""
 
-#: ../clawsker:1743
+#: ../clawsker:1754
 msgid "Filtering window"
 msgstr ""
 
-#: ../clawsker:1748
+#: ../clawsker:1759
 msgid "Filtering actions window"
 msgstr ""
 
-#: ../clawsker:1753
+#: ../clawsker:1764
 msgid "Filtering debug window"
 msgstr ""
 
-#: ../clawsker:1758
+#: ../clawsker:1769
 msgid "Matcher window"
 msgstr ""
 
-#: ../clawsker:1768
+#: ../clawsker:1779
 msgid "Preferences window"
 msgstr ""
 
-#: ../clawsker:1773
+#: ../clawsker:1784
 msgid "Templates window"
 msgstr ""
 
-#: ../clawsker:1778
+#: ../clawsker:1789
 msgid "Actions window"
 msgstr ""
 
-#: ../clawsker:1783
+#: ../clawsker:1794
 msgid "Tags window"
 msgstr ""
 
-#: ../clawsker:1788
+#: ../clawsker:1799
 msgid "Plugins window"
 msgstr ""
 
-#: ../clawsker:1803
+#: ../clawsker:1814
 msgid "Print preview window"
 msgstr ""
 
-#: ../clawsker:1808
+#: ../clawsker:1819
 msgid "View source window"
 msgstr ""
 
-#: ../clawsker:1815
+#: ../clawsker:1826
 msgid "Main"
 msgstr ""
 
-#: ../clawsker:1816
+#: ../clawsker:1827
 msgid "Message"
 msgstr ""
 
-#: ../clawsker:1817
+#: ../clawsker:1828
 msgid "Send/Receive"
 msgstr ""
 
-#: ../clawsker:1818
+#: ../clawsker:1829
 msgid "Folder"
 msgstr ""
 
-#: ../clawsker:1821
+#: ../clawsker:1832
 msgid "Filtering"
 msgstr ""
 
-#: ../clawsker:1822
+#: ../clawsker:1833
 msgid "Preferences"
 msgstr ""
 
-#: ../clawsker:1954
+#: ../clawsker:1965
 msgid "Attachment remover"
 msgstr ""
 
-#: ../clawsker:1959
+#: ../clawsker:1970
 msgid "GPG"
 msgstr ""
 
-#: ../clawsker:1965
+#: ../clawsker:1976
 msgid "Sieve manager"
 msgstr ""
 
-#: ../clawsker:1970
+#: ../clawsker:1981
 msgid "Libravatar"
 msgstr ""
 
-#: ../clawsker:1975
+#: ../clawsker:1986
 msgid "Perl"
 msgstr ""
 
-#: ../clawsker:1992
+#: ../clawsker:2003
 msgid "GLib runtime"
 msgstr ""
 
-#: ../clawsker:1993
+#: ../clawsker:2004
 msgid "GLib built"
 msgstr ""
 
-#: ../clawsker:1995
+#: ../clawsker:2006
 msgid "GTK2 runtime"
 msgstr ""
 
-#: ../clawsker:1996
+#: ../clawsker:2007
 msgid "GTK2 built"
 msgstr ""
 
-#: ../clawsker:2013
+#: ../clawsker:2024
 msgid "Binary"
 msgstr ""
 
-#: ../clawsker:2014
+#: ../clawsker:2025
 msgid "Configuration"
 msgstr ""
 
-#: ../clawsker:2027
+#: ../clawsker:2038
 msgid "Library versions"
 msgstr ""
 
-#: ../clawsker:2028
+#: ../clawsker:2039
 msgid "Claws Mail versions"
 msgstr ""
 
-#: ../clawsker:2055 ../clawsker:2059
+#: ../clawsker:2066 ../clawsker:2070
 msgid ", built for "
 msgstr ""
 
-#: ../clawsker:2056 ../clawsker:2060
+#: ../clawsker:2067 ../clawsker:2071
 msgid ", running with "
 msgstr ""
 
-#: ../clawsker:2063
+#: ../clawsker:2074
 msgid "was not found!"
 msgstr ""
 
-#: ../clawsker:2064
+#: ../clawsker:2075
 msgid "returned version "
 msgstr ""
 
-#: ../clawsker:2074
+#: ../clawsker:2085
 msgid "Syntax:\n"
 msgstr ""
 
-#: ../clawsker:2075
+#: ../clawsker:2086
 msgid "  clawsker [options]\n"
 msgstr ""
 
-#: ../clawsker:2076
+#: ../clawsker:2087
 msgid "Options:\n"
 msgstr ""
 
-#: ../clawsker:2077
+#: ../clawsker:2088
 msgid ""
 "  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n"
 msgstr ""
 
-#: ../clawsker:2078
+#: ../clawsker:2089
 msgid "  -b|--verbose                     More messages on standard output.\n"
 msgstr ""
 
-#: ../clawsker:2079
+#: ../clawsker:2090
 msgid "  -c|--clawsrc <file>              Uses <file> as full resource name.\n"
 msgstr ""
 
-#: ../clawsker:2080
+#: ../clawsker:2091
 msgid "  -h|--help                        Prints this help screen.\n"
 msgstr ""
 
-#: ../clawsker:2081
+#: ../clawsker:2092
 msgid "  -r|--read-only                   Disables writing changes to disk.\n"
 msgstr ""
 
-#: ../clawsker:2082
+#: ../clawsker:2093
 msgid "  -v|--version                     Prints version infos.\n"
 msgstr ""
 
-#: ../clawsker:2096
+#: ../clawsker:2107
 msgid "try -h or --help for syntax.\n"
 msgstr ""
 
-#: ../clawsker:2099
+#: ../clawsker:2110
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr ""
 
-#: ../clawsker:2111
+#: ../clawsker:2122
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr ""
 
-#: ../clawsker:2118
+#: ../clawsker:2129
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr ""
 
-#: ../clawsker:2127
+#: ../clawsker:2138
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr ""
 
-#: ../clawsker:2170
+#: ../clawsker:2181
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr ""
 
-#: ../clawsker:2178
+#: ../clawsker:2189
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr ""
 
-#: ../clawsker:2198
+#: ../clawsker:2209
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr ""
