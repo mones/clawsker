@@ -174,6 +174,8 @@ sub _ {
     h_beh_addr_swc => _('On Tab-key completion, address text will match any part of the string or only from the start.'),
     l_beh_fold_swc => _('Folder search in folder selector matches any'),
     h_beh_fold_swc => _('On folder name completion text will match any part of the string or only from the start.'),
+    l_beh_rewrite_ff => _('Rewrite first \'From\' using QP encoding'),
+    h_beh_rewrite_ff => _('Workaround some servers which convert first \'From\' to \'>From\' by using Quoted-Printable transfer encoding instead of 7bit/8bit encoding.'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -1018,6 +1020,14 @@ sub new_gui_page() {
         '3.9.3.18',
         '0',
     ],
+    rewrite_ff => [
+        'rewrite_first_from',
+        $xl::s{l_beh_rewrite_ff},
+        $xl::s{h_beh_rewrite_ff},
+        'bool',
+        '3.14.0.94',
+        '0',
+    ],
 );
 
 sub new_behaviour_page() {
@@ -1049,7 +1059,8 @@ sub new_behaviour_page() {
                              new_check_button_for (\%pr::beh, 'dangerous', \%HPVALUE),
                              new_check_button_for (\%pr::beh, 'out_ascii', \%HPVALUE),
                              new_check_button_for (\%pr::beh, 'pp_unsel', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE)),
+                             new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE),
+                             new_check_button_for (\%pr::beh, 'rewrite_ff', \%HPVALUE)),
                          $xl::s{msgs_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $bf->pack_start (new_subpage_frame (
