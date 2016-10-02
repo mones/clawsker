@@ -1,3 +1,19 @@
+1.0.0:
+  - New plugins page to edit hidden preferences found in some plugins
+  - New accounts page to edit hidden preferences of your accounts
+  - Support hidden preference 'rewrite_first_from' (from git, to appear
+    in next Claws Mail release)
+  - New information page with detected versions
+  - New CLI flag --read-only/-r to view preferences only (also works
+    while Claws Mail is running)
+  - Dropped support for Claws Mail versions lower than 3.9.1
+  - Preferences not found in file are initialized to default values
+  - Translations:
+    • Updated: Turkish, Brazilian Portuguese, Catalan, Dutch, Swedish,
+      Norwegian Bokmål and Spanish
+    • Dropped: Indonesian and Italian
+  - And other minor improvements and fixes, see git log for details
+
 0.7.14:
   - Use xz compression format in release tarball
   - Support hidden preferences 'next_on_delete' (since Claws Mail
