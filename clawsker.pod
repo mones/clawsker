@@ -53,8 +53,8 @@ Shows a brief help screen.
 
 =item B<-r> | B<--read-only>
 
-Allows to edit hidden preferences without saving the changes. It also
-works when Claws Mail is running.
+Edits hidden preferences without saving the changes. It also works while
+Claws Mail is running.
 
 =item B<-v> | B<--version>
 
