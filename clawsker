@@ -2147,20 +2147,12 @@ sub init_hidden_preferences {
             $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
         }
     }
-    return TRUE;
-}
-
-sub init_ac_hidden_preferences {
     foreach my $akey (keys %ACPREFS) {
         foreach my $key (keys %pr::acc) {
             my $pname = $pr::acc{$key}[NAME];
             $ACHPVALUE{$akey}{$pname} = $ACPREFS{$akey}{$pname};
         }
     }
-    return TRUE;
-}
-
-sub init_plu_hidden_preferences {
     foreach my $key (keys %pr::plu) {
         my $plugin = $pr::plu{$key}[PLUGIN];
         my $pname = $pr::plu{$key}[NAME];
@@ -2432,8 +2424,6 @@ $main_window = Gtk2::Window->new ('toplevel');
 exit unless load_preferences ();
 exit unless load_ac_preferences ();
 exit unless init_hidden_preferences ();
-exit unless init_ac_hidden_preferences ();
-exit unless init_plu_hidden_preferences ();
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
 $box->set_border_width(3);
