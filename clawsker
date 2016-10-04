@@ -603,8 +603,8 @@ sub new_selection_box_for($$$) {
 sub new_hbox_pack {
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     $hbox->set_border_width (PAGE_SPC);
-    foreach my $item (@_) {
-        $hbox->pack_start ($item, FALSE, FALSE, 0);
+    foreach (@_) {
+        $hbox->pack_start ($_, FALSE, FALSE, 0);
     }
     return $hbox;
 }
@@ -612,8 +612,8 @@ sub new_hbox_pack {
 sub new_vbox_pack {
     my $vbox = Gtk2::VBox->new (FALSE, 5);
     $vbox->set_border_width (PAGE_SPC);
-    foreach my $item (@_) {
-        $vbox->pack_start ($item, FALSE, FALSE, 0);
+    foreach (@_) {
+        $vbox->pack_start ($_, FALSE, FALSE, 0);
     }
     return $vbox;
 }
@@ -621,8 +621,8 @@ sub new_vbox_pack {
 sub new_vbox_pack_compact {
     my $vbox = Gtk2::VBox->new (FALSE, 0);
     $vbox->set_border_width (0);
-    foreach my $item (@_) {
-        $vbox->pack_start ($item, FALSE, FALSE, 0);
+    foreach (@_) {
+        $vbox->pack_start ($_, FALSE, FALSE, 0);
     }
     return $vbox;
 }
