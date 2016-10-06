@@ -226,10 +226,6 @@ sub _ {
     l_plu_prl_manual => _('Manual'),
     l_plu_prl_action => _('Actions'),
     l_plu_prl_match => _('Matches'),
-
-    e_error => _('Error: '),
-    e_noclawsrc => _('resource file for Claws Mail was not found.'),
-    e_running => _('seems Claws Mail is currently running, close it first.'),
 );
 
 # data and metadata of resource files
@@ -412,7 +408,7 @@ sub error_dialog {
 }
 
 sub claws_is_running {
-    my $emsg = "$xl::s{e_error}$xl::s{e_running}";
+    my $emsg = _('Error: seems Claws Mail is currently running, close it first.');
     log_message ($emsg);
     error_dialog ($emsg);
     return FALSE;
@@ -435,7 +431,7 @@ sub check_claws_not_running {
 sub check_rc_file {
     my ($rcfile) = @_;
     (defined($rcfile) && -f $rcfile) or do {
-        my $emsg = "$xl::s{e_error}$xl::s{e_noclawsrc}\n";
+        my $emsg = _('Error: resource file for Claws Mail was not found.');
         log_message ($emsg);
         error_dialog ($emsg);
         return FALSE;
