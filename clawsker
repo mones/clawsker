@@ -2084,19 +2084,22 @@ sub print_version() {
 
 # the command line help
 sub print_help() {
-    my $line = '-' x length ($xl::s{about_title}) . "\n";
-    print $line;
-    print $xl::s{about_title} . "\n";
-    print $line;
-    print _("Syntax:\n");
-    print _("  clawsker [options]\n");
-    print _("Options:\n");
-    print _("  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n");
-    print _("  -b|--verbose                     More messages on standard output.\n");
-    print _("  -c|--clawsrc <file>              Uses <file> as full resource name.\n");
-    print _("  -h|--help                        Prints this help screen.\n");
-    print _("  -r|--read-only                   Disables writing changes to disk.\n");
-    print _("  -v|--version                     Prints version infos.\n");
+    my $line = '-' x length ($xl::s{about_title});
+    say $line;
+    say $xl::s{about_title};
+    say $line;
+    my @help = (
+        _("Syntax:"),
+        _("  clawsker [options]"),
+        _("Options:"),
+        _("  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."),
+        _("  -b|--verbose                     More messages on standard output."),
+        _("  -c|--clawsrc <file>              Uses <file> as full resource name."),
+        _("  -h|--help                        Prints this help screen and exits."),
+        _("  -r|--read-only                   Disables writing changes to disk."),
+        _("  -v|--version                     Prints version information and exits.")
+    );
+    foreach (@help) { say $_ }
 }
 
 sub parse_command_line {
