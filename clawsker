@@ -2238,11 +2238,10 @@ sub save_resource {
 }
 
 # load current status from disc
-sub load_preferences {
+sub load_rc_preferences {
     my $rc = get_rc_filename ();
     log_message ("Loading preferences from $rc\n");
     return FALSE unless check_rc_file ($rc);
-    return FALSE unless check_claws_not_running ();
     ($CONFIGDATA, $CONFIGMETA) = load_resource ($rc);
     foreach (keys %{$CONFIGDATA->{'Common'}}) {
         $PREFS{$_} = $CONFIGDATA->{'Common'}{$_};
@@ -2262,7 +2261,6 @@ sub load_ac_preferences {
     my $rc = get_ac_rc_filename ();
     log_message ("Loading account preferences from $rc\n");
     return FALSE unless check_rc_file ($rc);
-    return FALSE unless check_claws_not_running ();
     ($ACCOUNTDATA, $ACCOUNTMETA) = load_resource ($rc);
     foreach my $asect (keys %$ACCOUNTDATA) {
         if ($asect =~ /^Account: (\d+)$/) {
@@ -2272,6 +2270,11 @@ sub load_ac_preferences {
         }
     }
     return TRUE;
+}
+
+sub load_preferences {
+    return FALSE unless check_claws_not_running ();
+    return (load_rc_preferences () and load_ac_preferences ());
 }
 
 # save current preferences to disc
@@ -2431,7 +2434,6 @@ exit unless parse_command_line ();
 Gtk2->init;
 $main_window = Gtk2::Window->new ('toplevel');
 exit unless load_preferences ();
-exit unless load_ac_preferences ();
 exit unless init_hidden_preferences ();
 # create main GUI
 my $box = Gtk2::VBox->new (FALSE, 5);
