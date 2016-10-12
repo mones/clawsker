@@ -20,7 +20,7 @@ MANDIR = ${DATADIR}/man
 MAN1DIR = ${MANDIR}/man1
 APPSDIR = ${DATADIR}/applications
 THEMEDIR = ${DATADIR}/icons/hicolor
-ICONRES = 64 128
+ICONRES = 48 64 128
 
 all: build
 

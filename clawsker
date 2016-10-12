@@ -2415,11 +2415,11 @@ sub get_app_icons {
         my $dir = $DATADIR . '/icons/hicolor';
         @names = map {
             join ('/', ($dir, $_ . 'x' . $_, 'apps', $NAME . '.png'))
-        } (64, 128);
+        } (48, 64, 128);
     } else { # unpacked tarball or git clone
         @names = map {
             join ('/', ('./icons', $NAME . '-' . $_ . '.png'));
-        } (64, 128);
+        } (48, 64, 128);
     }
     foreach (@names) {
         my $icon = undef;
