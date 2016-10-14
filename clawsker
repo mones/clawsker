@@ -262,7 +262,7 @@ use constant CMDEF => 5; # default value for the preference in Claws Mail
 use constant PLUGIN => 6; # plugin section (only in plugin preferences)
 
 # constants for GUI spacing
-use constant HBOX_SPC => 5;
+use constant HBOX_PAD => 5;
 use constant FRAME_SPC => 2;
 use constant PAGE_SPC => 5;
 
@@ -462,12 +462,19 @@ sub set_widget_sens {
 
 # graphic element creation
 
+sub new_hbox_spaced_pack {
+    my $hbox = Gtk2::HBox->new (FALSE);
+    foreach (@_) {
+        $hbox->pack_start ($_, FALSE, FALSE, HBOX_PAD);
+    }
+    return $hbox;
+}
+
 sub new_check_button_for($$$) {
     my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $cb = Gtk2::CheckButton->new ($label);
     my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
@@ -478,9 +485,8 @@ sub new_check_button_for($$$) {
         });
     set_widget_hint ($cb, $$hash{$key}[DESC]);
     set_widget_sens ($cb, $$hash{$key}[CMVER]);
-    $hbox->pack_start ($cb, FALSE, FALSE, HBOX_SPC);
     #
-    return $hbox;
+    return new_hbox_spaced_pack ($cb);
 }
 
 sub new_text_box_for_int($$$) {
@@ -490,7 +496,6 @@ sub new_text_box_for_int($$$) {
     my @type = split (/,/, $$hash{$key}[TYPE]);
     push (@type, 0), push (@type, 10000) unless ($#type > 0);
     #
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
@@ -505,10 +510,8 @@ sub new_text_box_for_int($$$) {
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($gentry->sensitive);
-    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
-    $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
     #
-    return $hbox;
+    return new_hbox_spaced_pack ($glabel, $gentry);
 }
 
 sub new_text_box_for_nchar($$$) {
@@ -516,7 +519,6 @@ sub new_text_box_for_nchar($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen,width
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $gentry = Gtk2::Entry->new ();
     $gentry->set_max_length($type[2]) if defined ($type[2]);
@@ -533,10 +535,8 @@ sub new_text_box_for_nchar($$$) {
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($gentry->sensitive);
-    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
-    $hbox->pack_start ($gentry, FALSE, FALSE, HBOX_SPC);
     #
-    return $hbox;
+    return new_hbox_spaced_pack ($glabel, $gentry);
 }
 
 sub new_color_button_for($$$) {
@@ -547,7 +547,6 @@ sub new_color_button_for($$$) {
     my $value = $$vhash{$name};
     $value //= $$hash{$key}[CMDEF];
     my $col = gdk_color_from_str ($value);
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $button = Gtk2::ColorButton->new_with_color ($col);
     $button->set_title ($label);
@@ -559,10 +558,8 @@ sub new_color_button_for($$$) {
     set_widget_hint ($button, $$hash{$key}[DESC]);
     set_widget_sens ($button, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($button->sensitive);
-    $hbox->pack_start ($button, FALSE, FALSE, HBOX_SPC);
-    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
     #
-    return $hbox;
+    return new_hbox_spaced_pack ($button, $glabel);
 }
 
 sub new_selection_box_for($$$) {
@@ -570,7 +567,6 @@ sub new_selection_box_for($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
     my $glabel = Gtk2::Label->new ($label);
     my $combo = Gtk2::ComboBox->new_text;
     my @options = split (';', $$hash{$key}[TYPE]);
@@ -588,16 +584,14 @@ sub new_selection_box_for($$$) {
     set_widget_hint ($combo, $$hash{$key}[DESC]);
     set_widget_sens ($combo, $$hash{$key}[CMVER]);
     $glabel->set_sensitive ($combo->sensitive);
-    $hbox->pack_start ($glabel, FALSE, FALSE, HBOX_SPC);
-    $hbox->pack_start ($combo, FALSE, FALSE, HBOX_SPC);
     #
-    return $hbox;
+    return new_hbox_spaced_pack ($glabel, $combo);
 }
 
 # more graphic helpers
 
 sub new_hbox_pack {
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    my $hbox = Gtk2::HBox->new (FALSE);
     $hbox->set_border_width (PAGE_SPC);
     foreach (@_) {
         $hbox->pack_start ($_, FALSE, FALSE, 0);
