@@ -641,7 +641,7 @@ sub new_subpage_frame {
         $xl::s{l_oth_max_use},
         $xl::s{h_oth_max_use},
         'int,0,262144', # 0 Kb - 256 Mb
-        '0.0.0',
+        '0.7.8.36',
         '4096',
     ],
     min_time => [
@@ -649,7 +649,7 @@ sub new_subpage_frame {
         $xl::s{l_oth_min_time},
         $xl::s{h_oth_min_time},
         'int,0,120', # 0 minutes - 2 hours
-        '0.0.0',
+        '0.7.8.36',
         '15',
     ],
     use_netm => [
@@ -698,7 +698,7 @@ sub new_other_page() {
         $xl::s{l_gui_b_unread},
         $xl::s{h_gui_b_unread},
         'bool',
-        '0.0.0',
+        '0.5.3',
         '1',
     ],
     no_markup => [
@@ -706,7 +706,7 @@ sub new_other_page() {
         $xl::s{l_gui_no_markup},
         $xl::s{h_gui_no_markup},
         'bool',
-        '0.0.0',
+        '2.1.0.16',
         '0',
     ],
     dot_lines => [
@@ -714,7 +714,7 @@ sub new_other_page() {
         $xl::s{l_gui_dot_lines},
         $xl::s{h_gui_dot_lines},
         'bool',
-        '0.0.0,3.7.10.44',
+        '2.4.0.115,3.7.10.44',
         '0',
     ],
     h_scroll => [
@@ -722,7 +722,7 @@ sub new_other_page() {
         $xl::s{l_gui_h_scroll},
         $xl::s{h_gui_h_scroll},
         'bool',
-        '0.0.0',
+        '0.8.6.18',
         '1',
     ],
     swp_from => [
@@ -730,7 +730,7 @@ sub new_other_page() {
         $xl::s{l_gui_swp_from},
         $xl::s{h_gui_swp_from},
         'bool',
-        '0.0.0',
+        '1.9.13.40',
         '0',
     ],
     v_scroll => [
@@ -738,7 +738,7 @@ sub new_other_page() {
         $xl::s{l_gui_v_scroll},
         $xl::s{h_gui_v_scroll},
         '0=l_gui_v_scroll_show;1=l_gui_v_scroll_auto;2=l_gui_v_scroll_hide',
-        '0.0.0',
+        '0.7.8.14',
         '0',
     ],
     from_show => [
@@ -754,7 +754,7 @@ sub new_other_page() {
         $xl::s{l_gui_strip_off},
         $xl::s{h_gui_strip_off},
         'int,0,40000', # no idea what this number means
-        '0.0.0',
+        '2.4.0.186',
         '4000',
     ],
     cursor_v => [
@@ -959,7 +959,7 @@ sub new_gui_page() {
         $xl::s{l_beh_use_utf8},
         $xl::s{h_beh_use_utf8},
         'bool',
-        '0.0.0',
+        '1.9.14.49',
         '0',
     ],
     warn_dnd => [
