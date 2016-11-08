@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 0.7.11-14-gb9a89a0\n"
+"Project-Id-Version: clawsker 1.0.1\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-09-27 09:34+0200\n"
-"PO-Revision-Date: 2016-09-27 09:50+0200\n"
+"POT-Creation-Date: 2016-11-06 18:49+0100\n"
+"PO-Revision-Date: 2016-11-07 17:18+0100\n"
 "Last-Translator: David Medina <opensusecatala@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.6.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../clawsker:61
@@ -50,7 +50,7 @@ msgstr "Comportament"
 msgid "GUI"
 msgstr "GUI"
 
-#: ../clawsker:70 ../clawsker:1834
+#: ../clawsker:70 ../clawsker:1824
 msgid "Other"
 msgstr "Altres"
 
@@ -58,7 +58,7 @@ msgstr "Altres"
 msgid "Windows"
 msgstr "Finestres"
 
-#: ../clawsker:72 ../clawsker:1831
+#: ../clawsker:72 ../clawsker:1821
 msgid "Accounts"
 msgstr "Comptes"
 
@@ -70,7 +70,7 @@ msgstr "Connectors"
 msgid "Info"
 msgstr "Informació"
 
-#: ../clawsker:76 ../clawsker:1830
+#: ../clawsker:76 ../clawsker:1820
 msgid "Addressbook"
 msgstr "Llibreta d'adreces"
 
@@ -82,7 +82,7 @@ msgstr "Memòria"
 msgid "Message View"
 msgstr "Visualització de missatges"
 
-#: ../clawsker:79 ../clawsker:1809
+#: ../clawsker:79 ../clawsker:1799
 msgid "Log window"
 msgstr "Finestra de registre"
 
@@ -508,8 +508,8 @@ msgstr "Els missatges de sortida tenen ASCII com a alternativa."
 
 #: ../clawsker:168
 msgid ""
-"If content allows, ASCII will be used to encode outgoing messages, otherwise "
-"the user-defined encoding is enforced always."
+"If allowed by content, ASCII will be used to encode outgoing messages, "
+"otherwise the user-defined encoding is always enforced."
 msgstr ""
 "Si el contingut ho permet, s'usarà ASCII per codificar els missatges de "
 "sortida; si no, sempre s'imposa la codificació definida per l'usuari."
@@ -531,7 +531,7 @@ msgid "Show inline attachments"
 msgstr "Mostra els adjunts encastats"
 
 #: ../clawsker:172
-msgid "Allows hiding inline attachments already shown in mail structure view."
+msgid "Allows to hide inline attachments already shown in mail structure view."
 msgstr ""
 "Permet amagar fitxers adjunts incorporats que ja es mostren a la vista de "
 "l'estructura del missatge."
@@ -704,7 +704,7 @@ msgid "Enables using user provided GnuTLS priority string."
 msgstr ""
 "Habilita l'ús d'una cadena de prioritat de GnuTLS proporcionada per l'usuari."
 
-#: ../clawsker:216 ../clawsker:1864
+#: ../clawsker:216 ../clawsker:1854
 msgid "GnuTLS priority"
 msgstr "Prioritat de GnuTLS"
 
@@ -730,7 +730,7 @@ msgstr ""
 
 #: ../clawsker:221
 msgid "Base URL"
-msgstr "URL base"
+msgstr "URL de base"
 
 #: ../clawsker:222
 msgid ""
@@ -764,293 +764,316 @@ msgstr "Accions"
 msgid "Matches"
 msgstr "Coincidències"
 
-#: ../clawsker:230
-msgid "Error: "
-msgstr "Error: "
-
-#: ../clawsker:231
-msgid "resource file for Claws Mail was not found."
-msgstr "no es troba el fitxer de configuració del Claws Mail."
-
-#: ../clawsker:232
-msgid "seems Claws Mail is currently running, close it first."
-msgstr "sembla que el Claws Mail ara s'està executant, tanqueu-lo primer."
-
-#: ../clawsker:409
+#: ../clawsker:405
 msgid "Clawsker error"
 msgstr "Error del Clawsker"
 
-#: ../clawsker:1652
+#: ../clawsker:411
+msgid "Error: seems Claws Mail is currently running, close it first."
+msgstr "Error: sembla que el Claws Mail ja s'executa, tanqueu-lo primer."
+
+#: ../clawsker:434
+msgid "Error: resource file for Claws Mail was not found."
+msgstr "Error: no s'ha trobat el fitxer de recurs per al Claws Mail."
+
+#: ../clawsker:1642
 msgid "Main window"
 msgstr "Finestra principal"
 
-#: ../clawsker:1665
+#: ../clawsker:1655
 msgid "Message window"
 msgstr "Finestra de missatges"
 
-#: ../clawsker:1675
+#: ../clawsker:1665
 msgid "Send window"
 msgstr "Finestra d'enviament"
 
-#: ../clawsker:1680
+#: ../clawsker:1670
 msgid "Receive window"
 msgstr "Finestra de recepció"
 
-#: ../clawsker:1694
+#: ../clawsker:1684
 msgid "Folder window"
 msgstr "Finestra de carpetes"
 
-#: ../clawsker:1699
+#: ../clawsker:1689
 msgid "Folder selection window"
 msgstr "Finestra de selecció de carpetes"
 
-#: ../clawsker:1709
+#: ../clawsker:1699
 msgid "Addressbook main window"
 msgstr "Finestra principal de la llibreta d'adreces"
 
-#: ../clawsker:1714
+#: ../clawsker:1704
 msgid "Edit person window"
 msgstr "Finestra d'edició de persona"
 
-#: ../clawsker:1719
+#: ../clawsker:1709
 msgid "Edit group window"
 msgstr "Finestra d'edició de grup"
 
-#: ../clawsker:1724
+#: ../clawsker:1714
 msgid "Add address window"
 msgstr "Finestra d'addició d'adreça"
 
-#: ../clawsker:1729
+#: ../clawsker:1719
 msgid "Folder select window"
 msgstr "Finestra de selecció de carpeta"
 
-#: ../clawsker:1739
+#: ../clawsker:1729
 msgid "Accounts window"
 msgstr "Finestra de comptes"
 
-#: ../clawsker:1744
+#: ../clawsker:1734
 msgid "Edit account window"
 msgstr "Finestra d'edició de comptes"
 
-#: ../clawsker:1754
+#: ../clawsker:1744
 msgid "Filtering window"
 msgstr "Finestra de filtratge"
 
-#: ../clawsker:1759
+#: ../clawsker:1749
 msgid "Filtering actions window"
 msgstr "Finestra d'accions de filtratge"
 
-#: ../clawsker:1764
+#: ../clawsker:1754
 msgid "Filtering debug window"
 msgstr "Finestra de depuració de filtratge"
 
-#: ../clawsker:1769
+#: ../clawsker:1759
 msgid "Matcher window"
 msgstr "Finestra del selector"
 
-#: ../clawsker:1779
+#: ../clawsker:1769
 msgid "Preferences window"
 msgstr "Finestra de les preferències"
 
-#: ../clawsker:1784
+#: ../clawsker:1774
 msgid "Templates window"
 msgstr "Finestra de les plantilles"
 
-#: ../clawsker:1789
+#: ../clawsker:1779
 msgid "Actions window"
 msgstr "Finestra de les accions"
 
-#: ../clawsker:1794
+#: ../clawsker:1784
 msgid "Tags window"
 msgstr "Finestra de les etiquetes"
 
-#: ../clawsker:1799
+#: ../clawsker:1789
 msgid "Plugins window"
 msgstr "Finestra dels connectors"
 
-#: ../clawsker:1814
+#: ../clawsker:1804
 msgid "Print preview window"
 msgstr "Finestra de previsualització d'impressió"
 
-#: ../clawsker:1819
+#: ../clawsker:1809
 msgid "View source window"
 msgstr "Finestra de visualització de codi font"
 
-#: ../clawsker:1826
+#: ../clawsker:1816
 msgid "Main"
 msgstr "Principal"
 
-#: ../clawsker:1827
+#: ../clawsker:1817
 msgid "Message"
 msgstr "Missatge"
 
-#: ../clawsker:1828
+#: ../clawsker:1818
 msgid "Send/Receive"
 msgstr "Enviament / Recepció"
 
-#: ../clawsker:1829
+#: ../clawsker:1819
 msgid "Folder"
 msgstr "Carpeta"
 
-#: ../clawsker:1832
+#: ../clawsker:1822
 msgid "Filtering"
 msgstr "Filtratge"
 
-#: ../clawsker:1833
+#: ../clawsker:1823
 msgid "Preferences"
 msgstr "Preferències"
 
-#: ../clawsker:1965
+#: ../clawsker:1955
 msgid "Attachment remover"
 msgstr "Eliminador d'adjunts"
 
-#: ../clawsker:1970
+#: ../clawsker:1960
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:1976
+#: ../clawsker:1966
 msgid "Sieve manager"
 msgstr "Gestor del sedàs"
 
-#: ../clawsker:1981
+#: ../clawsker:1971
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:1986
+#: ../clawsker:1976
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:2003
+#: ../clawsker:1993
 msgid "GLib runtime"
 msgstr "Versió d'execució de GLib"
 
-#: ../clawsker:2004
+#: ../clawsker:1994
 msgid "GLib built"
 msgstr "Muntatge de GLib"
 
-#: ../clawsker:2006
+#: ../clawsker:1996
 msgid "GTK2 runtime"
 msgstr "Versió d'execució de GTK2"
 
-#: ../clawsker:2007
+#: ../clawsker:1997
 msgid "GTK2 built"
 msgstr "Muntatge de GTK2"
 
-#: ../clawsker:2024
+#: ../clawsker:2014
 msgid "Binary"
 msgstr "Binari"
 
-#: ../clawsker:2025
+#: ../clawsker:2015
 msgid "Configuration"
 msgstr "Configuració"
 
-#: ../clawsker:2038
+#: ../clawsker:2028
 msgid "Library versions"
 msgstr "Versions de les biblioteques"
 
-#: ../clawsker:2039
+#: ../clawsker:2029
 msgid "Claws Mail versions"
 msgstr "Versions del Claws Mail"
 
-#: ../clawsker:2066 ../clawsker:2070
-msgid ", built for "
-msgstr ", muntat per a "
+#: ../clawsker:2056
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
+msgstr ""
+"Perl-GLib versió {glibv}, muntatge per a {glibb}, s'executa amb {glibr}."
 
-#: ../clawsker:2067 ../clawsker:2071
-msgid ", running with "
-msgstr ", s'executa amb "
+#: ../clawsker:2061
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}."
+msgstr "Perl-GLib versió {glibv}."
+
+#: ../clawsker:2065
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}."
+msgstr "Perl-GTK2 versió {gtkv}, muntatge per a {gtkb}, s'executa amb {gtkr}."
+
+#: ../clawsker:2070
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}."
+msgstr "Perl-GTK2 versió {gtkv}."
 
 #: ../clawsker:2074
-msgid "was not found!"
-msgstr "no s'ha trobat!"
+msgid "Claws Mail was not found!"
+msgstr "No s'ha trobat el Claws Mail!"
 
 #: ../clawsker:2075
-msgid "returned version "
-msgstr "versió de resposta "
-
-#: ../clawsker:2085
-msgid "Syntax:\n"
-msgstr "Sintaxi:\n"
+#, perl-brace-format
+msgid "Claws Mail returned version {cmv}."
+msgstr "El Claws Mail ha retornat la versió {cmv}."
 
 #: ../clawsker:2086
-msgid "  clawsker [options]\n"
-msgstr "  clawsker [opcions]\n"
+msgid "Syntax:"
+msgstr "Sintaxi:"
 
 #: ../clawsker:2087
-msgid "Options:\n"
-msgstr "Opcions:\n"
+msgid "  clawsker [options]"
+msgstr "  clawsker [opcions]"
 
 #: ../clawsker:2088
-msgid ""
-"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n"
-msgstr ""
-"  -a|--alternate-config-dir <dir>  Usa <dir> com a dir. de config. del Claws "
-"Mail.\n"
+msgid "Options:"
+msgstr "Opcions:"
 
 #: ../clawsker:2089
-msgid "  -b|--verbose                     More messages on standard output.\n"
+msgid ""
+"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
 msgstr ""
-"  -b|--verbose                     Més missatges a la sortida estàndard.\n"
+"  -a|--alternate-config-dir <dir>  Usa <dir> com a configuració del Claws "
+"Mail."
 
 #: ../clawsker:2090
-msgid "  -c|--clawsrc <file>              Uses <file> as full resource name.\n"
+msgid "  -b|--verbose                     More messages on standard output."
 msgstr ""
-"  -c|--clawsrc <file>              Usa <fitxer> com a fitxer de "
-"configuració.\n"
+"  -b|--verbose                     Més missatges a la sortida estàndard."
 
 #: ../clawsker:2091
-msgid "  -h|--help                        Prints this help screen.\n"
-msgstr "  -h|--help                        Imprimeix aquesta pàgina d'ajuda.\n"
+msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
+msgstr ""
+"  -c|--clawsrc <file>              Usa <fitxer> com a nom de recurs complet."
 
 #: ../clawsker:2092
-msgid "  -r|--read-only                   Disables writing changes to disk.\n"
+msgid "  -h|--help                        Prints this help screen and exits."
 msgstr ""
-"  -r|--read-only                   Inhabilita escriure canvis al disc.\n"
+"  -h|--help                        Imprimeix aquesta pàgina d'ajuda i surt."
 
 #: ../clawsker:2093
-msgid "  -v|--version                     Prints version infos.\n"
-msgstr ""
-"  -v|--version                     Imprimeix informació de la versió.\n"
+msgid "  -r|--read-only                   Disables writing changes to disk."
+msgstr "  -r|--read-only                   Inhabilita escriure canvis al disc."
 
-#: ../clawsker:2107
+#: ../clawsker:2094
+msgid ""
+"  -v|--version                     Prints version information and exits."
+msgstr ""
+"  -v|--version                     Imprimeix la informació de la versió i "
+"surt."
+
+#: ../clawsker:2110
 msgid "try -h or --help for syntax.\n"
 msgstr "intenteu -h o --help per a la sintaxi.\n"
 
-#: ../clawsker:2110
+#: ../clawsker:2113
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Error a les opcions: {msg}\n"
 
-#: ../clawsker:2122
+#: ../clawsker:2125
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr ""
-"Error: {opt} requireix un valor numèric separat per punts com a argument\n"
+"Error: {opt} requireix un valor numèric separat per punts com a argument.\n"
 
-#: ../clawsker:2129
+#: ../clawsker:2132
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
-msgstr "Error: '{dir}' no és un directori o no existeix\n"
+msgstr "Error: \"{dir}\" no és un directori o no existeix.\n"
 
-#: ../clawsker:2138
+#: ../clawsker:2141
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
-msgstr "Error: '{value}' no és un fitxer o no existeix\n"
+msgstr "Error: \"{value}\" no és un fitxer o no existeix.\n"
 
-#: ../clawsker:2181
+#: ../clawsker:2176
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "Error: obrint {file} per a la lectura"
 
-#: ../clawsker:2189
+#: ../clawsker:2184
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "Error: secció duplicada, \"{sect}\", al fitxer de recurs {file}\n"
 
-#: ../clawsker:2209
+#: ../clawsker:2204
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Error: obrint {file} per a l'escriptura"
+
+#~ msgid "Error: "
+#~ msgstr "Error: "
+
+#~ msgid ", built for "
+#~ msgstr ", muntat per a "
+
+#~ msgid ", running with "
+#~ msgstr ", s'executa amb "
+
+#~ msgid "returned version "
+#~ msgstr "versió de resposta "
 
 #~ msgid ""
 #~ "On Tab-key completion, address text will match any part of the string or "
