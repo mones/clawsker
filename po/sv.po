@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 1.0.0\n"
+"Project-Id-Version: clawsker 1.0.1\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-09-26 20:11+0200\n"
-"PO-Revision-Date: 2016-09-28 18:01+0100\n"
+"POT-Creation-Date: 2016-11-06 18:49+0100\n"
+"PO-Revision-Date: 2016-11-06 22:37+0100\n"
 "Last-Translator: Andreas Rönnquist <gusnan@openmailbox.org>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -50,7 +50,7 @@ msgstr "Beteende"
 msgid "GUI"
 msgstr "GUI"
 
-#: ../clawsker:70 ../clawsker:1834
+#: ../clawsker:70 ../clawsker:1824
 msgid "Other"
 msgstr "Övrigt"
 
@@ -58,7 +58,7 @@ msgstr "Övrigt"
 msgid "Windows"
 msgstr "Fönster"
 
-#: ../clawsker:72 ../clawsker:1831
+#: ../clawsker:72 ../clawsker:1821
 msgid "Accounts"
 msgstr "Konton"
 
@@ -70,7 +70,7 @@ msgstr "Tilläggsmoduler"
 msgid "Info"
 msgstr "Info"
 
-#: ../clawsker:76 ../clawsker:1830
+#: ../clawsker:76 ../clawsker:1820
 msgid "Addressbook"
 msgstr "Adressbok"
 
@@ -82,7 +82,7 @@ msgstr "Minne"
 msgid "Message View"
 msgstr "Meddelandevy"
 
-#: ../clawsker:79 ../clawsker:1809
+#: ../clawsker:79 ../clawsker:1799
 msgid "Log window"
 msgstr "Loggfönster"
 
@@ -495,11 +495,12 @@ msgstr "Utgående meddelanden återgår till ASCII"
 
 #: ../clawsker:168
 msgid ""
-"If content allows, ASCII will be used to encode outgoing messages, otherwise "
-"the user-defined encoding is enforced always."
+"If allowed by content, ASCII will be used to encode outgoing messages, "
+"otherwise the user-defined encoding is always enforced."
 msgstr ""
-"Om innehållet tillåter, kommer ASCII att användas för utgående meddelanden, "
-"annars kommer den användar-definierade kodningen alltid användas."
+"Om innehållet tillåter, kommer ASCII att användas för att koda utgående "
+"meddelanden, annars kommer den användar-definierade kodningen alltid "
+"användas."
 
 #: ../clawsker:169
 msgid "Primary paste unselects selection"
@@ -518,8 +519,9 @@ msgid "Show inline attachments"
 msgstr "Visa inline-bilagor"
 
 #: ../clawsker:172
-msgid "Allows hiding inline attachments already shown in mail structure view."
-msgstr "Tillåter att gömma inline-bilagor som redan visas i strukturvyn"
+msgid "Allows to hide inline attachments already shown in mail structure view."
+msgstr ""
+"Tillåter att gömma inline-bilagor som redan visas i strukturvyn för e-post."
 
 #: ../clawsker:173
 msgid "Address search in compose window matches any"
@@ -687,7 +689,7 @@ msgid "Enables using user provided GnuTLS priority string."
 msgstr ""
 "Aktiverar använding av användartillhandahållen GnuTLS-prioritetssträng."
 
-#: ../clawsker:216 ../clawsker:1864
+#: ../clawsker:216 ../clawsker:1854
 msgid "GnuTLS priority"
 msgstr "GnuTLS-prioritet"
 
@@ -747,288 +749,301 @@ msgstr "Handlingar"
 msgid "Matches"
 msgstr "Matchar"
 
-#: ../clawsker:230
-msgid "Error: "
-msgstr "Fel: "
-
-#: ../clawsker:231
-msgid "resource file for Claws Mail was not found."
-msgstr "resursfilen för Claws Mail hittades inte."
-
-#: ../clawsker:232
-msgid "seems Claws Mail is currently running, close it first."
-msgstr "det verkar som om Claws Mail kör för närvarande, stäng det först."
-
-#: ../clawsker:409
+#: ../clawsker:405
 msgid "Clawsker error"
 msgstr "Clawskerfel"
 
-#: ../clawsker:1652
+#: ../clawsker:411
+msgid "Error: seems Claws Mail is currently running, close it first."
+msgstr "Fel: det verkar som om Claws Mail kör för närvarande, stäng det först."
+
+#: ../clawsker:434
+msgid "Error: resource file for Claws Mail was not found."
+msgstr "Fel: resursfilen för Claws Mail hittades inte."
+
+#: ../clawsker:1642
 msgid "Main window"
 msgstr "Huvudfönster"
 
-#: ../clawsker:1665
+#: ../clawsker:1655
 msgid "Message window"
 msgstr "Meddelandefönster"
 
-#: ../clawsker:1675
+#: ../clawsker:1665
 msgid "Send window"
 msgstr "Skicka-fönster"
 
-#: ../clawsker:1680
+#: ../clawsker:1670
 msgid "Receive window"
 msgstr "Mottagarfönster"
 
-#: ../clawsker:1694
+#: ../clawsker:1684
 msgid "Folder window"
 msgstr "Mappfönster"
 
-#: ../clawsker:1699
+#: ../clawsker:1689
 msgid "Folder selection window"
 msgstr "Fönster för Mappval"
 
-#: ../clawsker:1709
+#: ../clawsker:1699
 msgid "Addressbook main window"
 msgstr "Huvudfönster för Adressbok"
 
-#: ../clawsker:1714
+#: ../clawsker:1704
 msgid "Edit person window"
 msgstr "Fönster för att editera person"
 
-#: ../clawsker:1719
+#: ../clawsker:1709
 msgid "Edit group window"
 msgstr "Fönster för att editera grupp"
 
-#: ../clawsker:1724
+#: ../clawsker:1714
 msgid "Add address window"
 msgstr "Fönster för att Lägga till adress"
 
-#: ../clawsker:1729
+#: ../clawsker:1719
 msgid "Folder select window"
 msgstr "Fönster för att välja mapp"
 
-#: ../clawsker:1739
+#: ../clawsker:1729
 msgid "Accounts window"
 msgstr "Kontofönster"
 
-#: ../clawsker:1744
+#: ../clawsker:1734
 msgid "Edit account window"
 msgstr "Fönster för att ändra konto"
 
-#: ../clawsker:1754
+#: ../clawsker:1744
 msgid "Filtering window"
 msgstr "Fönster för Filtrering"
 
-#: ../clawsker:1759
+#: ../clawsker:1749
 msgid "Filtering actions window"
 msgstr "Fönster för Filtreringsåtgärder"
 
-#: ../clawsker:1764
+#: ../clawsker:1754
 msgid "Filtering debug window"
 msgstr "Fönster för Debuggning av Filter"
 
-#: ../clawsker:1769
+#: ../clawsker:1759
 msgid "Matcher window"
 msgstr "Matchningsfönster"
 
-#: ../clawsker:1779
+#: ../clawsker:1769
 msgid "Preferences window"
 msgstr "Fönster för Egenskaper"
 
-#: ../clawsker:1784
+#: ../clawsker:1774
 msgid "Templates window"
 msgstr "Mallfönster"
 
-#: ../clawsker:1789
+#: ../clawsker:1779
 msgid "Actions window"
 msgstr "Aktivitetsfönster"
 
-#: ../clawsker:1794
+#: ../clawsker:1784
 msgid "Tags window"
 msgstr "Taggfönster"
 
-#: ../clawsker:1799
+#: ../clawsker:1789
 msgid "Plugins window"
 msgstr "Pluginfönster"
 
-#: ../clawsker:1814
+#: ../clawsker:1804
 msgid "Print preview window"
 msgstr "Förhandsgranskningsfönster"
 
-#: ../clawsker:1819
+#: ../clawsker:1809
 msgid "View source window"
 msgstr "Visa källkod"
 
-#: ../clawsker:1826
+#: ../clawsker:1816
 msgid "Main"
 msgstr "Huvudfönster"
 
-#: ../clawsker:1827
+#: ../clawsker:1817
 msgid "Message"
 msgstr "Meddelande"
 
-#: ../clawsker:1828
+#: ../clawsker:1818
 msgid "Send/Receive"
 msgstr "Skicka/Ta emot"
 
-#: ../clawsker:1829
+#: ../clawsker:1819
 msgid "Folder"
 msgstr "Mapp"
 
-#: ../clawsker:1832
+#: ../clawsker:1822
 msgid "Filtering"
 msgstr "Filtrering"
 
-#: ../clawsker:1833
+#: ../clawsker:1823
 msgid "Preferences"
 msgstr "Egenskaper"
 
-#: ../clawsker:1965
+#: ../clawsker:1955
 msgid "Attachment remover"
 msgstr "Bilageborttagare"
 
-#: ../clawsker:1970
+#: ../clawsker:1960
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:1976
+#: ../clawsker:1966
 msgid "Sieve manager"
 msgstr "Sieve-hanterare"
 
-#: ../clawsker:1981
+#: ../clawsker:1971
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:1986
+#: ../clawsker:1976
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:2003
+#: ../clawsker:1993
 msgid "GLib runtime"
 msgstr "GLib körtid"
 
-#: ../clawsker:2004
+#: ../clawsker:1994
 msgid "GLib built"
 msgstr "GLib byggd"
 
-#: ../clawsker:2006
+#: ../clawsker:1996
 msgid "GTK2 runtime"
 msgstr "GTK2 körtid"
 
-#: ../clawsker:2007
+#: ../clawsker:1997
 msgid "GTK2 built"
 msgstr "GTK byggd"
 
-#: ../clawsker:2024
+#: ../clawsker:2014
 msgid "Binary"
 msgstr "Binär"
 
-#: ../clawsker:2025
+#: ../clawsker:2015
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: ../clawsker:2038
+#: ../clawsker:2028
 msgid "Library versions"
 msgstr "Biblioteksversioner"
 
-#: ../clawsker:2039
+#: ../clawsker:2029
 msgid "Claws Mail versions"
 msgstr "Claws Mail-versioner"
 
-#: ../clawsker:2066 ../clawsker:2070
-msgid ", built for "
-msgstr ", byggt för "
+#: ../clawsker:2056
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
+msgstr "Perl-GLib-version {glibv}, byggd för {glibb}, kör med {glibr}."
 
-#: ../clawsker:2067 ../clawsker:2071
-msgid ", running with "
-msgstr ", körandes med "
+#: ../clawsker:2061
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}."
+msgstr "Perl-GLib-version {glibv}."
+
+#: ../clawsker:2065
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}."
+msgstr "Perl-GTK2-version {gtkv}, byggd för {gtkb}, kör med {gtkr}."
+
+#: ../clawsker:2070
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}."
+msgstr "Perl-GTK2-verison {gtkv}."
 
 #: ../clawsker:2074
-msgid "was not found!"
-msgstr "hittades inte!"
+msgid "Claws Mail was not found!"
+msgstr "Claws Mail hittades inte!"
 
 #: ../clawsker:2075
-msgid "returned version "
-msgstr "returnerad version "
-
-#: ../clawsker:2085
-msgid "Syntax:\n"
-msgstr "Syntax:\n"
+#, perl-brace-format
+msgid "Claws Mail returned version {cmv}."
+msgstr "Claws Mail returnerade version {cmv}"
 
 #: ../clawsker:2086
-msgid "  clawsker [options]\n"
-msgstr "  clawsker [val]\n"
+msgid "Syntax:"
+msgstr "Syntax:"
 
 #: ../clawsker:2087
-msgid "Options:\n"
-msgstr "Val:\n"
+msgid "  clawsker [options]"
+msgstr "  clawsker [val]"
 
 #: ../clawsker:2088
-msgid ""
-"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n"
-msgstr ""
-"  -a|--alternate-config-dir <dir>   Använder <dir> som Claws Mail "
-"konfigurations-folder.\n"
+msgid "Options:"
+msgstr "Val:"
 
 #: ../clawsker:2089
-msgid "  -b|--verbose                     More messages on standard output.\n"
+msgid ""
+"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
 msgstr ""
-"  -b|--verbose                      Fler meddelanden på standard output.\n"
+"  -a|--alternate-config-dir <dir>   Använder <dir> som Claws Mail "
+"konfigurations-folder."
 
 #: ../clawsker:2090
-msgid "  -c|--clawsrc <file>              Uses <file> as full resource name.\n"
+msgid "  -b|--verbose                     More messages on standard output."
 msgstr ""
-"  -c|--clawsrc <file>               Använder <file> som fullt resurs-namn.\n"
+"  -b|--verbose                      Fler meddelanden på standard output."
 
 #: ../clawsker:2091
-msgid "  -h|--help                        Prints this help screen.\n"
-msgstr "  -h|--help                         Visa denna hjälp-skärm.\n"
+msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
+msgstr ""
+"  -c|--clawsrc <file>               Använder <file> som fullt resurs-namn."
 
 #: ../clawsker:2092
-msgid "  -r|--read-only                   Disables writing changes to disk.\n"
+msgid "  -h|--help                        Prints this help screen and exits."
 msgstr ""
-"  -r|--read-only                    Inaktiverar skrivning av ändringar till "
-"disk.\n"
+"  -h|--help                         Visa denna hjälp-skärm och avslutar."
 
 #: ../clawsker:2093
-msgid "  -v|--version                     Prints version infos.\n"
-msgstr "  -v|--version                      Skriver ut versions-information.\n"
+msgid "  -r|--read-only                   Disables writing changes to disk."
+msgstr ""
+"  -r|--read-only                    Inaktiverar skrivning av ändringar till "
+"disk."
 
-#: ../clawsker:2107
+#: ../clawsker:2094
+msgid ""
+"  -v|--version                     Prints version information and exits."
+msgstr ""
+"  -v|--version                      Skriver ut versions-information och "
+"avslutar."
+
+#: ../clawsker:2110
 msgid "try -h or --help for syntax.\n"
 msgstr "Försök med -h eller --help för syntax.\n"
 
-#: ../clawsker:2110
+#: ../clawsker:2113
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Fel i alternativ: {msg}\n"
 
-#: ../clawsker:2122
+#: ../clawsker:2125
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr "Fel: {opt} kräver ett prickat numeriskt värdeargument\n"
 
-#: ../clawsker:2129
+#: ../clawsker:2132
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "Fel: '{dir}' är inte en folder eller så finns den inte\n"
 
-#: ../clawsker:2138
+#: ../clawsker:2141
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "Fel: '{value}' är inte en fil eller så finns den inte\n"
 
-#: ../clawsker:2181
+#: ../clawsker:2176
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "Fel: öppnar '{file}' för läsning"
 
-#: ../clawsker:2189
+#: ../clawsker:2184
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "Fel: dubbla sektioner '{sect}' i resursfil '{file}'\n"
 
-#: ../clawsker:2209
+#: ../clawsker:2204
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Fel: öppnar '{file}' för skrivning"
