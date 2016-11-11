@@ -1,7 +1,7 @@
 # Dansk oversættelse af Clawsker.
 # Copyright (C) 2011-2016vRicardo Mones Lastra
 # This file is distributed under the same license as the Clawsker package.
-# Erik P. Olsen <epodata@gmail.com>, 2016.
+# Erik P. Olsen <erik@epo.dk>, 2016.
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2016-11-06 18:49+0100\n"
 "PO-Revision-Date: 2016-11-08 18:49+0100\n"
-"Last-Translator: Erik P. Olsen <epodata@gmail.com>\n"
+"Last-Translator: Erik P. Olsen <erik@epo.dk>\n"
 "Language-Team: Dansk\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
