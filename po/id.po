@@ -730,7 +730,7 @@ msgid "Log level"
 msgstr "Tingkat log"
 
 #: ../clawsker:224
-msgid "Verbosity level of log, acumulative."
+msgid "Verbosity level of log, accumulative."
 msgstr "Tingkat kedetailan log, akumulatif."
 
 #: ../clawsker:225

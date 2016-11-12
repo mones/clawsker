@@ -221,7 +221,7 @@ sub _ {
     l_plu_lav_burl => _('Base URL'),
     h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
     l_plu_prl_flvb => _('Log level'),
-    h_plu_prl_flvb => _('Verbosity level of log, acumulative.'),
+    h_plu_prl_flvb => _('Verbosity level of log, accumulative.'),
     l_plu_prl_none => _('None'),
     l_plu_prl_manual => _('Manual'),
     l_plu_prl_action => _('Actions'),

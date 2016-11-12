@@ -726,7 +726,7 @@ msgid "Log level"
 msgstr "Kayıt seviyesi"
 
 #: ../clawsker:224
-msgid "Verbosity level of log, acumulative."
+msgid "Verbosity level of log, accumulative."
 msgstr "Kayıtların ayrıntı seviyesi, birikimli."
 
 #: ../clawsker:225

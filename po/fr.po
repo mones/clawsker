@@ -763,7 +763,7 @@ msgid "Log level"
 msgstr "Niveau de log"
 
 #: ../clawsker:224
-msgid "Verbosity level of log, acumulative."
+msgid "Verbosity level of log, accumulative."
 msgstr "Niveau de verbosité de la log, cumulatif."
 
 #: ../clawsker:225
