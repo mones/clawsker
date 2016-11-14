@@ -51,7 +51,7 @@ install-icons-dirs:
 		install -d ${DESTDIR}${THEMEDIR}/$${res}x$${res}/apps; \
 	done
 
-install-icons:
+install-icons: install-icons-dirs
 	for res in ${ICONRES}; do \
 		install -m 0644 icons/${NAME}-$${res}.png ${DESTDIR}${THEMEDIR}/$${res}x$${res}/apps/${NAME}.png; \
 	done
