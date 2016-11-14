@@ -62,16 +62,18 @@ Contributing
 
 Patches, bug fixes, and specially, new translations (or updates to the
 existing ones) are welcome. Development uses git as VCS and takes place
-on http://github.com/mones/clawsker/.
+on http://git.claws-mail.org.
 
 Translators please read po/README file for details about translations.
 
 Bugs
 ----
 
-You can send bug reports on http://github.com/mones/clawsker/issues/ list.
-Also directly by mail to me or in the Claws Mail mailing list, but the Issues
-list is the preferred way.
+You can send bug reports to http://www.thewildbeast.co.uk/claws-mail/bugzilla/
+by selecting 'clawsker' product.
+
+Also directly by mail to me or in the Claws Mail mailing list, but bugzilla
+is the preferred way.
 
 Thanks
 ------
