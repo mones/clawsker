@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Clawsker 1.0.0\n"
+"Project-Id-Version: Clawsker 1.0.1\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-08-09 10:21+0200\n"
-"PO-Revision-Date: 2016-10-09 18:09+0200\n"
+"POT-Creation-Date: 2016-11-16 12:21+0200\n"
+"PO-Revision-Date: 2016-11-16 14:27+0200\n"
 "Last-Translator: Axel Köllhofer <AxelKoellhofer@web.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de\n"
@@ -49,7 +49,7 @@ msgstr "Verhalten"
 msgid "GUI"
 msgstr "Grafische Oberfläche"
 
-#: ../clawsker:70 ../clawsker:1834
+#: ../clawsker:70 ../clawsker:1824
 msgid "Other"
 msgstr "Andere"
 
@@ -57,8 +57,7 @@ msgstr "Andere"
 msgid "Windows"
 msgstr "Fenster"
 
-#: ../clawsker:71 ../clawsker:1888
-#: ../clawsker:72 ../clawsker:1831
+#: ../clawsker:72 ../clawsker:1821
 msgid "Accounts"
 msgstr "Konten"
 
@@ -70,7 +69,7 @@ msgstr "Plugins"
 msgid "Info"
 msgstr "Information"
 
-#: ../clawsker:76 ../clawsker:1830
+#: ../clawsker:76 ../clawsker:1820
 msgid "Addressbook"
 msgstr "Adressbuch"
 
@@ -82,7 +81,7 @@ msgstr "Speicherbelegung"
 msgid "Message View"
 msgstr "Nachrichtenansicht"
 
-#: ../clawsker:79 ../clawsker:1809
+#: ../clawsker:79 ../clawsker:1799
 msgid "Log window"
 msgstr "Protokollierungsfenster"
 
@@ -326,7 +325,8 @@ msgstr "Verwende eingefärbte Zeilen in Ordner- und Nachrichtenlisten"
 
 #: ../clawsker:133
 msgid "Enable alternately coloured lines in Message List and Folder List."
-msgstr "In Ordner- und Nachrichtenlisten werden Zeilen alternierend eingefärbt"
+msgstr ""
+"In Ordner- und Nachrichtenlisten werden Zeilen alternierend eingefärbt"
 
 #: ../clawsker:134
 msgid "2 lines per Message List item in 3-column layout"
@@ -375,11 +375,11 @@ msgstr ""
 "Erlaubt beim Verfassen einer Nachricht neben der Auswahl aus der Drop-Downliste " 
 "(TO: CC: BCC: etc.) zusätzliche Eingabe manueller Kopfzeilen."
 
-#: ../clawsker:139
+#: ../clawsker:144
 msgid "Select next message on delete"
 msgstr "Auswahl der nächsten Nachricht beim Löschen"
 
-#: ../clawsker:140
+#: ../clawsker:145
 msgid ""
 "When deleting a message, toggles between selecting the next one (newer "
 "message) or the previous one (older message)."
@@ -387,7 +387,7 @@ msgstr ""
 "Beim Löschen einer Nachricht kann hier festgelegt werden, ob anschließend die "
 "nächste (neuere) Nachricht oder die vorige (ältere) Nachricht markiert wird."
 
-#: ../clawsker:145
+#: ../clawsker:147
 msgid "Drag 'n' drop hover timeout (ms)"
 msgstr "Wartezeit bei Ziehen und Ablegen (ms)"
 
@@ -514,7 +514,7 @@ msgid "Show inline attachments"
 msgstr "Zeige \"Inline\"-Anhänge"
 
 #: ../clawsker:172
-msgid "Allows hiding inline attachments already shown in mail structure view."
+msgid "Allows to hide inline attachments already shown in mail structure view."
 msgstr ""
 "Ermöglicht das Verstecken von \"Inline\"-Anhängen, wenn diese schon in der "
 "Strukturansicht der Nachricht vorhanden sind."
@@ -686,13 +686,16 @@ msgstr "Benutzerdefinierte Priorität für GnuTLS"
 msgid "Enables using user provided GnuTLS priority string."
 msgstr "Ermöglicht eine benutzerdefinierte Priorität für GnuTLS."
 
-#: ../clawsker:216 ../clawsker:1864
+#: ../clawsker:216 ../clawsker:1854
 msgid "GnuTLS priority"
 msgstr "Priorität für GnuTLS"
 
 #: ../clawsker:217
-msgid "Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored."
-msgstr "Wert der benutzerdefinierten Priorität für GnuTLS. Wird nur bei aktiviertem \"priority check\" verwendet und ansonsten ignoriert."
+msgid ""
+"Value to use as GnuTLS priority string if custom priority check is enabled. "
+"Otherwise this value is ignored."
+msgstr ""
+"Wert der benutzerdefinierten Priorität für GnuTLS. Wird nur bei aktiviertem \"priority check\" verwendet und ansonsten ignoriert."
 
 #: ../clawsker:219
 msgid "Autocompletion limit"
@@ -742,286 +745,297 @@ msgstr "Aktionen"
 msgid "Matches"
 msgstr "Übereinstimmungen"
 
-#: ../clawsker:230
-msgid "Error: "
-msgstr "Fehler: "
-
-#: ../clawsker:231
-msgid "resource file for Claws Mail was not found."
-msgstr "Keine Konfigurationsdateien für Claws Mail gefunden."
-
-#: ../clawsker:232
-msgid "seems Claws Mail is currently running, close it first."
-msgstr "Bitte zuerst die laufende Instanz von Claws Mail beenden."
-
-#: ../clawsker:409
+#: ../clawsker:405
 msgid "Clawsker error"
 msgstr "Clawsker Fehler"
 
-#: ../clawsker:1652
+#: ../clawsker:411
+msgid "Error: seems Claws Mail is currently running, close it first."
+msgstr "Fehler: Bitte zuerst die laufende Instanz von Claws Mail beenden."
+
+#: ../clawsker:434
+msgid "Error: resource file for Claws Mail was not found."
+msgstr "Fehler: Keine Konfigurationsdateien für Claws Mail gefunden."
+
+#: ../clawsker:1642
 msgid "Main window"
 msgstr "Hauptfenster"
 
-#: ../clawsker:1665
+#: ../clawsker:1655
 msgid "Message window"
 msgstr "Nachrichten"
 
-#: ../clawsker:1675
+#: ../clawsker:1665
 msgid "Send window"
 msgstr "Senden"
 
-#: ../clawsker:1680
+#: ../clawsker:1670
 msgid "Receive window"
 msgstr "Empfangen"
 
-#: ../clawsker:1694
+#: ../clawsker:1684
 msgid "Folder window"
 msgstr "Ordner"
 
-#: ../clawsker:1699
+#: ../clawsker:1689
 msgid "Folder selection window"
 msgstr "Ordnerauswahl"
 
-#: ../clawsker:1709
+#: ../clawsker:1699
 msgid "Addressbook main window"
 msgstr "Adressbuch"
 
-#: ../clawsker:1714
+#: ../clawsker:1704
 msgid "Edit person window"
 msgstr "Person bearbeiten"
 
-#: ../clawsker:1719
+#: ../clawsker:1709
 msgid "Edit group window"
 msgstr "Gruppen bearbeiten"
 
-#: ../clawsker:1724
+#: ../clawsker:1714
 msgid "Add address window"
 msgstr "Adresse hinzufügen"
 
-#: ../clawsker:1729
+#: ../clawsker:1719
 msgid "Folder select window"
 msgstr "Ordner auswählen"
 
-#: ../clawsker:1739
+#: ../clawsker:1729
 msgid "Accounts window"
 msgstr "Konten"
 
-#: ../clawsker:1744
+#: ../clawsker:1734
 msgid "Edit account window"
 msgstr "Konto bearbeiten"
 
-#: ../clawsker:1754
+#: ../clawsker:1744
 msgid "Filtering window"
 msgstr "Filtern"
 
-#: ../clawsker:1759
+#: ../clawsker:1749
 msgid "Filtering actions window"
 msgstr "Filteraktionen"
 
-#: ../clawsker:1764
+#: ../clawsker:1754
 msgid "Filtering debug window"
 msgstr "Debugausgabe Filtern"
 
-#: ../clawsker:1769
+#: ../clawsker:1759
 msgid "Matcher window"
 msgstr "Suchen"
 
-#: ../clawsker:1779
+#: ../clawsker:1769
 msgid "Preferences window"
 msgstr "Einstellungen"
 
-#: ../clawsker:1784
+#: ../clawsker:1774
 msgid "Templates window"
 msgstr "Vorlagen"
 
-#: ../clawsker:1789
+#: ../clawsker:1779
 msgid "Actions window"
 msgstr "Aktionen"
 
-#: ../clawsker:1794
+#: ../clawsker:1784
 msgid "Tags window"
 msgstr "Tags"
 
-#: ../clawsker:1799
+#: ../clawsker:1789
 msgid "Plugins window"
 msgstr "Erweiterungen/Plugins"
 
-#: ../clawsker:1814
+#: ../clawsker:1804
 msgid "Print preview window"
 msgstr "Druckvorschau"
 
-#: ../clawsker:1819
+#: ../clawsker:1809
 msgid "View source window"
 msgstr "Quelltext anzeigen"
 
-#: ../clawsker:1826
+#: ../clawsker:1816
 msgid "Main"
 msgstr "Hauptfenster"
 
-#: ../clawsker:1827
+#: ../clawsker:1817
 msgid "Message"
 msgstr "Nachrichten"
 
-#: ../clawsker:1828
+#: ../clawsker:1818
 msgid "Send/Receive"
 msgstr "Senden/Empfangen"
 
-#: ../clawsker:1829
+#: ../clawsker:1819
 msgid "Folder"
 msgstr "Ordner"
 
-#: ../clawsker:1832
+#: ../clawsker:1822
 msgid "Filtering"
 msgstr "Filtern"
 
-#: ../clawsker:1833
+#: ../clawsker:1823
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: ../clawsker:1965
+#: ../clawsker:1955
 msgid "Attachment remover"
 msgstr "Entferner für Anhänge"
 
-#: ../clawsker:1970
+#: ../clawsker:1960
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:1976
+#: ../clawsker:1966
 msgid "Sieve manager"
 msgstr "Sieve Verwaltung"
 
-#: ../clawsker:1981
+#: ../clawsker:1971
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:1986
+#: ../clawsker:1976
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:2003
+#: ../clawsker:1993
 msgid "GLib runtime"
 msgstr "GLib (Laufzeit)"
 
-#: ../clawsker:2004
+#: ../clawsker:1994
 msgid "GLib built"
 msgstr "Kompiliert mit GLib"
 
-#: ../clawsker:2006
+#: ../clawsker:1996
 msgid "GTK2 runtime"
 msgstr "GTK2 (Laufzeit)"
 
-#: ../clawsker:2007
+#: ../clawsker:1997
 msgid "GTK2 built"
 msgstr "Kompiliert mit GTK2"
 
-#: ../clawsker:2024
+#: ../clawsker:2014
 msgid "Binary"
 msgstr "Anwendung"
 
-#: ../clawsker:2025
+#: ../clawsker:2015
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: ../clawsker:2038
+#: ../clawsker:2028
 msgid "Library versions"
 msgstr "Versionen der verwendeten Bibliotheken"
 
-#: ../clawsker:2039
+#: ../clawsker:2029
 msgid "Claws Mail versions"
 msgstr "Claws Mail Versionen"
 
-#: ../clawsker:2066 ../clawsker:2070
-msgid ", built for "
-msgstr ", kompiliert für "
+#: ../clawsker:2056
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
+msgstr "Perl-GLib Version {glibv}, kompiliert mit {glibb}, auf {glibr} laufend."
 
-#: ../clawsker:2067 ../clawsker:2071
-msgid ", running with "
-msgstr ", läuft auf "
+#: ../clawsker:2061
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}."
+msgstr "Perl-GLib Version {glibv}."
+
+#: ../clawsker:2065
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}."
+msgstr "Perl-GTK2 Version {gtkv}, kompiliert mit {gtkb}, auf {gtkr} laufend."
+
+#: ../clawsker:2070
+#, perl-brace-format
+msgid "Perl-GTK2 version {gtkv}."
+msgstr "Perl-GTK2 Version {gtkv}."
 
 #: ../clawsker:2074
-msgid "was not found!"
-msgstr "nicht gefunden!"
+msgid "Claws Mail was not found!"
+msgstr "Claws Mail nicht gefunden!"
 
 #: ../clawsker:2075
-msgid "returned version "
-msgstr "Programmversion"
-
-#: ../clawsker:2085
-msgid "Syntax:\n"
-msgstr "Syntax:\n"
+msgid "Claws Mail returned version {cmv}."
+msgstr "Claws Mail gab Version {cmv} zurück."
 
 #: ../clawsker:2086
-msgid "  clawsker [options]\n"
-msgstr "  clawsker [optionen]\n"
+msgid "Syntax:"
+msgstr "Syntax:"
 
 #: ../clawsker:2087
-msgid "Options:\n"
-msgstr "Optionen:\n"
+msgid "  clawsker [options]"
+msgstr "  clawsker [Optionen]"
 
 #: ../clawsker:2088
-msgid ""
-"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail config dir.\n"
-msgstr ""
-"  -a|--alternate-config-dir <Ordner>  Verwendet <Ordner> als Speicherort der Daten von Claws Mail.\n"
+msgid "Options:"
+msgstr "Optionen:"
 
 #: ../clawsker:2089
-msgid "  -b|--verbose                     More messages on standard output.\n"
+msgid ""
+"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
 msgstr ""
-"  -b|--verbose                     Ausführliche Ausgabe der Meldungen auf Standardausgabe.\n"
+"  -a|--alternate-config-dir <Ordner>  Verwendet <Ordner> als Speicherort der Konfiguration von Claws Mail."
 
 #: ../clawsker:2090
-msgid "  -c|--clawsrc <file>              Uses <file> as full resource name.\n"
+msgid "  -b|--verbose                     More messages on standard output."
 msgstr ""
-"  -c|--clawsrc <Datei>           Verwendet <Datei> als Konfigurationsdatei.\n"
+"  -b|--verbose                     Ausführliche Ausgabe der Meldungen auf Standardausgabe."
 
 #: ../clawsker:2091
-msgid "  -h|--help                        Prints this help screen.\n"
-msgstr "  -h|--help                        Zeigt diese Hilfe an.\n"
+msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
+msgstr ""
+"  -c|--clawsrc <Datei>           Verwendet <Datei> als Konfigurationsdatei."
 
 #: ../clawsker:2092
-msgid "  -r|--read-only                   Disables writing changes to disk.\n"
-msgstr ""
-"  -r|--read-only                   Schreibgeschützt, Änderungen werden nicht auf Platte geschrieben.\n"
+msgid "  -h|--help                        Prints this help screen and exits."
+msgstr "  -h|--help                        Zeigt diese Hilfe an."
 
 #: ../clawsker:2093
-msgid "  -v|--version                     Prints version infos.\n"
-msgstr "  -v|--version                     Gibt Informationen zur Version aus.\n"
+msgid "  -r|--read-only                   Disables writing changes to disk."
+msgstr ""
+"  -r|--read-only                   Schreibgeschützt, Änderungen werden nicht\n"
+"                                   auf Platte geschrieben."
 
-#: ../clawsker:2107
+#: ../clawsker:2094
+msgid ""
+"  -v|--version                     Prints version information and exits."
+msgstr "  -v|--version                     Gibt Informationen zur Version aus."
+
+#: ../clawsker:2110
 msgid "try -h or --help for syntax.\n"
 msgstr "Aufruf mit Parameter -h oder --help zur Erläuterung der Syntax.\n"
 
-#: ../clawsker:2110
+#: ../clawsker:2113
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Fehler in den Optionen: {msg}\n"
 
-#: ../clawsker:2122
+#: ../clawsker:2125
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr "Fehler: {opt} benötigt ein numerisches Argument (x.y)\n"
 
-#: ../clawsker:2129
+#: ../clawsker:2132
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "Fehler: '{dir}' ist kein Ordner oder existiert nicht\n"
 
-#: ../clawsker:2138
+#: ../clawsker:2141
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "Fehler: '{value}' ist keine Datei oder existiert nicht\n"
 
-#: ../clawsker:2181
+#: ../clawsker:2176
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "Fehler: Konnte '{file}' nicht öffnen"
 
-#: ../clawsker:2189
+#: ../clawsker:2184
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "Fehler: doppeltes Vorkommen der Sektion '{sect}' in der Datei '{file}'\n"
 
-#: ../clawsker:2209
+#: ../clawsker:2204
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Fehler: Konnte nicht in '{file}' schreiben"
+
