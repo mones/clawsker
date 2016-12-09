@@ -1871,6 +1871,7 @@ sub new_accounts_page() {
             $label->set_use_markup (TRUE);
         }
     }
+    $accbook->set_scrollable (TRUE);
     return $accbook;
 }
 
