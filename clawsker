@@ -17,6 +17,7 @@ binmode STDOUT, ":encoding(utf8)";
 use 5.010_000;
 use strict;
 use utf8;
+use version 0.77;
 use Glib qw(TRUE FALSE);
 use Gtk2;
 use POSIX qw(setlocale);
@@ -270,18 +271,7 @@ use constant PAGE_SPC => 5;
 
 sub version_greater_or_equal {
     my ($version, $refvers) = @_;
-    my @version = split (/\./, $version);
-    my @refvers = split (/\./, $refvers);
-    while ($#version < $#refvers) {
-        push (@version, '0');
-    }
-    my $idx = 0;
-    while (($idx <= $#refvers)
-            and (int ($version[$idx]) == int ($refvers[$idx]))) {
-        ++$idx;
-    }
-    return TRUE if (($idx > $#refvers)
-        or (int ($version[$idx]) >= int ($refvers[$idx])));
+    return TRUE if (version->parse($version) >= version->parse($refvers));
     return FALSE;
 }
 
