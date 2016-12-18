@@ -217,7 +217,7 @@ sub _ {
     l_col_diff_del => _('Deleted lines'),
     h_col_diff_del => _('Colour for deleted lines in patches.'),
     l_col_diff_hunk => _('Hunk lines'),
-    h_col_diff_hunk => _('Color for hunk headers in patches.'),
+    h_col_diff_hunk => _('Colour for hunk headers in patches.'),
 
     l_win_x => _('X position'),
     h_win_x => _('X coordinate for window\'s top-left corner.'),
