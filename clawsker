@@ -190,7 +190,7 @@ sub _ {
     h_col_log_msg => _('Colour for messages in log window.'),
     l_col_log_out => _('Client messages'),
     h_col_log_out => _('Colour for messages sent to servers in log window.'),
-    l_col_log_warn => _('Warnings'),
+    l_col_log_warn => _('Warning messages'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
 
     l_col_tags_bg => _('Tags background'),
@@ -604,6 +604,15 @@ sub new_selection_box_for($$$) {
 sub new_hbox_pack {
     my $hbox = Gtk2::HBox->new (FALSE);
     $hbox->set_border_width (PAGE_SPC);
+    foreach (@_) {
+        $hbox->pack_start ($_, FALSE, FALSE, 0);
+    }
+    return $hbox;
+}
+
+sub new_hbox_pack_compact {
+    my $hbox = Gtk2::HBox->new (FALSE);
+    $hbox->set_border_width (0);
     foreach (@_) {
         $hbox->pack_start ($_, FALSE, FALSE, 0);
     }
@@ -1217,16 +1226,19 @@ sub new_colours_page() {
                new_subpage_frame (
                    new_vbox_pack (
                        new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'tags_bg', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'tags_text', \%HPVALUE)),
+                       new_hbox_pack_compact (
+                           new_color_button_for (\%pr::col, 'tags_text', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'tags_bg', \%HPVALUE))),
                    $xl::s{msgview_frame}, 'not-packed'),
                new_subpage_frame (
-                   new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'log_err', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'log_in', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'log_msg', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'log_out', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'log_warn', \%HPVALUE)),
+                   new_hbox_pack (
+                       new_vbox_pack_compact (
+                           new_color_button_for (\%pr::col, 'log_err', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'log_warn', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'log_msg', \%HPVALUE)),
+                       new_vbox_pack_compact (
+                           new_color_button_for (\%pr::col, 'log_in', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'log_out', \%HPVALUE))),
                    $xl::s{log_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
@@ -1235,16 +1247,18 @@ sub new_colours_page() {
                        new_color_button_for (\%pr::col, 'diff_hunk', \%HPVALUE)),
                    $xl::s{diff_frame}, 'not-packed'),
                new_subpage_frame (
-                   new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'default_header_bg', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'default_header_text', \%HPVALUE)),
+                   new_hbox_pack (
+                       new_color_button_for (\%pr::col, 'default_header_text', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'default_header_bg', \%HPVALUE)),
                    $xl::s{compose_frame}, 'not-packed'),
                new_subpage_frame (
-                   new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'qs_active_bg', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'qs_active_text', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'qs_error_bg', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'qs_error_text', \%HPVALUE)),
+                   new_hbox_pack (
+                       new_vbox_pack_compact (
+                           new_color_button_for (\%pr::col, 'qs_active_text', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'qs_error_text', \%HPVALUE)),
+                       new_vbox_pack_compact (
+                           new_color_button_for (\%pr::col, 'qs_active_bg', \%HPVALUE),
+                           new_color_button_for (\%pr::col, 'qs_error_bg', \%HPVALUE))),
                    $xl::s{qs_frame}, 'not-packed')
            );
 }
