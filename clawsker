@@ -90,6 +90,8 @@ sub _ {
     netm_frame => _('NetworkManager'),
     diff_frame => _('Viewing patches'),
     mpass_frame => _('Master passphrase'),
+    compose_frame => _('Compose window'),
+    qs_frame => _('Quick search'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -190,6 +192,25 @@ sub _ {
     h_col_log_out => _('Colour for messages sent to servers in log window.'),
     l_col_log_warn => _('Warnings'),
     h_col_log_warn => _('Colour for warning messages in log window.'),
+
+    l_col_tags_bg => _('Tags background'),
+    h_col_tags_bg => _('Background colour for tags in message view.'),
+    l_col_tags_text => _('Tags text'),
+    h_col_tags_text => _('Text colour for tags in message view.'),
+
+    l_col_default_header_bg => _('Default headers background'),
+    h_col_default_header_bg => _('Background colour for default headers in compose window.'),
+    l_col_default_header_text => _('Default headers text'),
+    h_col_default_header_text => _('Text colour for default headers in compose window.'),
+
+    l_col_qs_active_bg => _('Active quick search background'),
+    h_col_qs_active_bg => _('Background colour for active quick search.'),
+    l_col_qs_active_text => _('Active quick search text'),
+    h_col_qs_active_text => _('Text colour for active quick search.'),
+    l_col_qs_error_bg => _('Quick search error background'),
+    h_col_qs_error_bg => _('Background colour for quick search error.'),
+    l_col_qs_error_text => _('Quick search error text'),
+    h_col_qs_error_text => _('Text colour for quick search error.'),
 
     l_col_diff_add => _('Added lines'),
     h_col_diff_add => _('Colour for added lines in patches.'),
@@ -1125,13 +1146,79 @@ sub new_behaviour_page() {
         '3.8.0.54',
         '#a52a2a',
     ],
+    tags_bg => [
+        'tags_bgcolor',
+        $xl::s{l_col_tags_bg},
+        $xl::s{h_col_tags_bg},
+        'color',
+        '3.14.1.31',
+        '#f5f6be',
+    ],
+    tags_text => [
+        'tags_color',
+        $xl::s{l_col_tags_text},
+        $xl::s{h_col_tags_text},
+        'color',
+        '3.14.1.31',
+        '#000000',
+    ],
+    default_header_bg => [
+        'default_header_bgcolor',
+        $xl::s{l_col_default_header_bg},
+        $xl::s{h_col_default_header_bg},
+        'color',
+        '3.14.1.31',
+        '#f5f6be',
+    ],
+    default_header_text => [
+        'default_header_color',
+        $xl::s{l_col_default_header_text},
+        $xl::s{h_col_default_header_text},
+        'color',
+        '3.14.1.31',
+        '#000000',
+    ],
+    qs_active_bg => [
+        'qs_active_bgcolor',
+        $xl::s{l_col_qs_active_bg},
+        $xl::s{h_col_qs_active_bg},
+        'color',
+        '3.14.1.31',
+        '#f5f6be',
+    ],
+    qs_active_text => [
+        'qs_active_color',
+        $xl::s{l_col_qs_active_text},
+        $xl::s{h_col_qs_active_text},
+        'color',
+        '3.14.1.31',
+        '#000000',
+    ],
+    qs_error_bg => [
+        '',
+        $xl::s{l_col_qs_error_bg},
+        $xl::s{h_col_qs_error_bg},
+        'qs_error_bgcolor',
+        '3.14.1.31',
+        '#ff7070',
+    ],
+    qs_error_text => [
+        '',
+        $xl::s{l_col_qs_error_text},
+        $xl::s{h_col_qs_error_text},
+        'qs_error_color',
+        '3.14.1.31',
+        '#000000',
+    ],
 );
 
 sub new_colours_page() {
     return new_vbox_pack (
                new_subpage_frame (
                    new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE)),
+                       new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'tags_bg', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'tags_text', \%HPVALUE)),
                    $xl::s{msgview_frame}, 'not-packed'),
                new_subpage_frame (
                    new_vbox_pack (
@@ -1146,7 +1233,19 @@ sub new_colours_page() {
                        new_color_button_for (\%pr::col, 'diff_add', \%HPVALUE),
                        new_color_button_for (\%pr::col, 'diff_del', \%HPVALUE),
                        new_color_button_for (\%pr::col, 'diff_hunk', \%HPVALUE)),
-                   $xl::s{diff_frame}, 'not-packed')
+                   $xl::s{diff_frame}, 'not-packed'),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_color_button_for (\%pr::col, 'default_header_bg', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'default_header_text', \%HPVALUE)),
+                   $xl::s{compose_frame}, 'not-packed'),
+               new_subpage_frame (
+                   new_vbox_pack (
+                       new_color_button_for (\%pr::col, 'qs_active_bg', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'qs_active_text', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'qs_error_bg', \%HPVALUE),
+                       new_color_button_for (\%pr::col, 'qs_error_text', \%HPVALUE)),
+                   $xl::s{qs_frame}, 'not-packed')
            );
 }
 
