@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Clawsker 1.0.1\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2016-11-06 18:49+0100\n"
-"PO-Revision-Date: 2016-11-12 23:57+0200\n"
+"POT-Creation-Date: 2016-12-19 10:47+0100\n"
+"PO-Revision-Date: 2017-01-01 23:57+0200\n"
 "Last-Translator: Ricardo Mones <ricardo@mones.org>\n"
 "Language-Team: Ricardo Mones <ricardo@mones.org>\n"
 "Language: Spanish\n"
@@ -16,123 +16,127 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../clawsker:61
+#: ../clawsker:62
 msgid "Claws Mail Hidden Preferences"
 msgstr "Preferencias ocultas de Claws Mail"
 
-#: ../clawsker:62
+#: ../clawsker:63
 msgid "About..."
 msgstr "Acerca de..."
 
-#: ../clawsker:63
+#: ../clawsker:64
 msgid "Clawsker :: A Claws Mail Tweaker"
 msgstr "Clawsker :: Un ajustador de Claws Mail"
 
-#: ../clawsker:64
+#: ../clawsker:65
 msgid "License:"
 msgstr "Licencia:"
 
-#: ../clawsker:65
+#: ../clawsker:66
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../clawsker:67
+#: ../clawsker:68
 msgid "Colours"
 msgstr "Colores"
 
-#: ../clawsker:68
+#: ../clawsker:69
 msgid "Behaviour"
 msgstr "Comportamiento"
 
-#: ../clawsker:69
+#: ../clawsker:70
 msgid "GUI"
 msgstr "Interfaz gráfico"
 
-#: ../clawsker:70 ../clawsker:1824
+#: ../clawsker:71 ../clawsker:1927
 msgid "Other"
 msgstr "Otros"
 
-#: ../clawsker:71
+#: ../clawsker:72
 msgid "Windows"
 msgstr "Ventanas"
 
-#: ../clawsker:72 ../clawsker:1821
+#: ../clawsker:73 ../clawsker:1924
 msgid "Accounts"
 msgstr "Cuentas"
 
-#: ../clawsker:73
+#: ../clawsker:74
 msgid "Plugins"
 msgstr "Módulos"
 
-#: ../clawsker:74
+#: ../clawsker:75
 msgid "Info"
 msgstr "Información"
 
-#: ../clawsker:76 ../clawsker:1820
+#: ../clawsker:77 ../clawsker:1923
 msgid "Addressbook"
 msgstr "Agenda de direcciones"
 
-#: ../clawsker:77
+#: ../clawsker:78
 msgid "Memory"
 msgstr "Memoria"
 
-#: ../clawsker:78 ../clawsker:87
+#: ../clawsker:79 ../clawsker:88
 msgid "Message View"
 msgstr "Vista de mensajes"
 
-#: ../clawsker:79 ../clawsker:1799
+#: ../clawsker:80 ../clawsker:1902
 msgid "Log window"
 msgstr "Ventana de traza"
 
-#: ../clawsker:80
+#: ../clawsker:81
 msgid "Drag 'n' drop"
 msgstr "Arrastrar y soltar"
 
-#: ../clawsker:81
+#: ../clawsker:82
 msgid "Secure Sockets Layer"
 msgstr "Capa de sockets seguros (SSL)"
 
-#: ../clawsker:82
+#: ../clawsker:83
 msgid "Messages"
 msgstr "Mensajes"
 
-#: ../clawsker:83
+#: ../clawsker:84
 msgid "Completion"
 msgstr "Completar"
 
-#: ../clawsker:84
+#: ../clawsker:85
 msgid "Coloured stripes"
 msgstr "Bandas coloreadas"
 
-#: ../clawsker:85
+#: ../clawsker:86
 msgid "Scroll bars"
 msgstr "Barras de desplazamiento"
 
-#: ../clawsker:86
+#: ../clawsker:87
 msgid "Message List"
 msgstr "Lista de mensajes"
 
-#: ../clawsker:88
+#: ../clawsker:89 ../clawsker:93
 msgid "Compose window"
 msgstr "Ventana de composición"
 
-#: ../clawsker:89
+#: ../clawsker:90
 msgid "NetworkManager"
 msgstr "Gestión de red con NetworkManager"
 
-#: ../clawsker:90
+#: ../clawsker:91
 msgid "Viewing patches"
 msgstr "Visualización de parches"
 
-#: ../clawsker:91
+#: ../clawsker:92
 msgid "Master passphrase"
 msgstr "Contraseña maestra"
 
-#: ../clawsker:93
+#: ../clawsker:94
+msgid "Quick search"
+msgstr "Búsqueda rápida"
+
+#: ../clawsker:96
 msgid "Use detached address book edit dialogue"
 msgstr "Utilizar un diálogo separado para editar la agenda"
 
-#: ../clawsker:94
+#: ../clawsker:97
 msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
@@ -140,19 +144,19 @@ msgstr ""
 "Si es cierto usará un diálogo separado para editar los detalles personales. "
 "En caso contrario se usará un formulario incrustado en la ventana."
 
-#: ../clawsker:95
+#: ../clawsker:98
 msgid "Maximum memory for message cache (kB)"
 msgstr "Memoria máxima para la caché de mensajes (kB)"
 
-#: ../clawsker:96
+#: ../clawsker:99
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
 msgstr "El tamaño de memoria máxima en kB a usar como caché de mensajes."
 
-#: ../clawsker:97
+#: ../clawsker:100
 msgid "Minimun time for cache elements (minutes)"
 msgstr "Tiempo mínimo para los elementos de caché (minutos)"
 
-#: ../clawsker:98
+#: ../clawsker:101
 msgid ""
 "The minimum time in minutes to keep a cache in memory. Caches more recent "
 "than this time will not be freed, even if the memory usage is too high."
@@ -161,21 +165,21 @@ msgstr ""
 "recientes que este tiempo no se liberarán, incluso si el uso de memoria es "
 "demasiado elevado."
 
-#: ../clawsker:99
+#: ../clawsker:102
 msgid "Use NetworkManager"
 msgstr "Usar el gestor de red NetworkManager"
 
-#: ../clawsker:100
+#: ../clawsker:103
 msgid "Use NetworkManager to switch offline automatically."
 msgstr ""
 "Utiliza el gestor de red NetworkManager para cambiar a modo desconectado "
 "automáticamente."
 
-#: ../clawsker:101
+#: ../clawsker:104
 msgid "Rounds for PBKDF2 function"
 msgstr "Iteraciones para la función PBKDF2"
 
-#: ../clawsker:102
+#: ../clawsker:105
 msgid ""
 "Specify the number of iterations the key derivation function will be applied "
 "on master passphrase computation. Does not modify currently stored "
@@ -187,29 +191,29 @@ msgstr ""
 "actualmente, sólo afectará a las contraseñas maestras calculadas después de "
 "cambiar este valor."
 
-#: ../clawsker:104
+#: ../clawsker:107
 msgid "Show unread messages with bold font"
 msgstr "Mostrar los mensajes no leídos con negrita"
 
-#: ../clawsker:105
+#: ../clawsker:108
 msgid "Show unread messages in the Message List using a bold font."
 msgstr "Mostrar los mensajes no leidos en la lista de mensajes con negrita."
 
-#: ../clawsker:106
+#: ../clawsker:109
 msgid "Don't use markup"
 msgstr "No usar formato"
 
-#: ../clawsker:107
+#: ../clawsker:110
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr ""
 "No usar negrita ni cursiva en el texto del selector de cuentas de la ventana "
 "de composición."
 
-#: ../clawsker:108
+#: ../clawsker:111
 msgid "Use dotted lines in tree view components"
 msgstr "Usar líneas punteadas en los componentes de árboles"
 
-#: ../clawsker:109
+#: ../clawsker:112
 msgid ""
 "Use the old dotted line look in the main window tree views (Folder, Message "
 "and other lists) instead of the modern lineless look."
@@ -217,19 +221,19 @@ msgstr ""
 "Usar la apariencia antigua con líneas punteadas en los árboles de la ventana "
 "principal (carpetas, mensajes y otras) en vez de la moderna sin líneas."
 
-#: ../clawsker:110
+#: ../clawsker:113
 msgid "Enable horizontal scrollbar"
 msgstr "Activar la barra de desplazamiento horizontal"
 
-#: ../clawsker:111
+#: ../clawsker:114
 msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "Actiar la barra de desplazamiento horizontal en la lista de mensajes."
 
-#: ../clawsker:112
+#: ../clawsker:115
 msgid "Display To column instead From column in Sent folder"
 msgstr "Mostrar la cabecera «Para» en el campo «Desde» de la carpeta Enviado"
 
-#: ../clawsker:113
+#: ../clawsker:116
 msgid ""
 "Display the recipient's email address in a To column of the Sent folder "
 "instead of the originator's one in a From column."
@@ -237,11 +241,11 @@ msgstr ""
 "Mostrar la dirección de correo del destinatario en una columna «Para» de la "
 "carpeta Enviado en vez de la del remitente en una columna «Desde»."
 
-#: ../clawsker:114
+#: ../clawsker:117
 msgid "Folder List scrollbar behaviour"
 msgstr "Barra de desplazamiento de la lista de carpetas"
 
-#: ../clawsker:115
+#: ../clawsker:118
 msgid ""
 "Specify the policy of vertical scrollbar of Folder List: show always, "
 "automatic or hide always."
@@ -249,23 +253,23 @@ msgstr ""
 "Especificar el comportamiento de la barra vertical de desplazamiento en la "
 "lista de carpetas: siempre presente, automático o siempre oculta."
 
-#: ../clawsker:116
+#: ../clawsker:119
 msgid "Show always"
 msgstr "Mostrar siempre"
 
-#: ../clawsker:117
+#: ../clawsker:120
 msgid "Automatic"
 msgstr "Automática"
 
-#: ../clawsker:118
+#: ../clawsker:121
 msgid "Hide always"
 msgstr "Ocultar siempre"
 
-#: ../clawsker:119
+#: ../clawsker:122
 msgid "From column displays"
 msgstr "La columna «Desde» muestra"
 
-#: ../clawsker:120
+#: ../clawsker:123
 msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
 "address or both."
@@ -273,23 +277,23 @@ msgstr ""
 "Selecciona la información a mostrar en la columna «Desde» de la lista de "
 "mensajes: el nombre, la dirección o ambos."
 
-#: ../clawsker:121
+#: ../clawsker:124
 msgid "Name only"
 msgstr "Sólo el nombre"
 
-#: ../clawsker:122
+#: ../clawsker:125
 msgid "Address only"
 msgstr "Sólo la dirección"
 
-#: ../clawsker:123
+#: ../clawsker:126
 msgid "Both name and address"
 msgstr "El nombre y la dirección"
 
-#: ../clawsker:124
+#: ../clawsker:127
 msgid "Coloured lines contrast"
 msgstr "Contraste de las bandas coloreadas"
 
-#: ../clawsker:125
+#: ../clawsker:128
 msgid ""
 "Specify the value to use when creating alternately coloured lines in tree "
 "view components. The smaller the value, the less visible the difference in "
@@ -299,44 +303,44 @@ msgstr ""
 "los árboles. Cuanto más pequeño sea el valor menos visible será la "
 "diferencia entre los colores alternados."
 
-#: ../clawsker:126
+#: ../clawsker:129
 msgid "Show cursor"
 msgstr "Mostrar cursor"
 
-#: ../clawsker:127
+#: ../clawsker:130
 msgid "Display the cursor in the Message View."
 msgstr "Mostrar el cursor en la vista de mensaje."
 
-#: ../clawsker:128
+#: ../clawsker:131
 msgid "Detachable toolbars"
 msgstr "Barras de herramientas flotantes"
 
-#: ../clawsker:129
+#: ../clawsker:132
 msgid "Show handles in the toolbars."
 msgstr "Mostrar asideros en las barras de herramientas"
 
-#: ../clawsker:130
+#: ../clawsker:133
 msgid "Use stripes in all tree view components"
 msgstr "Usar bandas en todos los árboles"
 
-#: ../clawsker:131
+#: ../clawsker:134
 msgid "Enable alternately coloured lines in all tree view components."
 msgstr "Activar las bandas coloreadas alternantes en todos los árboles."
 
-#: ../clawsker:132
+#: ../clawsker:135
 msgid "Use stripes in Folder List and Message List"
 msgstr "Usar bandas en la lista de mensajes y de carpetas"
 
-#: ../clawsker:133
+#: ../clawsker:136
 msgid "Enable alternately coloured lines in Message List and Folder List."
 msgstr ""
 "Usar bandas de colores alternados en la lista de mensajes y en la de carpetas"
 
-#: ../clawsker:134
+#: ../clawsker:137
 msgid "2 lines per Message List item in 3-column layout"
 msgstr "En el modo de 3 columnas usa 2 líneas en cada elemento"
 
-#: ../clawsker:135
+#: ../clawsker:138
 msgid ""
 "Spread Message List information over two lines when using the three column "
 "mode."
@@ -344,35 +348,35 @@ msgstr ""
 "Distribuye la información de la lista de mensajes en dos líneas cuando se "
 "usa el modo de tres columnas"
 
-#: ../clawsker:136
+#: ../clawsker:139
 msgid "Show margin"
 msgstr "Mostrar margen"
 
-#: ../clawsker:137
+#: ../clawsker:140
 msgid "Shows a small margin in the Compose View."
 msgstr "Muestra un pequeño margen en la ventana de composición."
 
-#: ../clawsker:138
+#: ../clawsker:141
 msgid "Don't display localized date"
 msgstr "No mostrar la fecha en formato local"
 
-#: ../clawsker:139
+#: ../clawsker:142
 msgid "Toggles localization of date format in Message View."
 msgstr "Conmuta el formato de fecha local en la vista de mensajes."
 
-#: ../clawsker:140
+#: ../clawsker:143
 msgid "Zero replacement character"
 msgstr "Caracter para reemplazar al cero"
 
-#: ../clawsker:141
+#: ../clawsker:144
 msgid "Replaces '0' with the given character in Folder List."
 msgstr "En la lista de carpetas sustituye el '0' con el caracter indicado."
 
-#: ../clawsker:142
+#: ../clawsker:145
 msgid "Editable headers"
 msgstr "Cabeceras editables"
 
-#: ../clawsker:143
+#: ../clawsker:146
 msgid ""
 "Allows to manually type any value in Compose Window header entries or just "
 "select from the available choices in the associated dropdown list."
@@ -381,11 +385,11 @@ msgstr ""
 "ventana de composición o seleccionar únicamente las opciones disponibles en "
 "el desplegable."
 
-#: ../clawsker:144
+#: ../clawsker:147
 msgid "Select next message on delete"
 msgstr "Seleccionar el mensaje siguiente al borrar"
 
-#: ../clawsker:145
+#: ../clawsker:148
 msgid ""
 "When deleting a message, toggles between selecting the next one (newer "
 "message) or the previous one (older message)."
@@ -393,11 +397,11 @@ msgstr ""
 "Al borrar un mensaje, conmuta entre seleccionar el siguiente (mensaje más "
 "nuevo) o el anterior (mensaje más viejo)."
 
-#: ../clawsker:147
+#: ../clawsker:150
 msgid "Drag 'n' drop hover timeout (ms)"
 msgstr "Tiempo límite para arrastrar y soltar (ms)"
 
-#: ../clawsker:148
+#: ../clawsker:151
 msgid ""
 "Time in milliseconds that will cause a folder tree to expand when the mouse "
 "cursor is held over it during drag and drop."
@@ -405,19 +409,19 @@ msgstr ""
 "Tiempo en milisegundos que hay que mantener el puntero del ratón sobre una "
 "carpeta del árbol para que se expanda durante el arrastrar y soltar."
 
-#: ../clawsker:149
+#: ../clawsker:152
 msgid "Don't confirm deletions (dangerous!)"
 msgstr "No confirmar los borrados (¡Peligroso!)"
 
-#: ../clawsker:150
+#: ../clawsker:153
 msgid "Don't ask for confirmation before definitive deletion of emails."
 msgstr "No pedir confirmación antes de la eliminación definitiva de correos."
 
-#: ../clawsker:151
+#: ../clawsker:154
 msgid "Respect format=flowed in messages"
 msgstr "Respetar el «format=flowed» en los mensajes"
 
-#: ../clawsker:152
+#: ../clawsker:155
 msgid ""
 "Respect format=flowed on text/plain message parts. This will cause some "
 "mails to have long lines, but will fix some URLs that would otherwise be "
@@ -427,39 +431,39 @@ msgstr ""
 "provocará líneas largas en ciertos correos, pero corregirá algunas URLs que "
 "de otra manera serían cortadas."
 
-#: ../clawsker:153
+#: ../clawsker:156
 msgid "Allow writable temporary files"
 msgstr "Permitir ficheros temporales modificables"
 
-#: ../clawsker:154
+#: ../clawsker:157
 msgid "Saves temporary files when opening attachment with write bit set."
 msgstr ""
 "Guarda los ficheros temporales con el bit de escritura activo al abrir los "
 "adjuntos."
 
-#: ../clawsker:155
+#: ../clawsker:158
 msgid "Don't check SSL certificates"
 msgstr "No comprobar los certificados SSL"
 
-#: ../clawsker:156
+#: ../clawsker:159
 msgid "Disables the verification of SSL certificates."
 msgstr "Desactiva la comprobación de los certificados SSL."
 
-#: ../clawsker:157
+#: ../clawsker:160
 msgid "Progress bar update step (items)"
 msgstr "Salto para actualizar la barra de progreso (elementos)"
 
-#: ../clawsker:158
+#: ../clawsker:161
 msgid "Update stepping in progress bars."
 msgstr ""
 "El número de elementos para realizar una actualización de la barra de "
 "progreso."
 
-#: ../clawsker:159
+#: ../clawsker:162
 msgid "Maximum age when threading by subject (days)"
 msgstr "Antiguedad máxima al jerarquizar por asunto (días)"
 
-#: ../clawsker:160
+#: ../clawsker:163
 msgid ""
 "Number of days to include a message in a thread when using \"Thread using "
 "subject in addition to standard headers\"."
@@ -467,11 +471,11 @@ msgstr ""
 "Número máximo de días para incluir un mensaje en un hilo cuando se usa "
 "«Jerarquizar usando el asunto además de las cabeceras estándar»."
 
-#: ../clawsker:161
+#: ../clawsker:164
 msgid "Allow unsafe SSL certificates"
 msgstr "Permitir certificados SSL inseguros"
 
-#: ../clawsker:162
+#: ../clawsker:165
 msgid ""
 "Allows Claws Mail to remember multiple SSL certificates for a given server/"
 "port."
@@ -479,29 +483,29 @@ msgstr ""
 "Permite a Claws Mail recordar múltiples certificados SSL para un servidor/"
 "puerto dado."
 
-#: ../clawsker:163
+#: ../clawsker:166
 msgid "Force UTF-8 for broken mails"
 msgstr "Usar UTF-8 para los correos erróneos"
 
-#: ../clawsker:164
+#: ../clawsker:167
 msgid "Use UTF-8 encoding for broken mails instead of current locale."
 msgstr ""
 "Usar la codificación UTF-8 para los correos corruptos en vez de la "
 "localización actual."
 
-#: ../clawsker:165
+#: ../clawsker:168
 msgid "Warn on drag 'n' drop"
 msgstr "Avisar al arrastrar y soltar"
 
-#: ../clawsker:166
+#: ../clawsker:169
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
 msgstr "Mostrar un diálogo de confirmación al arrastrar y soltar carpetas."
 
-#: ../clawsker:167
+#: ../clawsker:170
 msgid "Outgoing messages fallback to ASCII"
 msgstr "Los mensajes se envían en ASCII si es posible"
 
-#: ../clawsker:168
+#: ../clawsker:171
 msgid ""
 "If allowed by content, ASCII will be used to encode outgoing messages, "
 "otherwise the user-defined encoding is always enforced."
@@ -509,11 +513,11 @@ msgstr ""
 "Si el contenido lo permite, se usará ASCII para codificar los mensajes "
 "salientes, si no se usará siempre la codificación definida por el usuario."
 
-#: ../clawsker:169
+#: ../clawsker:172
 msgid "Primary paste unselects selection"
 msgstr "El pegado primario deselecciona la selección"
 
-#: ../clawsker:170
+#: ../clawsker:173
 msgid ""
 "Controls how pasting using middle-click changes the selected text and "
 "insertion point."
@@ -521,23 +525,23 @@ msgstr ""
 "Controla la manera en que se cambia el texto seleccionado y el punto de "
 "inserción al pegar con el botón central."
 
-#: ../clawsker:171
+#: ../clawsker:174
 msgid "Show inline attachments"
 msgstr "Mostrar adjuntos incrustados"
 
-#: ../clawsker:172
+#: ../clawsker:175
 msgid "Allows to hide inline attachments already shown in mail structure view."
 msgstr ""
 "Permite ocultar los adjuntos incrustados que ya se muestran en la vista de "
 "la estructura del mensaje."
 
-#: ../clawsker:173
+#: ../clawsker:176
 msgid "Address search in compose window matches any"
 msgstr ""
 "La búsqueda de direcciones en la ventana de composición coincide con "
 "cualquiera"
 
-#: ../clawsker:174
+#: ../clawsker:177
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
 "only from the start."
@@ -545,12 +549,12 @@ msgstr ""
 "Cuando se completa con el tabulador, el texto de la dirección coincidirá con "
 "cualquier parte de la cadena o sólo con el inicio."
 
-#: ../clawsker:175
+#: ../clawsker:178
 msgid "Folder search in folder selector matches any"
 msgstr ""
 "La búsqueda de carpetas en el selector de carpetas coincide con cualquiera"
 
-#: ../clawsker:176
+#: ../clawsker:179
 msgid ""
 "On folder name completion text will match any part of the string or only "
 "from the start."
@@ -558,11 +562,11 @@ msgstr ""
 "Cuando se completa el nombre de una carpeta, el texto coincidirá con "
 "cualquier parte de la cadena o sólo con el inicio."
 
-#: ../clawsker:177
+#: ../clawsker:180
 msgid "Rewrite first 'From' using QP encoding"
 msgstr "Reescribir el primer «From» usando codificación QP"
 
-#: ../clawsker:178
+#: ../clawsker:181
 msgid ""
 "Workaround some servers which convert first 'From' to '>From' by using "
 "Quoted-Printable transfer encoding instead of 7bit/8bit encoding."
@@ -571,142 +575,206 @@ msgstr ""
 "a «>From» usando la codificación de transferencia Quoted-Printable en lugar "
 "de la codificación de 7bit u 8bit."
 
-#: ../clawsker:180
+#: ../clawsker:183
 msgid "X-Mailer header"
 msgstr "Cabecera X-Mailer"
 
-#: ../clawsker:181
+#: ../clawsker:184
 msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr "El color que se usará para la línea X-Mailer si contiene «Claws Mail»"
 
-#: ../clawsker:182
+#: ../clawsker:185
 msgid "Error messages"
 msgstr "Mensajes de error"
 
-#: ../clawsker:183
+#: ../clawsker:186
 msgid "Colour for error messages in log window."
 msgstr "El color de los mensajes de error en la ventana de traza."
 
-#: ../clawsker:184
+#: ../clawsker:187
 msgid "Server messages"
 msgstr "Mensajes del servidor"
 
-#: ../clawsker:185
+#: ../clawsker:188
 msgid "Colour for messages received from servers in log window."
 msgstr ""
 "El color de los mensajes recibidos de los servidores en la ventana de traza."
 
-#: ../clawsker:186
+#: ../clawsker:189
 msgid "Standard messages"
 msgstr "Mensajes estándar"
 
-#: ../clawsker:187
+#: ../clawsker:190
 msgid "Colour for messages in log window."
 msgstr "El color de los mensajes en la ventana de traza."
 
-#: ../clawsker:188
+#: ../clawsker:191
 msgid "Client messages"
 msgstr "Mensajes del cliente"
 
-#: ../clawsker:189
+#: ../clawsker:192
 msgid "Colour for messages sent to servers in log window."
 msgstr ""
 "El color de los mensajes enviados a los servidores en la ventana de traza."
 
-#: ../clawsker:190
-msgid "Warnings"
-msgstr "Avisos"
+#: ../clawsker:193
+msgid "Warning messages"
+msgstr "Mensajes de aviso"
 
-#: ../clawsker:191
+#: ../clawsker:194
 msgid "Colour for warning messages in log window."
 msgstr "El color para los mensajes de aviso en la ventana de traza."
 
-#: ../clawsker:193
+#: ../clawsker:196
+msgid "Tags background"
+msgstr "Fondo de las etiquetas"
+
+#: ../clawsker:197
+msgid "Background colour for tags in message view."
+msgstr "Color de fondo de las etiquetas en la ventana de mensaje."
+
+#: ../clawsker:198
+msgid "Tags text"
+msgstr "Texto de las etiquetas"
+
+#: ../clawsker:199
+msgid "Text colour for tags in message view."
+msgstr "El color del texto de las etiquetas en la ventana de mensaje."
+
+#: ../clawsker:201
+msgid "Default headers background"
+msgstr "Fondo de las cabeceras"
+
+#: ../clawsker:202
+msgid "Background colour for default headers in compose window."
+msgstr "El color de fondo de las cabeceras por omisión en la ventana de composición."
+
+#: ../clawsker:203
+msgid "Default headers text"
+msgstr "Texto de las cabeceras"
+
+#: ../clawsker:204
+msgid "Text colour for default headers in compose window."
+msgstr "El color de las cabeceras por omisión en la ventana de composición."
+
+#: ../clawsker:206
+msgid "Active quick search background"
+msgstr "Fondo de búsqueda rápida activa"
+
+#: ../clawsker:207
+msgid "Background colour for active quick search."
+msgstr "El color de fondo cuando la búsqueda rápida está activa."
+
+#: ../clawsker:208
+msgid "Active quick search text"
+msgstr "Texto de búsqueda rápida activa"
+
+#: ../clawsker:209
+msgid "Text colour for active quick search."
+msgstr "El color del texto cuando la búsqueda rápida está activa."
+
+#: ../clawsker:210
+msgid "Quick search error background"
+msgstr "Fondo de búsqueda rápida errónea"
+
+#: ../clawsker:211
+msgid "Background colour for quick search error."
+msgstr "El color de fondo cuando la búsqueda rápida tiene algún error."
+
+#: ../clawsker:212
+msgid "Quick search error text"
+msgstr "Texto de búsqueda rápida errónea"
+
+#: ../clawsker:213
+msgid "Text colour for quick search error."
+msgstr "El color del texto cuando la búsqueda rápida tiene algún error."
+
+#: ../clawsker:215
 msgid "Added lines"
 msgstr "Líneas añadidas"
 
-#: ../clawsker:194
+#: ../clawsker:216
 msgid "Colour for added lines in patches."
 msgstr "Color de las líneas añadidas en los parches."
 
-#: ../clawsker:195
+#: ../clawsker:217
 msgid "Deleted lines"
 msgstr "Líneas borradas"
 
-#: ../clawsker:196
+#: ../clawsker:218
 msgid "Colour for deleted lines in patches."
 msgstr "Color de las líneas borradas en los parches"
 
-#: ../clawsker:197
+#: ../clawsker:219
 msgid "Hunk lines"
 msgstr "Líneas de cabecera"
 
-#: ../clawsker:198
-msgid "Color for hunk headers in patches."
+#: ../clawsker:220
+msgid "Colour for hunk headers in patches."
 msgstr "Color de las líneas de cabecera en los parches"
 
-#: ../clawsker:200
+#: ../clawsker:222
 msgid "X position"
 msgstr "Posición X"
 
-#: ../clawsker:201
+#: ../clawsker:223
 msgid "X coordinate for window's top-left corner."
 msgstr "Coordenada X de la esquina superior izquierda de la ventana."
 
-#: ../clawsker:202
+#: ../clawsker:224
 msgid "Y position"
 msgstr "Posición Y"
 
-#: ../clawsker:203
+#: ../clawsker:225
 msgid "Y coordinate for window's top-left corner."
 msgstr "Coordenada Y de la esquina superior izquierda de la ventana."
 
-#: ../clawsker:204
+#: ../clawsker:226
 msgid "Width"
 msgstr "Ancho"
 
-#: ../clawsker:205
+#: ../clawsker:227
 msgid "Window's width in pixels."
 msgstr "Anchura de la ventana en pixels."
 
-#: ../clawsker:206
+#: ../clawsker:228
 msgid "Height"
 msgstr "Alto"
 
-#: ../clawsker:207
+#: ../clawsker:229
 msgid "Window's height in pixels."
 msgstr "Altura de la ventana en pixels."
 
-#: ../clawsker:209
+#: ../clawsker:231
 msgid "Maximized"
 msgstr "Maximizada"
 
-#: ../clawsker:210
+#: ../clawsker:232
 msgid "Changes window maximized status."
 msgstr "Cambia el estado de maximización de la ventana."
 
-#: ../clawsker:211
+#: ../clawsker:233
 msgid "Full-screen"
 msgstr "Pantalla completa"
 
-#: ../clawsker:212
+#: ../clawsker:234
 msgid "Changes full screen status."
 msgstr "Cambia el estado de pantalla completa de la ventana."
 
-#: ../clawsker:214
+#: ../clawsker:236
 msgid "Use custom GnuTLS priority"
 msgstr "Usar la prioridad GnuTLS de usuario"
 
-#: ../clawsker:215
+#: ../clawsker:237
 msgid "Enables using user provided GnuTLS priority string."
 msgstr ""
 "Activa el uso de la cadena de prioridad GnuTLS proporcionada por el usuario."
 
-#: ../clawsker:216 ../clawsker:1854
+#: ../clawsker:238 ../clawsker:1957
 msgid "GnuTLS priority"
 msgstr "Prioridad GnuTLS"
 
-#: ../clawsker:217
+#: ../clawsker:239
 msgid ""
 "Value to use as GnuTLS priority string if custom priority check is enabled. "
 "Otherwise this value is ignored."
@@ -714,11 +782,11 @@ msgstr ""
 "Valor que se usará como cadena de prioridad GnuTLS si se activa el uso de la "
 "prioridad de usuario. En otro caso este valor se ignora."
 
-#: ../clawsker:219
+#: ../clawsker:241
 msgid "Autocompletion limit"
 msgstr "Límite de autocompletado"
 
-#: ../clawsker:220
+#: ../clawsker:242
 msgid ""
 "Limits the number of addresses obtained from keyring through autocompletion. "
 "Use 0 to get all matches."
@@ -726,11 +794,11 @@ msgstr ""
 "Limita el número de direcciones obtenidas del anillo de claves usando el "
 "autocompletado. Usar 0 para obtenerlas todas."
 
-#: ../clawsker:221
+#: ../clawsker:243
 msgid "Base URL"
 msgstr "URL base"
 
-#: ../clawsker:222
+#: ../clawsker:244
 msgid ""
 "This is the URL where avatar requests are sent. You can use the one of your "
 "own libravatar server, if available."
@@ -738,323 +806,324 @@ msgstr ""
 "Esta es la URL a donde se enviarán las peticiones de avatares. Puede usar la "
 "de un servidor de libravatar de su propiedad, si está disponible."
 
-#: ../clawsker:223
+#: ../clawsker:245
 msgid "Log level"
 msgstr "Nivel de traza"
 
-#: ../clawsker:224
+#: ../clawsker:246
 msgid "Verbosity level of log, accumulative."
 msgstr "Nivel de verbosidad de la traza, acumulativo."
 
-#: ../clawsker:225
+#: ../clawsker:247
 msgid "None"
 msgstr "Ninguno"
 
-#: ../clawsker:226
+#: ../clawsker:248
 msgid "Manual"
 msgstr "Manual"
 
-#: ../clawsker:227
+#: ../clawsker:249
 msgid "Actions"
 msgstr "Acciones"
 
-#: ../clawsker:228
+#: ../clawsker:250
 msgid "Matches"
 msgstr "Coincidencias"
 
-#: ../clawsker:405
+#: ../clawsker:416
 msgid "Clawsker error"
 msgstr "Error de Clawsker"
 
-#: ../clawsker:411
+#: ../clawsker:422
 msgid "Error: seems Claws Mail is currently running, close it first."
 msgstr "Error: parece que Claws Mail está en ejecución, ciérrelo primero."
 
-#: ../clawsker:434
+#: ../clawsker:445
 msgid "Error: resource file for Claws Mail was not found."
 msgstr "Error: no se encontró el fichero de recursos de Claws Mail."
 
-#: ../clawsker:1642
+#: ../clawsker:1745
 msgid "Main window"
 msgstr "Ventana principal"
 
-#: ../clawsker:1655
+#: ../clawsker:1758
 msgid "Message window"
 msgstr "Ventana de mensajes"
 
-#: ../clawsker:1665
+#: ../clawsker:1768
 msgid "Send window"
 msgstr "Ventana de enviar"
 
-#: ../clawsker:1670
+#: ../clawsker:1773
 msgid "Receive window"
 msgstr "Ventana de recibir"
 
-#: ../clawsker:1684
+#: ../clawsker:1787
 msgid "Folder window"
 msgstr "Ventana de carpetas"
 
-#: ../clawsker:1689
+#: ../clawsker:1792
 msgid "Folder selection window"
 msgstr "Ventana de selección de carpetas"
 
-#: ../clawsker:1699
+#: ../clawsker:1802
 msgid "Addressbook main window"
 msgstr "Ventana principal de la agenda de direcciones"
 
-#: ../clawsker:1704
+#: ../clawsker:1807
 msgid "Edit person window"
 msgstr "Ventana de edición de persona"
 
-#: ../clawsker:1709
+#: ../clawsker:1812
 msgid "Edit group window"
 msgstr "Ventana de edición de grupo"
 
-#: ../clawsker:1714
+#: ../clawsker:1817
 msgid "Add address window"
 msgstr "Ventana de agregar dirección"
 
-#: ../clawsker:1719
+#: ../clawsker:1822
 msgid "Folder select window"
 msgstr "Ventana de selección de carpeta"
 
-#: ../clawsker:1729
+#: ../clawsker:1832
 msgid "Accounts window"
 msgstr "Ventana de cuentas"
 
-#: ../clawsker:1734
+#: ../clawsker:1837
 msgid "Edit account window"
 msgstr "Ventana de edición de cuenta"
 
-#: ../clawsker:1744
+#: ../clawsker:1847
 msgid "Filtering window"
 msgstr "Ventana de filtrado"
 
-#: ../clawsker:1749
+#: ../clawsker:1852
 msgid "Filtering actions window"
 msgstr "Ventana de acciones de filtrado"
 
-#: ../clawsker:1754
+#: ../clawsker:1857
 msgid "Filtering debug window"
 msgstr "Ventana de depuración de filtrado"
 
-#: ../clawsker:1759
+#: ../clawsker:1862
 msgid "Matcher window"
 msgstr "Ventana del selector"
 
-#: ../clawsker:1769
+#: ../clawsker:1872
 msgid "Preferences window"
 msgstr "Ventana de preferencias"
 
-#: ../clawsker:1774
+#: ../clawsker:1877
 msgid "Templates window"
 msgstr "Ventana de plantillas"
 
-#: ../clawsker:1779
+#: ../clawsker:1882
 msgid "Actions window"
 msgstr "Ventana de acciones"
 
-#: ../clawsker:1784
+#: ../clawsker:1887
 msgid "Tags window"
 msgstr "Ventana de etiquetas"
 
-#: ../clawsker:1789
+#: ../clawsker:1892
 msgid "Plugins window"
 msgstr "Ventana de módulos"
 
-#: ../clawsker:1804
+#: ../clawsker:1907
 msgid "Print preview window"
 msgstr "Ventana de previsualización de impresión"
 
-#: ../clawsker:1809
+#: ../clawsker:1912
 msgid "View source window"
 msgstr "Ventana de fuente del mensaje"
 
-#: ../clawsker:1816
+#: ../clawsker:1919
 msgid "Main"
 msgstr "Principal"
 
-#: ../clawsker:1817
+#: ../clawsker:1920
 msgid "Message"
 msgstr "Mensajes"
 
-#: ../clawsker:1818
+#: ../clawsker:1921
 msgid "Send/Receive"
 msgstr "Enviar/recibir"
 
-#: ../clawsker:1819
+#: ../clawsker:1922
 msgid "Folder"
 msgstr "Carpetas"
 
-#: ../clawsker:1822
+#: ../clawsker:1925
 msgid "Filtering"
 msgstr "Filtrado"
 
-#: ../clawsker:1823
+#: ../clawsker:1926
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: ../clawsker:1955
+#: ../clawsker:2059
 msgid "Attachment remover"
 msgstr "Eliminador de adjuntos"
 
-#: ../clawsker:1960
+#: ../clawsker:2064
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:1966
+#: ../clawsker:2070
 msgid "Sieve manager"
 msgstr "Gestor de Sieve"
 
-#: ../clawsker:1971
+#: ../clawsker:2075
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:1976
+#: ../clawsker:2080
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:1993
+#: ../clawsker:2097
 msgid "GLib runtime"
 msgstr "GLib (ejecución)"
 
-#: ../clawsker:1994
+#: ../clawsker:2098
 msgid "GLib built"
 msgstr "GLib (construcción)"
 
-#: ../clawsker:1996
+#: ../clawsker:2100
 msgid "GTK2 runtime"
 msgstr "GTK2 (ejecución)"
 
-#: ../clawsker:1997
+#: ../clawsker:2101
 msgid "GTK2 built"
 msgstr "GTK2 (construcción)"
 
-#: ../clawsker:2014
+#: ../clawsker:2118
 msgid "Binary"
 msgstr "Binario"
 
-#: ../clawsker:2015
+#: ../clawsker:2119
 msgid "Configuration"
 msgstr "Configuración"
 
-#: ../clawsker:2028
+#: ../clawsker:2132
 msgid "Library versions"
 msgstr "Versiones de bibliotecas"
 
-#: ../clawsker:2029
+#: ../clawsker:2133
 msgid "Claws Mail versions"
 msgstr "Versiones de Claws Mail"
 
-#: ../clawsker:2056
+#: ../clawsker:2160
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
-msgstr "Versión de Perl-GLib {glibv}, construido con {glibb}, ejecutando con {glibr}."
+msgstr ""
+"Versión de Perl-GLib {glibv}, construido con {glibb}, ejecutando con {glibr}."
 
-#: ../clawsker:2061
+#: ../clawsker:2165
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}."
 msgstr "Versión de Perl-GLib {glibv}."
 
-#: ../clawsker:2065
+#: ../clawsker:2169
 #, perl-brace-format
 msgid "Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}."
-msgstr "Versión de Perl-GTK2 {gtkv}, construido con {gtkb}, ejecutando con {gtkr}."
+msgstr ""
+"Versión de Perl-GTK2 {gtkv}, construido con {gtkb}, ejecutando con {gtkr}."
 
-#: ../clawsker:2070
+#: ../clawsker:2174
 #, perl-brace-format
 msgid "Perl-GTK2 version {gtkv}."
 msgstr "Versión de Perl-GTK2 {gtkv}."
 
-#: ../clawsker:2074
+#: ../clawsker:2178
 msgid "Claws Mail was not found!"
 msgstr "¡No se encontró Claws Mail!"
 
-#: ../clawsker:2075
+#: ../clawsker:2179
+#, perl-brace-format
 msgid "Claws Mail returned version {cmv}."
 msgstr "Claws Mail retornó la versión {cmv}."
 
-#: ../clawsker:2086
+#: ../clawsker:2190
 msgid "Syntax:"
 msgstr "Sintaxis:"
 
-#: ../clawsker:2087
+#: ../clawsker:2191
 msgid "  clawsker [options]"
 msgstr "  clawsker [opciones]"
 
-#: ../clawsker:2088
+#: ../clawsker:2192
 msgid "Options:"
 msgstr "Opciones:"
 
-#: ../clawsker:2089
+#: ../clawsker:2193
 msgid ""
 "  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
 msgstr ""
 "  -a|--alternate-config-dir <dir>  Usa <dir> como configuración de Claws\n"
 "                                   Mail."
 
-#: ../clawsker:2090
+#: ../clawsker:2194
 msgid "  -b|--verbose                     More messages on standard output."
-msgstr ""
-"  -b|--verbose                     Más mensajes en la salida estándar."
+msgstr "  -b|--verbose                     Más mensajes en la salida estándar."
 
-#: ../clawsker:2091
+#: ../clawsker:2195
 msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
 msgstr ""
 "  -c|--clawsrc <fichero>           Usa <fichero> como fichero de\n"
 "                                   configuración."
 
-#: ../clawsker:2092
+#: ../clawsker:2196
 msgid "  -h|--help                        Prints this help screen and exits."
 msgstr "  -h|--help                        Imprime esta pantalla de ayuda."
 
-#: ../clawsker:2093
+#: ../clawsker:2197
 msgid "  -r|--read-only                   Disables writing changes to disk."
 msgstr ""
 "  -r|--read-only                   Desactiva la escritura en disco de los\n"
 "                                   cambios."
 
-#: ../clawsker:2094
+#: ../clawsker:2198
 msgid ""
 "  -v|--version                     Prints version information and exits."
 msgstr "  -v|--version                     Imprime información de versiones."
 
-#: ../clawsker:2110
+#: ../clawsker:2214
 msgid "try -h or --help for syntax.\n"
 msgstr "intente -h o --help para ayuda de sintaxis.\n"
 
-#: ../clawsker:2113
+#: ../clawsker:2217
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Error en las opciones: {msg}\n"
 
-#: ../clawsker:2125
+#: ../clawsker:2229
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr "Error: {opt} requiere un número de versión separado por puntos\n"
 
-#: ../clawsker:2132
+#: ../clawsker:2236
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "Error: '{dir}' no es un directorio o no existe\n"
 
-#: ../clawsker:2141
+#: ../clawsker:2245
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "Error: '{value}' no es un fichero o no existe\n"
 
-#: ../clawsker:2176
+#: ../clawsker:2280
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "Error: abriendo '{file}' para leer"
 
-#: ../clawsker:2184
+#: ../clawsker:2288
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "Error: sección duplicada '{sect}' en el fichero '{file}'\n"
 
-#: ../clawsker:2204
+#: ../clawsker:2308
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Error: abriendo '{file}' para escribir"
-
