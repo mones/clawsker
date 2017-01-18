@@ -565,7 +565,7 @@ sub new_check_button_and_text_box_for_int($$$$) {
         });
     set_widget_hint ($gentry, $$hash{$key2}[DESC]);
     set_widget_sens ($gentry, $$hash{$key2}[CMVER]);
-    $glabel->set_sensitive ($gentry->sensitive);
+	check_button_and_text_box_update_sens($cb, $gentry, $glabel);
     #
     $cb->signal_connect ('clicked' => sub {
 		    my ($w, $e) = @_;
