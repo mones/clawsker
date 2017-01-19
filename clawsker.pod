@@ -62,8 +62,7 @@ Shows version information for program, Perl-GTK and Claws Mail.
 
 =back
 
-Repeated options are allowed, although only the last one has effect. Weird
-option specifications may produce weird results (but otherwise correct).
+Weird option specifications may produce weird results (but otherwise correct).
 	
 =head1 LIMITATIONS
 
