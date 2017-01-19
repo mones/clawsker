@@ -296,6 +296,8 @@ use constant PAGE_SPC => 5;
 
 sub version_greater_or_equal {
     my ($version, $refvers) = @_;
+    return TRUE if (length($version) == 0 and length($refvers) >= 0);
+    return FALSE if (length($version) >= 0 and length($refvers) == 0);
     return TRUE if (version->parse($version) >= version->parse($refvers));
     return FALSE;
 }
