@@ -145,9 +145,8 @@ sub _ {
     l_gui_type_any => _('Editable headers'),
     h_gui_type_any => _('Allows to manually type any value in Compose Window header entries or just select from the available choices in the associated dropdown list.'),
     l_gui_warn_send_multi => _('Warn when sending to more than'),
-    h_gui_warn_send_multi => _('Warn when sending to multiple recipients.'),
-    l_gui_warn_send_multi_threshold => _('recipients'),
-    h_gui_warn_send_multi_threshold => _('Warn when sending to multiple recipients.'),
+    l_gui_warn_send_multi_units => _('recipients'),
+    h_gui_warn_send_multi => _('Show a warning dialogue when sending to more recipients than specified. Use 0 to disable this check.'),
     l_gui_next_del => _('Select next message on delete'),
     h_gui_next_del => _('When deleting a message, toggles between selecting the next one (newer message) or the previous one (older message).'),
 
@@ -538,53 +537,6 @@ sub new_text_box_for_int($$$) {
     return new_hbox_spaced_pack ($glabel, $gentry);
 }
 
-sub check_button_and_text_box_update_sens($$$) {
-    my ($cb, $gentry, $glabel) = @_;
-    $gentry->set_sensitive ($cb->get_active);
-    $glabel->set_sensitive ($cb->get_active);
-}
-
-sub new_check_button_and_text_box_for_int($$$$) {
-    my ($hash, $key, $key2, $vhash) = @_;
-    my $name = $$hash{$key}[NAME];
-    my $label = $$hash{$key}[LABEL];
-    #
-    my $cb = Gtk2::CheckButton->new ($label);
-    my $value = $$vhash{$name};
-    $value //= $$hash{$key}[CMDEF];
-    $cb->set_active ($value eq '1');
-    set_widget_hint ($cb, $$hash{$key}[DESC]);
-    set_widget_sens ($cb, $$hash{$key}[CMVER]);
-	#
-    my $name2 = $$hash{$key2}[NAME];
-    my $label2 = $$hash{$key2}[LABEL];
-    my @type = split (/,/, $$hash{$key2}[TYPE]);
-    push (@type, 0), push (@type, 10000) unless ($#type > 0);
-    #
-    my $pagei = int (($type[2] - $type[1]) / 10);
-    my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
-    my $value2 = $$vhash{$name2};
-    my $glabel = Gtk2::Label->new ($label2);
-    $value2 //= $$hash{$key2}[CMDEF];
-    $gentry->set_numeric (TRUE);
-    $gentry->set_value ($value2);
-    $gentry->signal_connect('value-changed' => sub {
-            my ($w, $e) = @_;
-            handle_int_value ($w, $e, \$$vhash{$name});
-        });
-    set_widget_hint ($gentry, $$hash{$key2}[DESC]);
-    set_widget_sens ($gentry, $$hash{$key2}[CMVER]);
-	check_button_and_text_box_update_sens($cb, $gentry, $glabel);
-    #
-    $cb->signal_connect ('clicked' => sub {
-		    my ($w, $e) = @_;
-            handle_bool_value ($w, $e, \$$vhash{$name});
-			check_button_and_text_box_update_sens($w, $gentry, $glabel);
-	});
-	#
-    return new_hbox_spaced_pack ($cb, $gentry, $glabel);
-}
-
 sub new_text_box_for_nchar($$$) {
     my ($hash, $key, $vhash) = @_;
     my $name = $$hash{$key}[NAME];
@@ -910,20 +862,13 @@ sub new_other_page() {
         '0',
     ],
     warn_send_multi => [
-        'warn_sending_many_recipients',
-        $xl::s{l_gui_warn_send_multi},
-        $xl::s{l_gui_warn_send_multi},
-        'bool',
+        'warn_sending_many_recipients_num',
+        [$xl::s{l_gui_warn_send_multi},
+         $xl::s{l_gui_warn_send_multi_units}],
+        $xl::s{h_gui_warn_send_multi},
+        'int,0,1000',
         '3.14.1.125',
         '0',
-    ],
-    warn_send_multi_threshold => [
-        'warn_sending_many_recipients_num',
-        $xl::s{l_gui_warn_send_multi_threshold},
-        $xl::s{l_gui_warn_send_multi_threshold},
-        'int,1,1000',
-        '3.14.1.125',
-        '2',
     ],
     next_del => [
         'next_on_delete',
@@ -966,11 +911,12 @@ sub new_gui_page() {
                          $xl::s{mview_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start (new_subpage_frame (
-                         new_hbox_pack (
-                             new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE),
-                             new_check_button_and_text_box_for_int (\%pr::gui, 'warn_send_multi', 'warn_send_multi_threshold', \%HPVALUE)),
+                         new_vbox_pack (
+                             new_hbox_pack_compact (
+                                 new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
+                                 new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE),
+                                 new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE)),
+                             new_text_box_for_int (\%pr::gui, 'warn_send_multi', \%HPVALUE)),
                          $xl::s{compo_frame}, 'not-packed'),
                      FALSE, FALSE, FRAME_SPC);
     $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
