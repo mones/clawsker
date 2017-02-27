@@ -95,9 +95,11 @@ sub _ {
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
-    l_oth_max_use => _('Maximum memory for message cache (kB)'),
+    l_oth_max_use => _('Maximum memory for message cache'),
+    l_oth_max_use_units => _('kilobytes'),
     h_oth_max_use => _('The maximum amount of memory to use to cache messages, in kilobytes.'),
-    l_oth_min_time => _('Minimun time for cache elements (minutes)'),
+    l_oth_min_time => _('Minimun time for cache elements'),
+    l_oth_min_time_units => _('minutes'),
     h_oth_min_time => _('The minimum time in minutes to keep a cache in memory. Caches more recent than this time will not be freed, even if the memory usage is too high.'),
     l_oth_use_netm => _('Use NetworkManager'),
     h_oth_use_netm => _('Use NetworkManager to switch offline automatically.'),
@@ -150,7 +152,8 @@ sub _ {
     l_gui_next_del => _('Select next message on delete'),
     h_gui_next_del => _('When deleting a message, toggles between selecting the next one (newer message) or the previous one (older message).'),
 
-    l_beh_hover_t => _('Drag \'n\' drop hover timeout (ms)'),
+    l_beh_hover_t => _('Drag \'n\' drop hover timeout'),
+    l_beh_hover_t_units => _('milliseconds'),
     h_beh_hover_t => _('Time in milliseconds that will cause a folder tree to expand when the mouse cursor is held over it during drag and drop.'),
     l_beh_dangerous => _('Don\'t confirm deletions (dangerous!)'),
     h_beh_dangerous => _('Don\'t ask for confirmation before definitive deletion of emails.'),
@@ -160,9 +163,11 @@ sub _ {
     h_beh_parts_rw => _('Saves temporary files when opening attachment with write bit set.'),
     l_beh_skip_ssl => _('Don\'t check SSL certificates'),
     h_beh_skip_ssl => _('Disables the verification of SSL certificates.'),
-    l_beh_up_step => _('Progress bar update step (items)'),
+    l_beh_up_step => _('Progress bar update step every'),
+    l_beh_up_step_units => _('items'),
     h_beh_up_step => _('Update stepping in progress bars.'),
-    l_beh_thread_a => _('Maximum age when threading by subject (days)'),
+    l_beh_thread_a => _('Maximum age when threading by subject'),
+    l_beh_thread_a_units => _('days'),
     h_beh_thread_a => _('Number of days to include a message in a thread when using "Thread using subject in addition to standard headers".'),
     l_beh_unsafe_ssl => _('Allow unsafe SSL certificates'),
     h_beh_unsafe_ssl => _('Allows Claws Mail to remember multiple SSL certificates for a given server/port.'),
@@ -670,7 +675,7 @@ sub new_subpage_frame {
     ],
     max_use => [
         'cache_max_mem_usage',
-        $xl::s{l_oth_max_use},
+        [ $xl::s{l_oth_max_use}, $xl::s{l_oth_max_use_units} ],
         $xl::s{h_oth_max_use},
         'int,0,262144', # 0 Kb - 256 Mb
         '0.7.8.36',
@@ -678,7 +683,7 @@ sub new_subpage_frame {
     ],
     min_time => [
         'cache_min_keep_time',
-        $xl::s{l_oth_min_time},
+        [ $xl::s{l_oth_min_time}, $xl::s{l_oth_min_time_units} ],
         $xl::s{h_oth_min_time},
         'int,0,120', # 0 minutes - 2 hours
         '0.7.8.36',
@@ -863,8 +868,7 @@ sub new_other_page() {
     ],
     warn_send_multi => [
         'warn_sending_many_recipients_num',
-        [$xl::s{l_gui_warn_send_multi},
-         $xl::s{l_gui_warn_send_multi_units}],
+        [ $xl::s{l_gui_warn_send_multi}, $xl::s{l_gui_warn_send_multi_units} ],
         $xl::s{h_gui_warn_send_multi},
         'int,0,1000',
         '3.14.1.125',
@@ -935,7 +939,7 @@ sub new_gui_page() {
 %pr::beh = ( # tweak some behaviour
     hover_t => [
         'hover_timeout',
-        $xl::s{l_beh_hover_t},
+        [ $xl::s{l_beh_hover_t}, $xl::s{l_beh_hover_t_units} ],
         $xl::s{h_beh_hover_t},
         'int,100,3000', # 0.1 seconds - 3 seconds
         '0.0.0',
@@ -975,7 +979,7 @@ sub new_gui_page() {
     ],
     up_step => [
         'statusbar_update_step',
-        $xl::s{l_beh_up_step},
+        [ $xl::s{l_beh_up_step}, $xl::s{l_beh_up_step_units} ],
         $xl::s{h_beh_up_step},
         'int,1,200', # 1 item - 200 items
         '0.0.0',
@@ -983,7 +987,7 @@ sub new_gui_page() {
     ],
     thread_a => [
         'thread_by_subject_max_age',
-        $xl::s{l_beh_thread_a},
+        [ $xl::s{l_beh_thread_a}, $xl::s{l_beh_thread_a_units} ],
         $xl::s{h_beh_thread_a},
         'int,1,30', # 1 day - 30 days
         '0.0.0',
