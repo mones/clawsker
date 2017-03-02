@@ -11,7 +11,12 @@ Clawsker - A Claws Mail Tweaker
 
 =head1 SYNOPSIS
 
-B<clawsker> [options]
+B<clawsker> [B<-a>|B<--alternate-config-dir> I<dirname>] [B<-b>|B<--verbose>]
+[B<-c>|B<--clawsrc> I<filename>] [B<-r>|B<--read-only>]
+
+B<clawsker> [B<-v>|B<--version>]
+
+B<clawsker> [B<-h>|B<--help>]
 
 =head1 DESCRIPTION
 
