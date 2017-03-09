@@ -2391,6 +2391,26 @@ sub load_menurc {
     return \%groups;
 }
 
+sub save_menurc {
+    my ($rc, $groups) = @_;
+    open (RCF, '>:utf8', $rc)
+        or die _("Error: opening '{file}' for writing", file => $rc) . ": $!\n";
+    say RCF '; claws-mail GtkAccelMap rc-file         -*- scheme -*-';
+    say RCF '; this file is an automated accelerator map dump';
+    say RCF ';';
+    foreach my $gkey (sort keys %$groups) {
+        my $group = $groups->{$gkey};
+        foreach my $akey (sort keys %$group) {
+            my $data = $group->{$akey};
+            my $key = $data->{'key'};
+            print RCF '; ' unless ($data->{'enabled'});
+            say RCF '(gtk_accel_path "<'
+                    . $gkey . '>' . $akey . '" ' . $key . ')';
+        }
+    }
+    close (RCF);
+}
+
 # load current status from disc
 sub load_rc_preferences {
     my $rc = get_rc_filename ();
