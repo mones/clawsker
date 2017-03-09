@@ -401,6 +401,10 @@ sub get_ac_rc_filename {
     return $CONFIGDIR . $ACCOUNTRC;
 }
 
+sub get_menurc_filename {
+    return $CONFIGDIR . "menurc";
+}
+
 sub set_rc_filename {
     my ($fullname) = @_;
     my @parts = split ('/', $fullname);
@@ -2360,6 +2364,31 @@ sub save_resource {
         say RCF "";
     }
     close (RCF);
+}
+
+# specific loaders
+sub load_menurc {
+    my $rc = shift;
+    open (RCF, '<:encoding(utf8)', $rc)
+        or die _("Error: opening '{file}' for reading", file => $rc) . ": $!\n";
+    my %groups = ();
+    my $line = 0;
+    while (<RCF>) {
+        chomp;
+        ++$line;
+        if (/^; \(gtk_accel_path "<([A-Za-z]+)>([^"]+)" ([^\)]+)\)$/) {
+            my %data = ('key' => $3, 'enabled' => FALSE);
+            $groups{$1}{$2} = \%data;
+            # say "group -> $1 | path -> $2 | key -> $3";
+        }
+        if (/^\(gtk_accel_path "<([A-Za-z]+)>([^"]+)" ([^\)]+)\)$/) {
+            my %data = ('key' => $3, 'enabled' => TRUE);
+            $groups{$1}{$2} = \%data;
+            # say "group -> $1 | path -> $2 | key -> $3";
+        }
+    }
+    close (RCF);
+    return \%groups;
 }
 
 # load current status from disc
