@@ -282,6 +282,8 @@ my @PLUGINS = qw(AttRemover GPG ManageSieve Libravatar PerlPlugin);
 my @AVPLUGINS = ();
 # loaded hotkeys from load_menurc
 my $HOTKEYS;
+# current tree selection
+my $SELHOTKEY;
 # loaded icons
 my @APPICONS = ();
 
@@ -2123,35 +2125,100 @@ sub new_plugins_page() {
                 $frame{'PerlPlugin'});
 }
 
+use constant {
+    C_LABEL => 0,
+    C_HOTKEY => 1,
+    C_GROUP => 2,
+    C_ACCEL => 3
+};
+
+sub new_hotkeys_list_label {
+    my $renderer = Gtk2::CellRendererText->new ();
+    $renderer->set_property('alignment' => 'left');
+    $renderer->set_property('editable' => FALSE);
+    $renderer->set_property('size-points' => 8);
+    $renderer->set_property('size-set' => TRUE);
+    return $renderer;
+}
+
+sub new_hotkeys_list_hotkey {
+    my $renderer = Gtk2::CellRendererAccel->new ();
+    $renderer->set_property ('accel-mode' => 'gtk');
+    $renderer->set_property ('editable' => TRUE);
+    $renderer->signal_connect ('accel-edited' => sub {
+        my ($w, $path, $key, $mods, $keycode) = @_;
+        my $accel = Gtk2::Accelerator->name ($key, $mods);
+        my ($model, $iter) = $SELHOTKEY->get_selected ();
+        $model->set($iter, C_HOTKEY, "\"$accel\"");
+        my $gkey = $model->get_value ($iter, C_GROUP);
+        my $akey = $model->get_value ($iter, C_ACCEL);
+        $HOTKEYS->{$gkey}->{$akey}->{'key'} = "\"$accel\"";
+    });
+    $renderer->signal_connect ('accel-cleared' => sub {
+        my ($w, $path) = @_;
+        my ($model, $iter) = $SELHOTKEY->get_selected ();
+        $model->set($iter, C_HOTKEY, "\"\"");
+        my $gkey = $model->get_value ($iter, C_GROUP);
+        my $akey = $model->get_value ($iter, C_ACCEL);
+        $HOTKEYS->{$gkey}->{$akey}->{'key'} = "\"\"";
+    });
+    return $renderer;
+}
+
+sub new_hotkeys_list {
+    my ($gkey, $group) = @_;
+    my $store = Gtk2::ListStore->new(
+        qw/Glib::String Glib::String Glib::String Glib::String/);
+    foreach my $akey (sort keys %$group) {
+        my $iter = $store->append ();
+        my $hotkey = $group->{$akey}->{'key'};
+        my $label = $akey;
+        $label =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
+        $store->set ($iter, C_LABEL, $label, C_HOTKEY, $hotkey,
+            C_GROUP, $gkey, C_ACCEL, $akey);
+    }
+    my $treeview = Gtk2::TreeView->new_with_model ($store);
+    # labels column
+    $treeview->insert_column_with_data_func (
+        0, _("Menu path"), new_hotkeys_list_label (),
+        sub {
+            my ($col, $renderer, $model, $iter, $data) = @_;
+            my $label = $model->get_value ($iter, C_LABEL);
+            $renderer->set_property ('text' => $label);
+        }
+    );
+    # hotkeys column
+    $treeview->insert_column_with_data_func (
+        1, _('Hotkey'), new_hotkeys_list_hotkey (),
+        sub {
+            my ($col, $renderer, $model, $iter, $data) = @_;
+            my $hkey = $model->get_value ($iter, C_HOTKEY);
+            $hkey =~ s/\"//g;
+            my ($acckey, $accmod) = Gtk2::Accelerator->parse ($hkey);
+            $renderer->set_property ('accel-key' => $acckey);
+            $renderer->set_property ('accel-mods' => $accmod);
+        }
+    );
+    # callback for saving current selection
+    my $selection = $treeview->get_selection ();
+    $selection->signal_connect ('changed' => sub { $SELHOTKEY = shift });
+    return $treeview;
+}
+
 sub new_hotkeys_page() {
     my $swin = Gtk2::ScrolledWindow->new ();
     my $vbox = Gtk2::VBox->new (FALSE, 5);
     foreach my $gkey (sort keys %$HOTKEYS) {
         my $group = $HOTKEYS->{$gkey};
+        # group title
         my $glabel = Gtk2::Label->new ('<b>' . $gkey . '</b>');
         $glabel->set_use_markup (TRUE);
         $glabel->set_alignment (0, 0.5);
         $vbox->pack_start ($glabel, FALSE, FALSE, 1);
         $vbox->pack_start (Gtk2::HSeparator->new (), FALSE, FALSE, 1);
-        my $trows = keys %$group;
-        my $t0 = Gtk2::Table->new ($trows, 2, FALSE);
-        my $row = 0;
-        foreach my $akey (sort keys %$group) {
-            my $hkey = $group->{$akey}->{'key'};
-            $hkey =~ s/\"//g;
-            $hkey = '…' if ($hkey eq '');
-            my $sakey = $akey;
-            $sakey =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
-            my $label = Gtk2::Label->new ('<small>' . $sakey . '</small>');
-            $label->set_use_markup (TRUE);
-            my $value = Gtk2::Button->new_with_label ($hkey);
-            $label->set_alignment (0, 0.5);
-            $t0->attach ($label, 0, 1, $row, $row + 1, 'fill', 'expand', 3, 1);
-            $t0->attach ($value, 1, 2, $row, $row + 1, 'fill', 'shrink', 3, 1);
-            ++$row;
-        }
-        $vbox->pack_start ($t0, FALSE, FALSE, 1);
-        $vbox->pack_start (Gtk2::HSeparator->new (), FALSE, FALSE, 1);
+        # group key list
+        my $keylist = new_hotkeys_list ($gkey, $group);
+        $vbox->pack_start ($keylist, FALSE, FALSE, 1);
     }
     $swin->set_border_width (5);
     $swin->set_shadow_type ('none');
