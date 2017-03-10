@@ -72,6 +72,7 @@ sub _ {
     tab_winpos => _('Windows'),
     tab_accounts => _('Accounts'),
     tab_plugins => _('Plugins'),
+    tab_hotkeys => _('Hotkeys'),
     tab_info => _('Info'),
 
     ab_frame => _('Addressbook'),
@@ -279,6 +280,8 @@ my $ACCOUNTRC = 'accountrc';
 # supported and available plugins lists
 my @PLUGINS = qw(AttRemover GPG ManageSieve Libravatar PerlPlugin);
 my @AVPLUGINS = ();
+# loaded hotkeys from load_menurc
+my $HOTKEYS;
 # loaded icons
 my @APPICONS = ();
 
@@ -2120,6 +2123,43 @@ sub new_plugins_page() {
                 $frame{'PerlPlugin'});
 }
 
+sub new_hotkeys_page() {
+    my $swin = Gtk2::ScrolledWindow->new ();
+    my $vbox = Gtk2::VBox->new (FALSE, 5);
+    foreach my $gkey (sort keys %$HOTKEYS) {
+        my $group = $HOTKEYS->{$gkey};
+        my $glabel = Gtk2::Label->new ('<b>' . $gkey . '</b>');
+        $glabel->set_use_markup (TRUE);
+        $glabel->set_alignment (0, 0.5);
+        $vbox->pack_start ($glabel, FALSE, FALSE, 1);
+        $vbox->pack_start (Gtk2::HSeparator->new (), FALSE, FALSE, 1);
+        my $trows = keys %$group;
+        my $t0 = Gtk2::Table->new ($trows, 2, FALSE);
+        my $row = 0;
+        foreach my $akey (sort keys %$group) {
+            my $hkey = $group->{$akey}->{'key'};
+            $hkey =~ s/\"//g;
+            $hkey = '…' if ($hkey eq '');
+            my $sakey = $akey;
+            $sakey =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
+            my $label = Gtk2::Label->new ('<small>' . $sakey . '</small>');
+            $label->set_use_markup (TRUE);
+            my $value = Gtk2::Button->new_with_label ($hkey);
+            $label->set_alignment (0, 0.5);
+            $t0->attach ($label, 0, 1, $row, $row + 1, 'fill', 'expand', 3, 1);
+            $t0->attach ($value, 1, 2, $row, $row + 1, 'fill', 'shrink', 3, 1);
+            ++$row;
+        }
+        $vbox->pack_start ($t0, FALSE, FALSE, 1);
+        $vbox->pack_start (Gtk2::HSeparator->new (), FALSE, FALSE, 1);
+    }
+    $swin->set_border_width (5);
+    $swin->set_shadow_type ('none');
+    $swin->set_policy ('automatic', 'always');
+    $swin->add_with_viewport ($vbox);
+    return $swin;
+}
+
 sub new_info_page() {
     my $t0 = Gtk2::Table->new (7, 2, FALSE);
     my $v = get_toolkit_versions ();
@@ -2448,9 +2488,19 @@ sub load_ac_preferences {
     return TRUE;
 }
 
+sub load_hk_preferences {
+    my $rc = get_menurc_filename ();
+    return FALSE unless check_rc_file ($rc);
+    $HOTKEYS = load_menurc ($rc);
+    return TRUE;
+}
+
 sub load_preferences {
     return FALSE unless check_claws_not_running ();
-    return (load_rc_preferences () and load_ac_preferences ());
+    return (load_rc_preferences ()
+        and load_ac_preferences ()
+        and load_hk_preferences ()
+    );
 }
 
 # save current preferences to disc
@@ -2508,6 +2558,7 @@ sub new_notebook {
     $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
     $nb->append_page (new_accounts_page (), $xl::s{tab_accounts});
     $nb->append_page (new_plugins_page (), $xl::s{tab_plugins});
+    $nb->append_page (new_hotkeys_page (), $xl::s{tab_hotkeys});
     $nb->append_page (new_info_page (), $xl::s{tab_info});
 
     return $nb;
