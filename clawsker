@@ -2375,17 +2375,16 @@ sub load_menurc {
     my $line = 0;
     while (<RCF>) {
         chomp;
-        ++$line;
         if (/^; \(gtk_accel_path "<([A-Za-z]+)>([^"]+)" ([^\)]+)\)$/) {
-            my %data = ('key' => $3, 'enabled' => FALSE);
+            my %data = ('key' => $3, 'enabled' => FALSE, 'line' => $line);
+            $groups{$1}{$2} = \%data;
+            # say "group -> $1 | path -> $2 | key -> $3";
+        } elsif (/^\(gtk_accel_path "<([A-Za-z]+)>([^"]+)" ([^\)]+)\)$/) {
+            my %data = ('key' => $3, 'enabled' => TRUE, 'line' => $line);
             $groups{$1}{$2} = \%data;
             # say "group -> $1 | path -> $2 | key -> $3";
         }
-        if (/^\(gtk_accel_path "<([A-Za-z]+)>([^"]+)" ([^\)]+)\)$/) {
-            my %data = ('key' => $3, 'enabled' => TRUE);
-            $groups{$1}{$2} = \%data;
-            # say "group -> $1 | path -> $2 | key -> $3";
-        }
+        ++$line;
     }
     close (RCF);
     return \%groups;
@@ -2393,21 +2392,24 @@ sub load_menurc {
 
 sub save_menurc {
     my ($rc, $groups) = @_;
+    my @lines = ();
+    foreach my $gkey (keys %$groups) {
+        my $group = $groups->{$gkey};
+        foreach my $akey (keys %$group) {
+            my $data = $group->{$akey};
+            my $key = $data->{'key'};
+            my $line = $data->{'line'};
+            $lines[$line] = ($data->{'enabled'})? '': '; ';
+            $lines[$line] .= '(gtk_accel_path "<'
+                    . $gkey . '>' . $akey . '" ' . $key . ')';
+        }
+    }
     open (RCF, '>:utf8', $rc)
         or die _("Error: opening '{file}' for writing", file => $rc) . ": $!\n";
     say RCF '; claws-mail GtkAccelMap rc-file         -*- scheme -*-';
     say RCF '; this file is an automated accelerator map dump';
     say RCF ';';
-    foreach my $gkey (sort keys %$groups) {
-        my $group = $groups->{$gkey};
-        foreach my $akey (sort keys %$group) {
-            my $data = $group->{$akey};
-            my $key = $data->{'key'};
-            print RCF '; ' unless ($data->{'enabled'});
-            say RCF '(gtk_accel_path "<'
-                    . $gkey . '>' . $akey . '" ' . $key . ')';
-        }
-    }
+    foreach (@lines) { say RCF $_ if $_ }
     close (RCF);
 }
 
