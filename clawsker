@@ -2625,6 +2625,15 @@ sub save_ac_preferences {
     return TRUE;
 }
 
+sub save_hk_preferences {
+    my $rc = get_menurc_filename ();
+    log_message ("Saving hotkey preferences to $rc\n");
+    return FALSE unless check_rc_file ($rc);
+    return FALSE unless check_claws_not_running ();
+    save_menurc ($rc, $HOTKEYS);
+    return TRUE;
+}
+
 # create notebook
 sub new_notebook {
     my $nb = Gtk2::Notebook->new;
@@ -2701,6 +2710,7 @@ sub new_button_box {
     $b_apply->signal_connect (clicked => sub {
         save_preferences ($parent);
         save_ac_preferences ($parent);
+        save_hk_preferences ($parent);
     });
     # $b_undo->signal_connect (clicked => sub { undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
