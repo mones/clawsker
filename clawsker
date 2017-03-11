@@ -2129,7 +2129,11 @@ use constant {
     C_LABEL => 0,
     C_HOTKEY => 1,
     C_GROUP => 2,
-    C_ACCEL => 3
+    C_ACCEL => 3,
+    C_BCOLOR => 4,
+    # cell backgrounds
+    BG_LIGHTER => '#ffffff',
+    BG_DARKER => '#eeeeee'
 };
 
 sub new_hotkeys_list_label {
@@ -2168,14 +2172,17 @@ sub new_hotkeys_list_hotkey {
 sub new_hotkeys_list {
     my ($gkey, $group) = @_;
     my $store = Gtk2::ListStore->new(
-        qw/Glib::String Glib::String Glib::String Glib::String/);
+        qw/Glib::String Glib::String Glib::String Glib::String Glib::String/);
+    my $even = FALSE;
     foreach my $akey (sort keys %$group) {
         my $iter = $store->append ();
         my $hotkey = $group->{$akey}->{'key'};
         my $label = $akey;
         $label =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
+        my $bgcol = $even ? BG_DARKER: BG_LIGHTER;
         $store->set ($iter, C_LABEL, $label, C_HOTKEY, $hotkey,
-            C_GROUP, $gkey, C_ACCEL, $akey);
+            C_GROUP, $gkey, C_ACCEL, $akey, C_BCOLOR, $bgcol);
+        $even = not $even;
     }
     my $treeview = Gtk2::TreeView->new_with_model ($store);
     # labels column
@@ -2183,8 +2190,10 @@ sub new_hotkeys_list {
         0, _("Menu path"), new_hotkeys_list_label (),
         sub {
             my ($col, $renderer, $model, $iter, $data) = @_;
-            my $label = $model->get_value ($iter, C_LABEL);
-            $renderer->set_property ('text' => $label);
+            $renderer->set_property (
+                'text' => $model->get_value ($iter, C_LABEL));
+            $renderer->set_property (
+                'background' => $model->get_value ($iter, C_BCOLOR));
         }
     );
     # hotkeys column
@@ -2197,6 +2206,8 @@ sub new_hotkeys_list {
             my ($acckey, $accmod) = Gtk2::Accelerator->parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
+            $renderer->set_property (
+                'background' => $model->get_value ($iter, C_BCOLOR));
         }
     );
     # callback for saving current selection
@@ -2214,11 +2225,11 @@ sub new_hotkeys_page() {
         my $glabel = Gtk2::Label->new ('<b>' . $gkey . '</b>');
         $glabel->set_use_markup (TRUE);
         $glabel->set_alignment (0, 0.5);
-        $vbox->pack_start ($glabel, FALSE, FALSE, 1);
-        $vbox->pack_start (Gtk2::HSeparator->new (), FALSE, FALSE, 1);
+        $glabel->set_padding (5, 1);
+        $vbox->pack_start ($glabel, FALSE, FALSE, 0);
         # group key list
         my $keylist = new_hotkeys_list ($gkey, $group);
-        $vbox->pack_start ($keylist, FALSE, FALSE, 1);
+        $vbox->pack_start ($keylist, FALSE, FALSE, 0);
     }
     $swin->set_border_width (5);
     $swin->set_shadow_type ('none');
