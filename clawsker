@@ -2156,7 +2156,9 @@ sub new_hotkeys_list_hotkey {
         $model->set($iter, C_HOTKEY, "\"$accel\"");
         my $gkey = $model->get_value ($iter, C_GROUP);
         my $akey = $model->get_value ($iter, C_ACCEL);
-        $HOTKEYS->{$gkey}->{$akey}->{'key'} = "\"$accel\"";
+        my $data = $HOTKEYS->{$gkey}->{$akey};
+        $data->{'key'} = "\"$accel\"";
+        $data->{'enabled'} = TRUE;
     });
     $renderer->signal_connect ('accel-cleared' => sub {
         my ($w, $path) = @_;
@@ -2164,7 +2166,9 @@ sub new_hotkeys_list_hotkey {
         $model->set($iter, C_HOTKEY, "\"\"");
         my $gkey = $model->get_value ($iter, C_GROUP);
         my $akey = $model->get_value ($iter, C_ACCEL);
-        $HOTKEYS->{$gkey}->{$akey}->{'key'} = "\"\"";
+        my $data = $HOTKEYS->{$gkey}->{$akey};
+        $data->{'key'} = "\"\"";
+        $data->{'enabled'} = FALSE;
     });
     return $renderer;
 }
