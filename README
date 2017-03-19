@@ -70,7 +70,7 @@ Bugs
 ----
 
 You can send bug reports to http://www.thewildbeast.co.uk/claws-mail/bugzilla/
-by selecting 'clawsker' product.
+by selecting the 'clawsker' product.
 
 Also directly by mail to me or in the Claws Mail mailing list, but bugzilla
 is the preferred way.
@@ -83,7 +83,7 @@ Thanks
 * The Perl-GTK2 folks and Phillip Vandry
 * Dirk van der Walt, for his Gtk2-Perl Study Guide [0]
 * Debian, for the Operating System
-* GitHub Inc., for providing the git hosting and more
+* GitHub Inc., for providing the initial git hosting and more
 
 [0] http://gtk2-perl.sourceforge.net/doc/gtk2-perl-study-guide/
 
