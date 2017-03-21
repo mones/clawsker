@@ -1196,34 +1196,3 @@ msgstr ""
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Erreur: ouverture en écriture de '{file}'"
-
-#~ msgid "Warn when sending to multiple recipients."
-#~ msgstr ""
-#~ "Avertir quand l'envoi d'un message se fait à plusieurs destinataires."
-
-#~ msgid "Warnings"
-#~ msgstr "Avertissements"
-
-#~ msgid "Error: "
-#~ msgstr "Erreur : "
-
-#~ msgid ", built for "
-#~ msgstr ", compilé pour "
-
-#~ msgid ", running with "
-#~ msgstr ", executé avec "
-
-#~ msgid "option requires a directory name."
-#~ msgstr "cette option requiert un nom de répertoire."
-
-#~ msgid "option requires a file name."
-#~ msgstr "cette option requiert un nom de fichier."
-
-#~ msgid "Error message"
-#~ msgstr "Message d'erreur"
-
-#~ msgid "unknown option '{opt}'.\n"
-#~ msgstr "option inconnue : '{opt}'.\n"
-
-#~ msgid "Colour for output messages in log window."
-#~ msgstr "Couleur des messages émis dans la fenêtre de traces."
