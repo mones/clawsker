@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 1.0.1\n"
+"Project-Id-Version: clawsker 1.1.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2017-03-19 11:33+0100\n"
 "PO-Revision-Date: 2017-03-21 10:56+0100\n"
