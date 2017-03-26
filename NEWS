@@ -1,3 +1,18 @@
+1.1.0:
+  - Added support for new hidden preferences in Claws Mail 3.15.0
+    'tags_color', 'tags_bgcolor', 'qs_active_color', 'qs_active_bgcolor',
+    'qs_error_color', 'qs_error_bgcolor', 'default_header_color',
+    'default_header_bgcolor', and 'warn_sending_many_recipients_num'.
+  - Added new hotkeys tab for editing keyboard accelerators available in
+    the 'menurc' file of Claws Mail
+  - Fixed bug 3735 'the number of accounts may make main window very tall'
+  - Improved internal versions handling and other minor refactorings
+  - Updated manual page
+  - Translations:
+    • Updated: French, Dutch, Swedish, Turkish, Danish, Brazilian
+      Portuguese, Catalan, Norwegian Bokmål and Spanish
+  - See git log for further details
+
 1.0.1:
   - Small code refactoring and some fixes
   - String management improvements

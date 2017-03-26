@@ -1,6 +1,6 @@
 #
 # Clawsker Makefile
-# Copyright 2007-2016 Ricardo Mones <ricardo@mones.org>
+# Copyright 2007-2017 Ricardo Mones <ricardo@mones.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -11,7 +11,7 @@
 #
 
 NAME = clawsker
-VERSION ?= 1.0.1
+VERSION ?= 1.1.0
 PREFIX ?= /usr/local
 BINDIR = ${PREFIX}/bin
 DATADIR = ${PREFIX}/share
