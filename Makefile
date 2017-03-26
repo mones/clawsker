@@ -72,8 +72,13 @@ dist:
 	mkdir ${NAME}-${VERSION}
 	cp -p AUTHORS ChangeLog.old ${NAME} ${NAME}.pod ${NAME}.desktop \
 		COPYING Makefile NEWS README ${NAME}-${VERSION}
-	cp -rp po ${NAME}-${VERSION}
-	cp -rp icons ${NAME}-${VERSION}
+	mkdir ${NAME}-${VERSION}/po
+	cp -p po/*.po po/*.pot po/Makefile po/POTFILES po/README po/STATUS \
+		${NAME}-${VERSION}/po
+	mkdir ${NAME}-${VERSION}/po/unmaint
+	cp -p po/unmaint/*.po ${NAME}-${VERSION}/po/unmaint
+	mkdir ${NAME}-${VERSION}/icons
+	cp -p icons/*.xcf icons/*.png ${NAME}-${VERSION}/icons
 	tar cJf ${NAME}-${VERSION}.tar.xz ${NAME}-${VERSION} \
 		&& rm -rf ${NAME}-${VERSION}
 
