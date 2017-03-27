@@ -5,7 +5,9 @@
     'default_header_bgcolor', and 'warn_sending_many_recipients_num'.
   - Added new hotkeys tab for editing keyboard accelerators available in
     the 'menurc' file of Claws Mail
-  - Fixed bug 3735 'the number of accounts may make main window very tall'
+  - Fixed bugs:
+    • 3727 'race condition on install'
+    • 3735 'the number of accounts may make main window very tall'
   - Improved internal versions handling and other minor refactorings
   - Updated manual page
   - Translations:
