@@ -101,7 +101,7 @@ msgstr "Transportverschlüsselung (TLS/SSL)"
 msgid "Messages"
 msgstr "Nachrichten"
 
-#: ../clawsker:83
+#: ../clawsker:85
 msgid "Completion"
 msgstr "Autovervollständigung"
 
@@ -154,10 +154,14 @@ msgid "Maximum memory for message cache (kB)"
 msgstr "Maximale Größe des Zwischenspeichers für Nachrichten (kB)"
 
 #: ../clawsker:100
+msgid "kilobytes"
+msgstr "Kilobyte"
+
+#: ../clawsker:101
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
 msgstr "Maximale Menge an Arbeitsspeicher für das Zwischenspeichern von Nachrichten in Kilobyte."
 
-#: ../clawsker:101
+#: ../clawsker:102
 msgid "Minimun time for cache elements (minutes)"
 msgstr "Mindestlebensdauer zwischengespeicherter Elemente (Minuten)"
 
@@ -416,8 +420,8 @@ msgstr ""
 "nächste (neuere) Nachricht oder die vorige (ältere) Nachricht markiert wird."
 
 #: ../clawsker:156
-msgid "Drag 'n' drop hover timeout (ms)"
-msgstr "Wartezeit bei Ziehen und Ablegen (ms)"
+msgid "Drag 'n' drop hover timeout"
+msgstr "Wartezeit bei Ziehen und Ablegen"
 
 #: ../clawsker:157
 msgid "milliseconds"
