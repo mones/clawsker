@@ -881,7 +881,7 @@ sub new_other_page() {
         $xl::s{h_gui_warn_send_multi},
         'int,0,1000',
         '3.14.1.125',
-        '0',
+        '3.15.0.28',
     ],
     next_del => [
         'next_on_delete',
