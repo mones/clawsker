@@ -1700,6 +1700,22 @@ sub new_colours_page() {
         '0.0.0',
         '-1',
     ],
+    acio_w => [
+        'actionsiodialog_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '582',
+    ],
+    acio_h => [
+        'actionsiodialog_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '0.0.0',
+        '310',
+    ],
     tags_w => [
         'tagswin_width',
         $xl::s{l_win_w},
@@ -1899,6 +1915,21 @@ sub new_winpos_subpage_filtering() {
            );
 }
 
+sub new_winpos_subpage_useractions() {
+    return new_vbox_pack (
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'acti_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'acti_h', \%HPVALUE)),
+                     _('User Actions prefs window'), 'not-packed'),
+                new_subpage_frame (
+                     new_hbox_pack (
+                          new_text_box_for_int (\%pr::win, 'acio_w', \%HPVALUE),
+                          new_text_box_for_int (\%pr::win, 'acio_h', \%HPVALUE)),
+                     _('User Actions I/O window'), 'not-packed')
+           );
+}
+
 sub new_winpos_subpage_prefs() {
     return new_vbox_pack (
                 new_subpage_frame (
@@ -1911,11 +1942,6 @@ sub new_winpos_subpage_prefs() {
                           new_text_box_for_int (\%pr::win, 'temp_w', \%HPVALUE),
                           new_text_box_for_int (\%pr::win, 'temp_h', \%HPVALUE)),
                      _('Templates window'), 'not-packed'),
-                new_subpage_frame (
-                     new_hbox_pack (
-                          new_text_box_for_int (\%pr::win, 'acti_w', \%HPVALUE),
-                          new_text_box_for_int (\%pr::win, 'acti_h', \%HPVALUE)),
-                     _('Actions window'), 'not-packed'),
                 new_subpage_frame (
                      new_hbox_pack (
                           new_text_box_for_int (\%pr::win, 'tags_w', \%HPVALUE),
@@ -1959,6 +1985,7 @@ sub new_winpos_page() {
     $winbook->append_page (new_winpos_subpage_addrbook, _('Addressbook'));
     $winbook->append_page (new_winpos_subpage_accounts, _('Accounts'));
     $winbook->append_page (new_winpos_subpage_filtering, _('Filtering'));
+    $winbook->append_page (new_winpos_subpage_useractions, _('User Actions'));
     $winbook->append_page (new_winpos_subpage_prefs, _('Preferences'));
     $winbook->append_page (new_winpos_subpage_misc, _('Other'));
     return $winbook;
