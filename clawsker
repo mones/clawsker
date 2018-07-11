@@ -65,6 +65,10 @@ sub _ {
     about_license => _('License:'),
     about_version => _('Version:'),
 
+    exit_title => _('Clawsker warning'),
+    exit_fact => _('There are unapplied modifications.'),
+    exit_question => _('Do you really want to quit?'),
+
     tab_colours => _('Colours'),
     tab_behaviour => _('Behaviour'),
     tab_gui => _('GUI'),
@@ -286,6 +290,8 @@ my $HOTKEYS;
 my $SELHOTKEY;
 # loaded icons
 my @APPICONS = ();
+# modification flag
+my $MODIFIED = 0;
 
 # index constants for preference arrays
 use constant NAME  => 0; # the name on the rc file
@@ -300,6 +306,10 @@ use constant PLUGIN => 6; # plugin section (only in plugin preferences)
 use constant HBOX_PAD => 5;
 use constant FRAME_SPC => 2;
 use constant PAGE_SPC => 5;
+
+# for data references indexing
+use constant VALUE => 0;
+use constant IVALUE => 1;
 
 # version functions
 
@@ -336,7 +346,8 @@ sub get_claws_version {
 
 sub handle_bool_value {
     my ($widget, $event, $dataref) = @_;
-    $$dataref = ($widget->get_active ())? '1': '0';
+    $$dataref->[VALUE] = ($widget->get_active ())? '1': '0';
+    $MODIFIED += $$dataref->[VALUE] != $$dataref->[IVALUE]? 1: -1;
 }
 
 sub handle_int_value {
@@ -345,24 +356,27 @@ sub handle_int_value {
     s/^\s+//;
     s/\s+$//;
     if (/^[0-9]+$/) {
-        $$dataref = $_;
+        $$dataref->[VALUE] = $_;
         $widget->set_text ($_);
     }
     else {
-        $widget->set_text ($$dataref);
+        $widget->set_text ($$dataref->[VALUE]);
     }
+    $MODIFIED += $$dataref->[VALUE] != $$dataref->[IVALUE]? 1: -1;
 }
 
 sub handle_string_value {
     my ($widget, $event, $dataref) = @_;
-    $$dataref = $widget->get_text ();
+    $$dataref->[VALUE] = $widget->get_text ();
+    $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1;
 }
 
 sub handle_nchar_value {
     my ($widget, $event, $dataref, $minlen, $maxlen) = @_;
     $_ = substr ($widget->get_text (), 0, $maxlen);
     $widget->set_text ($_);
-    $$dataref = $_;
+    $$dataref->[VALUE] = $_;
+    $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1;
 }
 
 sub gdk_color_from_str {
@@ -390,12 +404,14 @@ sub str_from_gdk_color {
 sub handle_color_value {
     my ($widget, $event, $dataref) = @_;
     my $newcol = $widget->get_color;
-    $$dataref = str_from_gdk_color ($newcol);
+    $$dataref->[VALUE] = str_from_gdk_color ($newcol);
+    $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1;
 }
 
 sub handle_selection_value {
     my ($widget, $event, $dataref) = @_;
-    $$dataref = $widget->get_active;
+    $$dataref->[VALUE] = $widget->get_active;
+    $MODIFIED += $$dataref->[VALUE] != $$dataref->[IVALUE]? 1: -1;
 }
 
 sub get_rc_filename {
@@ -506,7 +522,7 @@ sub new_check_button_for($$$) {
     my $label = $$hash{$key}[LABEL];
     #
     my $cb = Gtk2::CheckButton->new ($label);
-    my $value = $$vhash{$name};
+    my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $cb->set_active ($value eq '1');
     $cb->signal_connect (clicked => sub {
@@ -534,7 +550,7 @@ sub new_text_box_for_int($$$) {
     my $glabel = Gtk2::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
     my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
-    my $value = $$vhash{$name};
+    my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_numeric (TRUE);
     $gentry->set_value ($value);
@@ -562,7 +578,7 @@ sub new_text_box_for_nchar($$$) {
     my $width = $type[3];
     $width //= $type[2];
     $gentry->set_width_chars(int ($width) + 2) if defined ($width);
-    my $value = $$vhash{$name};
+    my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_text ($value);
     $gentry->signal_connect('key-release-event' => sub {
@@ -581,7 +597,7 @@ sub new_color_button_for($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $value = $$vhash{$name};
+    my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     my $col = gdk_color_from_str ($value);
     my $glabel = Gtk2::Label->new ($label);
@@ -615,7 +631,7 @@ sub new_selection_box_for($$$) {
             my ($w, $e) = @_;
             handle_selection_value ($w, $e, \$$vhash{$name});
         });
-    my $value = $$vhash{$name};
+    my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $combo->set_active ($value);
     set_widget_hint ($combo, $$hash{$key}[DESC]);
@@ -2431,20 +2447,23 @@ sub opt_clawsrc {
 sub init_hidden_preferences {
     foreach my $hash (\%pr::beh, \%pr::col, \%pr::gui, \%pr::oth, \%pr::win) {
         foreach my $key (keys %$hash) {
-            $HPVALUE{${$hash}{$key}[NAME]} = $PREFS{${$hash}{$key}[NAME]};
+            $HPVALUE{${$hash}{$key}[NAME]}[VALUE] = $PREFS{${$hash}{$key}[NAME]};
+            $HPVALUE{${$hash}{$key}[NAME]}[IVALUE] = $PREFS{${$hash}{$key}[NAME]};
         }
     }
     foreach my $akey (keys %ACPREFS) {
         foreach my $key (keys %pr::acc) {
             my $pname = $pr::acc{$key}[NAME];
-            $ACHPVALUE{$akey}{$pname} = $ACPREFS{$akey}{$pname};
+            $ACHPVALUE{$akey}{$pname}[VALUE] = $ACPREFS{$akey}{$pname};
+            $ACHPVALUE{$akey}{$pname}[IVALUE] = $ACPREFS{$akey}{$pname};
         }
     }
     foreach my $key (keys %pr::plu) {
         my $plugin = $pr::plu{$key}[PLUGIN];
         my $pname = $pr::plu{$key}[NAME];
         if (defined $PLPREFS{$plugin}) {
-            $PLHPVALUE{$plugin}{$pname} = $PLPREFS{$plugin}{$pname};
+            $PLHPVALUE{$plugin}{$pname}[VALUE] = $PLPREFS{$plugin}{$pname};
+            $PLHPVALUE{$plugin}{$pname}[IVALUE] = $PLPREFS{$plugin}{$pname};
         }
     }
     return TRUE;
@@ -2622,13 +2641,13 @@ sub save_preferences {
     rename ($rc, $rcbak);
     foreach (keys %PREFS) {
         if (defined $HPVALUE{$_}) {
-            $CONFIGDATA->{'Common'}{$_} = $HPVALUE{$_};
+            $CONFIGDATA->{'Common'}{$_} = $HPVALUE{$_}[VALUE];
         }
     }
     foreach my $plugin (@AVPLUGINS) {
         foreach (keys %{$CONFIGDATA->{$plugin}}) {
             if (defined $PLHPVALUE{$plugin}{$_}) {
-                $CONFIGDATA->{$plugin}{$_} = $PLHPVALUE{$plugin}{$_};
+                $CONFIGDATA->{$plugin}{$_} = $PLHPVALUE{$plugin}{$_}[VALUE];
             }
         }
     }
@@ -2647,7 +2666,7 @@ sub save_ac_preferences {
         if ($asect =~ /^Account: (\d+)$/) {
             foreach (keys %{$ACCOUNTDATA->{$asect}}) {
                 if (defined $ACHPVALUE{$1}{$_}) {
-                    $ACCOUNTDATA->{$asect}{$_} = $ACHPVALUE{$1}{$_};
+                    $ACCOUNTDATA->{$asect}{$_} = $ACHPVALUE{$1}{$_}[VALUE];
                 }
             }
         }
@@ -2726,6 +2745,24 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     return $dialog;
 }
 
+sub exit_handler {
+  my ($parent) = @_;
+  if ($MODIFIED != 0 and not $READONLY) {
+    my $fact = $xl::s{exit_fact};
+    my $question = $xl::s{exit_question};
+    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent,
+                    [qw/modal destroy-with-parent/],
+                    'warning', 'yes-no',
+                    "<span>$fact</span>\n\n"
+                    . "<span weight=\"bold\">$question</span>");
+    $dialog->set_title ($xl::s{exit_title});
+    my $resp = $dialog->run;
+    $dialog->hide;
+    return TRUE if ($resp eq 'no');
+  }
+  Gtk2->main_quit;
+}
+
 # create buttons box
 sub new_button_box {
     my ($parent, $adlg) = @_;
@@ -2736,12 +2773,14 @@ sub new_button_box {
     # my $b_undo = Gtk2::Button->new_from_stock ('gtk-undo');
     my $hbox = Gtk2::HBox->new (FALSE, 5);
     # signal handlers
-    $b_exit->signal_connect (clicked => sub { Gtk2->main_quit });
+    $b_exit->signal_connect (clicked => sub { exit_handler($parent) });
     $b_apply->set_sensitive (not $READONLY);
     $b_apply->signal_connect (clicked => sub {
         save_preferences ($parent);
         save_ac_preferences ($parent);
         save_hk_preferences ($parent);
+        $MODIFIED = 0;
+        return TRUE;
     });
     # $b_undo->signal_connect (clicked => sub { undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
@@ -2787,7 +2826,7 @@ $box->set_border_width(3);
 my $about = new_about_dialog ();
 $box->pack_start (new_notebook (), TRUE, TRUE, 0);
 $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
-$main_window->signal_connect (delete_event => sub { Gtk2->main_quit });
+$main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
 $main_window->set_title ($xl::s{win_title});
 $main_window->set_icon_list (get_app_icons ());
 $main_window->add ($box);
