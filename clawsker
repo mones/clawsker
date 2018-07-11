@@ -2632,7 +2632,7 @@ sub load_preferences {
 }
 
 # save current preferences to disc
-sub save_preferences {
+sub save_rc_preferences {
     my $rc = get_rc_filename ();
     log_message ("Saving preferences to $rc\n");
     return FALSE unless check_rc_file ($rc);
@@ -2682,6 +2682,14 @@ sub save_hk_preferences {
     return FALSE unless check_claws_not_running ();
     save_menurc ($rc, $HOTKEYS);
     return TRUE;
+}
+
+sub save_preferences {
+    my $result = save_rc_preferences ()
+        and save_ac_preferences ()
+        and save_hk_preferences ();
+    $MODIFIED = 0 if $result;
+    return $result;
 }
 
 # create notebook
@@ -2775,13 +2783,7 @@ sub new_button_box {
     # signal handlers
     $b_exit->signal_connect (clicked => sub { exit_handler($parent) });
     $b_apply->set_sensitive (not $READONLY);
-    $b_apply->signal_connect (clicked => sub {
-        save_preferences ($parent);
-        save_ac_preferences ($parent);
-        save_hk_preferences ($parent);
-        $MODIFIED = 0;
-        return TRUE;
-    });
+    $b_apply->signal_connect (clicked => sub { save_preferences($parent) });
     # $b_undo->signal_connect (clicked => sub { undo_current_changes });
     $b_about->signal_connect (clicked => sub { $adlg->run; $adlg->hide });
     # package them
