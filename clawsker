@@ -2822,6 +2822,13 @@ sub get_app_icons {
     return @APPICONS;
 }
 
+sub escape_key_handler {
+    my ($widget, $event) = @_;
+    if ($event->keyval == Gtk2::Gdk->keyval_from_name('Escape')) {
+        exit_handler($widget);
+    }
+}
+
 # initialise
 exit unless parse_command_line ();
 Gtk2->init;
@@ -2835,6 +2842,7 @@ my $about = new_about_dialog ();
 $box->pack_start (new_notebook (), TRUE, TRUE, 0);
 $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
 $main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
+$main_window->signal_connect (key_press_event => \&escape_key_handler);
 $main_window->set_title ($xl::s{win_title});
 $main_window->set_icon_list (get_app_icons ());
 $main_window->add ($box);
