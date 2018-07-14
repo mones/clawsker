@@ -2189,8 +2189,6 @@ sub new_hotkeys_list_label {
     my $renderer = Gtk2::CellRendererText->new ();
     $renderer->set_property('alignment' => 'left');
     $renderer->set_property('editable' => FALSE);
-    $renderer->set_property('size-points' => 8);
-    $renderer->set_property('size-set' => TRUE);
     return $renderer;
 }
 
@@ -2244,7 +2242,9 @@ sub new_hotkeys_list {
         sub {
             my ($col, $renderer, $model, $iter, $data) = @_;
             $renderer->set_property (
-                'text' => $model->get_value ($iter, C_LABEL));
+                'markup' => '<span size="smaller">'
+                            . $model->get_value ($iter, C_LABEL)
+                            . '</span>');
             $renderer->set_property (
                 'background' => $model->get_value ($iter, C_BCOLOR));
         }
