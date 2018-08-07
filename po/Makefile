@@ -11,6 +11,8 @@
 #
 
 NAME = clawsker
+TITLE = \# Translatable strings for Clawsker
+COPYR = \# Copyright (C) 2007 Ricardo Mones <ricardo@mones.org>
 VERSION ?= $(shell git describe)
 PREFIX ?= /usr/local
 DATADIR = ${PREFIX}/share
@@ -22,13 +24,17 @@ LINGUAS = es fr nl pt_BR sv nb de ca tr da id
 all: build
 
 ${NAME}.pot.0:
-	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o ./${NAME}.pot.0
+	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o $@
 
 # remove bogus entry win_title
-update-pot: ${NAME}.pot.0
-	head -17 ./${NAME}.pot.0 > ./${NAME}.pot
-	tail -$(shell expr $(shell wc -l < ./${NAME}.pot.0) - 22 ) ./${NAME}.pot.0 >> ./${NAME}.pot
-	rm -f ./${NAME}.pot.0
+${NAME}.pot.1: ${NAME}.pot.0
+	head -17 $< > $@
+	tail -$(shell expr $(shell wc -l < $<) - 22 ) $< >> $@
+	rm -f $<
+
+update-pot: ${NAME}.pot.1
+	sed 's,^# SOME DESC.*,${TITLE},;s,^# Copyright.*,${COPYR},' < $< > ${NAME}.pot
+	rm -f $<
 
 %.pox: %.po
 	msgmerge -o $@ --previous $< ${NAME}.pot 
