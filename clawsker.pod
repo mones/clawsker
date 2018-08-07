@@ -88,7 +88,7 @@ of contributors.
 
 =head1 COPYRIGHT
 
-Clawsker is Copyright 2007-2017 by Ricardo Mones Lastra.
+Clawsker is Copyright 2007-2018 by Ricardo Mones Lastra.
 
 =head1 LICENSE
 
