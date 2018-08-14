@@ -1205,7 +1205,4 @@ msgstr "Error: obrint {file} per a l'escriptura"
 #: ../clawsker:2547
 #, perl-brace-format
 msgid "Unable to create backup file '{name}'\n"
-msgstr "No es pot crear el fitxer de còpia de seguretat {name}\\\n"
-
-#~ msgid "Actions window"
-#~ msgstr "Finestra d'accions"
+msgstr "No es pot crear el fitxer de còpia de seguretat {name}\n"
