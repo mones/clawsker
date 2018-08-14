@@ -1172,4 +1172,4 @@ msgstr "Feil: ved åpning av '{file}' for skriving"
 #: ../clawsker:2547
 #, perl-brace-format
 msgid "Unable to create backup file '{name}'\n"
-msgstr "Kunne ikke opprette backup-fil '(navn)'\n"
+msgstr "Kunne ikke opprette backup-fil '{name}'\n"
