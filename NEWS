@@ -1,3 +1,12 @@
+1.2.0:
+  - Implemented warning when quitting with unapplied changes (3736)
+  - Program can now be exited with Escape key
+  - Fixed bug '"Menu path" font size in Hotkeys tab is too small' (4013)
+  - Translations:
+    • Updated: Dutch, Swedish, Turkish, Danish, Catalan, Norwegian
+      Bokmål, French and Spanish
+  - See git log for further details
+
 1.1.1:
   - Updated preferences data to cope with changes in Claws Mail 3.16.0
   - Fix bug in Quick Search colors data which rendered it unsettable
