@@ -11,7 +11,7 @@ Aleksandar Urosevic <urke@urosevic.net>
   - Serbian cyrillic and latin translation.
 
 Tristan Chabredier (wwp) <subscript@free.fr>
-  - French translation.
+  - French translation and bug fixes.
 
 Francesco Groccia <fgr@anche.no>
   - Italian translation.
@@ -48,3 +48,6 @@ Numan Demirdöğen <if.gnu.linux@gmail.com>
 
 Erik P. Olsen <erik@epo.dk>
   - Danish translation.
+
+Mark Chang <mark.cyj@gmail.com>
+  - Traditional Chinese translation.
