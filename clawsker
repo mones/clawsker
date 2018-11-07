@@ -348,7 +348,7 @@ sub handle_bool_value {
     my ($widget, $event, $dataref) = @_;
     $$dataref->[VALUE] = ($widget->get_active ())? '1': '0';
     $MODIFIED += $$dataref->[VALUE] != $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub handle_int_value {
@@ -364,14 +364,14 @@ sub handle_int_value {
         $widget->set_text ($$dataref->[VALUE]);
     }
     $MODIFIED += $$dataref->[VALUE] != $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub handle_string_value {
     my ($widget, $event, $dataref) = @_;
     $$dataref->[VALUE] = $widget->get_text ();
     $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub handle_nchar_value {
@@ -380,7 +380,7 @@ sub handle_nchar_value {
     $widget->set_text ($_);
     $$dataref->[VALUE] = $_;
     $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub gdk_color_from_str {
@@ -410,14 +410,14 @@ sub handle_color_value {
     my $newcol = $widget->get_color;
     $$dataref->[VALUE] = str_from_gdk_color ($newcol);
     $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub handle_selection_value {
     my ($widget, $event, $dataref) = @_;
     $$dataref->[VALUE] = $widget->get_active;
     $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
-        if $$dataref->[IVALUE];
+        if defined $$dataref->[IVALUE];
 }
 
 sub get_rc_filename {
