@@ -2869,7 +2869,7 @@ exit unless init_hidden_preferences ();
 # create main GUI
 my $box = Gtk3::VBox->new (FALSE, 5);
 $box->set_border_width(3);
-my $about = new_about_dialog ();
+my $about = new_about_dialog ($main_window);
 $box->pack_start (new_notebook (), TRUE, TRUE, 0);
 $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
 $main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
