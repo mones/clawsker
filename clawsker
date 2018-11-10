@@ -567,8 +567,8 @@ sub new_text_box_for_int($$$) {
         });
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
-    $glabel->set_sensitive ($gentry->sensitive);
-    $gunits->set_sensitive ($gentry->sensitive) if ($gunits);
+    $glabel->set_sensitive ($gentry->get_sensitive);
+    $gunits->set_sensitive ($gentry->get_sensitive) if ($gunits);
     #
     return new_hbox_spaced_pack ($glabel, $gentry, $gunits) if ($gunits);
     return new_hbox_spaced_pack ($glabel, $gentry);
@@ -594,7 +594,7 @@ sub new_text_box_for_nchar($$$) {
         });
     set_widget_hint ($gentry, $$hash{$key}[DESC]);
     set_widget_sens ($gentry, $$hash{$key}[CMVER]);
-    $glabel->set_sensitive ($gentry->sensitive);
+    $glabel->set_sensitive ($gentry->get_sensitive);
     #
     return new_hbox_spaced_pack ($glabel, $gentry);
 }
@@ -617,7 +617,7 @@ sub new_color_button_for($$$) {
         });
     set_widget_hint ($button, $$hash{$key}[DESC]);
     set_widget_sens ($button, $$hash{$key}[CMVER]);
-    $glabel->set_sensitive ($button->sensitive);
+    $glabel->set_sensitive ($button->get_sensitive);
     #
     return new_hbox_spaced_pack ($button, $glabel);
 }
@@ -643,7 +643,7 @@ sub new_selection_box_for($$$) {
     $combo->set_active ($value);
     set_widget_hint ($combo, $$hash{$key}[DESC]);
     set_widget_sens ($combo, $$hash{$key}[CMVER]);
-    $glabel->set_sensitive ($combo->sensitive);
+    $glabel->set_sensitive ($combo->get_sensitive);
     #
     return new_hbox_spaced_pack ($glabel, $combo);
 }
