@@ -40,6 +40,9 @@ Petter Adsen <petter@nillabs.com>
 Axel Köllhofer <AxelKoellhofer@web.de>
   - German translation.
 
+Jesper Schultz <jesper@schultz-net.dk>
+  - Original Claws Mail icon.
+
 David Medina <opensusecatala@gmail.com>
   - Catalan translation.
 
@@ -48,6 +51,9 @@ Numan Demirdöğen <if.gnu.linux@gmail.com>
 
 Erik P. Olsen <erik@epo.dk>
   - Danish translation.
+
+Christian Hesse <mail@eworm.de>
+  - Makefile fix.
 
 Mark Chang <mark.cyj@gmail.com>
   - Traditional Chinese translation.
