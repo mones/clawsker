@@ -383,32 +383,32 @@ sub handle_nchar_value {
         if defined $$dataref->[IVALUE];
 }
 
-sub gdk_color_from_str {
+sub gdk_rgba_from_str {
     my ($str) = @_;
     my ($rr, $gg, $bb) = (0, 0 ,0);
     $_ = uc ($str);
     if (/\#([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])/) {
-        $rr = hex($1) * 256;
-        $gg = hex($2) * 256;
-        $bb = hex($3) * 256;
+        $rr = hex($1) / 256;
+        $gg = hex($2) / 256;
+        $bb = hex($3) / 256;
     }
-    my $color = Gtk3::Gdk::Color->new ($rr, $gg, $bb);
+    my $color = Gtk3::Gdk::RGBA->new ($rr, $gg, $bb, 1.0);
     return $color;
 }
 
-sub str_from_gdk_color {
+sub str_from_gdk_rgba {
     my ($color) = @_;
-    my $rr = $color->red / 256;
-    my $gg = $color->green / 256;
-    my $bb = $color->blue / 256;
+    my $rr = $color->red * 256;
+    my $gg = $color->green * 256;
+    my $bb = $color->blue * 256;
     my $str = sprintf ("#%.2x%.2x%.2x", $rr, $gg, $bb);
     return $str;
 }
 
 sub handle_color_value {
     my ($widget, $event, $dataref) = @_;
-    my $newcol = $widget->get_color;
-    $$dataref->[VALUE] = str_from_gdk_color ($newcol);
+    my $newcol = $widget->get_rgba;
+    $$dataref->[VALUE] = str_from_gdk_rgba ($newcol);
     $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
         if defined $$dataref->[IVALUE];
 }
@@ -606,9 +606,9 @@ sub new_color_button_for($$$) {
     #
     my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
-    my $col = gdk_color_from_str ($value);
+    my $col = gdk_rgba_from_str ($value);
     my $glabel = Gtk3::Label->new ($label);
-    my $button = Gtk3::ColorButton->new_with_color ($col);
+    my $button = Gtk3::ColorButton->new_with_rgba ($col);
     $button->set_title ($label);
     $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
