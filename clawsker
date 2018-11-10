@@ -65,6 +65,8 @@ sub _ {
     about_license => _('License:'),
     about_version => _('Version:'),
 
+    error_title => _('Clawsker error'),
+
     exit_title => _('Clawsker warning'),
     exit_fact => _('There are unapplied modifications.'),
     exit_question => _('Do you really want to quit?'),
@@ -450,12 +452,37 @@ sub log_message {
     }
 }
 
+sub message_dialog {
+    my ($parent, $title, $markup, $type, $buttons) = @_;
+    my $flags = [qw/modal destroy-with-parent/];
+    my $dialog = Gtk3::Dialog->new_with_buttons (
+        $title, $parent, $flags, @$buttons
+    );
+    my $label = Gtk3::Label->new;
+    $label->set_markup ($markup);
+    my $icon = undef;
+    if ($type eq 'error') {
+      $icon = Gtk3::Image->new_from_icon_name('dialog-error', 'GTK_ICON_SIZE_DIALOG');
+    } elsif ($type eq 'warning') {
+      $icon = Gtk3::Image->new_from_icon_name('dialog-warning', 'GTK_ICON_SIZE_DIALOG');
+    } elsif ($type eq 'question') {
+      $icon = Gtk3::Image->new_from_icon_name('dialog-question', 'GTK_ICON_SIZE_DIALOG');
+    }
+    my $hbox = Gtk3::Box->new ('horizontal', 5);
+    $hbox->pack_start ($icon, FALSE, FALSE, 5) if defined $icon;
+    $hbox->pack_start ($label, FALSE, FALSE, 5);
+    my $dialogbox = $dialog->get_content_area;
+    $dialogbox->add ($hbox);
+    $dialogbox->show_all;
+    return $dialog;
+}
+
 sub error_dialog {
     my ($emsg) = @_;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
-    my $errordlg = Gtk3::MessageDialog->new ($main_window, 'modal', 'error', 'cancel');
-    $errordlg->set_markup ($markup);
-    $errordlg->set_title (_('Clawsker error'));
+    my $errordlg = message_dialog (
+        $main_window, $xl::s{error_title}, $markup, 'error', [ 'gtk-cancel', 0 ]
+    );
     $errordlg->run;
     $errordlg->destroy;
 }
@@ -2794,16 +2821,15 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
 sub exit_handler {
   my ($parent) = @_;
   if ($MODIFIED != 0 and not $READONLY) {
-    my $fact = $xl::s{exit_fact};
-    my $question = $xl::s{exit_question};
-    my $dialog = Gtk3::MessageDialog->new ($parent,
-        [qw/modal destroy-with-parent/], 'warning', 'yes-no');
-    $dialog->set_markup ("<span>$fact</span>\n\n"
-        . "<span weight=\"bold\">$question</span>");
-    $dialog->set_title ($xl::s{exit_title});
+    my $markup = "<span>" . $xl::s{exit_fact} . "</span>\n\n"
+        . "<span weight=\"bold\">" . $xl::s{exit_question} . "</span>\n";
+    my $dialog = message_dialog (
+        $parent, $xl::s{exit_title}, $markup, 'question',
+        [ 'gtk-no', 1, 'gtk-yes', 0 ]
+    );
     my $resp = $dialog->run;
     $dialog->hide;
-    return TRUE if ($resp eq 'no');
+    return TRUE if ($resp == 1);
   }
   Gtk3->main_quit;
 }
