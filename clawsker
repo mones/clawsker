@@ -453,7 +453,8 @@ sub log_message {
 sub error_dialog {
     my ($emsg) = @_;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
-    my $errordlg = Gtk3::MessageDialog->new_with_markup ($main_window, 'modal', 'error', 'cancel', $markup);
+    my $errordlg = Gtk3::MessageDialog->new ($main_window, 'modal', 'error', 'cancel');
+    $errordlg->set_markup ($markup);
     $errordlg->set_title (_('Clawsker error'));
     $errordlg->run;
     $errordlg->destroy;
@@ -2749,15 +2750,15 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
     my $url = "http://www.claws-mail.org/clawsker.php";
 
-    my $dialog = Gtk3::MessageDialog->new_with_markup ($parent,
-                    [qw/modal destroy-with-parent/],
-                    'info', 'close',
-                    "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
-                    . "<span size=\"large\">$vers</span>\n\n"
-                    . "<span color=\"blue\" size=\"large\">$url</span>\n\n"
-                    . "<span>Copyright $year by $holder</span>\n\n"
-                    . "<span size=\"large\">$lic</span>\n\n"
-                    . "<span size=\"small\">$license</span>");
+    my $dialog = Gtk3::MessageDialog->new ($parent,
+        [qw/modal destroy-with-parent/], 'info', 'close');
+    $dialog->set_markup (
+        "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
+        . "<span size=\"large\">$vers</span>\n\n"
+        . "<span color=\"blue\" size=\"large\">$url</span>\n\n"
+        . "<span>Copyright $year by $holder</span>\n\n"
+        . "<span size=\"large\">$lic</span>\n\n"
+        . "<span size=\"small\">$license</span>");
     $dialog->set_title ($xl::s{about});
     if (Gtk3->CHECK_VERSION (2, 10, 0)) {
         my @icons = get_app_icons ();
@@ -2775,11 +2776,10 @@ sub exit_handler {
   if ($MODIFIED != 0 and not $READONLY) {
     my $fact = $xl::s{exit_fact};
     my $question = $xl::s{exit_question};
-    my $dialog = Gtk3::MessageDialog->new_with_markup ($parent,
-                    [qw/modal destroy-with-parent/],
-                    'warning', 'yes-no',
-                    "<span>$fact</span>\n\n"
-                    . "<span weight=\"bold\">$question</span>");
+    my $dialog = Gtk3::MessageDialog->new ($parent,
+        [qw/modal destroy-with-parent/], 'warning', 'yes-no');
+    $dialog->set_markup ("<span>$fact</span>\n\n"
+        . "<span weight=\"bold\">$question</span>");
     $dialog->set_title ($xl::s{exit_title});
     my $resp = $dialog->run;
     $dialog->hide;
