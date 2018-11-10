@@ -2855,7 +2855,7 @@ sub get_app_icons {
 
 sub escape_key_handler {
     my ($widget, $event) = @_;
-    if ($event->keyval == Gtk3::Gdk->keyval_from_name('Escape')) {
+    if ($event->keyval == Gtk3::Gdk::keyval_from_name('Escape')) {
         exit_handler($widget);
     }
 }
