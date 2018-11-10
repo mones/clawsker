@@ -19,7 +19,7 @@ use strict;
 use utf8;
 use version 0.77;
 use Glib qw(TRUE FALSE);
-use Gtk2;
+use Gtk3;
 use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
@@ -43,7 +43,7 @@ bindtextdomain ($NAME, sprintf ('%s/share/locale', $PREFIX));
 textdomain ($NAME);
 
 my $SHOWHINTS = FALSE;
-$SHOWHINTS = TRUE if ($Gtk2::VERSION >= 1.040 and Gtk2->CHECK_VERSION (2, 12, 0));
+$SHOWHINTS = TRUE if ($Gtk3::VERSION >= 1.040 and Gtk3->CHECK_VERSION (2, 12, 0));
 
 sub _ {
     my $str = shift;
@@ -392,7 +392,7 @@ sub gdk_color_from_str {
         $gg = hex($2) * 256;
         $bb = hex($3) * 256;
     }
-    my $color = Gtk2::Gdk::Color->new ($rr, $gg, $bb);
+    my $color = Gtk3::Gdk::Color->new ($rr, $gg, $bb);
     return $color;
 }
 
@@ -453,7 +453,7 @@ sub log_message {
 sub error_dialog {
     my ($emsg) = @_;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
-    my $errordlg = Gtk2::MessageDialog->new_with_markup ($main_window, 'modal', 'error', 'cancel', $markup);
+    my $errordlg = Gtk3::MessageDialog->new_with_markup ($main_window, 'modal', 'error', 'cancel', $markup);
     $errordlg->set_title (_('Clawsker error'));
     $errordlg->run;
     $errordlg->destroy;
@@ -515,7 +515,7 @@ sub set_widget_sens {
 # graphic element creation
 
 sub new_hbox_spaced_pack {
-    my $hbox = Gtk2::HBox->new (FALSE);
+    my $hbox = Gtk3::HBox->new (FALSE);
     foreach (@_) {
         $hbox->pack_start ($_, FALSE, FALSE, HBOX_PAD);
     }
@@ -527,7 +527,7 @@ sub new_check_button_for($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $cb = Gtk2::CheckButton->new ($label);
+    my $cb = Gtk3::CheckButton->new ($label);
     my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $cb->set_active ($value eq '1');
@@ -550,12 +550,12 @@ sub new_text_box_for_int($$$) {
     #
     my $gunits = undef;
     if (ref $label eq 'ARRAY') {
-        $gunits = Gtk2::Label->new ($label->[1]);
+        $gunits = Gtk3::Label->new ($label->[1]);
         $label = $label->[0];
     }
-    my $glabel = Gtk2::Label->new ($label);
+    my $glabel = Gtk3::Label->new ($label);
     my $pagei = int (($type[2] - $type[1]) / 10);
-    my $gentry = Gtk2::SpinButton->new_with_range ($type[1], $type[2], $pagei);
+    my $gentry = Gtk3::SpinButton->new_with_range ($type[1], $type[2], $pagei);
     my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     $gentry->set_numeric (TRUE);
@@ -578,8 +578,8 @@ sub new_text_box_for_nchar($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen,width
-    my $glabel = Gtk2::Label->new ($label);
-    my $gentry = Gtk2::Entry->new ();
+    my $glabel = Gtk3::Label->new ($label);
+    my $gentry = Gtk3::Entry->new ();
     $gentry->set_max_length($type[2]) if defined ($type[2]);
     my $width = $type[3];
     $width //= $type[2];
@@ -606,8 +606,8 @@ sub new_color_button_for($$$) {
     my $value = $$vhash{$name}[VALUE];
     $value //= $$hash{$key}[CMDEF];
     my $col = gdk_color_from_str ($value);
-    my $glabel = Gtk2::Label->new ($label);
-    my $button = Gtk2::ColorButton->new_with_color ($col);
+    my $glabel = Gtk3::Label->new ($label);
+    my $button = Gtk3::ColorButton->new_with_color ($col);
     $button->set_title ($label);
     $button->set_relief ('none');
     $button->signal_connect ('color-set' => sub {
@@ -626,8 +626,8 @@ sub new_selection_box_for($$$) {
     my $name = $$hash{$key}[NAME];
     my $label = $$hash{$key}[LABEL];
     #
-    my $glabel = Gtk2::Label->new ($label);
-    my $combo = Gtk2::ComboBox->new_text;
+    my $glabel = Gtk3::Label->new ($label);
+    my $combo = Gtk3::ComboBox->new_text;
     my @options = split (';', $$hash{$key}[TYPE]);
     foreach my $opt (@options) {
         my ($index, $textkey) = split ('=', $opt);
@@ -650,7 +650,7 @@ sub new_selection_box_for($$$) {
 # more graphic helpers
 
 sub new_hbox_pack {
-    my $hbox = Gtk2::HBox->new (FALSE);
+    my $hbox = Gtk3::HBox->new (FALSE);
     $hbox->set_border_width (PAGE_SPC);
     foreach (@_) {
         $hbox->pack_start ($_, FALSE, FALSE, 0);
@@ -659,7 +659,7 @@ sub new_hbox_pack {
 }
 
 sub new_hbox_pack_compact {
-    my $hbox = Gtk2::HBox->new (FALSE);
+    my $hbox = Gtk3::HBox->new (FALSE);
     $hbox->set_border_width (0);
     foreach (@_) {
         $hbox->pack_start ($_, FALSE, FALSE, 0);
@@ -668,7 +668,7 @@ sub new_hbox_pack_compact {
 }
 
 sub new_vbox_pack {
-    my $vbox = Gtk2::VBox->new (FALSE, 5);
+    my $vbox = Gtk3::VBox->new (FALSE, 5);
     $vbox->set_border_width (PAGE_SPC);
     foreach (@_) {
         $vbox->pack_start ($_, FALSE, FALSE, 0);
@@ -677,7 +677,7 @@ sub new_vbox_pack {
 }
 
 sub new_vbox_pack_compact {
-    my $vbox = Gtk2::VBox->new (FALSE, 0);
+    my $vbox = Gtk3::VBox->new (FALSE, 0);
     $vbox->set_border_width (0);
     foreach (@_) {
         $vbox->pack_start ($_, FALSE, FALSE, 0);
@@ -687,7 +687,7 @@ sub new_vbox_pack_compact {
 
 sub new_subpage_frame {
     my ($box, $title, $notpacked) = @_;
-    my $frame = Gtk2::Frame->new ($title);
+    my $frame = Gtk3::Frame->new ($title);
     $frame->add ($box);
     return new_vbox_pack ($frame) unless defined ($notpacked);
     return $frame;
@@ -916,7 +916,7 @@ sub new_other_page() {
 );
 
 sub new_gui_page() {
-    my $gf = Gtk2::VBox->new (FALSE, 5);
+    my $gf = Gtk3::VBox->new (FALSE, 5);
     $gf->set_border_width (PAGE_SPC);
 
     my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines', \%HPVALUE);
@@ -1099,7 +1099,7 @@ sub new_gui_page() {
 );
 
 sub new_behaviour_page() {
-    my $bf = Gtk2::VBox->new (FALSE, 5);
+    my $bf = Gtk3::VBox->new (FALSE, 5);
     $bf->set_border_width (PAGE_SPC);
 
     my $tb_up_step = new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE);
@@ -1998,7 +1998,7 @@ sub new_winpos_subpage_misc() {
 }
 
 sub new_winpos_page() {
-    my $winbook = Gtk2::Notebook->new;
+    my $winbook = Gtk3::Notebook->new;
     $winbook->set_tab_pos ('right');
     $winbook->append_page (new_winpos_subpage_main, _('Main'));
     $winbook->append_page (new_winpos_subpage_msgs, _('Message'));
@@ -2044,7 +2044,7 @@ sub new_account_subpage($) {
 }
 
 sub new_accounts_page() {
-    my $accbook = Gtk2::Notebook->new;
+    my $accbook = Gtk3::Notebook->new;
     $accbook->set_tab_pos ('right');
     my @akeys = sort {
         $ACPREFS{$a}{'account_name'} cmp $ACPREFS{$b}{'account_name'}
@@ -2186,19 +2186,19 @@ use constant {
 };
 
 sub new_hotkeys_list_label {
-    my $renderer = Gtk2::CellRendererText->new ();
+    my $renderer = Gtk3::CellRendererText->new ();
     $renderer->set_property('alignment' => 'left');
     $renderer->set_property('editable' => FALSE);
     return $renderer;
 }
 
 sub new_hotkeys_list_hotkey {
-    my $renderer = Gtk2::CellRendererAccel->new ();
+    my $renderer = Gtk3::CellRendererAccel->new ();
     $renderer->set_property ('accel-mode' => 'gtk');
     $renderer->set_property ('editable' => TRUE);
     $renderer->signal_connect ('accel-edited' => sub {
         my ($w, $path, $key, $mods, $keycode) = @_;
-        my $accel = Gtk2::Accelerator->name ($key, $mods);
+        my $accel = Gtk3::Accelerator->name ($key, $mods);
         my ($model, $iter) = $SELHOTKEY->get_selected ();
         $model->set($iter, C_HOTKEY, "\"$accel\"");
         my $gkey = $model->get_value ($iter, C_GROUP);
@@ -2222,7 +2222,7 @@ sub new_hotkeys_list_hotkey {
 
 sub new_hotkeys_list {
     my ($gkey, $group) = @_;
-    my $store = Gtk2::ListStore->new(
+    my $store = Gtk3::ListStore->new(
         qw/Glib::String Glib::String Glib::String Glib::String Glib::String/);
     my $even = FALSE;
     foreach my $akey (sort keys %$group) {
@@ -2235,7 +2235,7 @@ sub new_hotkeys_list {
             C_GROUP, $gkey, C_ACCEL, $akey, C_BCOLOR, $bgcol);
         $even = not $even;
     }
-    my $treeview = Gtk2::TreeView->new_with_model ($store);
+    my $treeview = Gtk3::TreeView->new_with_model ($store);
     # labels column
     $treeview->insert_column_with_data_func (
         0, _("Menu path"), new_hotkeys_list_label (),
@@ -2256,7 +2256,7 @@ sub new_hotkeys_list {
             my ($col, $renderer, $model, $iter, $data) = @_;
             my $hkey = $model->get_value ($iter, C_HOTKEY);
             $hkey =~ s/\"//g;
-            my ($acckey, $accmod) = Gtk2::Accelerator->parse ($hkey);
+            my ($acckey, $accmod) = Gtk3::Accelerator->parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
             $renderer->set_property (
@@ -2270,12 +2270,12 @@ sub new_hotkeys_list {
 }
 
 sub new_hotkeys_page() {
-    my $swin = Gtk2::ScrolledWindow->new ();
-    my $vbox = Gtk2::VBox->new (FALSE, 5);
+    my $swin = Gtk3::ScrolledWindow->new ();
+    my $vbox = Gtk3::VBox->new (FALSE, 5);
     foreach my $gkey (sort keys %$HOTKEYS) {
         my $group = $HOTKEYS->{$gkey};
         # group title
-        my $glabel = Gtk2::Label->new ('<b>' . $gkey . '</b>');
+        my $glabel = Gtk3::Label->new ('<b>' . $gkey . '</b>');
         $glabel->set_use_markup (TRUE);
         $glabel->set_alignment (0, 0.5);
         $glabel->set_padding (5, 1);
@@ -2292,7 +2292,7 @@ sub new_hotkeys_page() {
 }
 
 sub new_info_page() {
-    my $t0 = Gtk2::Table->new (7, 2, FALSE);
+    my $t0 = Gtk3::Table->new (7, 2, FALSE);
     my $v = get_toolkit_versions ();
     my %labels = (
         'glib' => 'Perl-GLib',
@@ -2305,8 +2305,8 @@ sub new_info_page() {
     my $row = 0;
     foreach (sort keys %$v) {
         if (defined $v->{$_}) {
-            my $label = Gtk2::Label->new ($labels{$_});
-            my $value = Gtk2::Label->new ('<b>' . $v->{$_} . '</b>');
+            my $label = Gtk3::Label->new ($labels{$_});
+            my $value = Gtk3::Label->new ('<b>' . $v->{$_} . '</b>');
             $label->set_alignment (0, 0.5);
             $value->set_alignment (0, 0.5);
             $value->set_use_markup (TRUE);
@@ -2315,16 +2315,16 @@ sub new_info_page() {
             ++$row;
         }
     }
-    my $t1 = Gtk2::Table->new (2, 2, FALSE);
+    my $t1 = Gtk3::Table->new (2, 2, FALSE);
     my @lbl = map { $_->set_alignment (0, 0.5); $_ } (
-        Gtk2::Label->new (_('Binary')),
-        Gtk2::Label->new (_('Configuration'))
+        Gtk3::Label->new (_('Binary')),
+        Gtk3::Label->new (_('Configuration'))
     );
     my $cfgv = $CONFIGDATA->{'Common'}{'config_version'};
     $cfgv //= '';
     my @val = map { $_->set_alignment (0, 0.5); $_->set_use_markup (TRUE); $_ } (
-        Gtk2::Label->new ('<b>' . $CLAWSV . '</b>'),
-        Gtk2::Label->new ('<b>' . $cfgv . '</b>')
+        Gtk3::Label->new ('<b>' . $CLAWSV . '</b>'),
+        Gtk3::Label->new ('<b>' . $cfgv . '</b>')
     );
     for (my $i = 0; $i <= $#lbl; ++$i) {
         $t1->attach ($lbl[$i], 0, 1, $i, $i + 1, 'fill', 'shrink', 8, 6);
@@ -2345,11 +2345,11 @@ sub get_toolkit_versions {
         $versions{'glib-r'} = join('.',
             &Glib::major_version, &Glib::minor_version, &Glib::micro_version);
     }
-    $versions{'gtk2'} = $Gtk2::VERSION;
-    if ($Gtk2::VERSION >= 1.040) {
-        $versions{'gtk2-b'} = join('.', Gtk2->GET_VERSION_INFO);
+    $versions{'gtk2'} = $Gtk3::VERSION;
+    if ($Gtk3::VERSION >= 1.040) {
+        $versions{'gtk2-b'} = join('.', Gtk3->GET_VERSION_INFO);
         $versions{'gtk2-r'} = join('.',
-            &Gtk2::major_version, &Gtk2::minor_version, &Gtk2::micro_version);
+            &Gtk3::major_version, &Gtk3::minor_version, &Gtk3::micro_version);
     }
     return \%versions;
 }
@@ -2418,7 +2418,7 @@ sub parse_command_line {
     if ($@) {
         my $msg = _("Error in options: {msg}\n", msg => $@);
         if (defined $ENV{'DISPLAY'} and $ENV{'DISPLAY'} ne '') {
-            eval { Gtk2->init };
+            eval { Gtk3->init };
             error_dialog ($msg) unless $@;
         }
         die $msg;
@@ -2711,7 +2711,7 @@ sub save_preferences {
 
 # create notebook
 sub new_notebook {
-    my $nb = Gtk2::Notebook->new;
+    my $nb = Gtk3::Notebook->new;
     #
     $nb->append_page (new_behaviour_page (), $xl::s{tab_behaviour});
     $nb->append_page (new_colours_page (), $xl::s{tab_colours});
@@ -2749,7 +2749,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
     my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
     my $url = "http://www.claws-mail.org/clawsker.php";
 
-    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent,
+    my $dialog = Gtk3::MessageDialog->new_with_markup ($parent,
                     [qw/modal destroy-with-parent/],
                     'info', 'close',
                     "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
@@ -2759,9 +2759,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
                     . "<span size=\"large\">$lic</span>\n\n"
                     . "<span size=\"small\">$license</span>");
     $dialog->set_title ($xl::s{about});
-    if (Gtk2->CHECK_VERSION (2, 10, 0)) {
+    if (Gtk3->CHECK_VERSION (2, 10, 0)) {
         my @icons = get_app_icons ();
-        my $image = Gtk2::Image->new_from_pixbuf ($icons[-1]);
+        my $image = Gtk3::Image->new_from_pixbuf ($icons[-1]);
         $image->show ();
         $image->set_alignment (0, 0);
         $dialog->set_image ($image);
@@ -2775,7 +2775,7 @@ sub exit_handler {
   if ($MODIFIED != 0 and not $READONLY) {
     my $fact = $xl::s{exit_fact};
     my $question = $xl::s{exit_question};
-    my $dialog = Gtk2::MessageDialog->new_with_markup ($parent,
+    my $dialog = Gtk3::MessageDialog->new_with_markup ($parent,
                     [qw/modal destroy-with-parent/],
                     'warning', 'yes-no',
                     "<span>$fact</span>\n\n"
@@ -2785,18 +2785,18 @@ sub exit_handler {
     $dialog->hide;
     return TRUE if ($resp eq 'no');
   }
-  Gtk2->main_quit;
+  Gtk3->main_quit;
 }
 
 # create buttons box
 sub new_button_box {
     my ($parent, $adlg) = @_;
-    my $b_about = Gtk2::Button->new_from_stock ('gtk-about');
-    my $b_exit = Gtk2::Button->new_from_stock ('gtk-quit');
-    my $b_apply = Gtk2::Button->new_from_stock ('gtk-apply');
+    my $b_about = Gtk3::Button->new_from_stock ('gtk-about');
+    my $b_exit = Gtk3::Button->new_from_stock ('gtk-quit');
+    my $b_apply = Gtk3::Button->new_from_stock ('gtk-apply');
     # disable button until is really implemented
-    # my $b_undo = Gtk2::Button->new_from_stock ('gtk-undo');
-    my $hbox = Gtk2::HBox->new (FALSE, 5);
+    # my $b_undo = Gtk3::Button->new_from_stock ('gtk-undo');
+    my $hbox = Gtk3::HBox->new (FALSE, 5);
     # signal handlers
     $b_exit->signal_connect (clicked => sub { exit_handler($parent) });
     $b_apply->set_sensitive (not $READONLY);
@@ -2827,7 +2827,7 @@ sub get_app_icons {
     }
     foreach (@names) {
         my $icon = undef;
-        $icon = Gtk2::Gdk::Pixbuf->new_from_file($_) if (-f $_);
+        $icon = Gtk3::Gdk::Pixbuf->new_from_file($_) if (-f $_);
         push @APPICONS, $icon if ($icon);
     }
     return @APPICONS;
@@ -2835,19 +2835,19 @@ sub get_app_icons {
 
 sub escape_key_handler {
     my ($widget, $event) = @_;
-    if ($event->keyval == Gtk2::Gdk->keyval_from_name('Escape')) {
+    if ($event->keyval == Gtk3::Gdk->keyval_from_name('Escape')) {
         exit_handler($widget);
     }
 }
 
 # initialise
 exit unless parse_command_line ();
-Gtk2->init;
-$main_window = Gtk2::Window->new ('toplevel');
+Gtk3->init;
+$main_window = Gtk3::Window->new ('toplevel');
 exit unless load_preferences ();
 exit unless init_hidden_preferences ();
 # create main GUI
-my $box = Gtk2::VBox->new (FALSE, 5);
+my $box = Gtk3::VBox->new (FALSE, 5);
 $box->set_border_width(3);
 my $about = new_about_dialog ();
 $box->pack_start (new_notebook (), TRUE, TRUE, 0);
@@ -2859,5 +2859,5 @@ $main_window->set_icon_list (get_app_icons ());
 $main_window->add ($box);
 $main_window->show_all;
 $MODIFIED = 0;
-Gtk2->main;
+Gtk3->main;
 
