@@ -628,11 +628,11 @@ sub new_selection_box_for($$$) {
     my $label = $$hash{$key}[LABEL];
     #
     my $glabel = Gtk3::Label->new ($label);
-    my $combo = Gtk3::ComboBox->new_text;
+    my $combo = Gtk3::ComboBoxText->new;
     my @options = split (';', $$hash{$key}[TYPE]);
     foreach my $opt (@options) {
         my ($index, $textkey) = split ('=', $opt);
-        $combo->insert_text ($index, $xl::s{$textkey});
+        $combo->insert (-1, $index, $xl::s{$textkey});
     }
     $combo->signal_connect ('changed' => sub {
             my ($w, $e) = @_;
