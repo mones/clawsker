@@ -57,10 +57,8 @@ sub _ {
 # default messages
 %xl::s = (
     win_title => _('Claws Mail Hidden Preferences'),
-    about => _('About...'),
     about_title => _('Clawsker :: A Claws Mail Tweaker'),
-    about_license => _('License:'),
-    about_version => _('Version:'),
+    about_web_label => _("Visit Clawsker's web page"),
 
     error_title => _('Clawsker error'),
 
@@ -2772,44 +2770,52 @@ sub new_notebook {
 # create an about dialog
 sub new_about_dialog {
     my ($parent) = @_;
-    my $title = $xl::s{about_title};
-    my $lic = $xl::s{about_license};
-    my $vers = $xl::s{about_version} . " $VERSION";
-    my $license =
-"This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+    my $year = '2007-2018';
+    my $holder = 'Ricardo Mones <ricardo@mones.org>';
+    my $url = 'http://www.claws-mail.org/clawsker.php';
+    my $icons = &get_app_icons;
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+    my $dialog = Gtk3::AboutDialog->new;
+    $dialog->set_transient_for ($parent);
+    $dialog->set_program_name ('Clawsker');
+    $dialog->set_version ($VERSION);
+    $dialog->set_copyright ("Copyright © $year $holder");
+    $dialog->set_license_type ('gpl-3-0');
+    $dialog->set_website ($url);
+    $dialog->set_website_label ($xl::s{about_web_label});
+    # committers, by number of commits
+    $dialog->set_authors ([
+        $holder,
+        'Tristan Chabredier (wwp) <subscript@free.fr>',
+        'Andreas Rönnquist <gusnan@openmailbox.org>',
+        'Christian Hesse <mail@eworm.de>',
+    ]);
+    $dialog->set_artists ([
+        'Jesper Schultz <jesper@schultz-net.dk>',
+        $holder,
+    ]);
+    $dialog->set_documenters ([
+        $holder,
+        'Paul Mangan <paul@claws-mail.org>',
+    ]);
+    # active translators, in alphabetical order
+    $dialog->set_translator_credits (join ("\n",
+        'Andreas Rönnquist <andreas@ronnquist.net>',
+        'Axel Köllhofer <AxelKoellhofer@web.de>',
+        'David Medina <opensusecatala@gmail.com>',
+        'Erik P. Olsen <erik@epo.dk>',
+        'Frederico Goncalves Guimaraes <frederico@teia.bio.br>',
+        'Marcel Pol <marcel@timelord.nl>',
+        'Mark Chang <mark.cyj@gmail.com>',
+        'M. Sulchan Darmawan <bleketux@gmail.com>',
+        'Numan Demirdöğen <if.gnu.linux@gmail.com>',
+        'Petter Adsen <petter@synth.no>',
+        $holder,
+        'Tristan Chabredier (wwp) <subscript@free.fr>',
+    ));
+    $dialog->set_title ($xl::s{about_title});
+    $dialog->set_logo ($icons->[-1]);
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.";
-    my $year = "2007-2018";
-    my $holder = "Ricardo Mones &lt;ricardo\@mones.org&gt;";
-    my $url = "http://www.claws-mail.org/clawsker.php";
-
-    my $dialog = Gtk3::MessageDialog->new ($parent,
-        [qw/modal destroy-with-parent/], 'info', 'close');
-    $dialog->set_markup (
-        "<span size=\"x-large\" weight=\"bold\">$title</span>\n"
-        . "<span size=\"large\">$vers</span>\n\n"
-        . "<span color=\"blue\" size=\"large\">$url</span>\n\n"
-        . "<span>Copyright $year by $holder</span>\n\n"
-        . "<span size=\"large\">$lic</span>\n\n"
-        . "<span size=\"small\">$license</span>");
-    $dialog->set_title ($xl::s{about});
-    if (Gtk3->CHECK_VERSION (2, 10, 0)) {
-        my @icons = get_app_icons ();
-        my $image = Gtk3::Image->new_from_pixbuf ($icons[-1]);
-        $image->show ();
-        $image->set_alignment (0, 0);
-        $dialog->set_image ($image);
-    }
-    #
     return $dialog;
 }
 
