@@ -42,9 +42,6 @@ setlocale (LC_ALL, $locale);
 bindtextdomain ($NAME, sprintf ('%s/share/locale', $PREFIX));
 textdomain ($NAME);
 
-my $SHOWHINTS = FALSE;
-$SHOWHINTS = TRUE if ($Gtk3::VERSION >= 1.040 and Gtk3->CHECK_VERSION (2, 12, 0));
-
 sub _ {
     my $str = shift;
     my %par = @_;
@@ -520,11 +517,9 @@ sub check_rc_file {
 }
 
 sub set_widget_hint {
-    if ($SHOWHINTS) {
-        my ($wdgt, $hint) = @_;
-        $wdgt->set_tooltip_text ($hint);
-        $wdgt->set_has_tooltip (TRUE);
-    }
+    my ($wdgt, $hint) = @_;
+    $wdgt->set_tooltip_text ($hint);
+    $wdgt->set_has_tooltip (TRUE);
 }
 
 sub set_widget_sens {
