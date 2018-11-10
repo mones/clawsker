@@ -2268,7 +2268,7 @@ sub new_hotkeys_list {
             my ($col, $renderer, $model, $iter, $data) = @_;
             my $hkey = $model->get_value ($iter, C_HOTKEY);
             $hkey =~ s/\"//g;
-            my ($acckey, $accmod) = Gtk3::Accelerator->parse ($hkey);
+            my ($acckey, $accmod) = Gtk3::accelerator_parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
             $renderer->set_property (
