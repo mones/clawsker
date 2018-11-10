@@ -2833,7 +2833,7 @@ sub new_button_box {
 }
 
 sub get_app_icons {
-    return @APPICONS if (@APPICONS);
+    return \@APPICONS if (@APPICONS);
     my @names;
     if (-d $DATADIR) { # installed
         my $dir = $DATADIR . '/icons/hicolor';
@@ -2850,7 +2850,7 @@ sub get_app_icons {
         $icon = Gtk3::Gdk::Pixbuf->new_from_file($_) if (-f $_);
         push @APPICONS, $icon if ($icon);
     }
-    return @APPICONS;
+    return \@APPICONS;
 }
 
 sub escape_key_handler {
