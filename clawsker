@@ -2001,16 +2001,26 @@ sub new_winpos_subpage_misc() {
 sub new_winpos_page() {
     my $winbook = Gtk3::Notebook->new;
     $winbook->set_tab_pos ('right');
-    $winbook->append_page (new_winpos_subpage_main, _('Main'));
-    $winbook->append_page (new_winpos_subpage_msgs, _('Message'));
-    $winbook->append_page (new_winpos_subpage_sendrecv, _('Send/Receive'));
-    $winbook->append_page (new_winpos_subpage_fold, _('Folder'));
-    $winbook->append_page (new_winpos_subpage_addrbook, _('Addressbook'));
-    $winbook->append_page (new_winpos_subpage_accounts, _('Accounts'));
-    $winbook->append_page (new_winpos_subpage_filtering, _('Filtering'));
-    $winbook->append_page (new_winpos_subpage_useractions, _('User Actions'));
-    $winbook->append_page (new_winpos_subpage_prefs, _('Preferences'));
-    $winbook->append_page (new_winpos_subpage_misc, _('Other'));
+    $winbook->append_page (new_winpos_subpage_main,
+        Gtk3::Label->new (_('Main')));
+    $winbook->append_page (new_winpos_subpage_msgs,
+        Gtk3::Label->new (_('Message')));
+    $winbook->append_page (new_winpos_subpage_sendrecv,
+        Gtk3::Label->new (_('Send/Receive')));
+    $winbook->append_page (new_winpos_subpage_fold,
+        Gtk3::Label->new (_('Folder')));
+    $winbook->append_page (new_winpos_subpage_addrbook,
+        Gtk3::Label->new (_('Addressbook')));
+    $winbook->append_page (new_winpos_subpage_accounts,
+        Gtk3::Label->new (_('Accounts')));
+    $winbook->append_page (new_winpos_subpage_filtering,
+        Gtk3::Label->new (_('Filtering')));
+    $winbook->append_page (new_winpos_subpage_useractions,
+        Gtk3::Label->new (_('User Actions')));
+    $winbook->append_page (new_winpos_subpage_prefs,
+        Gtk3::Label->new (_('Preferences')));
+    $winbook->append_page (new_winpos_subpage_misc,
+        Gtk3::Label->new (_('Other')));
     return $winbook;
 }
 
@@ -2054,7 +2064,8 @@ sub new_accounts_page() {
         my $name = $ACPREFS{$_}{'account_name'};
         my $isdef = ($ACPREFS{$_}{'is_default'} eq '1');
         my $page = new_account_subpage ($_);
-        $accbook->append_page ($page, $isdef? '<b>' . $name . '</b>': $name);
+        $accbook->append_page ($page,
+            Gtk3::Label->new ($isdef? '<b>' . $name . '</b>': $name));
         if ($isdef) {
             my $label = $accbook->get_tab_label ($page);
             $label->set_use_markup (TRUE);
@@ -2714,15 +2725,24 @@ sub save_preferences {
 sub new_notebook {
     my $nb = Gtk3::Notebook->new;
     #
-    $nb->append_page (new_behaviour_page (), $xl::s{tab_behaviour});
-    $nb->append_page (new_colours_page (), $xl::s{tab_colours});
-    $nb->append_page (new_gui_page (), $xl::s{tab_gui});
-    $nb->append_page (new_other_page (), $xl::s{tab_other});
-    $nb->append_page (new_winpos_page (), $xl::s{tab_winpos});
-    $nb->append_page (new_accounts_page (), $xl::s{tab_accounts});
-    $nb->append_page (new_plugins_page (), $xl::s{tab_plugins});
-    $nb->append_page (new_hotkeys_page (), $xl::s{tab_hotkeys});
-    $nb->append_page (new_info_page (), $xl::s{tab_info});
+    $nb->append_page (new_behaviour_page (),
+        Gtk3::Label->new ($xl::s{tab_behaviour}));
+    $nb->append_page (new_colours_page (),
+        Gtk3::Label->new ($xl::s{tab_colours}));
+    $nb->append_page (new_gui_page (),
+        Gtk3::Label->new ($xl::s{tab_gui}));
+    $nb->append_page (new_other_page (),
+        Gtk3::Label->new ($xl::s{tab_other}));
+    $nb->append_page (new_winpos_page (),
+        Gtk3::Label->new ($xl::s{tab_winpos}));
+    $nb->append_page (new_accounts_page (),
+        Gtk3::Label->new ($xl::s{tab_accounts}));
+    $nb->append_page (new_plugins_page (),
+        Gtk3::Label->new ($xl::s{tab_plugins}));
+    $nb->append_page (new_hotkeys_page (),
+        Gtk3::Label->new ($xl::s{tab_hotkeys}));
+    $nb->append_page (new_info_page (),
+        Gtk3::Label->new ($xl::s{tab_info}));
 
     return $nb;
 }
