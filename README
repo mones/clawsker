@@ -2,7 +2,7 @@
 Clawsker - A Claws Mail Tweaker
 -------------------------------
 
-Clawsker is a Perl-GTK2 applet to edit hidden preferences for Claws Mail,
+Clawsker is a Perl-GTK applet to edit hidden preferences for Claws Mail,
 and to do it in a safe and user friendly way, preventing users from raw
 editing of configuration files.
 
@@ -26,14 +26,13 @@ Dependencies
   - Running:
 
   Perl - http://www.perl.com (>= 5.10)
-  GTK+2 bindings for Perl - http://gtk2-perl.sourceforge.net (>= 1.161) built
-  with GTK+ >= 2.12 (lower GTK+ versions do not support widget tooltips and
-  a warning is issued).
+  GTK+3 bindings for Perl - https://gitlab.gnome.org/GNOME/perl-gtk3
+  (>= 0.030)
   Locale::gettext - http://search.cpan.org/~pvandry/gettext-1.05/ (>= 1.05)
   Claws Mail - http://www.claws-mail.org (>= 3.9.1)
 
   On Debian systems:
-  # apt-get install libgtk2-perl liblocale-gettext-perl claws-mail
+  # apt-get install libgtk3-perl liblocale-gettext-perl claws-mail
 
 Install
 -------
