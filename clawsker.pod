@@ -28,7 +28,7 @@ preferences which are not widely used are not provided with a graphical
 interface for inspection and/or modification.
 
 Users wanting to edit such preferences had to face raw editing of their 
-configuration files, now you can do it with a convenient GTK2 interface
+configuration files, now you can do it with a convenient GTK interface
 using Clawsker.
 
 In adition to hidden features Clawsker can edit also some other settings
@@ -68,7 +68,7 @@ Shows version information for program, Perl-GTK and Claws Mail.
 =back
 
 Weird option specifications may produce weird results (but otherwise correct).
-	
+
 =head1 LIMITATIONS
 
 A running Claws Mail cannot be detected if using the B<--clawsrc> option
