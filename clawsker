@@ -2324,7 +2324,6 @@ sub new_hotkeys_page() {
 }
 
 sub new_info_page() {
-    my $t0 = Gtk3::Table->new (7, 2, FALSE);
     my $v = get_toolkit_versions ();
     my %labels = (
         'glib' => 'Perl-GLib',
@@ -2334,6 +2333,15 @@ sub new_info_page() {
         'gtk-r' => _('GTK3 runtime'),
         'gtk-b' => _('GTK3 built'),
     );
+    # setup grids
+    my $t0 = Gtk3::Grid->new;
+    my $t1 = Gtk3::Grid->new;
+    for ($t0, $t1) {
+        $_->set_border_width (10);
+        $_->set_row_spacing (10);
+        $_->set_column_spacing (10);
+    }
+    # fill first grid
     my $row = 0;
     foreach (sort keys %$v) {
         if (defined $v->{$_}) {
@@ -2342,12 +2350,12 @@ sub new_info_page() {
             $label->set_alignment (0, 0.5);
             $value->set_alignment (0, 0.5);
             $value->set_use_markup (TRUE);
-            $t0->attach ($label, 0, 1, $row, $row + 1, 'fill', 'shrink', 8, 6);
-            $t0->attach ($value, 1, 2, $row, $row + 1, 'fill', 'shrink', 8, 6);
+            $t0->attach ($label, 0, $row, 1, 1);
+            $t0->attach ($value, 1, $row, 1, 1);
             ++$row;
         }
     }
-    my $t1 = Gtk3::Table->new (2, 2, FALSE);
+    # fill second grid
     my @lbl = map { $_->set_alignment (0, 0.5); $_ } (
         Gtk3::Label->new (_('Binary')),
         Gtk3::Label->new (_('Configuration'))
@@ -2359,8 +2367,8 @@ sub new_info_page() {
         Gtk3::Label->new ('<b>' . $cfgv . '</b>')
     );
     for (my $i = 0; $i <= $#lbl; ++$i) {
-        $t1->attach ($lbl[$i], 0, 1, $i, $i + 1, 'fill', 'shrink', 8, 6);
-        $t1->attach ($val[$i], 1, 2, $i, $i + 1, 'fill', 'shrink', 8, 6);
+        $t1->attach ($lbl[$i], 0, $i, 1, 1);
+        $t1->attach ($val[$i], 1, $i, 1, 1);
     }
     return new_vbox_pack (
                 new_subpage_frame ($t0, _('Library versions'), 'not-packed'),
