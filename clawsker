@@ -2330,9 +2330,9 @@ sub new_info_page() {
         'glib' => 'Perl-GLib',
         'glib-r' => _('GLib runtime'),
         'glib-b' => _('GLib built'),
-        'gtk2' => 'Perl-GTK2',
-        'gtk2-r' => _('GTK2 runtime'),
-        'gtk2-b' => _('GTK2 built'),
+        'gtk' => 'Perl-GTK3',
+        'gtk-r' => _('GTK3 runtime'),
+        'gtk-b' => _('GTK3 built'),
     );
     my $row = 0;
     foreach (sort keys %$v) {
@@ -2377,10 +2377,10 @@ sub get_toolkit_versions {
         $versions{'glib-r'} = join('.',
             &Glib::major_version, &Glib::minor_version, &Glib::micro_version);
     }
-    $versions{'gtk2'} = $Gtk3::VERSION;
-    if ($Gtk3::VERSION >= 1.040) {
-        $versions{'gtk2-b'} = join('.', Gtk3->GET_VERSION_INFO);
-        $versions{'gtk2-r'} = join('.',
+    $versions{'gtk'} = $Gtk3::VERSION;
+    if ($Gtk3::VERSION >= 0.034) {
+        $versions{'gtk-b'} = join('.', &Gtk3::GET_VERSION_INFO);
+        $versions{'gtk-r'} = join('.',
             &Gtk3::major_version, &Gtk3::minor_version, &Gtk3::micro_version);
     }
     return \%versions;
@@ -2399,13 +2399,13 @@ sub print_version() {
         print _("Perl-GLib version {glibv}.", glibv => $v->{'glib'});
     }
     print "\n";
-    if ($v->{'gtk2-b'}) {
-        print _("Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}.",
-                gtkv => $v->{'gtk2'},
-                gtkb => $v->{'gtk2-b'},
-                gtkr => $v->{'gtk2-r'});
+    if ($v->{'gtk-b'}) {
+        print _("Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}.",
+                gtkv => $v->{'gtk'},
+                gtkb => $v->{'gtk-b'},
+                gtkr => $v->{'gtk-r'});
     } else {
-        print _("Perl-GTK2 version {gtkv}.", gtkv => $v->{'gtk2'});
+        print _("Perl-GTK3 version {gtkv}.", gtkv => $v->{'gtk'});
     }
     print "\n";
     my $clawsver = ($CLAWSV eq "") ?
