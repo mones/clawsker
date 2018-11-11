@@ -2787,7 +2787,7 @@ sub new_about_dialog {
     $dialog->set_authors ([
         $holder,
         'Tristan Chabredier (wwp) <subscript@free.fr>',
-        'Andreas Rönnquist <gusnan@openmailbox.org>',
+        'Andreas Rönnquist <andreas@ronnquist.net>',
         'Christian Hesse <mail@eworm.de>',
     ]);
     $dialog->set_artists ([
