@@ -2211,10 +2211,7 @@ use constant {
     C_HOTKEY => 1,
     C_GROUP => 2,
     C_ACCEL => 3,
-    C_BCOLOR => 4,
-    # cell backgrounds
-    BG_LIGHTER => '#ffffff',
-    BG_DARKER => '#eeeeee'
+    C_ODDITY => 4,
 };
 
 sub new_hotkeys_list_label {
@@ -2252,19 +2249,27 @@ sub new_hotkeys_list_hotkey {
     return $renderer;
 }
 
+sub row_background_color {
+    my ($column, $isodd) = @_;
+    my $treeview = $column->get_tree_view;
+    my $stylectx = $treeview->get_style_context;
+    return $isodd
+        ? $stylectx->get_background_color ('normal')
+        : $stylectx->get_background_color ('insensitive');
+}
+
 sub new_hotkeys_list {
     my ($gkey, $group) = @_;
     my $store = Gtk3::ListStore->new(
-        qw/Glib::String Glib::String Glib::String Glib::String Glib::String/);
-    my $even = FALSE;
+        qw/Glib::String Glib::String Glib::String Glib::String Glib::Boolean/);
+    my $even = TRUE;
     foreach my $akey (sort keys %$group) {
         my $iter = $store->append ();
         my $hotkey = $group->{$akey}->{'key'};
         my $label = $akey;
         $label =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
-        my $bgcol = $even ? BG_DARKER: BG_LIGHTER;
         $store->set ($iter, C_LABEL, $label, C_HOTKEY, $hotkey,
-            C_GROUP, $gkey, C_ACCEL, $akey, C_BCOLOR, $bgcol);
+            C_GROUP, $gkey, C_ACCEL, $akey, C_ODDITY, $even);
         $even = not $even;
     }
     my $treeview = Gtk3::TreeView->new_with_model ($store);
@@ -2277,8 +2282,9 @@ sub new_hotkeys_list {
                 'markup' => '<span size="smaller">'
                             . $model->get_value ($iter, C_LABEL)
                             . '</span>');
-            $renderer->set_property (
-                'background' => $model->get_value ($iter, C_BCOLOR));
+            my $bgcol = row_background_color (
+                $col, $model->get_value ($iter, C_ODDITY));
+            $renderer->set_property ('cell-background-rgba' => $bgcol);
         }
     );
     # hotkeys column
@@ -2291,8 +2297,9 @@ sub new_hotkeys_list {
             my ($acckey, $accmod) = Gtk3::accelerator_parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
-            $renderer->set_property (
-                'background' => $model->get_value ($iter, C_BCOLOR));
+            my $bgcol = row_background_color (
+                $col, $model->get_value ($iter, C_ODDITY));
+            $renderer->set_property ('cell-background-rgba' => $bgcol);
         }
     );
     # callback for saving current selection
