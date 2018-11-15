@@ -76,8 +76,6 @@ sub _ {
     tab_hotkeys => _('Hotkeys'),
     tab_info => _('Info'),
 
-    ab_frame => _('Addressbook'),
-    mem_frame => _('Memory'),
     msgview_frame => _('Message View'),
     log_frame => _('Log window'),
     dnd_frame => _('Drag \'n\' drop'),
@@ -89,9 +87,7 @@ sub _ {
     mlist_frame => _('Message List'),
     mview_frame => _('Message View'),
     compo_frame => _('Compose window'),
-    netm_frame => _('NetworkManager'),
     diff_frame => _('Viewing patches'),
-    mpass_frame => _('Master passphrase'),
     compose_frame => _('Compose window'),
     qs_frame => _('Quick search'),
 
@@ -816,25 +812,20 @@ sub new_grid_pack {
 );
 
 sub new_other_page() {
-    return new_vbox_pack (
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_check_button_for(\%pr::oth, 'use_dlg', \%HPVALUE)),
-                   $xl::s{ab_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_text_box_for_int(\%pr::oth, 'max_use', \%HPVALUE),
-                       new_text_box_for_int(\%pr::oth, 'min_time', \%HPVALUE)),
-                   $xl::s{mem_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_check_button_for(\%pr::oth, 'use_netm', \%HPVALUE)),
-                   $xl::s{netm_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_text_box_for_int(\%pr::oth, 'mp_rounds', \%HPVALUE)),
-                   $xl::s{mpass_frame}, 'not-packed')
-           );
+    return new_grid_pack (1, 12, [
+        [ _('Addressbook') ],
+        [ new_check_button_for(\%pr::oth, 'use_dlg', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Memory') ],
+        [ new_text_box_for_int(\%pr::oth, 'max_use', \%HPVALUE) ],
+        [ new_text_box_for_int(\%pr::oth, 'min_time', \%HPVALUE) ],
+        [ '--' ],
+        [ _('NetworkManager') ],
+        [ new_check_button_for(\%pr::oth, 'use_netm', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Master passphrase') ],
+        [ new_text_box_for_int(\%pr::oth, 'mp_rounds', \%HPVALUE) ]
+    ]);
 }
 
 %pr::gui = ( # gui bells and whistles
