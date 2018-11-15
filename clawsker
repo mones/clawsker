@@ -714,6 +714,62 @@ sub new_subpage_frame {
     return $frame;
 }
 
+sub new_grid {
+    my ($border_w, $row_s, $col_s) = @_;
+    $border_w //= 10;
+    $row_s //= 10;
+    $col_s //= 10;
+    my $grid = Gtk3::Grid->new;
+    $grid->set_border_width ($border_w);
+    $grid->set_row_spacing ($row_s);
+    $grid->set_column_spacing ($col_s);
+    return $grid;
+}
+
+sub new_label {
+    my $text = shift;
+    $text //= '';
+    my $label = Gtk3::Label->new ($text);
+    $label->set_alignment (0, 0.5);
+    return $label;
+}
+
+sub new_title {
+    my $text = shift;
+    $text //= '';
+    my $label = Gtk3::Label->new ('<b>' . $text . '</b>');
+    $label->set_use_markup (TRUE);
+    $label->set_alignment (0, 0.5);
+    return $label;
+}
+
+sub new_grid_pack {
+    my ($width, $height, $widget) = @_;
+    my $grid = new_grid ();
+    $grid->set_column_homogeneous (TRUE);
+    for (my $i = 0; $i < $width; ++$i) {
+        for (my $j = 0; $j < $height; ++$j) {
+            my $wid = $widget->[$j]->[$i];
+            next unless defined $wid;
+            my $ww = (($i + 1 < $width) and (defined $widget->[$j]->[$i + 1]))
+                ? 1
+                : $width - $i;
+            if (ref $wid) {
+                $grid->attach ($wid, $i, $j, $ww, 1);
+            } else { # not a widget
+                if ('--' eq $wid) { # a separator
+                    $grid->attach (Gtk3::Separator->new ('horizontal'),
+                        $i, $j, $ww, 1);
+                } else { # or a title
+                    $grid->attach (new_title ($wid),
+                        $i, $j, $ww, 1);
+                }
+            }
+        }
+    }
+    return $grid;
+}
+
 # preference maps and corresponding page creation subs
 
 %pr::oth = ( # other preferences
@@ -2332,54 +2388,21 @@ sub new_hotkeys_page() {
 
 sub new_info_page() {
     my $v = get_toolkit_versions ();
-    my %labels = (
-        'glib' => 'Perl-GLib',
-        'glib-r' => _('GLib runtime'),
-        'glib-b' => _('GLib built'),
-        'gtk' => 'Perl-GTK3',
-        'gtk-r' => _('GTK3 runtime'),
-        'gtk-b' => _('GTK3 built'),
-    );
-    # setup grids
-    my $t0 = Gtk3::Grid->new;
-    my $t1 = Gtk3::Grid->new;
-    for ($t0, $t1) {
-        $_->set_border_width (10);
-        $_->set_row_spacing (10);
-        $_->set_column_spacing (10);
-    }
-    # fill first grid
-    my $row = 0;
-    foreach (sort keys %$v) {
-        if (defined $v->{$_}) {
-            my $label = Gtk3::Label->new ($labels{$_});
-            my $value = Gtk3::Label->new ('<b>' . $v->{$_} . '</b>');
-            $label->set_alignment (0, 0.5);
-            $value->set_alignment (0, 0.5);
-            $value->set_use_markup (TRUE);
-            $t0->attach ($label, 0, $row, 1, 1);
-            $t0->attach ($value, 1, $row, 1, 1);
-            ++$row;
-        }
-    }
-    # fill second grid
-    my @lbl = map { $_->set_alignment (0, 0.5); $_ } (
-        Gtk3::Label->new (_('Binary')),
-        Gtk3::Label->new (_('Configuration'))
-    );
     my $cfgv = $CONFIGDATA->{'Common'}{'config_version'};
     $cfgv //= '';
-    my @val = map { $_->set_alignment (0, 0.5); $_->set_use_markup (TRUE); $_ } (
-        Gtk3::Label->new ('<b>' . $CLAWSV . '</b>'),
-        Gtk3::Label->new ('<b>' . $cfgv . '</b>')
-    );
-    for (my $i = 0; $i <= $#lbl; ++$i) {
-        $t1->attach ($lbl[$i], 0, $i, 1, 1);
-        $t1->attach ($val[$i], 1, $i, 1, 1);
-    }
-    return new_vbox_pack (
-                new_subpage_frame ($t0, _('Library versions'), 'not-packed'),
-                new_subpage_frame ($t1, _('Claws Mail versions'), 'not-packed'));
+    return new_grid_pack (4, 11, [
+        [ _('Library versions') ],
+        [ new_label ('Perl-GLib'), new_title ($v->{'glib'}) ],
+        [ new_label (_('GLib runtime')), new_title ($v->{'glib-r'}) ],
+        [ new_label (_('GLib built')), new_title ($v->{'glib-b'}) ],
+        [ new_label ('Perl-GTK3'), new_title ($v->{'gtk'}) ],
+        [ new_label (_('GTK3 runtime')), new_title ($v->{'gtk-r'}) ],
+        [ new_label (_('GTK3 built')), new_title ($v->{'gtk-b'}) ],
+        [ '--' ],
+        [ _('Claws Mail versions') ],
+        [ new_label (_('Binary')), new_title ($CLAWSV) ],
+        [ new_label (_('Configuration')), new_title ($cfgv) ]
+    ]);
 }
 
 # version info
@@ -2394,8 +2417,12 @@ sub get_toolkit_versions {
     }
     $versions{'gtk'} = $Gtk3::VERSION;
     if ($Gtk3::VERSION >= 0.034) {
-        $versions{'gtk-b'} = &Gtk3::GET_VERSION_INFO;
+        $versions{'gtk-b'} = &Gtk3::GET_VERSION_INFO
+    } else {
+        $versions{'gtk-b'} = _('Not available')
     }
+    $versions{'gtk-r'} = join('.',
+        &Gtk3::get_major_version, &Gtk3::get_minor_version, &Gtk3::get_micro_version);
     return \%versions;
 }
 
