@@ -2121,13 +2121,11 @@ sub new_winpos_page() {
 
 sub new_account_subpage($) {
     my ($akey) = @_;
-    return new_vbox_pack (
-                new_subpage_frame (
-                    new_vbox_pack (
-                        new_check_button_for (\%pr::acc, 'tls_set', $ACHPVALUE{$akey}),
-                        new_text_box_for_nchar (\%pr::acc, 'tls_pri', $ACHPVALUE{$akey})),
-                    _('GnuTLS priority'), 'not-packed')
-           );
+    return new_grid_pack (1, 3, [
+        [ _('GnuTLS priority') ],
+        [ new_check_button_for (\%pr::acc, 'tls_set', $ACHPVALUE{$akey}) ],
+        [ new_text_box_for_nchar (\%pr::acc, 'tls_pri', $ACHPVALUE{$akey}) ]
+    ]);
 }
 
 sub new_accounts_page() {
@@ -2140,12 +2138,9 @@ sub new_accounts_page() {
         my $name = $ACPREFS{$_}{'account_name'};
         my $isdef = ($ACPREFS{$_}{'is_default'} eq '1');
         my $page = new_account_subpage ($_);
-        $accbook->append_page ($page,
-            Gtk3::Label->new ($isdef? '<b>' . $name . '</b>': $name));
-        if ($isdef) {
-            my $label = $accbook->get_tab_label ($page);
-            $label->set_use_markup (TRUE);
-        }
+        my $label = new_label ($isdef? '<u>' . $name . '</u>': $name);
+        $label->set_use_markup (TRUE);
+        $accbook->append_page ($page, $label);
     }
     $accbook->set_scrollable (TRUE);
     return $accbook;
