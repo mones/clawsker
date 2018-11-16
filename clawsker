@@ -76,11 +76,6 @@ sub _ {
     tab_hotkeys => _('Hotkeys'),
     tab_info => _('Info'),
 
-    dnd_frame => _('Drag \'n\' drop'),
-    ssl_frame => _('Secure Sockets Layer'),
-    msgs_frame => _('Messages'),
-    swc_frame => _('Completion'),
-
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
     l_oth_max_use => _('Maximum memory for message cache'),
@@ -1140,45 +1135,33 @@ sub new_gui_page() {
 );
 
 sub new_behaviour_page() {
-    my $bf = Gtk3::VBox->new (FALSE, 5);
-    $bf->set_border_width (PAGE_SPC);
-
-    my $tb_up_step = new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE);
-    my $tb_thread_a = new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE);
-
-    $bf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE)),
-                         $xl::s{dnd_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start (new_subpage_frame (
-                         new_hbox_pack (
-                             new_check_button_for (\%pr::beh, 'skip_ssl', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'unsafe_ssl', \%HPVALUE)),
-                         $xl::s{ssl_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start ($tb_up_step, FALSE, FALSE, 0);
-    $bf->pack_start ($tb_thread_a, FALSE, FALSE, 0);
-    $bf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_check_button_for (\%pr::beh, 'flowed', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'parts_rw', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'use_utf8', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'dangerous', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'out_ascii', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'pp_unsel', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'rewrite_ff', \%HPVALUE)),
-                         $xl::s{msgs_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $bf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE),
-                             new_check_button_for (\%pr::beh, 'fold_swc', \%HPVALUE)),
-                         $xl::s{swc_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    return $bf;
+    return new_grid_pack (2, 20, [
+        [ _('Drag \'n\' drop') ],
+        [ new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Secure Sockets Layer') ],
+        [ new_check_button_for (\%pr::beh, 'skip_ssl', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'unsafe_ssl', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Messages') ],
+        [ new_check_button_for (\%pr::beh, 'flowed', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'out_ascii', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'parts_rw', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'pp_unsel', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'use_utf8', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'dangerous', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'rewrite_ff', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Completion') ],
+        [ new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'fold_swc', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Other') ],
+        [ new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE) ]
+    ]);
 }
 
 %pr::col = ( # a variety of colours
