@@ -76,15 +76,10 @@ sub _ {
     tab_hotkeys => _('Hotkeys'),
     tab_info => _('Info'),
 
-    msgview_frame => _('Message View'),
-    log_frame => _('Log window'),
     dnd_frame => _('Drag \'n\' drop'),
     ssl_frame => _('Secure Sockets Layer'),
     msgs_frame => _('Messages'),
     swc_frame => _('Completion'),
-    diff_frame => _('Viewing patches'),
-    compose_frame => _('Compose window'),
-    qs_frame => _('Quick search'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -1326,45 +1321,34 @@ sub new_behaviour_page() {
 );
 
 sub new_colours_page() {
-    return new_vbox_pack (
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE),
-                       new_hbox_pack_compact (
-                           new_color_button_for (\%pr::col, 'tags_text', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'tags_bg', \%HPVALUE))),
-                   $xl::s{msgview_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_hbox_pack (
-                       new_vbox_pack_compact (
-                           new_color_button_for (\%pr::col, 'log_err', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'log_warn', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'log_msg', \%HPVALUE)),
-                       new_vbox_pack_compact (
-                           new_color_button_for (\%pr::col, 'log_in', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'log_out', \%HPVALUE))),
-                   $xl::s{log_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_vbox_pack (
-                       new_color_button_for (\%pr::col, 'diff_add', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'diff_del', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'diff_hunk', \%HPVALUE)),
-                   $xl::s{diff_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_hbox_pack (
-                       new_color_button_for (\%pr::col, 'default_header_text', \%HPVALUE),
-                       new_color_button_for (\%pr::col, 'default_header_bg', \%HPVALUE)),
-                   $xl::s{compose_frame}, 'not-packed'),
-               new_subpage_frame (
-                   new_hbox_pack (
-                       new_vbox_pack_compact (
-                           new_color_button_for (\%pr::col, 'qs_active_text', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'qs_error_text', \%HPVALUE)),
-                       new_vbox_pack_compact (
-                           new_color_button_for (\%pr::col, 'qs_active_bg', \%HPVALUE),
-                           new_color_button_for (\%pr::col, 'qs_error_bg', \%HPVALUE))),
-                   $xl::s{qs_frame}, 'not-packed')
-           );
+    return new_grid_pack (3, 18, [
+        [ _('Message View') ],
+        [ new_color_button_for (\%pr::col, 'emphasis', \%HPVALUE) ],
+        [ new_color_button_for (\%pr::col, 'tags_text', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'tags_bg', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Log window') ],
+        [ new_color_button_for (\%pr::col, 'log_err', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'log_in', \%HPVALUE) ],
+        [ new_color_button_for (\%pr::col, 'log_warn', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'log_out', \%HPVALUE) ],
+        [ new_color_button_for (\%pr::col, 'log_msg', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Viewing patches') ],
+        [ new_color_button_for (\%pr::col, 'diff_add', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'diff_del', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'diff_hunk', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Compose window') ],
+        [ new_color_button_for (\%pr::col, 'default_header_text', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'default_header_bg', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Quick search') ],
+        [ new_color_button_for (\%pr::col, 'qs_active_text', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'qs_active_bg', \%HPVALUE) ],
+        [ new_color_button_for (\%pr::col, 'qs_error_text', \%HPVALUE) ,
+            new_color_button_for (\%pr::col, 'qs_error_bg', \%HPVALUE) ]
+    ]);
 }
 
 %pr::win = ( # tweak window positions and/or sizes
