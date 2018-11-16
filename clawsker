@@ -82,11 +82,6 @@ sub _ {
     ssl_frame => _('Secure Sockets Layer'),
     msgs_frame => _('Messages'),
     swc_frame => _('Completion'),
-    stripes_frame => _('Coloured stripes'),
-    sbar_frame => _('Scroll bars'),
-    mlist_frame => _('Message List'),
-    mview_frame => _('Message View'),
-    compo_frame => _('Compose window'),
     diff_frame => _('Viewing patches'),
     compose_frame => _('Compose window'),
     qs_frame => _('Quick search'),
@@ -984,55 +979,38 @@ sub new_other_page() {
 );
 
 sub new_gui_page() {
-    my $gf = Gtk3::VBox->new (FALSE, 5);
-    $gf->set_border_width (PAGE_SPC);
-
-    my $cb_dot_lines = new_check_button_for (\%pr::gui, 'dot_lines', \%HPVALUE);
-    my $cb_toolbar_d = new_check_button_for (\%pr::gui, 'toolbar_d', \%HPVALUE);
-    my $tb_zero_char = new_text_box_for_nchar (\%pr::gui, 'zero_char', \%HPVALUE);
-
-    $gf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'strip_all', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'strip_sum', \%HPVALUE),
-                             new_text_box_for_int (\%pr::gui, 'strip_off', \%HPVALUE)),
-                         $xl::s{stripes_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'b_unread', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'swp_from', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'two_linev', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'next_del', \%HPVALUE),
-                             new_selection_box_for (\%pr::gui, 'from_show', \%HPVALUE)),
-                         $xl::s{mlist_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (new_subpage_frame (
-                         new_hbox_pack (
-                             new_check_button_for (\%pr::gui, 'cursor_v', \%HPVALUE),
-                             new_check_button_for (\%pr::gui, 'mview_date', \%HPVALUE)),
-                         $xl::s{mview_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_hbox_pack_compact (
-                                 new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
-                                 new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE),
-                                 new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE)),
-                             new_text_box_for_int (\%pr::gui, 'warn_send_multi', \%HPVALUE)),
-                         $xl::s{compo_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($cb_dot_lines, FALSE, FALSE, 0);
-    $gf->pack_start ($cb_toolbar_d, FALSE, FALSE, 0);
-    $gf->pack_start (new_subpage_frame (
-                         new_vbox_pack (
-                             new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE),
-                             new_selection_box_for (\%pr::gui, 'v_scroll', \%HPVALUE)),
-                         $xl::s{sbar_frame}, 'not-packed'),
-                     FALSE, FALSE, FRAME_SPC);
-    $gf->pack_start ($tb_zero_char, FALSE, FALSE, 0);
-
-    return $gf;
+    return new_grid_pack (2, 24, [
+        [ _('Coloured stripes') ],
+        [ new_check_button_for (\%pr::gui, 'strip_all', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'strip_sum', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::gui, 'strip_off', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Message List') ],
+        [ new_check_button_for (\%pr::gui, 'b_unread', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'swp_from', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::gui, 'two_linev', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'next_del', \%HPVALUE) ],
+        [ new_selection_box_for (\%pr::gui, 'from_show', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Message View') ],
+        [ new_check_button_for (\%pr::gui, 'cursor_v', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'mview_date', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Compose window') ],
+        [ new_check_button_for (\%pr::gui, 'no_markup', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'margin_co', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::gui, 'type_any', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::gui, 'warn_send_multi', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Scroll bars') ],
+        [ new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE) ],
+        [ new_selection_box_for (\%pr::gui, 'v_scroll', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Other') ],
+        [ new_check_button_for (\%pr::gui, 'dot_lines', \%HPVALUE),
+            new_check_button_for (\%pr::gui, 'toolbar_d', \%HPVALUE) ],
+        [ new_text_box_for_nchar (\%pr::gui, 'zero_char', \%HPVALUE) ]
+    ]);
 }
 
 %pr::beh = ( # tweak some behaviour
