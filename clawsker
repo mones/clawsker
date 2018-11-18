@@ -271,19 +271,19 @@ my @APPICONS = ();
 # modification flag
 my $MODIFIED = 0;
 
-# index constants for preference arrays
-use constant NAME  => 0; # the name on the rc file
-use constant LABEL => 1; # the label on the GUI
-use constant DESC  => 2; # the description for the hint/help
-use constant TYPE  => 3; # data type: bool, int, float, string, color
-use constant CMVER => 4; # lowest[,highest] Claws Mail version(s) the feature exists
-use constant CMDEF => 5; # default value for the preference in Claws Mail
-use constant PLUGIN => 6; # plugin section (only in plugin preferences)
-
-# constants for GUI spacing
-use constant HBOX_PAD => 5;
-use constant FRAME_SPC => 2;
-use constant PAGE_SPC => 5;
+use constant {
+    # index constants for preference arrays
+    NAME  => 0, # the name on the rc file
+    LABEL => 1, # the label on the GUI
+    DESC  => 2, # the description for the hint/help
+    TYPE  => 3, # data type: bool, int, float, string, color
+    CMVER => 4, # lowest[,highest] Claws Mail version(s) the feature exists
+    CMDEF => 5, # default value for the preference in Claws Mail
+    PLUGIN => 6, # plugin section (only in plugin preferences)
+    # constants for GUI spacing
+    HBOX_PAD => 5,
+    GRID_SPC => 10,
+};
 
 # for data references indexing
 use constant VALUE => 0;
@@ -646,9 +646,9 @@ sub new_selection_box_for($$$) {
 
 sub new_grid {
     my ($border_w, $row_s, $col_s) = @_;
-    $border_w //= 10;
-    $row_s //= 10;
-    $col_s //= 10;
+    $border_w //= GRID_SPC;
+    $row_s //= GRID_SPC;
+    $col_s //= GRID_SPC;
     my $grid = Gtk3::Grid->new;
     $grid->set_border_width ($border_w);
     $grid->set_row_spacing ($row_s);
