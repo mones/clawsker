@@ -273,11 +273,16 @@ use constant {
     # constants for GUI spacing
     HBOX_PAD => 5,
     GRID_SPC => 10,
+    # for data references indexing
+    VALUE => 0,
+    IVALUE => 1,
+    # hotkey list store columns
+    C_LABEL => 0,
+    C_HOTKEY => 1,
+    C_GROUP => 2,
+    C_ACCEL => 3,
+    C_ODDITY => 4,
 };
-
-# for data references indexing
-use constant VALUE => 0;
-use constant IVALUE => 1;
 
 # version functions
 
@@ -2075,14 +2080,6 @@ sub new_plugins_page() {
         [ _('Perl') ], $widget{'PerlPlugin'}
     ]);
 }
-
-use constant {
-    C_LABEL => 0,
-    C_HOTKEY => 1,
-    C_GROUP => 2,
-    C_ACCEL => 3,
-    C_ODDITY => 4,
-};
 
 sub new_hotkeys_list_label {
     my $renderer = Gtk3::CellRendererText->new ();
