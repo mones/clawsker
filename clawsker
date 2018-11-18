@@ -66,16 +66,6 @@ sub _ {
     exit_fact => _('There are unapplied modifications.'),
     exit_question => _('Do you really want to quit?'),
 
-    tab_colours => _('Colours'),
-    tab_behaviour => _('Behaviour'),
-    tab_gui => _('GUI'),
-    tab_other => _('Other'),
-    tab_winpos => _('Windows'),
-    tab_accounts => _('Accounts'),
-    tab_plugins => _('Plugins'),
-    tab_hotkeys => _('Hotkeys'),
-    tab_info => _('Info'),
-
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
     l_oth_max_use => _('Maximum memory for message cache'),
@@ -1922,26 +1912,16 @@ sub new_winpos_subpage_misc() {
 sub new_winpos_page() {
     my $winbook = Gtk3::Notebook->new;
     $winbook->set_tab_pos ('right');
-    $winbook->append_page (new_winpos_subpage_main,
-        Gtk3::Label->new (_('Main')));
-    $winbook->append_page (new_winpos_subpage_msgs,
-        Gtk3::Label->new (_('Message')));
-    $winbook->append_page (new_winpos_subpage_sendrecv,
-        Gtk3::Label->new (_('Send/Receive')));
-    $winbook->append_page (new_winpos_subpage_fold,
-        Gtk3::Label->new (_('Folder')));
-    $winbook->append_page (new_winpos_subpage_addrbook,
-        Gtk3::Label->new (_('Addressbook')));
-    $winbook->append_page (new_winpos_subpage_accounts,
-        Gtk3::Label->new (_('Accounts')));
-    $winbook->append_page (new_winpos_subpage_filtering,
-        Gtk3::Label->new (_('Filtering')));
-    $winbook->append_page (new_winpos_subpage_useractions,
-        Gtk3::Label->new (_('User Actions')));
-    $winbook->append_page (new_winpos_subpage_prefs,
-        Gtk3::Label->new (_('Preferences')));
-    $winbook->append_page (new_winpos_subpage_misc,
-        Gtk3::Label->new (_('Other')));
+    $winbook->append_page (&new_winpos_subpage_main, new_label (_('Main')));
+    $winbook->append_page (&new_winpos_subpage_msgs, new_label (_('Message')));
+    $winbook->append_page (&new_winpos_subpage_sendrecv, new_label (_('Send/Receive')));
+    $winbook->append_page (&new_winpos_subpage_fold, new_label (_('Folder')));
+    $winbook->append_page (&new_winpos_subpage_addrbook, new_label (_('Addressbook')));
+    $winbook->append_page (&new_winpos_subpage_accounts, new_label (_('Accounts')));
+    $winbook->append_page (&new_winpos_subpage_filtering, new_label (_('Filtering')));
+    $winbook->append_page (&new_winpos_subpage_useractions, new_label (_('User Actions')));
+    $winbook->append_page (&new_winpos_subpage_prefs, new_label (_('Preferences')));
+    $winbook->append_page (&new_winpos_subpage_misc, new_label (_('Other')));
     return $winbook;
 }
 
@@ -2618,25 +2598,16 @@ sub save_preferences {
 # create notebook
 sub new_notebook {
     my $nb = Gtk3::Notebook->new;
-    #
-    $nb->append_page (new_behaviour_page (),
-        Gtk3::Label->new ($xl::s{tab_behaviour}));
-    $nb->append_page (new_colours_page (),
-        Gtk3::Label->new ($xl::s{tab_colours}));
-    $nb->append_page (new_gui_page (),
-        Gtk3::Label->new ($xl::s{tab_gui}));
-    $nb->append_page (new_other_page (),
-        Gtk3::Label->new ($xl::s{tab_other}));
-    $nb->append_page (new_winpos_page (),
-        Gtk3::Label->new ($xl::s{tab_winpos}));
-    $nb->append_page (new_accounts_page (),
-        Gtk3::Label->new ($xl::s{tab_accounts}));
-    $nb->append_page (new_plugins_page (),
-        Gtk3::Label->new ($xl::s{tab_plugins}));
-    $nb->append_page (new_hotkeys_page (),
-        Gtk3::Label->new ($xl::s{tab_hotkeys}));
-    $nb->append_page (new_info_page (),
-        Gtk3::Label->new ($xl::s{tab_info}));
+
+    $nb->append_page (&new_behaviour_page, Gtk3::Label->new (_('Behaviour')));
+    $nb->append_page (&new_colours_page, Gtk3::Label->new (_('Colours')));
+    $nb->append_page (&new_gui_page, Gtk3::Label->new (_('GUI')));
+    $nb->append_page (&new_other_page, Gtk3::Label->new (_('Other')));
+    $nb->append_page (&new_winpos_page, Gtk3::Label->new (_('Windows')));
+    $nb->append_page (&new_accounts_page, Gtk3::Label->new (_('Accounts')));
+    $nb->append_page (&new_plugins_page, Gtk3::Label->new (_('Plugins')));
+    $nb->append_page (&new_hotkeys_page, Gtk3::Label->new (_('Hotkeys')));
+    $nb->append_page (&new_info_page, Gtk3::Label->new (_('Info')));
 
     return $nb;
 }
