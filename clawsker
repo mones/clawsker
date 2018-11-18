@@ -345,13 +345,6 @@ sub handle_int_value {
         if defined $$dataref->[IVALUE];
 }
 
-sub handle_string_value {
-    my ($widget, $event, $dataref) = @_;
-    $$dataref->[VALUE] = $widget->get_text ();
-    $MODIFIED += $$dataref->[VALUE] ne $$dataref->[IVALUE]? 1: -1
-        if defined $$dataref->[IVALUE];
-}
-
 sub handle_nchar_value {
     my ($widget, $event, $dataref, $minlen, $maxlen) = @_;
     $_ = substr ($widget->get_text (), 0, $maxlen);
@@ -650,50 +643,6 @@ sub new_selection_box_for($$$) {
 }
 
 # more graphic helpers
-
-sub new_hbox_pack {
-    my $hbox = Gtk3::HBox->new (FALSE);
-    $hbox->set_border_width (PAGE_SPC);
-    foreach (@_) {
-        $hbox->pack_start ($_, FALSE, FALSE, 0);
-    }
-    return $hbox;
-}
-
-sub new_hbox_pack_compact {
-    my $hbox = Gtk3::HBox->new (FALSE);
-    $hbox->set_border_width (0);
-    foreach (@_) {
-        $hbox->pack_start ($_, FALSE, FALSE, 0);
-    }
-    return $hbox;
-}
-
-sub new_vbox_pack {
-    my $vbox = Gtk3::VBox->new (FALSE, 5);
-    $vbox->set_border_width (PAGE_SPC);
-    foreach (@_) {
-        $vbox->pack_start ($_, FALSE, FALSE, 0);
-    }
-    return $vbox;
-}
-
-sub new_vbox_pack_compact {
-    my $vbox = Gtk3::VBox->new (FALSE, 0);
-    $vbox->set_border_width (0);
-    foreach (@_) {
-        $vbox->pack_start ($_, FALSE, FALSE, 0);
-    }
-    return $vbox;
-}
-
-sub new_subpage_frame {
-    my ($box, $title, $notpacked) = @_;
-    my $frame = Gtk3::Frame->new ($title);
-    $frame->add ($box);
-    return new_vbox_pack ($frame) unless defined ($notpacked);
-    return $frame;
-}
 
 sub new_grid {
     my ($border_w, $row_s, $col_s) = @_;
