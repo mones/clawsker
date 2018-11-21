@@ -20,6 +20,7 @@ use utf8;
 use version 0.77;
 use Glib qw(TRUE FALSE);
 use Gtk3;
+use File::Which;
 use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
@@ -295,9 +296,8 @@ sub version_greater_or_equal {
 }
 
 sub get_claws_version {
-    $_ = qx/which claws-mail/;
-    chomp;
-    return "" unless ($_); # not installed
+    $_ = which ('claws-mail');
+    return "" unless defined $_; # not installed
     my $res = "";
     $_ = qx/$_ -v/;
     chomp;
