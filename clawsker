@@ -2181,9 +2181,7 @@ sub new_hotkeys_page() {
     foreach my $gkey (sort keys %$HOTKEYS) {
         my $group = $HOTKEYS->{$gkey};
         # group title
-        my $glabel = Gtk3::Label->new ('<b>' . $gkey . '</b>');
-        $glabel->set_use_markup (TRUE);
-        $glabel->set_alignment (0, 0.5);
+        my $glabel = new_title ($gkey);
         $glabel->set_padding (5, 1);
         $vbox->pack_start ($glabel, FALSE, FALSE, 0);
         # group key list
