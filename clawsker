@@ -21,6 +21,7 @@ use version 0.77;
 use Glib qw(TRUE FALSE);
 use Gtk3;
 use File::Which;
+use File::Spec::Functions;
 use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
@@ -40,7 +41,7 @@ my $main_window = undef;
 my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
 $locale = "C" unless defined($locale);
 setlocale (LC_ALL, $locale);
-bindtextdomain ($NAME, sprintf ('%s/share/locale', $PREFIX));
+bindtextdomain ($NAME, catdir ($PREFIX, 'share', 'locale'));
 textdomain ($NAME);
 
 sub _ {
@@ -247,7 +248,7 @@ my %ACHPVALUE = ();
 my %PLHPVALUE = ();
 # default config dir and file name
 my $ALTCONFIGDIR = FALSE;
-my $CONFIGDIR = $ENV{HOME} . '/.claws-mail/';
+my $CONFIGDIR = catdir ($ENV{HOME}, '.claws-mail');
 my $CONFIGRC = 'clawsrc';
 my $ACCOUNTRC = 'accountrc';
 # supported and available plugins lists
@@ -387,23 +388,23 @@ sub handle_selection_value {
 }
 
 sub get_rc_filename {
-    return $CONFIGDIR . $CONFIGRC;
+    return catfile ($CONFIGDIR, $CONFIGRC);
 }
 
 sub get_ac_rc_filename {
-    return $CONFIGDIR . $ACCOUNTRC;
+    return catfile ($CONFIGDIR, $ACCOUNTRC);
 }
 
 sub get_menurc_filename {
-    return $CONFIGDIR . "menurc";
+    return catfile ($CONFIGDIR, "menurc");
 }
 
 sub set_rc_filename {
     my ($fullname) = @_;
-    my @parts = split ('/', $fullname);
+    my @parts = splitpath ($fullname);
     $CONFIGRC = $parts[$#parts];
     $parts[$#parts] = '';
-    $CONFIGDIR = join ('/', @parts);
+    $CONFIGDIR = catpath (@parts);
 }
 
 sub log_message {
@@ -460,13 +461,12 @@ sub claws_is_running {
 
 sub check_claws_not_running {
     return TRUE if $READONLY;
-    my $tmpdir = (defined $ENV{TMPDIR})? $ENV{TMPDIR}: '/tmp';
-    $tmpdir = '/tmp' if ($tmpdir eq '');
-    my $lockdir = "$tmpdir/claws-mail-$<";
+    my $tmpdir = File::Spec->tmpdir ();
+    my $lockdir = catfile ($tmpdir, "claws-mail-$<");
     -d $lockdir and do {
         $_ = $CONFIGDIR;
         s/\/$//;
-        my $socket = "$lockdir/" . md5_hex ($_);
+        my $socket = catfile ($lockdir, md5_hex ($_));
         -S $socket and return claws_is_running ();
     };
     return TRUE;
@@ -2321,7 +2321,6 @@ sub opt_alternate_config_dir {
     die _("Error: '{dir}' is not a directory or does not exist\n", dir => $value)
         unless -d $value;
     $CONFIGDIR = $value;
-    $CONFIGDIR .= "/" unless ($CONFIGDIR =~ /.*\/$/);
     $ALTCONFIGDIR = TRUE;
 }
 
@@ -2705,13 +2704,13 @@ sub get_app_icons {
     return \@APPICONS if (@APPICONS);
     my @names;
     if (-d $DATADIR) { # installed
-        my $dir = $DATADIR . '/icons/hicolor';
+        my $dir = catdir ($DATADIR, 'icons', 'hicolor');
         @names = map {
-            join ('/', ($dir, $_ . 'x' . $_, 'apps', $NAME . '.png'))
+            catfile ($dir, $_ . 'x' . $_, 'apps', $NAME . '.png')
         } (48, 64, 128);
     } else { # unpacked tarball or git clone
         @names = map {
-            join ('/', ('./icons', $NAME . '-' . $_ . '.png'));
+            catfile ('.', 'icons', $NAME . '-' . $_ . '.png');
         } (48, 64, 128);
     }
     foreach (@names) {
