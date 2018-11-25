@@ -2662,7 +2662,7 @@ sub exit_handler {
     );
     my $resp = $dialog->run;
     $dialog->hide;
-    return TRUE if ($resp == 1);
+    return TRUE if $resp;
   }
   Gtk3->main_quit;
 }
