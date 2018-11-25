@@ -18,7 +18,7 @@ PREFIX ?= /usr/local
 DATADIR = ${PREFIX}/share
 LOCALEDIR = ${DATADIR}/locale
 
-XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80 --package-name=${NAME} --package-version=${VERSION} --msgid-bugs-address=ricardo@mones.org
+XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80 --package-name=${NAME} --package-version=${VERSION} --msgid-bugs-address=ricardo@mones.org --from-code=UTF-8
 LINGUAS = es fr nl pt_BR sv nb de ca tr da id zh_TW
 
 all: build
@@ -26,7 +26,7 @@ all: build
 ${NAME}.pot.0:
 	xgettext ${XG_ARGS} -f ./POTFILES -d ${NAME} -o $@
 
-# remove bogus entry win_title
+# remove bogus entry about_title
 ${NAME}.pot.1: ${NAME}.pot.0
 	head -17 $< > $@
 	tail -$(shell expr $(shell wc -l < $<) - 22 ) $< >> $@
