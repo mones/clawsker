@@ -58,15 +58,7 @@ sub _ {
 
 # default messages
 %xl::s = (
-    win_title => _('Claws Mail Hidden Preferences'),
     about_title => _('Clawsker :: A Claws Mail Tweaker'),
-    about_web_label => _("Visit Clawsker's web page"),
-
-    error_title => _('Clawsker error'),
-
-    exit_title => _('Clawsker warning'),
-    exit_fact => _('There are unapplied modifications.'),
-    exit_question => _('Do you really want to quit?'),
 
     l_oth_use_dlg => _('Use detached address book edit dialogue'),
     h_oth_use_dlg => _('If true use a separate dialogue to edit a person\'s details. Otherwise will use a form embedded in the address book\'s main window.'),
@@ -446,7 +438,7 @@ sub error_dialog {
     my ($emsg) = @_;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
     my $errordlg = message_dialog (
-        $main_window, $xl::s{error_title}, $markup, 'error', [ 'gtk-cancel', 0 ]
+        $main_window, _('Clawsker error'), $markup, 'error', [ 'gtk-cancel', 0 ]
     );
     $errordlg->run;
     $errordlg->destroy;
@@ -2621,7 +2613,7 @@ sub new_about_dialog {
     $dialog->set_copyright ("Copyright © $year $holder");
     $dialog->set_license_type ('gpl-3-0');
     $dialog->set_website ($url);
-    $dialog->set_website_label ($xl::s{about_web_label});
+    $dialog->set_website_label (_("Visit Clawsker's web page"));
     # committers, by number of commits
     $dialog->set_authors ([
         $holder,
@@ -2661,10 +2653,11 @@ sub new_about_dialog {
 sub exit_handler {
   my ($parent) = @_;
   if ($MODIFIED != 0 and not $READONLY) {
-    my $markup = "<span>" . $xl::s{exit_fact} . "</span>\n\n"
-        . "<span weight=\"bold\">" . $xl::s{exit_question} . "</span>\n";
+    my $markup = "<span>" . _('There are unapplied modifications.')
+        . "</span>\n\n<span weight=\"bold\">"
+        . _('Do you really want to quit?') . "</span>\n";
     my $dialog = message_dialog (
-        $parent, $xl::s{exit_title}, $markup, 'question',
+        $parent, _('Clawsker warning'), $markup, 'question',
         [ 'gtk-no', 1, 'gtk-yes', 0 ]
     );
     my $resp = $dialog->run;
@@ -2740,7 +2733,7 @@ $box->pack_start (new_notebook (), TRUE, TRUE, 0);
 $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
 $main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
 $main_window->signal_connect (key_press_event => \&escape_key_handler);
-$main_window->set_title ($xl::s{win_title});
+$main_window->set_title (_('Claws Mail Hidden Preferences'));
 $main_window->set_icon_list (get_app_icons ());
 $main_window->add ($box);
 $main_window->show_all;
