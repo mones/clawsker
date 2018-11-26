@@ -2640,6 +2640,7 @@ sub new_about_dialog {
         'Mark Chang <mark.cyj@gmail.com>',
         'M. Sulchan Darmawan <bleketux@gmail.com>',
         'Numan Demirdöğen <if.gnu.linux@gmail.com>',
+        'Pedro Albuquerque <pmra@gmx.com>',
         'Petter Adsen <petter@synth.no>',
         $holder,
         'Tristan Chabredier (wwp) <subscript@free.fr>',
