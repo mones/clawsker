@@ -266,7 +266,7 @@ use constant {
     PLUGIN => 6, # plugin section (only in plugin preferences)
     # constants for GUI spacing
     HBOX_PAD => 5,
-    GRID_SPC => 10,
+    GRID_SPC => 9,
     # for data references indexing
     VALUE => 0,
     IVALUE => 1,
@@ -929,8 +929,8 @@ sub new_gui_page() {
         [ new_text_box_for_int (\%pr::gui, 'warn_send_multi', \%HPVALUE) ],
         [ '--' ],
         [ _('Scroll bars') ],
-        [ new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE) ],
-        [ new_selection_box_for (\%pr::gui, 'v_scroll', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::gui, 'h_scroll', \%HPVALUE),
+            new_selection_box_for (\%pr::gui, 'v_scroll', \%HPVALUE) ],
         [ '--' ],
         [ _('Other') ],
         [ new_check_button_for (\%pr::gui, 'dot_lines', \%HPVALUE),
