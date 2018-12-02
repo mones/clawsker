@@ -1,3 +1,18 @@
+1.3.0:
+  - Migrated to GTK+3 perl bindings
+  - Migrated UI layouts to new GtkGrid widget
+  - Reimplemented about dialogue using GTK+3 AboutDialog
+  - Hotkey background stripes now use theme colours
+  - Fixed bug detecting unapplied changes
+  - Fixed window height to fit common resolutions (4128)
+  - Translations:
+    • New: Portuguese
+    • Updated: Turkish, Dutch, Swedish, French, Spanish and Danish
+  - Late translations:
+    • New: Traditional Chinese (for 1.2.0)
+    • Updated: Brazilian Portuguese (for 1.2.0)
+  - Other fixes and improvements, see git log for further details
+
 1.2.0:
   - Implemented warning when quitting with unapplied changes (3736)
   - Program can now be exited with Escape key
