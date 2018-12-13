@@ -2526,7 +2526,6 @@ sub save_rc_preferences {
     my $rc = get_rc_filename ();
     log_message ("Saving preferences to $rc\n");
     return FALSE unless check_rc_file ($rc);
-    return FALSE unless check_claws_not_running ();
     return FALSE unless backup_resource ($rc);
     foreach (keys %PREFS) {
         if (defined $HPVALUE{$_}) {
@@ -2548,7 +2547,6 @@ sub save_ac_preferences {
     my $rc = get_ac_rc_filename ();
     log_message ("Saving account preferences to $rc\n");
     return FALSE unless check_rc_file ($rc);
-    return FALSE unless check_claws_not_running ();
     return FALSE unless backup_resource ($rc);
     foreach my $asect (keys %$ACCOUNTDATA) {
         if ($asect =~ /^Account: (\d+)$/) {
@@ -2567,13 +2565,13 @@ sub save_hk_preferences {
     my $rc = get_menurc_filename ();
     log_message ("Saving hotkey preferences to $rc\n");
     return FALSE unless check_rc_file ($rc);
-    return FALSE unless check_claws_not_running ();
     return FALSE unless backup_resource ($rc);
     save_menurc ($rc, $HOTKEYS);
     return TRUE;
 }
 
 sub save_preferences {
+    return FALSE unless check_claws_not_running ();
     my $result = save_rc_preferences ()
         and save_ac_preferences ()
         and save_hk_preferences ();
