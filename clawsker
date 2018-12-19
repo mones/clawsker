@@ -2106,7 +2106,7 @@ sub new_hotkeys_list_hotkey {
     $renderer->set_property ('editable' => TRUE);
     $renderer->signal_connect ('accel-edited' => sub {
         my ($w, $path, $key, $mods, $keycode) = @_;
-        my $accel = Gtk3::Accelerator->name ($key, $mods);
+        my $accel = Gtk3::accelerator_name ($key, $mods);
         my ($model, $iter) = $SELHOTKEY->get_selected ();
         $model->set($iter, C_HOTKEY, "\"$accel\"");
         my $gkey = $model->get_value ($iter, C_GROUP);
