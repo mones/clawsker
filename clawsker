@@ -2246,31 +2246,29 @@ sub get_toolkit_versions {
 }
 
 sub print_version() {
-    print $xl::s{about_title} . "\n";
-    print $xl::s{about_version} . " $VERSION\n";
+    say $xl::s{about_title};
+    say _('Version:') . " $VERSION";
     my $v = get_toolkit_versions ();
     if ($v->{'glib-b'}) {
-        print _("Perl-GLib version {glibv}, built for {glibb}, running with {glibr}.",
+        say _("Perl-GLib version {glibv}, built for {glibb}, running with {glibr}.",
                 glibv => $v->{'glib'},
                 glibb => $v->{'glib-b'},
                 glibr => $v->{'glib-r'});
     } else {
-        print _("Perl-GLib version {glibv}.", glibv => $v->{'glib'});
+        say _("Perl-GLib version {glibv}.", glibv => $v->{'glib'});
     }
-    print "\n";
     if ($v->{'gtk-b'}) {
-        print _("Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}.",
+        say _("Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}.",
                 gtkv => $v->{'gtk'},
                 gtkb => $v->{'gtk-b'},
                 gtkr => $v->{'gtk-r'});
     } else {
-        print _("Perl-GTK3 version {gtkv}.", gtkv => $v->{'gtk'});
+        say _("Perl-GTK3 version {gtkv}.", gtkv => $v->{'gtk'});
     }
-    print "\n";
     my $clawsver = ($CLAWSV eq "") ?
                 _("Claws Mail was not found!") :
                 _("Claws Mail returned version {cmv}.", cmv => $CLAWSV);
-    print $clawsver . "\n";
+    say $clawsver;
 }
 
 # the command line help
