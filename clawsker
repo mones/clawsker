@@ -212,6 +212,8 @@ sub _ {
     h_acc_gtls_set => _('Enables using user provided GnuTLS priority string.'),
     l_acc_gtls_pri => _('GnuTLS priority'),
     h_acc_gtls_pri => _('Value to use as GnuTLS priority string if custom priority check is enabled. Otherwise this value is ignored.'),
+    l_acc_tls_sni => _('Use TLS SNI extension'),
+    h_acc_tls_sni => _('Enables sending your hostname, if available, so the server can select the appropriate certificate for your domain. Useful for servers which host multiple domains on the same IP address.'),
 
     l_plu_gpg_alimit => _('Autocompletion limit'),
     h_plu_gpg_alimit => _('Limits the number of addresses obtained from keyring through autocompletion. Use 0 to get all matches.'),
@@ -1959,14 +1961,24 @@ sub new_winpos_page() {
         '3.9.0.181',
         '0',
     ],
+    tls_sni => [
+        'use_tls_sni',
+        $xl::s{l_acc_tls_sni},
+        $xl::s{h_acc_tls_sni},
+        'bool',
+        '3.17.2.16',
+        '0',
+    ],
 );
 
 sub new_account_subpage($) {
     my ($akey) = @_;
-    return new_grid_pack (1, 3, [
+    return new_grid_pack (1, 5, [
         [ _('GnuTLS priority') ],
         [ new_check_button_for (\%pr::acc, 'tls_set', $ACHPVALUE{$akey}) ],
-        [ new_text_box_for_nchar (\%pr::acc, 'tls_pri', $ACHPVALUE{$akey}) ]
+        [ new_text_box_for_nchar (\%pr::acc, 'tls_pri', $ACHPVALUE{$akey}) ],
+        [ _('Server Name Indication') ],
+        [ new_check_button_for (\%pr::acc, 'tls_sni', $ACHPVALUE{$akey}) ],
     ]);
 }
 
