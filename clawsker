@@ -2188,23 +2188,21 @@ sub new_hotkeys_list {
 }
 
 sub new_hotkeys_page() {
-    my $swin = Gtk3::ScrolledWindow->new ();
-    my $vbox = Gtk3::VBox->new (FALSE, 5);
+    my $hkbook = Gtk3::Notebook->new;
+    $hkbook->set_tab_pos ('right');
     foreach my $gkey (sort keys %$HOTKEYS) {
         my $group = $HOTKEYS->{$gkey};
-        # group title
-        my $glabel = new_title ($gkey);
-        $glabel->set_padding (5, 1);
-        $vbox->pack_start ($glabel, FALSE, FALSE, 0);
-        # group key list
         my $keylist = new_hotkeys_list ($gkey, $group);
-        $vbox->pack_start ($keylist, FALSE, FALSE, 0);
+        # prepare scrolled window
+        my $swin = Gtk3::ScrolledWindow->new;
+        $swin->set_border_width (5);
+        $swin->set_shadow_type ('none');
+        $swin->set_policy ('automatic', 'automatic');
+        # add list of keys
+        $swin->add ($keylist);
+        $hkbook->append_page ($swin, new_label ($gkey));
     }
-    $swin->set_border_width (5);
-    $swin->set_shadow_type ('none');
-    $swin->set_policy ('automatic', 'always');
-    $swin->add_with_viewport ($vbox);
-    return $swin;
+    return $hkbook;
 }
 
 sub new_info_page() {
