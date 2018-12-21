@@ -561,7 +561,7 @@ sub new_text_box_for_nchar($$$) {
     my $label = $$hash{$key}[LABEL];
     my @type = split (/,/, $$hash{$key}[TYPE]); # char,minlen,maxlen,width
     my $glabel = Gtk3::Label->new ($label);
-    my $gentry = Gtk3::Entry->new ();
+    my $gentry = Gtk3::Entry->new;
     $gentry->set_max_length($type[2]) if defined ($type[2]);
     my $width = $type[3];
     $width //= $type[2];
@@ -2094,14 +2094,14 @@ sub new_plugins_page() {
 }
 
 sub new_hotkeys_list_label {
-    my $renderer = Gtk3::CellRendererText->new ();
+    my $renderer = Gtk3::CellRendererText->new;
     $renderer->set_property('alignment' => 'left');
     $renderer->set_property('editable' => FALSE);
     return $renderer;
 }
 
 sub new_hotkeys_list_hotkey {
-    my $renderer = Gtk3::CellRendererAccel->new ();
+    my $renderer = Gtk3::CellRendererAccel->new;
     $renderer->set_property ('accel-mode' => 'gtk');
     $renderer->set_property ('editable' => TRUE);
     $renderer->signal_connect ('accel-edited' => sub {
