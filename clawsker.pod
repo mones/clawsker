@@ -75,6 +75,11 @@ A running Claws Mail cannot be detected if using the B<--clawsrc> option
 because the directory is not assumed to be a Claws Mail configuration dir.
 If that is the case use the B<--alternate-config-dir> option instead.
 
+Detection will also fail if the temporary directory resolution differs.
+This may happen, for example, when the value of the environment variable
+B<TMPDIR> under Clawsker is not the same that it was when Claws Mail was
+launched.
+
 =head1 SEE ALSO
 
 L<Clawsker homepage|http://www.claws-mail.org/clawsker.php>,
