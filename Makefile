@@ -79,6 +79,8 @@ dist:
 	cp -p po/unmaint/*.po ${NAME}-${VERSION}/po/unmaint
 	mkdir ${NAME}-${VERSION}/icons
 	cp -p icons/*.xcf icons/*.png ${NAME}-${VERSION}/icons
+	mkdir ${NAME}-${VERSION}/t
+	cp -p t/*.t ${NAME}-${VERSION}/t
 	tar cJf ${NAME}-${VERSION}.tar.xz ${NAME}-${VERSION} \
 		&& rm -rf ${NAME}-${VERSION}
 
