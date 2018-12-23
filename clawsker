@@ -291,23 +291,16 @@ sub version_greater_or_equal {
 }
 
 sub get_claws_version {
-    $_ = which ('claws-mail');
-    return "" unless defined $_; # not installed
-    my $res = "";
-    $_ = qx/$_ -v/;
-    chomp;
-    my @fver = split (/ /);
-    die "Invalid version string" unless ($fver[2] eq "version");
-    my @ver = split (/\./, $fver[3]);
-    $res .= "$ver[0].";
-    $res .= "$ver[1].";
-    if ($ver[2] =~ /(\d+)git(\d+)/) {
-        $res .= "$1.$2";
-    }
-    else {
-        $res .= "$ver[2].0";
-    }
-    return $res;
+    my $cm_path = which ('claws-mail') or return ""; # not found
+    open my $ph, "-|", $cm_path, "-v"  or return ""; # no pipe
+    chomp (my $v = <$ph>);
+    close $ph;
+    # Claws Mail version 3.17.2git17
+    $v =~ m/\bversion\s+(\d[\w.]+)/ or die "Invalid version string: '$v'";
+    my $cmv = $1;
+    my @ver = split m/(?:\.|git)/, $cmv;
+    @ver < 4 and push @ver, 0;
+    return join ".", @ver;
 }
 
 # data handlers and auxiliar functions
