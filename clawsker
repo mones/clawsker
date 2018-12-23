@@ -11,9 +11,7 @@
 # See COPYING file for license details.
 # See AUTHORS file for a complete list of contributors.
 #
-
-binmode STDOUT, ":encoding(utf8)";
-
+package Clawsker;
 use 5.010_000;
 use strict;
 use utf8;
@@ -26,7 +24,7 @@ use POSIX qw(setlocale);
 use Locale::gettext;
 use Encode;
 use Digest::MD5 qw(md5_hex);
-use Getopt::Long;
+use Getopt::Long qw(GetOptionsFromArray);
 
 my $NAME = 'clawsker';
 my $PREFIX = '@PREFIX@';
@@ -38,11 +36,14 @@ my $READONLY = FALSE;
 my $CLAWSV = undef;
 my $main_window = undef;
 
-my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
-$locale = "C" unless defined($locale);
-setlocale (LC_ALL, $locale);
-bindtextdomain ($NAME, catdir ($PREFIX, 'share', 'locale'));
-textdomain ($NAME);
+sub initialise {
+    binmode STDOUT, ":encoding(utf8)";
+    my $locale = (defined($ENV{LC_MESSAGES}) ? $ENV{LC_MESSAGES} : $ENV{LANG});
+    $locale = "C" unless defined($locale);
+    setlocale (LC_ALL, $locale);
+    bindtextdomain ($NAME, catdir ($PREFIX, 'share', 'locale'));
+    textdomain ($NAME);
+}
 
 sub _ {
     my $str = shift;
@@ -2297,10 +2298,12 @@ sub print_help() {
 }
 
 sub parse_command_line {
+    my $argv = shift;
     my $cont = TRUE;
     $CLAWSV = get_claws_version ();
     eval {
-        GetOptions('h|help' => sub { print_help (); $cont = FALSE },
+        GetOptionsFromArray($argv,
+            'h|help' => sub { print_help (); $cont = FALSE },
             'v|version' => sub { print_version (); $cont = FALSE },
             'b|verbose' => sub { $VERBOSE = TRUE },
             'r|read-only' => sub { $READONLY = TRUE },
@@ -2739,24 +2742,29 @@ sub escape_key_handler {
     }
 }
 
-# initialise
-exit unless parse_command_line ();
-Gtk3->init;
-$main_window = Gtk3::Window->new ('toplevel');
-exit unless load_preferences ();
-exit unless init_hidden_preferences ();
-# create main GUI
-my $box = Gtk3::VBox->new (FALSE, 5);
-$box->set_border_width(3);
-my $about = new_about_dialog ($main_window);
-$box->pack_start (new_notebook (), TRUE, TRUE, 0);
-$box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
-$main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
-$main_window->signal_connect (key_press_event => \&escape_key_handler);
-$main_window->set_title (_('Claws Mail Hidden Preferences'));
-$main_window->set_icon_list (get_app_icons ());
-$main_window->add ($box);
-$main_window->show_all;
-$MODIFIED = 0;
-Gtk3->main;
+sub main {
+    my $args = shift;
+    initialise;
+    exit unless parse_command_line ($args);
+    Gtk3->init;
+    $main_window = Gtk3::Window->new ('toplevel');
+    exit unless load_preferences ();
+    exit unless init_hidden_preferences ();
+    # create main GUI
+    my $box = Gtk3::VBox->new (FALSE, 5);
+    $box->set_border_width(3);
+    my $about = new_about_dialog ($main_window);
+    $box->pack_start (new_notebook (), TRUE, TRUE, 0);
+    $box->pack_end (new_button_box ($main_window, $about), FALSE, FALSE, 0);
+    $main_window->signal_connect (delete_event => sub { exit_handler($main_window) });
+    $main_window->signal_connect (key_press_event => \&escape_key_handler);
+    $main_window->set_title (_('Claws Mail Hidden Preferences'));
+    $main_window->set_icon_list (get_app_icons ());
+    $main_window->add ($box);
+    $main_window->show_all;
+    $MODIFIED = 0;
+    Gtk3->main;
+    return 0;
+}
 
+exit Clawsker::main(\@ARGV) unless caller;
