@@ -6,3 +6,4 @@ po/*.pox~
 po/*.mo
 /build/
 /clawsker.1
+t/Clawsker.pm

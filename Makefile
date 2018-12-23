@@ -90,5 +90,12 @@ clean: clean-build
 	rm -f *~
 	${MAKE} -C po clean
 
-.PHONY: all build install install-dirs install-icons-dirs install-icons uninstall uninstall-icons clean clean-build dist
+test-setup:
+	@test -h t/Clawsker.pm || ( cd t/ && ln -s ../clawsker Clawsker.pm )
 
+test: test-setup
+	@env DISPLAY= prove -It
+
+.PHONY: all build install install-dirs install-icons-dirs install-icons
+.PHONY: uninstall uninstall-icons clean clean-build dist
+.PHONY: test-setup test
