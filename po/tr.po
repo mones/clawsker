@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 1.3.0\n"
+"Project-Id-Version: clawsker 1.3.1\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2018-11-25 16:20+0100\n"
-"PO-Revision-Date: 2018-11-26 08:17+0300\n"
+"POT-Creation-Date: 2018-12-23 11:28+0100\n"
+"PO-Revision-Date: 2018-12-24 12:37+0300\n"
 "Last-Translator: Numan Demirdöğen <if.gnu.linux@gmail.com>\n"
 "Language-Team: Turkish <if.gnu.linux@gmail.com>\n"
 "Language: tr\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../clawsker:61
+#: ../clawsker:62
 msgid "Clawsker :: A Claws Mail Tweaker"
 msgstr "Clawsker :: Claws Mail Aracı"
 
-#: ../clawsker:63
+#: ../clawsker:64
 msgid "Use detached address book edit dialogue"
 msgstr "Müstakil adres defteri düzenleme penceresi kullan"
 
-#: ../clawsker:64
+#: ../clawsker:65
 msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
@@ -33,29 +33,29 @@ msgstr ""
 "Seçilince kişi ayrıntılarını düzenlemek için ayrı bir pencere kullanılır "
 "Yoksa adres defterinin ana penceresi içerisinde bir form kullanılır."
 
-#: ../clawsker:65
+#: ../clawsker:66
 msgid "Maximum memory for message cache"
 msgstr "İleti geçici belleği için azamî bellek boyutu (kB)"
 
-#: ../clawsker:66
+#: ../clawsker:67
 msgid "kilobytes"
 msgstr "kilobit"
 
-#: ../clawsker:67
+#: ../clawsker:68
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
 msgstr ""
 "Kilobit biriminden iletileri geçici hafızada tutmak için kullanılacak azamî "
 "bellek boyutu"
 
-#: ../clawsker:68
+#: ../clawsker:69
 msgid "Minimun time for cache elements"
 msgstr "Geçici bellekteki ögeler için azamî süre (dakika)"
 
-#: ../clawsker:69
+#: ../clawsker:70
 msgid "minutes"
 msgstr "dakika"
 
-#: ../clawsker:70
+#: ../clawsker:71
 msgid ""
 "The minimum time in minutes to keep a cache in memory. Caches more recent "
 "than this time will not be freed, even if the memory usage is too high."
@@ -64,19 +64,19 @@ msgstr ""
 "kullanımı yüksek dahi olsa bu süreden daha az süredir var olan geçici "
 "bellekler silinmez."
 
-#: ../clawsker:71
+#: ../clawsker:72
 msgid "Use NetworkManager"
 msgstr "NetworkManager'ı kullan"
 
-#: ../clawsker:72
+#: ../clawsker:73
 msgid "Use NetworkManager to switch offline automatically."
 msgstr "Otomatik olarak çevrimdışı olmak için NetworkManager'ı kullan."
 
-#: ../clawsker:73
+#: ../clawsker:74
 msgid "Rounds for PBKDF2 function"
 msgstr "PBKDF2 fonksiyon yinelenmesi"
 
-#: ../clawsker:74
+#: ../clawsker:75
 msgid ""
 "Specify the number of iterations the key derivation function will be applied "
 "on master passphrase computation. Does not modify currently stored "
@@ -87,28 +87,28 @@ msgstr ""
 "tekrarlanacağını belirt. Kullanılan şifreyi etkilemez, sadece bu seçenek "
 "seçildikten sonra oluşturulacak ana şifreler için geçerlidir."
 
-#: ../clawsker:76
+#: ../clawsker:77
 msgid "Show unread messages with bold font"
 msgstr "Okunmayan iletileri koyu fontla göster"
 
-#: ../clawsker:77
+#: ../clawsker:78
 msgid "Show unread messages in the Message List using a bold font."
 msgstr "İleti Listesindeki okunmayan iletileri koyu fontla göster."
 
-#: ../clawsker:78
+#: ../clawsker:79
 msgid "Don't use markup"
 msgstr "Markup kullanma"
 
-#: ../clawsker:79
+#: ../clawsker:80
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr ""
 "İleti yazma penceresinin hesap seçme bölümünde koyu ve eğik metin kullanma."
 
-#: ../clawsker:80
+#: ../clawsker:81
 msgid "Use dotted lines in tree view components"
 msgstr "Ağaç görünümü ögelerinde noktalı çizgi kullan"
 
-#: ../clawsker:81
+#: ../clawsker:82
 msgid ""
 "Use the old dotted line look in the main window tree views (Folder, Message "
 "and other lists) instead of the modern lineless look."
@@ -116,19 +116,19 @@ msgstr ""
 "Ana pneceredeki ağaç görünümlerinde (Dizin, İleti ve diğer listeler) modern "
 "çizgisiz görünüm yerine eski noktalı çizgiyi kullan."
 
-#: ../clawsker:82
+#: ../clawsker:83
 msgid "Enable horizontal scrollbar"
 msgstr "Yatay kaydırma çubuğu kullan"
 
-#: ../clawsker:83
+#: ../clawsker:84
 msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "İleti listesinde yatay kaydırma çubuğu kullan."
 
-#: ../clawsker:84
+#: ../clawsker:85
 msgid "Display To column instead From column in Sent folder"
 msgstr "Giden dizininde Gönderen sütunu yerine Alıcı sütununu göster"
 
-#: ../clawsker:85
+#: ../clawsker:86
 msgid ""
 "Display the recipient's email address in a To column of the Sent folder "
 "instead of the originator's one in a From column."
@@ -136,11 +136,11 @@ msgstr ""
 "Giden dizininde iletiyi gönderenin e-posta adresini Gönderen sütununda "
 "göstermektense alıcının e-posta adresini Alıcı sutununda göster"
 
-#: ../clawsker:86
+#: ../clawsker:87
 msgid "Folder List scrollbar behaviour"
 msgstr "Dizin Listesi kaydırma çubuğu davranışı"
 
-#: ../clawsker:87
+#: ../clawsker:88
 msgid ""
 "Specify the policy of vertical scrollbar of Folder List: show always, "
 "automatic or hide always."
@@ -148,23 +148,23 @@ msgstr ""
 "Dizin Listesinin dikey kaydırma çubuğu ilkesini belirt: her zaman göster, "
 "otomatik ya da her zaman gizle."
 
-#: ../clawsker:88
+#: ../clawsker:89
 msgid "Show always"
 msgstr "Her zaman göster"
 
-#: ../clawsker:89
+#: ../clawsker:90
 msgid "Automatic"
 msgstr "Otomatik"
 
-#: ../clawsker:90
+#: ../clawsker:91
 msgid "Hide always"
 msgstr "Her zaman gizle"
 
-#: ../clawsker:91
+#: ../clawsker:92
 msgid "From column displays"
 msgstr "Gönderen sütunu içeriği"
 
-#: ../clawsker:92
+#: ../clawsker:93
 msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
 "address or both."
@@ -172,23 +172,23 @@ msgstr ""
 "İleti Listesinin Gönderen sütununda gösterilecek veriyi seç: isim, adres ya "
 "da ikisi."
 
-#: ../clawsker:93
+#: ../clawsker:94
 msgid "Name only"
 msgstr "Sadece isim"
 
-#: ../clawsker:94
+#: ../clawsker:95
 msgid "Address only"
 msgstr "Sadece adres"
 
-#: ../clawsker:95
+#: ../clawsker:96
 msgid "Both name and address"
 msgstr "İsim ve adres"
 
-#: ../clawsker:96
+#: ../clawsker:97
 msgid "Coloured lines contrast"
 msgstr "Renkli satır karşıtlığı"
 
-#: ../clawsker:97
+#: ../clawsker:98
 msgid ""
 "Specify the value to use when creating alternately coloured lines in tree "
 "view components. The smaller the value, the less visible the difference in "
@@ -198,77 +198,77 @@ msgstr ""
 "değeri belirtir. Değer ne kadar küçük olursa satırların karşıt renkleri "
 "arasındaki fark o kadar az olacaktır."
 
-#: ../clawsker:98
+#: ../clawsker:99
 msgid "Show cursor"
 msgstr "İmleci göster"
 
-#: ../clawsker:99
+#: ../clawsker:100
 msgid "Display the cursor in the Message View."
 msgstr "İleti Görünümünde imleci göster"
 
-#: ../clawsker:100
+#: ../clawsker:101
 msgid "Detachable toolbars"
 msgstr "Müstakil araç çubuğu"
 
-#: ../clawsker:101
+#: ../clawsker:102
 msgid "Show handles in the toolbars."
 msgstr "Araç çubuğunda tutamakları göster."
 
-#: ../clawsker:102
+#: ../clawsker:103
 msgid "Use stripes in all tree view components"
 msgstr "Tüm ağaç görünümü ögelerinde çizgi kullan"
 
-#: ../clawsker:103
+#: ../clawsker:104
 msgid "Enable alternately coloured lines in all tree view components."
 msgstr "Tüm ağaç gürünümü ögelerinde karşıt renkli satırlar kullan."
 
-#: ../clawsker:104
+#: ../clawsker:105
 msgid "Use stripes in Folder List and Message List"
 msgstr "Dizin ve İleti listesinde çizgi kullan"
 
-#: ../clawsker:105
+#: ../clawsker:106
 msgid "Enable alternately coloured lines in Message List and Folder List."
 msgstr "İleti ve Dizin Listelerinde karşıt renkli satırlar kullan."
 
-#: ../clawsker:106
+#: ../clawsker:107
 msgid "2 lines per Message List item in 3-column layout"
 msgstr "3 sütunlu düzende İleti Listesi başına 2 satır"
 
-#: ../clawsker:107
+#: ../clawsker:108
 msgid ""
 "Spread Message List information over two lines when using the three column "
 "mode."
 msgstr "Üç sütun düzenini kullanırken İleti Listesi bilgisini iki satıra yay."
 
-#: ../clawsker:108
+#: ../clawsker:109
 msgid "Show margin"
 msgstr "Payı göster"
 
-#: ../clawsker:109
+#: ../clawsker:110
 msgid "Shows a small margin in the Compose View."
 msgstr "Yazma Penceresinde ufak bir boşluk göster."
 
-#: ../clawsker:110
+#: ../clawsker:111
 msgid "Don't display localized date"
 msgstr "Yerel tarihi gösterme"
 
-#: ../clawsker:111
+#: ../clawsker:112
 msgid "Toggles localization of date format in Message View."
 msgstr "İleti Görünümünde yerel tarihi açıp kapatır."
 
-#: ../clawsker:112
+#: ../clawsker:113
 msgid "Zero replacement character"
 msgstr "Sıfır yerine kullanılacak karakter"
 
-#: ../clawsker:113
+#: ../clawsker:114
 msgid "Replaces '0' with the given character in Folder List."
 msgstr "Dizin Listesindeki '0' yerine gösterilecek karakter."
 
-#: ../clawsker:114
+#: ../clawsker:115
 msgid "Editable headers"
 msgstr "Üstbilgileri kullan"
 
-#: ../clawsker:115
+#: ../clawsker:116
 msgid ""
 "Allows to manually type any value in Compose Window header entries or just "
 "select from the available choices in the associated dropdown list."
@@ -276,15 +276,15 @@ msgstr ""
 "Yazma Penceresinin üstbilgi bölümüne herhangi bir değerin yazılmasına ya da "
 "ilgili açılır listeden mevcut seçeneklerin seçilmesine olanak sağlar."
 
-#: ../clawsker:116
+#: ../clawsker:117
 msgid "Warn when sending to more than"
 msgstr "Birden fazla alıcıya gönderiliyorsa"
 
-#: ../clawsker:117
+#: ../clawsker:118
 msgid "recipients"
 msgstr "uyar"
 
-#: ../clawsker:118
+#: ../clawsker:119
 msgid ""
 "Show a warning dialogue when sending to more recipients than specified. Use "
 "0 to disable this check."
@@ -292,11 +292,11 @@ msgstr ""
 "Belirlenenden daha fazla alıcıya gönderiliyorsa uyarı göster. Kapatmak için "
 "0 kullanın."
 
-#: ../clawsker:119
+#: ../clawsker:120
 msgid "Select next message on delete"
 msgstr "Sonraki silinecek iletiyi seç"
 
-#: ../clawsker:120
+#: ../clawsker:121
 msgid ""
 "When deleting a message, toggles between selecting the next one (newer "
 "message) or the previous one (older message)."
@@ -304,15 +304,15 @@ msgstr ""
 "Bir ileti silerken bir sonraki (daha yeni bir ileti) ya da önceki (daha eski "
 "bir ileti) arasında seçim yapılmasını sağlar."
 
-#: ../clawsker:122
+#: ../clawsker:123
 msgid "Drag 'n' drop hover timeout"
 msgstr "Sürükle ve bırak özelliğinin zaman aşımı (ms)"
 
-#: ../clawsker:123
+#: ../clawsker:124
 msgid "milliseconds"
 msgstr "milisaniye"
 
-#: ../clawsker:124
+#: ../clawsker:125
 msgid ""
 "Time in milliseconds that will cause a folder tree to expand when the mouse "
 "cursor is held over it during drag and drop."
@@ -320,20 +320,20 @@ msgstr ""
 "Sürükle ve bırak yaparken imleç üzerine tutulduğunda dizin ağacının "
 "genişlemesine yol açan mili saniye cinsinden zaman."
 
-#: ../clawsker:125
+#: ../clawsker:126
 msgid "Don't confirm deletions (dangerous!)"
 msgstr "Sillerken onaylama (tehlikeli!)"
 
-#: ../clawsker:126
+#: ../clawsker:127
 msgid "Don't ask for confirmation before definitive deletion of emails."
 msgstr "E-postaları nihaî olarak silmeden önce onay isteme."
 
-#: ../clawsker:127
+#: ../clawsker:128
 msgid "Respect format=flowed in messages"
 msgstr "İletilere format=flowed seçeneğini uygula"
 
 # http://joeclark.org/ffaq.html
-#: ../clawsker:128
+#: ../clawsker:129
 msgid ""
 "Respect format=flowed on text/plain message parts. This will cause some "
 "mails to have long lines, but will fix some URLs that would otherwise be "
@@ -344,43 +344,43 @@ msgstr ""
 "fakat diğer taraftan katlanmış olarak gösterilen bazı URL'lerin gösterimini "
 "düzeltecektir."
 
-#: ../clawsker:129
+#: ../clawsker:130
 msgid "Allow writable temporary files"
 msgstr "Yazılabilir geçici dosyalara izin ver"
 
-#: ../clawsker:130
+#: ../clawsker:131
 msgid "Saves temporary files when opening attachment with write bit set."
 msgstr "Herhangi bir eki açarken geçici dosyaları yazma bitiyle kaydet."
 
-#: ../clawsker:131
+#: ../clawsker:132
 msgid "Don't check SSL certificates"
 msgstr "SSL sertifikaları denetleme"
 
-#: ../clawsker:132
+#: ../clawsker:133
 msgid "Disables the verification of SSL certificates."
 msgstr "SSL sertifikaların doğrulanmasını kapatır."
 
-#: ../clawsker:133
+#: ../clawsker:134
 msgid "Progress bar update step every"
 msgstr "İlerleme çubuğu güncelleme adımı"
 
-#: ../clawsker:134
+#: ../clawsker:135
 msgid "items"
 msgstr "öğe"
 
-#: ../clawsker:135
+#: ../clawsker:136
 msgid "Update stepping in progress bars."
 msgstr "İlerleme çubuğundaki kademelendirmeyi güncelle."
 
-#: ../clawsker:136
+#: ../clawsker:137
 msgid "Maximum age when threading by subject"
 msgstr "Konuya göre sıralama zaman aşımı süresi (gün)"
 
-#: ../clawsker:137
+#: ../clawsker:138
 msgid "days"
 msgstr "gün"
 
-#: ../clawsker:138
+#: ../clawsker:139
 msgid ""
 "Number of days to include a message in a thread when using \"Thread using "
 "subject in addition to standard headers\"."
@@ -388,11 +388,11 @@ msgstr ""
 "\"Konu standart üstbilgilerin yanı sıra konu üstbilgisini de kullansın\" "
 "seçeneği seçiliyken bir iletinin konuda bulunacağı gün sayısı."
 
-#: ../clawsker:139
+#: ../clawsker:140
 msgid "Allow unsafe SSL certificates"
 msgstr "Güvenilmeyen SSL sertifikalara izin ver"
 
-#: ../clawsker:140
+#: ../clawsker:141
 msgid ""
 "Allows Claws Mail to remember multiple SSL certificates for a given server/"
 "port."
@@ -400,29 +400,29 @@ msgstr ""
 "Belirli bri sunucu/port için Claws Mail'in birden fazla SSL sertifikası "
 "kullanmasına izin ver."
 
-#: ../clawsker:141
+#: ../clawsker:142
 msgid "Force UTF-8 for broken mails"
 msgstr "Bozuk iletiler için UTF-8 kullanmaya zorla"
 
-#: ../clawsker:142
+#: ../clawsker:143
 msgid "Use UTF-8 encoding for broken mails instead of current locale."
 msgstr ""
 "Bozuk iletiler için kullanılan yerel kodlama yerine UTF-8 karakter "
 "kodlamasını kullan."
 
-#: ../clawsker:143
+#: ../clawsker:144
 msgid "Warn on drag 'n' drop"
 msgstr "Sürükle ve bırak yaparken uyar"
 
-#: ../clawsker:144
+#: ../clawsker:145
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
 msgstr "Dizinleri sürükle ve bırak yaparken onaylama kutusunu göster."
 
-#: ../clawsker:145
+#: ../clawsker:146
 msgid "Outgoing messages fallback to ASCII"
 msgstr "Gönderilen iletiler için ASCII kullan"
 
-#: ../clawsker:146
+#: ../clawsker:147
 msgid ""
 "If allowed by content, ASCII will be used to encode outgoing messages, "
 "otherwise the user-defined encoding is always enforced."
@@ -430,11 +430,11 @@ msgstr ""
 "İçerik elverdiğinde gönderilen iletiler için ASCII karakter kodlaması "
 "kullanılır, aksi takdirde kullanıcı tanımlı karakter kodlaması kullanılır."
 
-#: ../clawsker:147
+#: ../clawsker:148
 msgid "Primary paste unselects selection"
 msgstr "Yapıştırma seçimi iptal eder"
 
-#: ../clawsker:148
+#: ../clawsker:149
 msgid ""
 "Controls how pasting using middle-click changes the selected text and "
 "insertion point."
@@ -442,20 +442,20 @@ msgstr ""
 "Orta tuş kullanılarak yapılan yapıştırmanın seçilen metni ve ekleme "
 "noktasını nasıl değiştirdiğini yönetir."
 
-#: ../clawsker:149
+#: ../clawsker:150
 msgid "Show inline attachments"
 msgstr "Satır içi ekleri göster"
 
-#: ../clawsker:150
+#: ../clawsker:151
 msgid "Allows to hide inline attachments already shown in mail structure view."
 msgstr ""
 "İleti yapısının görünümünde gösterilen satır içi eklerin gizlenmesini sağlar."
 
-#: ../clawsker:151
+#: ../clawsker:152
 msgid "Address search in compose window matches any"
 msgstr "Yazma penceresinde adres araması herhangi bir terimle örtüşsün"
 
-#: ../clawsker:152
+#: ../clawsker:153
 msgid ""
 "On Tab-key completion, address text will match any part of the string or "
 "only from the start."
@@ -463,11 +463,11 @@ msgstr ""
 "Adres tamamlamada adres metni girilen karakterlerin herhangi biriyle ya da "
 "sadece en baştakiyle eşleşsin."
 
-#: ../clawsker:153
+#: ../clawsker:154
 msgid "Folder search in folder selector matches any"
 msgstr "Dizin seçiminde dizin araması yapılırken herhangi bir terimle örtüşsün"
 
-#: ../clawsker:154
+#: ../clawsker:155
 msgid ""
 "On folder name completion text will match any part of the string or only "
 "from the start."
@@ -475,11 +475,11 @@ msgstr ""
 "Dizin adı tamamlamada metin girilen karakterlerin herhangi biriyle ya da en "
 "baştakiyle eşleşsin."
 
-#: ../clawsker:155
+#: ../clawsker:156
 msgid "Rewrite first 'From' using QP encoding"
 msgstr "QP kodlaması kullanarak ilk 'Gönderen' üstbilgisini yeniden yaz"
 
-#: ../clawsker:156
+#: ../clawsker:157
 msgid ""
 "Workaround some servers which convert first 'From' to '>From' by using "
 "Quoted-Printable transfer encoding instead of 7bit/8bit encoding."
@@ -488,207 +488,207 @@ msgstr ""
 "'Gönderen' üstbilgisini '>Gönderen' üstbilgisine çeviren bazı sunucular için "
 "çözüm."
 
-#: ../clawsker:158
+#: ../clawsker:159
 msgid "X-Mailer header"
 msgstr "X-Posta-İstemcisi"
 
-#: ../clawsker:159
+#: ../clawsker:160
 msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr ""
 "X-Posta-İstemcisi üstbilgisinin değeri Claws Mail ise kullanılacak renk."
 
-#: ../clawsker:160
+#: ../clawsker:161
 msgid "Error messages"
 msgstr "Hata iletileri"
 
-#: ../clawsker:161
+#: ../clawsker:162
 msgid "Colour for error messages in log window."
 msgstr "Kayıt penceresindeki hata iletileri için kullanılacak renk."
 
-#: ../clawsker:162
+#: ../clawsker:163
 msgid "Server messages"
 msgstr "Sunucu iletileri"
 
-#: ../clawsker:163
+#: ../clawsker:164
 msgid "Colour for messages received from servers in log window."
 msgstr ""
 "Kayıt penceresindeki sunuculardan alınan iletiler için kullanılacak renk."
 
-#: ../clawsker:164
+#: ../clawsker:165
 msgid "Standard messages"
 msgstr "Standart iletiler"
 
-#: ../clawsker:165
+#: ../clawsker:166
 msgid "Colour for messages in log window."
 msgstr "Kayıt penceresindeki iletiler için kullanılacak renk."
 
-#: ../clawsker:166
+#: ../clawsker:167
 msgid "Client messages"
 msgstr "İstemci iletileri"
 
-#: ../clawsker:167
+#: ../clawsker:168
 msgid "Colour for messages sent to servers in log window."
 msgstr ""
 "Kayıt penceresindeki sunuculara gönderilen iletiler için kullanılacak renk."
 
-#: ../clawsker:168
+#: ../clawsker:169
 msgid "Warning messages"
 msgstr "Uyarı iletileri"
 
-#: ../clawsker:169
+#: ../clawsker:170
 msgid "Colour for warning messages in log window."
 msgstr "Kayıt penceresindeki uyarılar için kullanılacak renk."
 
-#: ../clawsker:171
+#: ../clawsker:172
 msgid "Tags background"
 msgstr "Etiket arkaplanı"
 
-#: ../clawsker:172
+#: ../clawsker:173
 msgid "Background colour for tags in message view."
 msgstr "İleti görünümünde etiketler için arkaplan rengi."
 
-#: ../clawsker:173
+#: ../clawsker:174
 msgid "Tags text"
 msgstr "Etiket metni"
 
-#: ../clawsker:174
+#: ../clawsker:175
 msgid "Text colour for tags in message view."
 msgstr "İleti görünümünde etiketler içi metin rengi"
 
-#: ../clawsker:176
+#: ../clawsker:177
 msgid "Default headers background"
 msgstr "Öntanımlı üstbilgi arkaplanı"
 
-#: ../clawsker:177
+#: ../clawsker:178
 msgid "Background colour for default headers in compose window."
 msgstr "Yazma penceresindeki öntanımlı üst bilgiler için arkaplan rengi."
 
-#: ../clawsker:178
+#: ../clawsker:179
 msgid "Default headers text"
 msgstr "Öntanımlı üstbilgi metni"
 
-#: ../clawsker:179
+#: ../clawsker:180
 msgid "Text colour for default headers in compose window."
 msgstr "Yazma penceresindeki öntanımlı üst bilgiler için metin rengi."
 
-#: ../clawsker:181
+#: ../clawsker:182
 msgid "Active quick search background"
 msgstr "Etkin hızlı arama arkaplanı"
 
-#: ../clawsker:182
+#: ../clawsker:183
 msgid "Background colour for active quick search."
 msgstr "Etkin hızlı arama için arkaplan rengi."
 
-#: ../clawsker:183
+#: ../clawsker:184
 msgid "Active quick search text"
 msgstr "Etkin hızlı arama metni"
 
-#: ../clawsker:184
+#: ../clawsker:185
 msgid "Text colour for active quick search."
 msgstr "Etkin hızlı arama için metin rengi."
 
-#: ../clawsker:185
+#: ../clawsker:186
 msgid "Quick search error background"
 msgstr "Hızlı arama hatası arkaplanı"
 
-#: ../clawsker:186
+#: ../clawsker:187
 msgid "Background colour for quick search error."
 msgstr "Hızlı arama hatası için arkaplan rengi."
 
-#: ../clawsker:187
+#: ../clawsker:188
 msgid "Quick search error text"
 msgstr "Hızlı arama hatası metni"
 
-#: ../clawsker:188
+#: ../clawsker:189
 msgid "Text colour for quick search error."
 msgstr "Hızlı arama hatası için metin rengi."
 
-#: ../clawsker:190
+#: ../clawsker:191
 msgid "Added lines"
 msgstr "Eklenen satırlar"
 
-#: ../clawsker:191
+#: ../clawsker:192
 msgid "Colour for added lines in patches."
 msgstr "Yamadaki eklenen satırlar için kullanılacak renk."
 
-#: ../clawsker:192
+#: ../clawsker:193
 msgid "Deleted lines"
 msgstr "Silinen satırlar"
 
-#: ../clawsker:193
+#: ../clawsker:194
 msgid "Colour for deleted lines in patches."
 msgstr "Yamadaki silinen satırlar için kullanılacak renk."
 
-#: ../clawsker:194
+#: ../clawsker:195
 msgid "Hunk lines"
 msgstr "Farklı satırlar"
 
-#: ../clawsker:195
+#: ../clawsker:196
 msgid "Colour for hunk headers in patches."
 msgstr "Yamadaki farklı satır başlıkları için kullanılacak renk."
 
-#: ../clawsker:197
+#: ../clawsker:198
 msgid "X position"
 msgstr "X konumu"
 
-#: ../clawsker:198
+#: ../clawsker:199
 msgid "X coordinate for window's top-left corner."
 msgstr "Pencerenin sol üst köşesi için X konumu."
 
-#: ../clawsker:199
+#: ../clawsker:200
 msgid "Y position"
 msgstr "Y konumu"
 
-#: ../clawsker:200
+#: ../clawsker:201
 msgid "Y coordinate for window's top-left corner."
 msgstr "Pencerenin sol üst köşesi için Y konumu."
 
-#: ../clawsker:201
+#: ../clawsker:202
 msgid "Width"
 msgstr "Genişlik"
 
-#: ../clawsker:202
+#: ../clawsker:203
 msgid "Window's width in pixels."
 msgstr "Pikzel cinsinden pencere genişliği."
 
-#: ../clawsker:203
+#: ../clawsker:204
 msgid "Height"
 msgstr "Yükseklik"
 
-#: ../clawsker:204
+#: ../clawsker:205
 msgid "Window's height in pixels."
 msgstr "Pikzel cinsinden pencere yüksekliği."
 
-#: ../clawsker:206
+#: ../clawsker:207
 msgid "Maximized"
 msgstr "Küçültülmüş."
 
-#: ../clawsker:207
+#: ../clawsker:208
 msgid "Changes window maximized status."
 msgstr "Pencerenin tam ekran durumunu değiştirir."
 
-#: ../clawsker:208
+#: ../clawsker:209
 msgid "Full-screen"
 msgstr "Tam ekran"
 
-#: ../clawsker:209
+#: ../clawsker:210
 msgid "Changes full screen status."
 msgstr "Tam ekran durumunu değiştirir"
 
-#: ../clawsker:211
+#: ../clawsker:212
 msgid "Use custom GnuTLS priority"
 msgstr "Özel GnuTLS önceliği kullan"
 
-#: ../clawsker:212
+#: ../clawsker:213
 msgid "Enables using user provided GnuTLS priority string."
 msgstr ""
 "Kullanıcının tanımladığı GnuTLS öncelik değerinin kullanılmasını sağlar."
 
-#: ../clawsker:213 ../clawsker:1947
+#: ../clawsker:214 ../clawsker:1971
 msgid "GnuTLS priority"
 msgstr "GnuTLS önceliği"
 
-#: ../clawsker:214
+#: ../clawsker:215
 msgid ""
 "Value to use as GnuTLS priority string if custom priority check is enabled. "
 "Otherwise this value is ignored."
@@ -697,10 +697,24 @@ msgstr ""
 "Aksi takdirde bu değer ihmal edilir."
 
 #: ../clawsker:216
+msgid "Use TLS SNI extension"
+msgstr "TLS SNI uzantısını kullan"
+
+#: ../clawsker:217
+msgid ""
+"Enables sending your hostname, if available, so the server can select the "
+"appropriate certificate for your domain. Useful for servers which host "
+"multiple domains on the same IP address."
+msgstr ""
+"Mevcut olduğunda, makine adının gönderilmesini sağlar ki sunucu alanınız "
+"için uygun sertifikayı seçebilsin. Aynı IP adresi üzerinde bir çok alan "
+"sunun sunucular için uygun."
+
+#: ../clawsker:219
 msgid "Autocompletion limit"
 msgstr "Otomatik tamamlama sınırı"
 
-#: ../clawsker:217
+#: ../clawsker:220
 msgid ""
 "Limits the number of addresses obtained from keyring through autocompletion. "
 "Use 0 to get all matches."
@@ -708,11 +722,11 @@ msgstr ""
 "Otomatik tamamlama yoluyla Gönderen üstbilgisinden elde edilen adres "
 "sayısını sınırlar. Tüm eşleşmeleri almak için 0 kullanın."
 
-#: ../clawsker:218
+#: ../clawsker:221
 msgid "Base URL"
 msgstr "Temel URL"
 
-#: ../clawsker:219
+#: ../clawsker:222
 msgid ""
 "This is the URL where avatar requests are sent. You can use the one of your "
 "own libravatar server, if available."
@@ -720,465 +734,474 @@ msgstr ""
 "Avatar isteklerinin gönderileceği URL. Mevcutsa, kendi libavatar "
 "sunucularınızdan birini kullanabilirsiniz."
 
-#: ../clawsker:220
+#: ../clawsker:223
 msgid "Log level"
 msgstr "Kayıt seviyesi"
 
-#: ../clawsker:221
+#: ../clawsker:224
 msgid "Verbosity level of log, accumulative."
 msgstr "Kayıtların ayrıntı seviyesi, birikimli."
 
-#: ../clawsker:222
+#: ../clawsker:225
 msgid "None"
 msgstr "Yok"
 
-#: ../clawsker:223
+#: ../clawsker:226
 msgid "Manual"
 msgstr "Kullanma klavuzu"
 
-#: ../clawsker:224
+#: ../clawsker:227
 msgid "Actions"
 msgstr "Eylemler"
 
-#: ../clawsker:225
+#: ../clawsker:228
 msgid "Matches"
 msgstr "Eşleşmeler"
 
-#: ../clawsker:441
+#: ../clawsker:437
 msgid "Clawsker error"
 msgstr "Clawsker hatası"
 
-#: ../clawsker:448
+#: ../clawsker:444
 msgid "Error: seems Claws Mail is currently running, close it first."
 msgstr "Hata: Claws Mail çalışıyor görünüyor, kapatıp tekrar deneyin."
 
-#: ../clawsker:470
+#: ../clawsker:466
 msgid "Error: resource file for Claws Mail was not found."
 msgstr "Hata: Claws Mail kaynak dosyası bulunamadı."
 
-#: ../clawsker:737 ../clawsker:1916
+#: ../clawsker:733 ../clawsker:1932
 msgid "Addressbook"
 msgstr "Adres Defteri"
 
-#: ../clawsker:740
+#: ../clawsker:736
 msgid "Memory"
 msgstr "Bellek"
 
-#: ../clawsker:744
+#: ../clawsker:740
 msgid "NetworkManager"
 msgstr "NetworkManager"
 
-#: ../clawsker:747
+#: ../clawsker:743
 msgid "Master passphrase"
 msgstr "Ana şifre"
 
-#: ../clawsker:909
+#: ../clawsker:905
 msgid "Coloured stripes"
 msgstr "Renkli çizgiler"
 
-#: ../clawsker:914
+#: ../clawsker:910
 msgid "Message List"
 msgstr "İleti listesi"
 
-#: ../clawsker:921 ../clawsker:1244
+#: ../clawsker:917 ../clawsker:1240
 msgid "Message View"
 msgstr "İleti Görünümü"
 
-#: ../clawsker:925 ../clawsker:1261
+#: ../clawsker:921 ../clawsker:1257
 msgid "Compose window"
 msgstr "Yazma Penceresi"
 
-#: ../clawsker:931
+#: ../clawsker:927
 msgid "Scroll bars"
 msgstr "Kaydırma çubuğu"
 
-#: ../clawsker:935 ../clawsker:1097 ../clawsker:1921 ../clawsker:2591
+#: ../clawsker:931 ../clawsker:1093 ../clawsker:1937 ../clawsker:2613
 msgid "Other"
 msgstr "Diğer"
 
-#: ../clawsker:1075
+#: ../clawsker:1071
 msgid "Drag 'n' drop"
 msgstr "Sürükle ve bırak"
 
-#: ../clawsker:1079
+#: ../clawsker:1075
 msgid "Secure Sockets Layer"
 msgstr "Güvenli Soket Katmanı(SSL)"
 
-#: ../clawsker:1083
+#: ../clawsker:1079
 msgid "Messages"
 msgstr "İletiler"
 
-#: ../clawsker:1093
+#: ../clawsker:1089
 msgid "Completion"
 msgstr "Tamamlama"
 
-#: ../clawsker:1249 ../clawsker:1895
+#: ../clawsker:1245 ../clawsker:1907
 msgid "Log window"
 msgstr "Kayıt Penceresi"
 
-#: ../clawsker:1256
+#: ../clawsker:1252
 msgid "Viewing patches"
 msgstr "Yama görünümü"
 
-#: ../clawsker:1265
+#: ../clawsker:1261
 msgid "Quick search"
 msgstr "Hızlı arama"
 
-#: ../clawsker:1758
+#: ../clawsker:1770
 msgid "Main window"
 msgstr "Ana pencere"
 
-#: ../clawsker:1770
+#: ../clawsker:1782
 msgid "Message window"
 msgstr "İleti Penceresi"
 
-#: ../clawsker:1780
+#: ../clawsker:1792
 msgid "Send window"
 msgstr "Gönderme penceresi"
 
-#: ../clawsker:1784
+#: ../clawsker:1796
 msgid "Receive window"
 msgstr "Alma penceresi"
 
-#: ../clawsker:1792
+#: ../clawsker:1804
 msgid "Folder window"
 msgstr "Dizin penceresi"
 
-#: ../clawsker:1798
+#: ../clawsker:1810
 msgid "Folder selection window"
 msgstr "Dizin seçme penceresi"
 
-#: ../clawsker:1806
+#: ../clawsker:1818
 msgid "Addressbook main window"
 msgstr "Adres defteri ana penceresi"
 
-#: ../clawsker:1810
+#: ../clawsker:1822
 msgid "Edit person window"
 msgstr "Şahıs penceresini düzenle"
 
-#: ../clawsker:1814
+#: ../clawsker:1826
 msgid "Edit group window"
 msgstr "Grup penceresini düzenle"
 
-#: ../clawsker:1818
+#: ../clawsker:1830
 msgid "Add address window"
 msgstr "Adres penceresi ekle"
 
-#: ../clawsker:1822
+#: ../clawsker:1834
 msgid "Folder select window"
 msgstr "Dizin seçme penceresi"
 
-#: ../clawsker:1830
+#: ../clawsker:1842
 msgid "Accounts window"
 msgstr "Hesaplar penceresi"
 
-#: ../clawsker:1834
+#: ../clawsker:1846
 msgid "Edit account window"
 msgstr "Hesap penceresini düzenle"
 
-#: ../clawsker:1842
+#: ../clawsker:1854
 msgid "Filtering window"
 msgstr "Süzme penceresi"
 
-#: ../clawsker:1846
+#: ../clawsker:1858
 msgid "Filtering actions window"
 msgstr "Süzme eylemleri penceresi"
 
-#: ../clawsker:1850
+#: ../clawsker:1862
 msgid "Filtering debug window"
 msgstr "Süzme debug penceresi"
 
-#: ../clawsker:1863
+#: ../clawsker:1875
 msgid "User Actions prefs window"
 msgstr "Kullanıcı Eylemleri tercihler penceresi"
 
-#: ../clawsker:1867
+#: ../clawsker:1879
 msgid "User Actions I/O window"
 msgstr "Kullanıcı Eylemleri I/O penceresi"
 
-#: ../clawsker:1875
+#: ../clawsker:1887
 msgid "Preferences window"
 msgstr "Tercihler penceresi"
 
-#: ../clawsker:1879
+#: ../clawsker:1891
 msgid "Templates window"
 msgstr "Şablonlar penceresi"
 
-#: ../clawsker:1883
+#: ../clawsker:1895
 msgid "Tags window"
 msgstr "Etiket penceresi"
 
-#: ../clawsker:1887
+#: ../clawsker:1899
 msgid "Plugins window"
 msgstr "Eklenti penceresi"
 
-#: ../clawsker:1899
+#: ../clawsker:1911
+msgid "SSL manager"
+msgstr "SSL yöneticisi"
+
+#: ../clawsker:1915
 msgid "Print preview window"
 msgstr "Önizleme pneceresini yazdır"
 
-#: ../clawsker:1903
+#: ../clawsker:1919
 msgid "View source window"
 msgstr "Kaynak penceresini göster"
 
-#: ../clawsker:1912
+#: ../clawsker:1928
 msgid "Main"
 msgstr "Ana"
 
-#: ../clawsker:1913
+#: ../clawsker:1929
 msgid "Message"
 msgstr "İleti"
 
-#: ../clawsker:1914
+#: ../clawsker:1930
 msgid "Send/Receive"
 msgstr "Al/Gönder"
 
-#: ../clawsker:1915
+#: ../clawsker:1931
 msgid "Folder"
 msgstr "Dizin"
 
-#: ../clawsker:1917 ../clawsker:2593
+#: ../clawsker:1933 ../clawsker:2615
 msgid "Accounts"
 msgstr "Hesaplar"
 
-#: ../clawsker:1918
+#: ../clawsker:1934
 msgid "Filtering"
 msgstr "Filtreleme"
 
-#: ../clawsker:1919
+#: ../clawsker:1935
 msgid "User Actions"
 msgstr "Kullanıcı Eylemleri"
 
-#: ../clawsker:1920
+#: ../clawsker:1936
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: ../clawsker:2068
+#: ../clawsker:1974
+msgid "Server Name Indication"
+msgstr "Sunucu İsim Göstergesi"
+
+#: ../clawsker:2094
 msgid "Attachment remover"
 msgstr "Ek kaldırıcı"
 
-#: ../clawsker:2069
+#: ../clawsker:2095
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:2070
+#: ../clawsker:2096
 msgid "Sieve manager"
 msgstr "Sieve yöneticisi"
 
-#: ../clawsker:2071
+#: ../clawsker:2097
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:2072
+#: ../clawsker:2098
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:2137
+#: ../clawsker:2163
 msgid "Menu path"
 msgstr "Menü yolu"
 
-#: ../clawsker:2151
+#: ../clawsker:2177
 msgid "Hotkey"
 msgstr "Kısa tuşlar"
 
-#: ../clawsker:2195
+#: ../clawsker:2219
 msgid "Library versions"
 msgstr "Kütüphane sürümleri"
 
-#: ../clawsker:2197
+#: ../clawsker:2221
 msgid "GLib runtime"
 msgstr "Glib runtime"
 
-#: ../clawsker:2198
+#: ../clawsker:2222
 msgid "GLib built"
 msgstr "Glib built"
 
-#: ../clawsker:2200
-#| msgid "GTK2 runtime"
+#: ../clawsker:2224
 msgid "GTK3 runtime"
 msgstr "GTK3 runtime"
 
-#: ../clawsker:2201
-#| msgid "GTK2 built"
+#: ../clawsker:2225
 msgid "GTK3 built"
 msgstr "GTK3 built"
 
-#: ../clawsker:2203
+#: ../clawsker:2227
 msgid "Claws Mail versions"
 msgstr "Claws Mail sürümleri"
 
-#: ../clawsker:2204
+#: ../clawsker:2228
 msgid "Binary"
 msgstr "İkilik"
 
-#: ../clawsker:2205
+#: ../clawsker:2229
 msgid "Configuration"
 msgstr "Yapılandırma"
 
-#: ../clawsker:2223
+#: ../clawsker:2247
 msgid "Not available"
 msgstr "Mevcut değil"
 
-#: ../clawsker:2235
+#: ../clawsker:2256
+msgid "Version:"
+msgstr "Sürüm:"
+
+#: ../clawsker:2259
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
 msgstr ""
 "Perl-GLib sürümü {glibv}, {glibb} için insa edilmiş, {glibr} ile çalışıyor."
 
-#: ../clawsker:2240
+#: ../clawsker:2264
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}."
 msgstr "Perl-GLib sürümü {glibv}."
 
-#: ../clawsker:2244
+#: ../clawsker:2267
 #, perl-brace-format
 msgid "Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}."
 msgstr ""
 "Perl-GTK3 sürümü {gtkv}, {gtkb} için inşa edilmiş, {gtkr} ile çalışıyor."
 
-#: ../clawsker:2249
+#: ../clawsker:2272
 #, perl-brace-format
-#| msgid "Perl-GTK2 version {gtkv}."
 msgid "Perl-GTK3 version {gtkv}."
 msgstr "Perl-GTK3 sürümü {gtkv}."
 
-#: ../clawsker:2253
+#: ../clawsker:2275
 msgid "Claws Mail was not found!"
 msgstr "Claws Mail bulunamadı!"
 
-#: ../clawsker:2254
+#: ../clawsker:2276
 #, perl-brace-format
 msgid "Claws Mail returned version {cmv}."
 msgstr "Claws Mail sürümü {cmv}."
 
-#: ../clawsker:2265
+#: ../clawsker:2287
 msgid "Syntax:"
 msgstr "Sözdizimi:"
 
-#: ../clawsker:2266
+#: ../clawsker:2288
 msgid "  clawsker [options]"
 msgstr "  clawsker [seçenekler]"
 
-#: ../clawsker:2267
+#: ../clawsker:2289
 msgid "Options:"
 msgstr "Seçenekler:"
 
-#: ../clawsker:2268
+#: ../clawsker:2290
 msgid ""
 "  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
 msgstr ""
 "  -a|--alternate-config-dir <dizin>  Claws Mail ayarları için <dizin> kullan."
 
-#: ../clawsker:2269
+#: ../clawsker:2291
 msgid "  -b|--verbose                     More messages on standard output."
 msgstr "  -b|--verbose                     Çıktıyı detaylandır."
 
-#: ../clawsker:2270
+#: ../clawsker:2292
 msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
 msgstr ""
 "  -c|--clawsrc <dosya>              tam kaynak adı olarak <dosya> kullan."
 
-#: ../clawsker:2271
+#: ../clawsker:2293
 msgid "  -h|--help                        Prints this help screen and exits."
 msgstr "  -h|--help                        Bu yardım ekranını gösterir."
 
-#: ../clawsker:2272
+#: ../clawsker:2294
 msgid "  -r|--read-only                   Disables writing changes to disk."
 msgstr ""
 "  -r|--read-only                   Değişikliklerin diske yazılmasını kapatır."
 
-#: ../clawsker:2273
+#: ../clawsker:2295
 msgid ""
 "  -v|--version                     Prints version information and exits."
 msgstr "  -v|--version                     Sürüm bilgilerini gösterir."
 
-#: ../clawsker:2289
+#: ../clawsker:2313
 msgid "try -h or --help for syntax.\n"
 msgstr "sözdizimi için -h ya da --help kullan.\n"
 
-#: ../clawsker:2292
+#: ../clawsker:2316
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "Seçeneklerde hata: {msg}\n"
 
-#: ../clawsker:2304
+#: ../clawsker:2328
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr "Hata: {opt} seçeneği noktalı bir sayısal değer gerektiriyor\n"
 
-#: ../clawsker:2311
+#: ../clawsker:2335
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "Hata: '{dir}' bir dizin değil ya da mevcut değil\n"
 
-#: ../clawsker:2319
+#: ../clawsker:2343
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "Hata: '{value}' dosya değil ya da mevcut değil\n"
 
-#: ../clawsker:2357 ../clawsker:2431
+#: ../clawsker:2381 ../clawsker:2455
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "Hata:'{file}' okunmak için açılıyor"
 
-#: ../clawsker:2365
+#: ../clawsker:2389
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "Hata:'{file}' kaynak dosyasında mükerrer bölüm '{sect}'\n"
 
-#: ../clawsker:2385 ../clawsker:2466
+#: ../clawsker:2409 ../clawsker:2490
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "Hata:'{file}' yazmak için açılıyor"
 
-#: ../clawsker:2419
+#: ../clawsker:2443
 #, perl-brace-format
 msgid "Unable to create backup file '{name}'\n"
 msgstr "Oluşturulamayan yedek '{name}'\n"
 
-#: ../clawsker:2588
+#: ../clawsker:2610
 msgid "Behaviour"
 msgstr "Davranış"
 
-#: ../clawsker:2589
+#: ../clawsker:2611
 msgid "Colours"
 msgstr "Renkler"
 
-#: ../clawsker:2590
+#: ../clawsker:2612
 msgid "GUI"
 msgstr "Arayüz"
 
-#: ../clawsker:2592
+#: ../clawsker:2614
 msgid "Windows"
 msgstr "Pencereler"
 
-#: ../clawsker:2594
+#: ../clawsker:2616
 msgid "Plugins"
 msgstr "Eklentiler"
 
-#: ../clawsker:2595
+#: ../clawsker:2617
 msgid "Hotkeys"
 msgstr "Kısa tuşlar"
 
-#: ../clawsker:2596
+#: ../clawsker:2618
 msgid "Info"
 msgstr "Bilgi"
 
-#: ../clawsker:2616
+#: ../clawsker:2638
 msgid "Visit Clawsker's web page"
 msgstr "Clawsker'in web sitesini ziyaret edin"
 
-#: ../clawsker:2656
+#: ../clawsker:2679
 msgid "There are unapplied modifications."
 msgstr "Kaydedilmemiş değişiklikler var."
 
-#: ../clawsker:2658
+#: ../clawsker:2681
 msgid "Do you really want to quit?"
 msgstr "Çıkmak istediğinize emin misiniz?"
 
-#: ../clawsker:2660
+#: ../clawsker:2683
 msgid "Clawsker warning"
 msgstr "Clawsker uyarı"
 
-#: ../clawsker:2736
+#: ../clawsker:2761
 msgid "Claws Mail Hidden Preferences"
 msgstr "Claws Mail Gizlenmiş Tercihler"
