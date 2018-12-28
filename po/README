@@ -64,7 +64,7 @@ should be created if everything is right.
 Translations not maintained
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a translation is not updated for several releases and the number of
+If a translation is not updated for several releases or the number of
 translated strings drops below certain level it will be moved to the
 directory 'po/unmaint'. Check there before making a new translation.
 
