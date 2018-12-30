@@ -1,3 +1,15 @@
+1.3.1:
+  - Support new account hidden preference “use_tls_sni”
+  - Add SSL manager window size to windows tab
+  - Rearranged and fixed behaviour of hotkeys tab
+  - Make getting Claws Mail version more robust
+  - Added test suite for some functions
+  - Translations:
+    • Updated: French, Swedish, Portuguese, Turkish, Dutch,
+      Catalan, Danish, Spanish and Brazilian Portuguese
+    • Dropped: Indonesian
+  - More fixes and improvements, see git log for further details
+
 1.3.0:
   - Migrated to GTK+3 perl bindings
   - Migrated UI layouts to new GtkGrid widget
