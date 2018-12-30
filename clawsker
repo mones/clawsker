@@ -44,6 +44,7 @@ sub initialise {
     bindtextdomain ($NAME, catdir ($PREFIX, 'share', 'locale'));
     textdomain ($NAME);
 }
+initialise;
 
 sub _ {
     my $str = shift;
@@ -2744,7 +2745,6 @@ sub escape_key_handler {
 
 sub main {
     my $args = shift;
-    initialise;
     exit unless parse_command_line ($args);
     Gtk3->init;
     $main_window = Gtk3::Window->new ('toplevel');
