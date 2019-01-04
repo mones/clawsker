@@ -26,7 +26,11 @@ all: build
 
 build: ${NAME}.1
 	-mkdir build
-	sed -e "s,@PREFIX@,${PREFIX},;s,@LIBDIR@,${LIBDIR},;s,@VERSION@,${VERSION},;s,@DATADIR@,${DATADIR}," < ${NAME} > build/${NAME}
+	perl -MConfig -p -e'1..1 and s/.*/$$Config{startperl}/;' \
+		-e's,\@PREFIX\@,${PREFIX},;' \
+		-e's,\@LIBDIR\@,${LIBDIR},;' \
+		-e's,\@VERSION\@,${VERSION},;' \
+		-e's,\@DATADIR\@,${DATADIR},' ${NAME} > build/${NAME}
 	cp -p $< build/$<
 	${MAKE} -C po build
 
