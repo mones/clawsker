@@ -801,7 +801,7 @@ sub new_other_page() {
         $xl::s{l_gui_from_show},
         $xl::s{h_gui_from_show},
         '0=l_gui_from_show_name;1=l_gui_from_show_addr;2=l_gui_from_show_both',
-        '3.7.10',
+        '3.7.10,3.17.4.44',
         '0',
     ],
     strip_off => [
