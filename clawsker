@@ -1152,7 +1152,7 @@ sub new_behaviour_page() {
         $xl::s{l_col_diff_add},
         $xl::s{h_col_diff_add},
         'color',
-        '3.8.0.54',
+        '3.8.0.54,3.17.4.35',
         '#008b8b',
     ],
     diff_del => [
@@ -1160,7 +1160,7 @@ sub new_behaviour_page() {
         $xl::s{l_col_diff_del},
         $xl::s{h_col_diff_del},
         'color',
-        '3.8.0.54',
+        '3.8.0.54,3.17.4.35',
         '#6a5acd',
     ],
     diff_hunk => [
@@ -1168,7 +1168,7 @@ sub new_behaviour_page() {
         $xl::s{l_col_diff_hunk},
         $xl::s{h_col_diff_hunk},
         'color',
-        '3.8.0.54',
+        '3.8.0.54,3.17.4.35',
         '#a52a2a',
     ],
     tags_bg => [
