@@ -222,6 +222,13 @@ sub _ {
     h_plu_gpg_alimit => _('Limits the number of addresses obtained from keyring through autocompletion. Use 0 to get all matches.'),
     l_plu_lav_burl => _('Base URL'),
     h_plu_lav_burl => _('This is the URL where avatar requests are sent. You can use the one of your own libravatar server, if available.'),
+    l_plu_lav_maxr => _('Default redirects'),
+    h_plu_lav_maxr => _('Maximum default value for HTTP redirects, if enabled'),
+    l_plu_lav_maxrmm => _('Mistery man redirects'),
+    h_plu_lav_maxrmm => _('Maximum value for HTTP redirects when using "Mistery man" mode.'),
+    l_plu_lav_maxrurl => _('Custom URL redirects'),
+    h_plu_lav_maxrurl => _('Maximum value for HTTP redirects when using a custom URL'),
+
     l_plu_prl_flvb => _('Log level'),
     h_plu_prl_flvb => _('Verbosity level of log, accumulative.'),
     l_plu_prl_none => _('None'),
@@ -2055,6 +2062,33 @@ sub new_accounts_page() {
         'http://cdn.libravatar.org/avatar',
         'Libravatar',
     ],
+    lav_maxr => [
+        'max_redirects',
+        $xl::s{l_plu_lav_maxr},
+        $xl::s{h_plu_lav_maxr},
+        'int,1,100',
+        '3.17.5.23',
+        '3',
+        'Libravatar',
+    ],
+    lav_maxrmm => [
+        'max_redirects_mm',
+        $xl::s{l_plu_lav_maxrmm},
+        $xl::s{h_plu_lav_maxrmm},
+        'int,1,100',
+        '3.17.5.23',
+        '5',
+        'Libravatar',
+    ],
+    lav_maxrurl => [
+        'max_redirects_url',
+        $xl::s{l_plu_lav_maxrurl},
+        $xl::s{h_plu_lav_maxrurl},
+        'int,1,100',
+        '3.17.5.23',
+        '7',
+        'Libravatar',
+    ],
     # perl
     prl_flvb => [
         'filter_log_verbosity',
@@ -2080,9 +2114,12 @@ sub new_plugins_page() {
             new_text_box_for_int (\%pr::plu, 'msv_winw', $PLHPVALUE{'ManageSieve'}),
             new_text_box_for_int (\%pr::plu, 'msv_winh', $PLHPVALUE{'ManageSieve'})
         ],
-        'Libravatar' => [
-            new_text_box_for_nchar (\%pr::plu, 'lav_burl', $PLHPVALUE{'Libravatar'})
-        ],
+        'Libravatar' => [new_grid_pack (2, 4, [
+            [ new_text_box_for_nchar (\%pr::plu, 'lav_burl', $PLHPVALUE{'Libravatar'}) ],
+            [ new_text_box_for_int (\%pr::plu, 'lav_maxr', $PLHPVALUE{'Libravatar'}) ],
+            [ new_text_box_for_int (\%pr::plu, 'lav_maxrmm', $PLHPVALUE{'Libravatar'}) ],
+            [ new_text_box_for_int (\%pr::plu, 'lav_maxrurl', $PLHPVALUE{'Libravatar'}) ]
+        ])],
         'PerlPlugin' => [
             new_selection_box_for (\%pr::plu, 'prl_flvb', $PLHPVALUE{'PerlPlugin'})
         ]
