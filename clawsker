@@ -157,6 +157,8 @@ sub _ {
     h_beh_fold_swc => _('On folder name completion text will match any part of the string or only from the start.'),
     l_beh_rewrite_ff => _('Rewrite first \'From\' using QP encoding'),
     h_beh_rewrite_ff => _('Workaround some servers which convert first \'From\' to \'>From\' by using Quoted-Printable transfer encoding instead of 7bit/8bit encoding.'),
+    l_beh_hide_tz => _('Hide time zone information'),
+    h_beh_hide_tz => _('On outgoing messages, sets time zone of date headers to the unknown timezone value "-0000", as specified by RFC 5322'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -1073,10 +1075,18 @@ sub new_gui_page() {
         '3.14.0.94',
         '0',
     ],
+    hide_tz => [
+        'hide_timezone',
+        $xl::s{l_beh_hide_tz},
+        $xl::s{h_beh_hide_tz},
+        'bool',
+        '3.14.0.22',
+        '0',
+    ],
 );
 
 sub new_behaviour_page() {
-    return new_grid_pack (2, 20, [
+    return new_grid_pack (2, 21, [
         [ _('Drag \'n\' drop') ],
         [ new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE) ],
         [ new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE) ],
@@ -1094,6 +1104,7 @@ sub new_behaviour_page() {
             new_check_button_for (\%pr::beh, 'inline_at', \%HPVALUE) ],
         [ new_check_button_for (\%pr::beh, 'dangerous', \%HPVALUE),
             new_check_button_for (\%pr::beh, 'rewrite_ff', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'hide_tz', \%HPVALUE) ],
         [ '--' ],
         [ _('Completion') ],
         [ new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE) ],
