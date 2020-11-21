@@ -34,6 +34,7 @@ my $DATADIR = '@DATADIR@';
 my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
 my $READONLY = FALSE;
+my $IGNOREV = FALSE;
 my $CLAWSV = undef;
 my $main_window = undef;
 
@@ -490,6 +491,7 @@ sub set_widget_hint {
 
 sub set_widget_sens {
     my ($wdgt, $versions) = @_;
+    return if $IGNOREV;
     my @ver = split(/,/, $versions);
     if ($#ver == 1) {
       $wdgt->set_sensitive (
@@ -2341,6 +2343,7 @@ sub print_help() {
         _("  -b|--verbose                     More messages on standard output."),
         _("  -c|--clawsrc <file>              Uses <file> as full resource name."),
         _("  -h|--help                        Prints this help screen and exits."),
+        _("  -i|--ignore-versions             Allows setting almost everything."),
         _("  -r|--read-only                   Disables writing changes to disk."),
         _("  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."),
         _("  -v|--version                     Prints version information and exits.")
@@ -2358,6 +2361,7 @@ sub parse_command_line {
             'v|version' => sub { print_version (); $cont = FALSE },
             'b|verbose' => sub { $VERBOSE = TRUE },
             'r|read-only' => sub { $READONLY = TRUE },
+            'i|ignore-versions' => sub { $IGNOREV = TRUE },
             'u|use-claws-version=s' => \&opt_use_claws_version,
             'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
             'c|clawsrc=s' => \&opt_clawsrc)
