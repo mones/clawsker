@@ -12,7 +12,8 @@ Clawsker - A Claws Mail Tweaker
 =head1 SYNOPSIS
 
 B<clawsker> [B<-a>|B<--alternate-config-dir> I<dirname>] [B<-b>|B<--verbose>]
-[B<-c>|B<--clawsrc> I<filename>] [B<-r>|B<--read-only>]
+[B<-c>|B<--clawsrc> I<filename>] [B<-i>|B<--ignore-versions>]
+[B<-r>|B<--read-only>] [B<-u>|B<--use-claws-version> I<version>]
 
 B<clawsker> [B<-v>|B<--version>]
 
@@ -33,7 +34,8 @@ using Clawsker.
 
 In adition to hidden features Clawsker can edit also some other settings
 which usually can only be set indirectly. These include currently the
-saved positions (and sizes when available) of Claws Mail windows.
+saved positions (and sizes when available) of Claws Mail windows and all
+hot key mappings from application menus.
 
 =head1 OPTIONS
 
@@ -56,10 +58,20 @@ the full file name overriding any previous setting.
 
 Shows a brief help screen.
 
+=item B<-i> | B<--ignore-versions>
+
+Ignores any version detected or set by B<-u> option. Almost all options
+will be available.
+
 =item B<-r> | B<--read-only>
 
 Edits hidden preferences without saving the changes. It also works while
 Claws Mail is running.
+
+=item B<-u> | B<--use-claws-version> I<version>
+
+Uses I<version> as Claws Mail version instead of the real one. The
+I<version> argument is a list of integers, separated by dots if needed.
 
 =item B<-v> | B<--version>
 
