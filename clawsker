@@ -2342,6 +2342,7 @@ sub print_help() {
         _("  -c|--clawsrc <file>              Uses <file> as full resource name."),
         _("  -h|--help                        Prints this help screen and exits."),
         _("  -r|--read-only                   Disables writing changes to disk."),
+        _("  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."),
         _("  -v|--version                     Prints version information and exits.")
     );
     foreach (@help) { say $_ }
