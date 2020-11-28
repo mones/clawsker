@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: clawsker 1.1.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2020-11-22 21:05+0100\n"
-"PO-Revision-Date: 2020-11-27 19:19+0100\n"
+"PO-Revision-Date: 2020-11-28 18:56+0100\n"
 "Last-Translator: Tristan Chabredier (wwp) <wwp@claws-mail.org>\n"
 "Language-Team: Tristan Chabredier (wwp) <subscript@free.fr>\n"
 "Language: fr\n"
@@ -1178,7 +1178,7 @@ msgstr "  -h|--help                         Affiche cette page d'aide."
 
 #: ../clawsker:2346
 msgid "  -i|--ignore-versions             Allows setting almost everything."
-msgstr "  -i|--ignore-versions             Allows setting almost everything."
+msgstr "  -i|--ignore-versions             Appliquer tout ce qui est possible."
 
 #: ../clawsker:2347
 msgid "  -r|--read-only                   Disables writing changes to disk."
