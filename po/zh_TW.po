@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: clawsker 1.2.0\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
-"POT-Creation-Date: 2018-08-08 00:29+0200\n"
+"POT-Creation-Date: 2020-11-22 21:05+0100\n"
 "PO-Revision-Date: 2018-08-13 09:28+8\n"
 "Last-Translator: Mark Chang <mark.cyj@gmail.com>\n"
 "Language-Team: LANGUAGE <mark.cyj@gmail.com>\n"
@@ -16,189 +16,63 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../clawsker:62
-msgid "Claws Mail Hidden Preferences"
-msgstr "Claws Mail 隱藏屬性"
-
-#: ../clawsker:63
-msgid "About..."
-msgstr "關於..."
-
-#: ../clawsker:64
+#: ../clawsker:65
 msgid "Clawsker :: A Claws Mail Tweaker"
 msgstr "Clawsker :: Claws Mail 的利器"
 
-#: ../clawsker:65
-msgid "License:"
-msgstr "許可"
-
-#: ../clawsker:66
-msgid "Version:"
-msgstr "版本"
-
-#: ../clawsker:68
-msgid "Clawsker warning"
-msgstr "Clawsker 警告"
-
-#: ../clawsker:69
-msgid "There are unapplied modifications."
-msgstr "這些是未套用的修改"
-
-#: ../clawsker:70
-msgid "Do you really want to quit?"
-msgstr "你確定要離開嗎？"
-
-#: ../clawsker:72
-msgid "Colours"
-msgstr "顏色"
-
-#: ../clawsker:73
-msgid "Behaviour"
-msgstr "行為"
-
-#: ../clawsker:74
-msgid "GUI"
-msgstr "GUI"
-
-#: ../clawsker:75 ../clawsker:2012
-msgid "Other"
-msgstr "其它"
-
-#: ../clawsker:76
-msgid "Windows"
-msgstr "視窗"
-
-#: ../clawsker:77 ../clawsker:2008
-msgid "Accounts"
-msgstr "帳號"
-
-#: ../clawsker:78
-msgid "Plugins"
-msgstr "外掛"
-
-#: ../clawsker:79
-msgid "Hotkeys"
-msgstr "快捷鍵"
-
-#: ../clawsker:80
-msgid "Info"
-msgstr "資訊"
-
-#: ../clawsker:82 ../clawsker:2007
-msgid "Addressbook"
-msgstr "通訊錄"
-
-#: ../clawsker:83
-msgid "Memory"
-msgstr "記憶體"
-
-#: ../clawsker:84 ../clawsker:93
-msgid "Message View"
-msgstr "郵件顯示"
-
-#: ../clawsker:85 ../clawsker:1986
-msgid "Log window"
-msgstr "日誌視窗"
-
-#: ../clawsker:86
-msgid "Drag 'n' drop"
-msgstr "拖/放"
-
-#: ../clawsker:87
-msgid "Secure Sockets Layer"
-msgstr "安全通訊層"
-
-#: ../clawsker:88
-msgid "Messages"
-msgstr "郵件"
-
-#: ../clawsker:89
-msgid "Completion"
-msgstr "完成"
-
-#: ../clawsker:90
-msgid "Coloured stripes"
-msgstr "顏色修紋"
-
-#: ../clawsker:91
-msgid "Scroll bars"
-msgstr "卷軸"
-
-#: ../clawsker:92
-msgid "Message List"
-msgstr "郵件清單"
-
-#: ../clawsker:94 ../clawsker:98
-msgid "Compose window"
-msgstr "新郵件視窗"
-
-#: ../clawsker:95
-msgid "NetworkManager"
-msgstr "網路管理員"
-
-#: ../clawsker:96
-msgid "Viewing patches"
-msgstr "檢視修正包"
-
-#: ../clawsker:97
-msgid "Master passphrase"
-msgstr "主要密碼"
-
-#: ../clawsker:99
-msgid "Quick search"
-msgstr "快速搜尋"
-
-#: ../clawsker:101
+#: ../clawsker:67
 msgid "Use detached address book edit dialogue"
 msgstr "使用獨立的通訊錄編輯對話框"
 
-#: ../clawsker:102
+#: ../clawsker:68
 msgid ""
 "If true use a separate dialogue to edit a person's details. Otherwise will "
 "use a form embedded in the address book's main window."
-msgstr "如果選擇是，則使用分離式對話框進行個人資料的編輯，"
-"否則，將使用來自通訊錄內部的主視窗。"
+msgstr ""
+"如果選擇是，則使用分離式對話框進行個人資料的編輯，否則，將使用來自通訊錄內部"
+"的主視窗。"
 
-#: ../clawsker:103
+#: ../clawsker:69
 msgid "Maximum memory for message cache"
 msgstr "最大的郵件記憶體暫存容量"
 
-#: ../clawsker:104
+#: ../clawsker:70
 msgid "kilobytes"
 msgstr "千位元"
 
-#: ../clawsker:105
+#: ../clawsker:71
 msgid "The maximum amount of memory to use to cache messages, in kilobytes."
 msgstr "暫存郵件的最大記憶體使用量，單位：千位元"
 
-#: ../clawsker:106
+#: ../clawsker:72
 msgid "Minimun time for cache elements"
 msgstr "暫存資料的最短時間"
 
-#: ../clawsker:107
+#: ../clawsker:73
 msgid "minutes"
 msgstr "分"
 
-#: ../clawsker:108
+#: ../clawsker:74
 msgid ""
 "The minimum time in minutes to keep a cache in memory. Caches more recent "
 "than this time will not be freed, even if the memory usage is too high."
-msgstr "保留暫存資料在記憶體中的最短時間(分)。即使記憶體使用率過高，"
-"暫存資料也不會釋放。"
+msgstr ""
+"保留暫存資料在記憶體中的最短時間(分)。即使記憶體使用率過高，暫存資料也不會釋"
+"放。"
 
-#: ../clawsker:109
+#: ../clawsker:75
 msgid "Use NetworkManager"
 msgstr "使用網路管理員"
 
-#: ../clawsker:110
+#: ../clawsker:76
 msgid "Use NetworkManager to switch offline automatically."
 msgstr "使用網路管理員自動切換為離線"
 
-#: ../clawsker:111
+#: ../clawsker:77
 msgid "Rounds for PBKDF2 function"
 msgstr "完整的PBKDF2功能"
 
-#: ../clawsker:112
+#: ../clawsker:78
 msgid ""
 "Specify the number of iterations the key derivation function will be applied "
 "on master passphrase computation. Does not modify currently stored "
@@ -206,948 +80,1128 @@ msgid ""
 "affected."
 msgstr ""
 "Specify the number of iterations the key derivation function will be applied "
-"on master passphrase computation. 請勿修改目前儲存的密碼，只有在改變了這值"
-"之後計算出來的密碼，才是有效的"
+"on master passphrase computation. 請勿修改目前儲存的密碼，只有在改變了這值之"
+"後計算出來的密碼，才是有效的"
 
-#: ../clawsker:114
+#: ../clawsker:80
 msgid "Show unread messages with bold font"
 msgstr "用粗體字顯示未讀郵件"
 
-#: ../clawsker:115
+#: ../clawsker:81
 msgid "Show unread messages in the Message List using a bold font."
 msgstr "在郵件清單中使用粗體字顯示未讀郵件"
 
-#: ../clawsker:116
+#: ../clawsker:82
 msgid "Don't use markup"
 msgstr "不要使用標記"
 
-#: ../clawsker:117
+#: ../clawsker:83
 msgid "Don't use bold and italic text in Compose dialogue's account selector."
 msgstr "不要在新郵件對話框中的帳號選擇器使用粗體/斜體字"
 
-#: ../clawsker:118
+#: ../clawsker:84
 msgid "Use dotted lines in tree view components"
 msgstr "在樹狀檢視元件上使用虛線"
 
-#: ../clawsker:119
+#: ../clawsker:85
 msgid ""
 "Use the old dotted line look in the main window tree views (Folder, Message "
 "and other lists) instead of the modern lineless look."
 msgstr ""
-"在主視窗內的樹狀檢視窗中使用新的無線式現代外觀(包含資料夾、郵件及其它清單)"
-"來取代舊式的虛線"
+"在主視窗內的樹狀檢視窗中使用新的無線式現代外觀(包含資料夾、郵件及其它清單)來"
+"取代舊式的虛線"
 
-#: ../clawsker:120
+#: ../clawsker:86
 msgid "Enable horizontal scrollbar"
 msgstr "開啟水平卷軸"
 
-#: ../clawsker:121
+#: ../clawsker:87
 msgid "Enable the horizontal scrollbar in the Message List."
 msgstr "在郵件清單中開啟水平卷軸"
 
-#: ../clawsker:122
+#: ../clawsker:88
 msgid "Display To column instead From column in Sent folder"
 msgstr "在已發送資料夾中顯示「收件人」欄位而不是顯示「寄件人」欄位"
 
-#: ../clawsker:123
+#: ../clawsker:89
 msgid ""
 "Display the recipient's email address in a To column of the Sent folder "
 "instead of the originator's one in a From column."
 msgstr ""
-"在已發送資料夾中的「收件人」欄位顯示收件者的郵件地址，"
-"而非顯示「寄件人」欄位內的發信者郵件地址"
+"在已發送資料夾中的「收件人」欄位顯示收件者的郵件地址，而非顯示「寄件人」欄位"
+"內的發信者郵件地址"
 
-#: ../clawsker:124
+#: ../clawsker:90
 msgid "Folder List scrollbar behaviour"
 msgstr "資料夾卷軸行為"
 
-#: ../clawsker:125
+#: ../clawsker:91
 msgid ""
 "Specify the policy of vertical scrollbar of Folder List: show always, "
 "automatic or hide always."
-msgstr ""
-"指定資料夾清單的垂直卷軸風格：總是顯示、自動或總是隱藏"
+msgstr "指定資料夾清單的垂直卷軸風格：總是顯示、自動或總是隱藏"
 
-#: ../clawsker:126
+#: ../clawsker:92
 msgid "Show always"
 msgstr "總是顯示"
 
-#: ../clawsker:127
+#: ../clawsker:93
 msgid "Automatic"
 msgstr "自動"
 
-#: ../clawsker:128
+#: ../clawsker:94
 msgid "Hide always"
 msgstr "總是隱藏"
 
-#: ../clawsker:129
+#: ../clawsker:95
 msgid "From column displays"
 msgstr "顯示From column"
 
-#: ../clawsker:130
+#: ../clawsker:96
 msgid ""
 "Selects the data displayed in the From column of the Message List: name, "
 "address or both."
-msgstr ""
-"選擇要顯示在郵件清單中的「寄件人」欄位資訊：名稱/郵件地址或兩者都顯示"
+msgstr "選擇要顯示在郵件清單中的「寄件人」欄位資訊：名稱/郵件地址或兩者都顯示"
 
-#: ../clawsker:131
+#: ../clawsker:97
 msgid "Name only"
 msgstr "只有名稱"
 
-#: ../clawsker:132
+#: ../clawsker:98
 msgid "Address only"
 msgstr "只有郵件地址"
 
-#: ../clawsker:133
+#: ../clawsker:99
 msgid "Both name and address"
 msgstr "包含名稱及郵件地址"
 
-#: ../clawsker:134
+#: ../clawsker:100
 msgid "Coloured lines contrast"
 msgstr "顏色反差"
 
-#: ../clawsker:135
+#: ../clawsker:101
 msgid ""
 "Specify the value to use when creating alternately coloured lines in tree "
 "view components. The smaller the value, the less visible the difference in "
 "the alternating colours of the lines."
 msgstr ""
-"指定在產生樹狀可視元件的線條交替顏色之數值。數值越小，線條的交替顏色差異越小。"
+"指定在產生樹狀可視元件的線條交替顏色之數值。數值越小，線條的交替顏色差異越"
+"小。"
 
-#: ../clawsker:136
+#: ../clawsker:102
 msgid "Show cursor"
 msgstr "顯示游標"
 
-#: ../clawsker:137
+#: ../clawsker:103
 msgid "Display the cursor in the Message View."
 msgstr "在郵件視窗中顯示游標"
 
-#: ../clawsker:138
+#: ../clawsker:104
 msgid "Detachable toolbars"
 msgstr "可分離式的工具列"
 
-#: ../clawsker:139
+#: ../clawsker:105
 msgid "Show handles in the toolbars."
 msgstr "在工具列中顯示工能項目"
 
-#: ../clawsker:140
+#: ../clawsker:106
 msgid "Use stripes in all tree view components"
 msgstr "在所有的樹狀可視元件內使用線條"
 
-#: ../clawsker:141
+#: ../clawsker:107
 msgid "Enable alternately coloured lines in all tree view components."
 msgstr "針對所有的樹狀可視元件啟用顏色交替線條"
 
-#: ../clawsker:142
+#: ../clawsker:108
 msgid "Use stripes in Folder List and Message List"
 msgstr "在資料夾清單和郵件清單中使用線條"
 
-#: ../clawsker:143
+#: ../clawsker:109
 msgid "Enable alternately coloured lines in Message List and Folder List."
 msgstr "針對所有的資料夾清單和郵件清單啟用顏色交替線條"
 
-#: ../clawsker:144
+#: ../clawsker:110
 msgid "2 lines per Message List item in 3-column layout"
 msgstr "在3欄位部署的郵件清單中，一封郵件包含兩條線條"
 
-#: ../clawsker:145
+#: ../clawsker:111
 msgid ""
 "Spread Message List information over two lines when using the three column "
 "mode."
-msgstr ""
-"當使用樹狀欄位時，將郵件清單資訊從兩條線條中區分開來"
+msgstr "當使用樹狀欄位時，將郵件清單資訊從兩條線條中區分開來"
 
-#: ../clawsker:146
+#: ../clawsker:112
 msgid "Show margin"
 msgstr "顯示邊界"
 
-#: ../clawsker:147
+#: ../clawsker:113
 msgid "Shows a small margin in the Compose View."
 msgstr "在新郵件視窗中顯示小邊界"
 
-#: ../clawsker:148
+#: ../clawsker:114
 msgid "Don't display localized date"
 msgstr "不要顯示本地資訊"
 
-#: ../clawsker:149
+#: ../clawsker:115
 msgid "Toggles localization of date format in Message View."
 msgstr "在郵件視窗中將本地資訊固定住"
 
-#: ../clawsker:150
+#: ../clawsker:116
 msgid "Zero replacement character"
 msgstr "零替換字元"
 
-#: ../clawsker:151
+#: ../clawsker:117
 msgid "Replaces '0' with the given character in Folder List."
 msgstr "在資料夾清單中用指定的字元替換'0'"
 
-#: ../clawsker:152
+#: ../clawsker:118
 msgid "Editable headers"
 msgstr "可編輯的檔頭"
 
-#: ../clawsker:153
+#: ../clawsker:119
 msgid ""
 "Allows to manually type any value in Compose Window header entries or just "
 "select from the available choices in the associated dropdown list."
 msgstr ""
 "允許在新郵件視窗中手動輸入任意值，或只從相關的下拉選單中選擇有效的選項。"
 
-#: ../clawsker:154
+#: ../clawsker:120
 msgid "Warn when sending to more than"
 msgstr "警告：當收信人超過"
 
-#: ../clawsker:155
+#: ../clawsker:121
 msgid "recipients"
 msgstr "收信人"
 
-#: ../clawsker:156
+#: ../clawsker:122
 msgid ""
-"Show a warning dialogue when sending to more recipients than specified. Use 0 "
-"to disable this check."
+"Show a warning dialogue when sending to more recipients than specified. Use "
+"0 to disable this check."
 msgstr ""
 "當傳送郵件時收件者超過設定的上限時顯示警示對話框。將數值設定0，可停止這項檢查"
 
-#: ../clawsker:157
+#: ../clawsker:123
 msgid "Select next message on delete"
 msgstr "刪除郵件後自動選擇下一封郵件"
 
-#: ../clawsker:158
+#: ../clawsker:124
 msgid ""
 "When deleting a message, toggles between selecting the next one (newer "
 "message) or the previous one (older message)."
-msgstr ""
-"當刪除一封郵件時，指定選擇下一封郵件(較新的)或是上一封郵件(較舊的)"
+msgstr "當刪除一封郵件時，指定選擇下一封郵件(較新的)或是上一封郵件(較舊的)"
 
-#: ../clawsker:160
+#: ../clawsker:126
 msgid "Drag 'n' drop hover timeout"
 msgstr "拖/放的停留超時"
 
-#: ../clawsker:161
+#: ../clawsker:127
 msgid "milliseconds"
 msgstr "微秒"
 
-#: ../clawsker:162
+#: ../clawsker:128
 msgid ""
 "Time in milliseconds that will cause a folder tree to expand when the mouse "
 "cursor is held over it during drag and drop."
 msgstr ""
-"當滑鼠指標在樹狀資料夾上拖放時停留時會讓樹狀結構展開，而停留的時間以"
-"ms計算"
+"當滑鼠指標在樹狀資料夾上拖放時停留時會讓樹狀結構展開，而停留的時間以ms計算"
 
-#: ../clawsker:163
+#: ../clawsker:129
 msgid "Don't confirm deletions (dangerous!)"
 msgstr "不需要確認刪除(危險！)"
 
-#: ../clawsker:164
+#: ../clawsker:130
 msgid "Don't ask for confirmation before definitive deletion of emails."
 msgstr "在確認刪除郵件前不要求再次確認"
 
-#: ../clawsker:165
+#: ../clawsker:131
 msgid "Respect format=flowed in messages"
 msgstr "郵件格式將遵從原寄件格式"
 
-#: ../clawsker:166
+#: ../clawsker:132
 msgid ""
-"Respect format=flowed on text/plain message parts. This will cause some mails "
-"to have long lines, but will fix some URLs that would otherwise be wrapped."
+"Respect format=flowed on text/plain message parts. This will cause some "
+"mails to have long lines, but will fix some URLs that would otherwise be "
+"wrapped."
 msgstr ""
-"在純文字郵件的部份遵從原寄件格式，這將造成某些郵件出現過長的行，"
-"但是可以修改某些被斷行的URLs"
+"在純文字郵件的部份遵從原寄件格式，這將造成某些郵件出現過長的行，但是可以修改"
+"某些被斷行的URLs"
 
-#: ../clawsker:167
+#: ../clawsker:133
 msgid "Allow writable temporary files"
 msgstr "允許可寫的暫存檔案"
 
-#: ../clawsker:168
+#: ../clawsker:134
 msgid "Saves temporary files when opening attachment with write bit set."
 msgstr "當以允許位元寫入的方式開啟附件時，儲存暫存檔案"
 
-#: ../clawsker:169
+#: ../clawsker:135
 msgid "Don't check SSL certificates"
 msgstr "不要檢查SSL認證"
 
-#: ../clawsker:170
+#: ../clawsker:136
 msgid "Disables the verification of SSL certificates."
 msgstr "不要啟用SSL認證的驗證"
 
-#: ../clawsker:171
+#: ../clawsker:137
 msgid "Progress bar update step every"
 msgstr "進度條更新頻率為每"
 
-#: ../clawsker:172
+#: ../clawsker:138
 msgid "items"
 msgstr "項目"
 
-#: ../clawsker:173
+#: ../clawsker:139
 msgid "Update stepping in progress bars."
 msgstr "更新進度條的進度"
 
-#: ../clawsker:174
+#: ../clawsker:140
 msgid "Maximum age when threading by subject"
 msgstr "藉由主旨判定的最大年紀"
 
-#: ../clawsker:175
+#: ../clawsker:141
 msgid "days"
 msgstr "天"
 
-#: ../clawsker:176
+#: ../clawsker:142
 msgid ""
 "Number of days to include a message in a thread when using \"Thread using "
 "subject in addition to standard headers\"."
 msgstr ""
-"當在標準檔頭的範圍中使用主旨來作為 thread 的顯示方式時，需指定在一個"
-"thread 內的郵件中，能包含多少的天數"
+"當在標準檔頭的範圍中使用主旨來作為 thread 的顯示方式時，需指定在一個thread 內"
+"的郵件中，能包含多少的天數"
 
-#: ../clawsker:177
+#: ../clawsker:143
 msgid "Allow unsafe SSL certificates"
 msgstr "允許不安全的SSL認證"
 
-#: ../clawsker:178
+#: ../clawsker:144
 msgid ""
 "Allows Claws Mail to remember multiple SSL certificates for a given server/"
 "port."
-msgstr ""
-"藉由指定的伺服器通訊埠，允許Claws mail記錄多重的SSL認證"
+msgstr "藉由指定的伺服器通訊埠，允許Claws mail記錄多重的SSL認證"
 
-#: ../clawsker:179
+#: ../clawsker:145
 msgid "Force UTF-8 for broken mails"
 msgstr "強制對損毀的郵件使用UTF-8"
 
-#: ../clawsker:180
+#: ../clawsker:146
 msgid "Use UTF-8 encoding for broken mails instead of current locale."
 msgstr "對損毀的郵件使用UTF-8編碼，進而取代以當前的本地編碼進行"
 
-#: ../clawsker:181
+#: ../clawsker:147
 msgid "Warn on drag 'n' drop"
 msgstr "拖放時出現警告"
 
-#: ../clawsker:182
+#: ../clawsker:148
 msgid "Display a confirmation dialogue on drag 'n' drop of folders."
 msgstr "操作資料夾的拖放動作時，顯示確認對話框"
 
-#: ../clawsker:183
+#: ../clawsker:149
 msgid "Outgoing messages fallback to ASCII"
 msgstr "外送郵件徹回時轉為ASCII"
 
-#: ../clawsker:184
+#: ../clawsker:150
 msgid ""
 "If allowed by content, ASCII will be used to encode outgoing messages, "
 "otherwise the user-defined encoding is always enforced."
 msgstr ""
-"如果內容允許，ASCII將會被用來對外寄郵件進行編碼，否則將會採用使用者自訂的編碼方式"
+"如果內容允許，ASCII將會被用來對外寄郵件進行編碼，否則將會採用使用者自訂的編碼"
+"方式"
 
-#: ../clawsker:185
+#: ../clawsker:151
 msgid "Primary paste unselects selection"
 msgstr "主要 貼上 取消選擇 選擇"
 
-#: ../clawsker:186
+#: ../clawsker:152
 msgid ""
 "Controls how pasting using middle-click changes the selected text and "
 "insertion point."
-msgstr ""
-"控制如何使用滑鼠中鍵改變選擇的文字和插入點進行貼上的功能"
+msgstr "控制如何使用滑鼠中鍵改變選擇的文字和插入點進行貼上的功能"
 
-#: ../clawsker:187
+#: ../clawsker:153
 msgid "Show inline attachments"
 msgstr "顯示內嵌附加檔案"
 
-#: ../clawsker:188
+#: ../clawsker:154
 msgid "Allows to hide inline attachments already shown in mail structure view."
 msgstr "允許隱藏已經顯示在結構視窗內的內嵌附加檔案"
 
-#: ../clawsker:189
+#: ../clawsker:155
 msgid "Address search in compose window matches any"
 msgstr "在新郵件視窗中搜尋郵件地址，當條件滿足任何"
 
-#: ../clawsker:190
+#: ../clawsker:156
 msgid ""
-"On Tab-key completion, address text will match any part of the string or only "
-"from the start."
-msgstr ""
-"當Tab鍵完成時，滿足部份輸入字串的郵件地址將被顯示出來"
+"On Tab-key completion, address text will match any part of the string or "
+"only from the start."
+msgstr "當Tab鍵完成時，滿足部份輸入字串的郵件地址將被顯示出來"
 
-#: ../clawsker:191
+#: ../clawsker:157
 msgid "Folder search in folder selector matches any"
 msgstr "在資料夾選擇器中搜尋資料夾，當符合任何"
 
-#: ../clawsker:192
+#: ../clawsker:158
 msgid ""
-"On folder name completion text will match any part of the string or only from "
-"the start."
-msgstr ""
-"當資料夾名稱完成時，滿足部份輸入字串的名稱將被顯示出來"
+"On folder name completion text will match any part of the string or only "
+"from the start."
+msgstr "當資料夾名稱完成時，滿足部份輸入字串的名稱將被顯示出來"
 
-#: ../clawsker:193
+#: ../clawsker:159
 msgid "Rewrite first 'From' using QP encoding"
 msgstr "用QP編碼重新寫入第一個寄件人欄位"
 
-#: ../clawsker:194
+#: ../clawsker:160
 msgid ""
-"Workaround some servers which convert first 'From' to '>From' by using Quoted-"
-"Printable transfer encoding instead of 7bit/8bit encoding."
+"Workaround some servers which convert first 'From' to '>From' by using "
+"Quoted-Printable transfer encoding instead of 7bit/8bit encoding."
 msgstr ""
-"使用Quoted-Printable 傳輸編碼，取代用7bit/8bit編碼方式，"
-"解決某些伺服器會將第一個 'From' 轉變為 '>From' 的情況"
+"使用Quoted-Printable 傳輸編碼，取代用7bit/8bit編碼方式，解決某些伺服器會將第"
+"一個 'From' 轉變為 '>From' 的情況"
 
-#: ../clawsker:196
+#: ../clawsker:161
+msgid "Hide time zone information"
+msgstr "隱藏時區資訊"
+
+#: ../clawsker:162
+msgid ""
+"On outgoing messages, sets time zone of date headers to the unknown timezone "
+"value \"-0000\", as specified by RFC 5322"
+msgstr "依據 RFC 5322 規範，外送郵件若日期時區指向未知時區，則設為\"-0000\"."
+
+#: ../clawsker:164
 msgid "X-Mailer header"
 msgstr "X-Mailer 檔頭"
 
-#: ../clawsker:197
+#: ../clawsker:165
 msgid "The colour used for the X-Mailer line when its value is Claws Mail."
 msgstr "X-Mailer 線條的顏色，當它的值是Claws Mail"
 
-#: ../clawsker:198
+#: ../clawsker:166
 msgid "Error messages"
 msgstr "錯誤訊息"
 
-#: ../clawsker:199
+#: ../clawsker:167
 msgid "Colour for error messages in log window."
 msgstr "日誌視窗中的錯誤訊息顏色"
 
-#: ../clawsker:200
+#: ../clawsker:168
 msgid "Server messages"
 msgstr "伺服器訊息"
 
-#: ../clawsker:201
+#: ../clawsker:169
 msgid "Colour for messages received from servers in log window."
 msgstr "日誌視窗中來自於伺服器的訊息顏色"
 
-#: ../clawsker:202
+#: ../clawsker:170
 msgid "Standard messages"
 msgstr "標準訊息"
 
-#: ../clawsker:203
+#: ../clawsker:171
 msgid "Colour for messages in log window."
 msgstr "日誌視窗中的訊息顏色"
 
-#: ../clawsker:204
+#: ../clawsker:172
 msgid "Client messages"
 msgstr "客戶端訊息"
 
-#: ../clawsker:205
+#: ../clawsker:173
 msgid "Colour for messages sent to servers in log window."
 msgstr "日誌視窗中傳送至伺服器的訊息顏色"
 
-#: ../clawsker:206
+#: ../clawsker:174
 msgid "Warning messages"
 msgstr "警告訊息"
 
-#: ../clawsker:207
+#: ../clawsker:175
 msgid "Colour for warning messages in log window."
 msgstr "日誌視窗中的警告訊息顏色"
 
-#: ../clawsker:209
+#: ../clawsker:177
 msgid "Tags background"
 msgstr "背景標記"
 
-#: ../clawsker:210
+#: ../clawsker:178
 msgid "Background colour for tags in message view."
 msgstr "在訊息視窗中標記的背景顏色"
 
-#: ../clawsker:211
+#: ../clawsker:179
 msgid "Tags text"
 msgstr "標記文字"
 
-#: ../clawsker:212
+#: ../clawsker:180
 msgid "Text colour for tags in message view."
 msgstr "在訊息視窗中標記文字的顏色"
 
-#: ../clawsker:214
+#: ../clawsker:182
 msgid "Default headers background"
 msgstr "預設的檔頭背景"
 
-#: ../clawsker:215
+#: ../clawsker:183
 msgid "Background colour for default headers in compose window."
 msgstr "在新郵件視窗中的預設檔頭背景顏色"
 
-#: ../clawsker:216
+#: ../clawsker:184
 msgid "Default headers text"
 msgstr "預設檔頭文字"
 
-#: ../clawsker:217
+#: ../clawsker:185
 msgid "Text colour for default headers in compose window."
 msgstr "在新郵件視窗中的預設檔頭文字顏色"
 
-#: ../clawsker:219
+#: ../clawsker:187
 msgid "Active quick search background"
 msgstr "啟用快速背景搜尋"
 
-#: ../clawsker:220
+#: ../clawsker:188
 msgid "Background colour for active quick search."
 msgstr "快速搜尋的背景顏色"
 
-#: ../clawsker:221
+#: ../clawsker:189
 msgid "Active quick search text"
 msgstr "啟用快速搜尋文字"
 
-#: ../clawsker:222
+#: ../clawsker:190
 msgid "Text colour for active quick search."
 msgstr "啟用快速搜尋的文字顏色"
 
-#: ../clawsker:223
+#: ../clawsker:191
 msgid "Quick search error background"
 msgstr "快速搜尋錯誤背景"
 
-#: ../clawsker:224
+#: ../clawsker:192
 msgid "Background colour for quick search error."
 msgstr "快速搜尋錯誤的背景顏色"
 
-#: ../clawsker:225
+#: ../clawsker:193
 msgid "Quick search error text"
 msgstr "快速搜尋錯誤文字"
 
-#: ../clawsker:226
+#: ../clawsker:194
 msgid "Text colour for quick search error."
 msgstr "快速搜尋錯誤文字顏色"
 
-#: ../clawsker:228
+#: ../clawsker:196
 msgid "Added lines"
 msgstr "新增列"
 
-#: ../clawsker:229
+#: ../clawsker:197
 msgid "Colour for added lines in patches."
 msgstr "新增列的顏色"
 
-#: ../clawsker:230
+#: ../clawsker:198
 msgid "Deleted lines"
 msgstr "刪除列"
 
-#: ../clawsker:231
+#: ../clawsker:199
 msgid "Colour for deleted lines in patches."
 msgstr "刪除列的顏色"
 
-#: ../clawsker:232
+#: ../clawsker:200
 msgid "Hunk lines"
 msgstr "Hunk lines"
 
-#: ../clawsker:233
+#: ../clawsker:201
 msgid "Colour for hunk headers in patches."
 msgstr "Colour for hunk headers in patches."
 
-#: ../clawsker:235
+#: ../clawsker:203
 msgid "X position"
 msgstr "X 位置"
 
-#: ../clawsker:236
+#: ../clawsker:204
 msgid "X coordinate for window's top-left corner."
 msgstr "視窗左上角的 X 座標"
 
-#: ../clawsker:237
+#: ../clawsker:205
 msgid "Y position"
 msgstr "Y 位置"
 
-#: ../clawsker:238
+#: ../clawsker:206
 msgid "Y coordinate for window's top-left corner."
 msgstr "視窗左上角的 Y 座標"
 
-#: ../clawsker:239
+#: ../clawsker:207
 msgid "Width"
 msgstr "寬度"
 
-#: ../clawsker:240
+#: ../clawsker:208
 msgid "Window's width in pixels."
 msgstr "視窗寬度像素"
 
-#: ../clawsker:241
+#: ../clawsker:209
 msgid "Height"
 msgstr "高度"
 
-#: ../clawsker:242
+#: ../clawsker:210
 msgid "Window's height in pixels."
 msgstr "視窗高度像素"
 
-#: ../clawsker:244
+#: ../clawsker:212
 msgid "Maximized"
 msgstr "最大化"
 
-#: ../clawsker:245
+#: ../clawsker:213
 msgid "Changes window maximized status."
 msgstr "改變視窗最大化狀態"
 
-#: ../clawsker:246
+#: ../clawsker:214
 msgid "Full-screen"
 msgstr "全螢幕"
 
-#: ../clawsker:247
+#: ../clawsker:215
 msgid "Changes full screen status."
 msgstr "改變全螢幕狀態"
 
-#: ../clawsker:249
+#: ../clawsker:217
 msgid "Use custom GnuTLS priority"
 msgstr "使用自訂GnuTLS優先權"
 
-#: ../clawsker:250
+#: ../clawsker:218
 msgid "Enables using user provided GnuTLS priority string."
 msgstr "啟用使用使用者提供的GnuTLS優先權字串"
 
-#: ../clawsker:251 ../clawsker:2042
+#: ../clawsker:219 ../clawsker:1993
 msgid "GnuTLS priority"
 msgstr "GnuTLS優先權"
 
-#: ../clawsker:252
+#: ../clawsker:220
 msgid ""
 "Value to use as GnuTLS priority string if custom priority check is enabled. "
 "Otherwise this value is ignored."
 msgstr ""
-"當使用者自訂的優先權功能檢查已開啟，此值將用來作為GnuTLS的優先權字串"
-"否則此值將被忽略"
+"當使用者自訂的優先權功能檢查已開啟，此值將用來作為GnuTLS的優先權字串否則此值"
+"將被忽略"
 
-#: ../clawsker:254
+#: ../clawsker:221
+msgid "Use TLS SNI extension"
+msgstr "使用 TLS SNI 擴展功能"
+
+#: ../clawsker:222
+msgid ""
+"Enables sending your hostname, if available, so the server can select the "
+"appropriate certificate for your domain. Useful for servers which host "
+"multiple domains on the same IP address."
+msgstr ""
+"如果可以，請允許傳送您的主機名稱，這樣可以讓伺服器為您的網域選擇合適的認證。"
+"這個功能對於單一IP且對應有多個網域的伺服器非常實用"
+
+#: ../clawsker:224
 msgid "Autocompletion limit"
 msgstr "自動完成限制"
 
-#: ../clawsker:255
+#: ../clawsker:225
 msgid ""
 "Limits the number of addresses obtained from keyring through autocompletion. "
 "Use 0 to get all matches."
 msgstr ""
-"透過自動完成功能從鑰匙圈取得郵件地址的數量上限，"
-"若設定為0，將沒有數量的上限"
+"透過自動完成功能從鑰匙圈取得郵件地址的數量上限，若設定為0，將沒有數量的上限"
 
-#: ../clawsker:256
+#: ../clawsker:226
 msgid "Base URL"
 msgstr "基於 URL"
 
-#: ../clawsker:257
+#: ../clawsker:227
 msgid ""
 "This is the URL where avatar requests are sent. You can use the one of your "
 "own libravatar server, if available."
-msgstr ""
-"如何你有屬於自己的libravatar伺服器，當有avatar的傳送需求時，你可以使用"
+msgstr "如何你有屬於自己的libravatar伺服器，當有avatar的傳送需求時，你可以使用"
 
-#: ../clawsker:258
+#: ../clawsker:228
+msgid "Default redirects"
+msgstr "預設重新導向數量"
+
+#: ../clawsker:229
+msgid "Maximum default value for HTTP redirects, if enabled"
+msgstr "若開啟此功能，HTTP重新導向數量的預設最大值"
+
+#: ../clawsker:230
+msgid "Mistery man redirects"
+msgstr "重新導向數量的神秘者模式"
+
+#: ../clawsker:231
+msgid "Maximum value for HTTP redirects when using \"Mistery man\" mode."
+msgstr "使用神秘者模式時，預設的最大重新導向數量"
+
+#: ../clawsker:232
+msgid "Custom URL redirects"
+msgstr "重新導向數量的自訂模式"
+
+#: ../clawsker:233
+msgid "Maximum value for HTTP redirects when using a custom URL"
+msgstr "使用自訂模式時，預設的最大重新導向數量"
+
+#: ../clawsker:235
 msgid "Log level"
 msgstr "日誌層級"
 
-#: ../clawsker:259
+#: ../clawsker:236
 msgid "Verbosity level of log, accumulative."
 msgstr "Verbosity level of log, accumulative."
 
-#: ../clawsker:260
+#: ../clawsker:237
 msgid "None"
 msgstr "無"
 
-#: ../clawsker:261
+#: ../clawsker:238
 msgid "Manual"
 msgstr "手動"
 
-#: ../clawsker:262
+#: ../clawsker:239
 msgid "Actions"
 msgstr "開始"
 
-#: ../clawsker:263
+#: ../clawsker:240
 msgid "Matches"
 msgstr "符合"
 
-#: ../clawsker:457
+#: ../clawsker:449
 msgid "Clawsker error"
 msgstr "Clawsker 錯誤"
 
-#: ../clawsker:463
+#: ../clawsker:456
 msgid "Error: seems Claws Mail is currently running, close it first."
 msgstr "錯誤：Claws Mail似乎正在執行中，請先關閉"
 
-#: ../clawsker:486
+#: ../clawsker:478
 msgid "Error: resource file for Claws Mail was not found."
 msgstr "錯誤：找不到Claws Mail的資源檔案"
 
-#: ../clawsker:1819
+#: ../clawsker:746 ../clawsker:1954
+msgid "Addressbook"
+msgstr "通訊錄"
+
+#: ../clawsker:749
+msgid "Memory"
+msgstr "記憶體"
+
+#: ../clawsker:753
+msgid "NetworkManager"
+msgstr "網路管理員"
+
+#: ../clawsker:756
+msgid "Master passphrase"
+msgstr "主要密碼"
+
+#: ../clawsker:918
+msgid "Coloured stripes"
+msgstr "顏色修紋"
+
+#: ../clawsker:923
+msgid "Message List"
+msgstr "郵件清單"
+
+#: ../clawsker:930 ../clawsker:1262
+msgid "Message View"
+msgstr "郵件顯示"
+
+#: ../clawsker:934 ../clawsker:1279
+msgid "Compose window"
+msgstr "新郵件視窗"
+
+#: ../clawsker:940
+msgid "Scroll bars"
+msgstr "卷軸"
+
+#: ../clawsker:944 ../clawsker:1115 ../clawsker:1959 ../clawsker:2668
+msgid "Other"
+msgstr "其它"
+
+#: ../clawsker:1092
+msgid "Drag 'n' drop"
+msgstr "拖/放"
+
+#: ../clawsker:1096
+msgid "Secure Sockets Layer"
+msgstr "安全通訊層"
+
+#: ../clawsker:1100
+msgid "Messages"
+msgstr "郵件"
+
+#: ../clawsker:1111
+msgid "Completion"
+msgstr "完成"
+
+#: ../clawsker:1267 ../clawsker:1929
+msgid "Log window"
+msgstr "日誌視窗"
+
+#: ../clawsker:1274
+msgid "Viewing patches"
+msgstr "檢視修正包"
+
+#: ../clawsker:1283
+msgid "Quick search"
+msgstr "快速搜尋"
+
+#: ../clawsker:1792
 msgid "Main window"
 msgstr "主視窗"
 
-#: ../clawsker:1832
+#: ../clawsker:1804
 msgid "Message window"
 msgstr "郵件視窗"
 
-#: ../clawsker:1842
+#: ../clawsker:1814
 msgid "Send window"
 msgstr "傳送視窗"
 
-#: ../clawsker:1847
+#: ../clawsker:1818
 msgid "Receive window"
 msgstr "接收視窗"
 
-#: ../clawsker:1861
+#: ../clawsker:1826
 msgid "Folder window"
 msgstr "資料夾視窗"
 
-#: ../clawsker:1866
+#: ../clawsker:1832
 msgid "Folder selection window"
 msgstr "資料夾選擇視窗"
 
-#: ../clawsker:1876
+#: ../clawsker:1840
 msgid "Addressbook main window"
 msgstr "郵件地址主要視窗"
 
-#: ../clawsker:1881
+#: ../clawsker:1844
 msgid "Edit person window"
 msgstr "編輯個人視窗"
 
-#: ../clawsker:1886
+#: ../clawsker:1848
 msgid "Edit group window"
 msgstr "編輯群組視窗"
 
-#: ../clawsker:1891
+#: ../clawsker:1852
 msgid "Add address window"
 msgstr "新增地址視窗"
 
-#: ../clawsker:1896
+#: ../clawsker:1856
 msgid "Folder select window"
 msgstr "資料夾選擇視窗"
 
-#: ../clawsker:1906
+#: ../clawsker:1864
 msgid "Accounts window"
 msgstr "帳號視窗"
 
-#: ../clawsker:1911
+#: ../clawsker:1868
 msgid "Edit account window"
 msgstr "編輯帳號視窗"
 
-#: ../clawsker:1921
+#: ../clawsker:1876
 msgid "Filtering window"
 msgstr "過濾器視窗"
 
-#: ../clawsker:1926
+#: ../clawsker:1880
 msgid "Filtering actions window"
 msgstr "過濾器執行視窗"
 
-#: ../clawsker:1931
+#: ../clawsker:1884
 msgid "Filtering debug window"
 msgstr "過濾器除錯視窗"
 
-#: ../clawsker:1936
-msgid "Matcher window"
-msgstr "符合視窗"
-
-#: ../clawsker:1946
+#: ../clawsker:1897
 msgid "User Actions prefs window"
 msgstr "使用者偏好執行視窗"
 
-#: ../clawsker:1951
+#: ../clawsker:1901
 msgid "User Actions I/O window"
 msgstr "使用者輸出/輸入執行視窗"
 
-#: ../clawsker:1961
+#: ../clawsker:1909
 msgid "Preferences window"
 msgstr "偏好視窗"
 
-#: ../clawsker:1966
+#: ../clawsker:1913
 msgid "Templates window"
 msgstr "樣版視窗"
 
-#: ../clawsker:1971
+#: ../clawsker:1917
 msgid "Tags window"
 msgstr "標記視窗"
 
-#: ../clawsker:1976
+#: ../clawsker:1921
 msgid "Plugins window"
 msgstr "外掛視窗"
 
-#: ../clawsker:1991
+#: ../clawsker:1933
+msgid "SSL manager"
+msgstr "SSL 管理員"
+
+#: ../clawsker:1937
 msgid "Print preview window"
 msgstr "預覽列印視窗"
 
-#: ../clawsker:1996
+#: ../clawsker:1941
 msgid "View source window"
 msgstr "原始可視視窗"
 
-#: ../clawsker:2003
+#: ../clawsker:1950
 msgid "Main"
 msgstr "主要"
 
-#: ../clawsker:2004
+#: ../clawsker:1951
 msgid "Message"
 msgstr "郵件"
 
-#: ../clawsker:2005
+#: ../clawsker:1952
 msgid "Send/Receive"
 msgstr "傳送/接收"
 
-#: ../clawsker:2006
+#: ../clawsker:1953
 msgid "Folder"
 msgstr "資料夾"
 
-#: ../clawsker:2009
+#: ../clawsker:1955 ../clawsker:2670
+msgid "Accounts"
+msgstr "帳號"
+
+#: ../clawsker:1956
 msgid "Filtering"
 msgstr "過濾器"
 
-#: ../clawsker:2010
+#: ../clawsker:1957
 msgid "User Actions"
 msgstr "使用者活動"
 
-#: ../clawsker:2011
+#: ../clawsker:1958
 msgid "Preferences"
 msgstr "偏好"
 
-#: ../clawsker:2144
+#: ../clawsker:1996
+msgid "Server Name Indication"
+msgstr "伺服器名稱指示"
+
+#: ../clawsker:2146
 msgid "Attachment remover"
 msgstr "附件移除器"
 
-#: ../clawsker:2149
+#: ../clawsker:2147
 msgid "GPG"
 msgstr "GPG"
 
-#: ../clawsker:2155
+#: ../clawsker:2148
 msgid "Sieve manager"
 msgstr "篩選管理員"
 
-#: ../clawsker:2160
+#: ../clawsker:2149
 msgid "Libravatar"
 msgstr "Libravatar"
 
-#: ../clawsker:2165
+#: ../clawsker:2150
 msgid "Perl"
 msgstr "Perl"
 
-#: ../clawsker:2241
+#: ../clawsker:2215
 msgid "Menu path"
 msgstr "選單路徑"
 
-#: ../clawsker:2254
+#: ../clawsker:2229
 msgid "Hotkey"
 msgstr "熱鍵"
 
-#: ../clawsker:2299
-msgid "GLib runtime"
-msgstr "GLib runtime"
-
-#: ../clawsker:2300
-msgid "GLib built"
-msgstr "GLib 建立"
-
-#: ../clawsker:2302
-msgid "GTK2 runtime"
-msgstr "GTK2 runtime"
-
-#: ../clawsker:2303
-msgid "GTK2 built"
-msgstr "GTK2 built"
-
-#: ../clawsker:2320
-msgid "Binary"
-msgstr "二進制"
-
-#: ../clawsker:2321
-msgid "Configuration"
-msgstr "配置"
-
-#: ../clawsker:2334
+#: ../clawsker:2271
 msgid "Library versions"
 msgstr "函式庫版本"
 
-#: ../clawsker:2335
+#: ../clawsker:2273
+msgid "GLib runtime"
+msgstr "GLib runtime"
+
+#: ../clawsker:2274
+msgid "GLib built"
+msgstr "GLib 建立"
+
+#: ../clawsker:2276
+msgid "GTK3 runtime"
+msgstr "GTK3 runtime"
+
+#: ../clawsker:2277
+msgid "GTK3 built"
+msgstr "GTK3 built"
+
+#: ../clawsker:2279
 msgid "Claws Mail versions"
 msgstr "Claws Mail 版本"
 
-#: ../clawsker:2362
+#: ../clawsker:2280
+msgid "Binary"
+msgstr "二進制"
+
+#: ../clawsker:2281
+msgid "Configuration"
+msgstr "配置"
+
+#: ../clawsker:2299
+msgid "Not available"
+msgstr "無法使用"
+
+#: ../clawsker:2308
+msgid "Version:"
+msgstr "版本"
+
+#: ../clawsker:2311
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
 msgstr "Perl-GLib 版本{glibv}, 為 {glibb} 建立, 與 {glibr} 執行."
 
-#: ../clawsker:2367
+#: ../clawsker:2316
 #, perl-brace-format
 msgid "Perl-GLib version {glibv}."
 msgstr "Perl-GLib 版本 {glibv}."
 
-#: ../clawsker:2371
+#: ../clawsker:2319
 #, perl-brace-format
-msgid "Perl-GTK2 version {gtkv}, built for {gtkb}, running with {gtkr}."
-msgstr "Perl-GTK2 版本 {gtkv}, 為 {gtkb} 建立, 與 {gtkr} 執行."
+msgid "Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}."
+msgstr "Perl-GTK3 版本 {gtkv}, 為 {gtkb} 建立, 與 {gtkr} 執行."
 
-#: ../clawsker:2376
+#: ../clawsker:2324
 #, perl-brace-format
-msgid "Perl-GTK2 version {gtkv}."
-msgstr "Perl-GTK2 版本 {gtkv}."
+msgid "Perl-GTK3 version {gtkv}."
+msgstr "Perl-GTK3 版本 {gtkv}."
 
-#: ../clawsker:2380
+#: ../clawsker:2327
 msgid "Claws Mail was not found!"
 msgstr "找不到 Claws Mail"
 
-#: ../clawsker:2381
+#: ../clawsker:2328
 #, perl-brace-format
 msgid "Claws Mail returned version {cmv}."
 msgstr "Claws Mail 回傳版本 {cmv}."
 
-#: ../clawsker:2392
+#: ../clawsker:2339
 msgid "Syntax:"
 msgstr "Syntax:"
 
-#: ../clawsker:2393
+#: ../clawsker:2340
 msgid "  clawsker [options]"
 msgstr "clawsker [選項]"
 
-#: ../clawsker:2394
+#: ../clawsker:2341
 msgid "Options:"
 msgstr "選項"
 
-#: ../clawsker:2395
+#: ../clawsker:2342
 msgid ""
 "  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
-msgstr ""
-"  -a|--alternate-config-dir <dir>  使用 <dir> 作為 Claws Mail 配置"
+msgstr "  -a|--alternate-config-dir <dir>  使用 <dir> 作為 Claws Mail 配置"
 
-#: ../clawsker:2396
+#: ../clawsker:2343
 msgid "  -b|--verbose                     More messages on standard output."
 msgstr "  -b|--verbose                     在標準輸出上顯示更多的訊息"
 
-#: ../clawsker:2397
+#: ../clawsker:2344
 msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
 msgstr "  -c|--clawsrc <file>              使用 <file> 作為完成的資源名稱"
 
-#: ../clawsker:2398
+#: ../clawsker:2345
 msgid "  -h|--help                        Prints this help screen and exits."
 msgstr "  -h|--help                        顯示本說明內容後離開"
 
-#: ../clawsker:2399
+#: ../clawsker:2346
+msgid "  -i|--ignore-versions             Allows setting almost everything."
+msgstr "  -i|--ignore-versions             允許設定幾乎所有的東西 "
+
+#: ../clawsker:2347
 msgid "  -r|--read-only                   Disables writing changes to disk."
 msgstr "  -r|--read-only                   取消將改變寫入磁碟"
 
-#: ../clawsker:2400
-msgid "  -v|--version                     Prints version information and exits."
+#: ../clawsker:2348
+msgid ""
+"  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."
+msgstr "  -u|--use-claws-version <版本號>     使用 <版本號> 取代偵測到的版本"
+
+#: ../clawsker:2349
+msgid ""
+"  -v|--version                     Prints version information and exits."
 msgstr "  -v|--version                     顯示版本資訊後離開"
 
-#: ../clawsker:2416
+#: ../clawsker:2368
 msgid "try -h or --help for syntax.\n"
 msgstr "try -h or --help for syntax.\n"
 
-#: ../clawsker:2419
+#: ../clawsker:2371
 #, perl-brace-format
 msgid "Error in options: {msg}\n"
 msgstr "選項的錯誤訊息： {msg}\n"
 
-#: ../clawsker:2431
+#: ../clawsker:2383
 #, perl-brace-format
 msgid "Error: {opt} requires a dotted numeric value argument\n"
 msgstr "錯誤：{opt} 數值參數需要一個虛線\n"
 
-#: ../clawsker:2438
+#: ../clawsker:2390
 #, perl-brace-format
 msgid "Error: '{dir}' is not a directory or does not exist\n"
 msgstr "錯誤：'{dir}' 不是一個路徑或路徑不存在\n"
 
-#: ../clawsker:2447
+#: ../clawsker:2398
 #, perl-brace-format
 msgid "Error: '{value}' is not a file or does not exist\n"
 msgstr "錯誤： '{value}' 不是一個路徑或路徑不存在\n"
 
-#: ../clawsker:2485 ../clawsker:2559
+#: ../clawsker:2436 ../clawsker:2510
 #, perl-brace-format
 msgid "Error: opening '{file}' for reading"
 msgstr "錯誤： 無法讀取開啟的 '{file}' "
 
-#: ../clawsker:2493
+#: ../clawsker:2444
 #, perl-brace-format
 msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
 msgstr "錯誤： 在資源檔案 '{file}' 內出現重複的區段 '{sect}' \n"
 
-#: ../clawsker:2513 ../clawsker:2594
+#: ../clawsker:2464 ../clawsker:2545
 #, perl-brace-format
 msgid "Error: opening '{file}' for writing"
 msgstr "錯誤： 無法寫入開啟的 '{file}' "
 
-#: ../clawsker:2547
+#: ../clawsker:2498
 #, perl-brace-format
 msgid "Unable to create backup file '{name}'\n"
 msgstr "無法建立備份檔案 '{name}'\n"
+
+#: ../clawsker:2665
+msgid "Behaviour"
+msgstr "行為"
+
+#: ../clawsker:2666
+msgid "Colours"
+msgstr "顏色"
+
+#: ../clawsker:2667
+msgid "GUI"
+msgstr "GUI"
+
+#: ../clawsker:2669
+msgid "Windows"
+msgstr "視窗"
+
+#: ../clawsker:2671
+msgid "Plugins"
+msgstr "外掛"
+
+#: ../clawsker:2672
+msgid "Hotkeys"
+msgstr "快捷鍵"
+
+#: ../clawsker:2673
+msgid "Info"
+msgstr "資訊"
+
+#: ../clawsker:2693
+msgid "Visit Clawsker's web page"
+msgstr "拜訪 Clawsker 的官方網站"
+
+#: ../clawsker:2734
+msgid "There are unapplied modifications."
+msgstr "這些是未套用的修改"
+
+#: ../clawsker:2736
+msgid "Do you really want to quit?"
+msgstr "你確定要離開嗎？"
+
+#: ../clawsker:2738
+msgid "Clawsker warning"
+msgstr "Clawsker 警告"
+
+#: ../clawsker:2815
+msgid "Claws Mail Hidden Preferences"
+msgstr "Claws Mail 隱藏屬性"
