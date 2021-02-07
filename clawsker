@@ -76,6 +76,8 @@ sub _ {
     h_oth_use_netm => _('Use NetworkManager to switch offline automatically.'),
     l_oth_mp_rounds => _('Rounds for PBKDF2 function'),
     h_oth_mp_rounds => _('Specify the number of iterations the key derivation function will be applied on master passphrase computation. Does not modify currently stored passphrase, only master passphrases computed after changing this value are affected.'),
+    l_oth_imap_recl => _('Maximum depth scanning folders'),
+    h_oth_imap_recl => _('Maximun number of nested folders to be scanned on your configured IMAP servers.'),
 
     l_gui_b_unread => _('Show unread messages with bold font'),
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),
@@ -739,10 +741,18 @@ sub new_grid_pack {
         '3.13.2.110',
         '50000',
     ],
+    imap_recl => [
+        'imap_scan_tree_recurs_limit',
+        $xl::s{l_oth_imap_recl},
+        $xl::s{h_oth_imap_recl},
+        'int,2,1024',
+        '3.17.6.10',
+        '64',
+    ],
 );
 
 sub new_other_page() {
-    return new_grid_pack (1, 12, [
+    return new_grid_pack (1, 15, [
         [ _('Addressbook') ],
         [ new_check_button_for(\%pr::oth, 'use_dlg', \%HPVALUE) ],
         [ '--' ],
@@ -754,7 +764,10 @@ sub new_other_page() {
         [ new_check_button_for(\%pr::oth, 'use_netm', \%HPVALUE) ],
         [ '--' ],
         [ _('Master passphrase') ],
-        [ new_text_box_for_int(\%pr::oth, 'mp_rounds', \%HPVALUE) ]
+        [ new_text_box_for_int(\%pr::oth, 'mp_rounds', \%HPVALUE) ],
+        [ '--' ],
+        [ _('IMAP') ],
+        [ new_text_box_for_int(\%pr::oth, 'imap_recl', \%HPVALUE) ]
     ]);
 }
 
