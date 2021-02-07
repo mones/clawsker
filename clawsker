@@ -1382,6 +1382,23 @@ sub new_colours_page() {
         '0.0.0',
         '540',
     ],
+    urio_w => [
+        'uriopenerwin_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.17.3.1',
+        '-1',
+    ],
+    urio_h => [
+        'uriopenerwin_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.17.3.1',
+        '-1',
+    ],
+
     send_w => [
         'sendwin_width',
         $xl::s{l_win_w},
@@ -1830,12 +1847,16 @@ sub new_winpos_subpage_main() {
 }
 
 sub new_winpos_subpage_msgs() {
-    return new_grid_pack (3, 4, [
+    return new_grid_pack (3, 7, [
         [ _('Message window') ],
         [ new_text_box_for_int (\%pr::win, 'msgs_x', \%HPVALUE) ],
         [ new_text_box_for_int (\%pr::win, 'msgs_y', \%HPVALUE) ],
         [ new_text_box_for_int (\%pr::win, 'msgs_w', \%HPVALUE),
-            new_text_box_for_int (\%pr::win, 'msgs_h', \%HPVALUE) ]
+            new_text_box_for_int (\%pr::win, 'msgs_h', \%HPVALUE) ],
+        [ '--' ],
+        [ _('Open URLs window') ],
+        [ new_text_box_for_int (\%pr::win, 'urio_w', \%HPVALUE),
+            new_text_box_for_int (\%pr::win, 'urio_h', \%HPVALUE) ]
     ]);
 }
 
