@@ -461,16 +461,27 @@ sub claws_is_running {
     return FALSE;
 }
 
-sub check_claws_not_running {
-    return TRUE if $READONLY;
-    my $tmpdir = File::Spec->tmpdir ();
-    my $lockdir = catfile ($tmpdir, "claws-mail-$<");
+sub has_claws_socket {
+    my $lockdir = shift;
     -d $lockdir and do {
         $_ = $CONFIGDIR;
         s/\/$//;
         my $socket = catfile ($lockdir, md5_hex ($_));
-        -S $socket and return claws_is_running ();
+        -S $socket and return TRUE;
     };
+    return FALSE;
+}
+
+sub check_claws_not_running {
+    return TRUE if $READONLY;
+    my $rundir = $ENV{XDG_RUNTIME_DIR} // $ENV{XDG_CACHE_HOME};
+    defined $rundir and do {
+        my $lockdir = catfile ($rundir, "claws-mail");
+        return claws_is_running () if has_claws_socket ($lockdir);
+    };
+    my $tmpdir = File::Spec->tmpdir ();
+    my $lockdir = catfile ($tmpdir, "claws-mail-$<");
+    return claws_is_running () if has_claws_socket ($lockdir);
     return TRUE;
 }
 
