@@ -2167,6 +2167,25 @@ sub new_accounts_page() {
         '2',
         'PerlPlugin',
     ],
+    # python
+    py_consw => [
+        'console_win_width',
+        $xl::s{l_win_w},
+        $xl::s{h_win_w},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.17.3.1',
+        '-1',
+        'Python',
+    ],
+    py_consh => [
+        'console_win_height',
+        $xl::s{l_win_h},
+        $xl::s{h_win_h},
+        'int,0,3000', # 0 pixels - 3000 pixels
+        '3.17.3.1',
+        '-1',
+        'Python',
+    ],
 );
 
 sub new_plugins_page() {
@@ -2190,19 +2209,24 @@ sub new_plugins_page() {
         ])],
         'PerlPlugin' => [
             new_selection_box_for (\%pr::plu, 'prl_flvb', $PLHPVALUE{'PerlPlugin'})
-        ]
+        ],
+        'Python' => [
+            new_text_box_for_int (\%pr::plu, 'py_consw', $PLHPVALUE{'Python'}),
+            new_text_box_for_int (\%pr::plu, 'py_consh', $PLHPVALUE{'Python'})
+        ],
     );
     foreach my $pk (@PLUGINS) {
         foreach my $wg (@{$widget{$pk}}) {
             $wg->set_sensitive (defined $PLHPVALUE{$pk});
         }
     }
-    return new_grid_pack (3, 14, [
+    return new_grid_pack (3, 18, [
         [ _('Attachment remover') ], $widget{'AttRemover'}, [ '--' ],
         [ _('GPG') ], $widget{'GPG'}, [ '--' ],
         [ _('Sieve manager') ], $widget{'ManageSieve'}, [ '--' ],
         [ _('Libravatar') ], $widget{'Libravatar'}, [ '--' ],
-        [ _('Perl') ], $widget{'PerlPlugin'}
+        [ _('Perl') ], $widget{'PerlPlugin'}, [ '--' ],
+        [ _('Python console') ], $widget{'Python'}
     ]);
 }
 
