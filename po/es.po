@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Clawsker 1.3.3\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2021-02-07 17:17+0100\n"
-"PO-Revision-Date: 2021-02-07 17:21+0100\n"
+"PO-Revision-Date: 2021-02-09 20:30+0100\n"
 "Last-Translator: Ricardo Mones <ricardo@mones.org>\n"
 "Language-Team: Ricardo Mones <ricardo@mones.org>\n"
 "Language: Spanish\n"
@@ -912,10 +912,8 @@ msgid "Message window"
 msgstr "Ventana de mensajes"
 
 #: ../clawsker:1857
-#, fuzzy
-#| msgid "Send window"
 msgid "Open URLs window"
-msgstr "Ventana de enviar"
+msgstr "Ventana de abrir URLs"
 
 #: ../clawsker:1865
 msgid "Send window"
@@ -934,10 +932,8 @@ msgid "Folder selection window"
 msgstr "Ventana de selección de carpetas"
 
 #: ../clawsker:1887
-#, fuzzy
-#| msgid "Folder selection window"
 msgid "Folder sorting window"
-msgstr "Ventana de selección de carpetas"
+msgstr "Ventana de organización de buzones"
 
 #: ../clawsker:1895
 msgid "Addressbook main window"
