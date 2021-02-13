@@ -11,7 +11,7 @@ BEGIN {
     $clawsrc = catfile ($ENV{'XDG_RUNTIME_DIR'}, 'clawsrc');
     $accountrc = catfile ($ENV{'XDG_RUNTIME_DIR'}, 'accountrc');
     $menurc = catfile ($ENV{'XDG_RUNTIME_DIR'}, 'menurc');
-};
+}
 
 local %ENV;
 $ENV{'DISPLAY'} = ''; # avoid error dialogs

@@ -20,13 +20,13 @@ BEGIN {
         mkdir "$tempdir2"
         cp -p "$claws1" "$claws2"
     };
-};
+}
 
 END {
     qx {
         rm -rf $tempdir1
     };
-};
+}
 
 local %ENV;
 $ENV{'PATH'} = $tempdir1;
