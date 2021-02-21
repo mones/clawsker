@@ -2564,17 +2564,17 @@ sub save_resource {
             foreach my $val (@{$data->{$section}{'_'}}) {
                 say RCF $val;
             }
-        } else {
-            my @keys = keys %{$data->{$section}};
-            if (defined $meta) {
-                @keys = sort {
-                    $meta->{$section}{$a} <=> $meta->{$section}{$b}
-                } @keys
-            }
-            foreach my $key (@keys) {
-                my $val = $data->{$section}{$key};
-                say RCF "$key=$val";
-            }
+            delete $data->{$section}{'_'};
+        }
+        my @keys = keys %{$data->{$section}};
+        if (defined $meta) {
+            @keys = sort {
+                $meta->{$section}{$a} <=> $meta->{$section}{$b}
+            } @keys
+        }
+        foreach my $key (@keys) {
+            my $val = $data->{$section}{$key};
+            say RCF "$key=$val";
         }
         say RCF "";
     }
