@@ -23,12 +23,12 @@ B<clawsker> [B<-h>|B<--help>]
 
 Clawsker is an applet to edit the so called Claws Mail hidden preferences.
 
-Claws Mail is a fast, lightweight and feature-rich MUA with a high number 
-of configurable options. To keep the binary small and fast some of these 
+Claws Mail is a fast, lightweight and feature-rich MUA with a high number
+of configurable options. To keep the binary small and fast some of these
 preferences which are not widely used are not provided with a graphical
 interface for inspection and/or modification.
 
-Users wanting to edit such preferences had to face raw editing of their 
+Users wanting to edit such preferences had to face raw editing of their
 configuration files, now you can do it with a convenient GTK interface
 using Clawsker.
 
