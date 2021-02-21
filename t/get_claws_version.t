@@ -9,7 +9,7 @@ require_ok ('Clawsker');
 my ($tempdir1, $claws1, $tempdir2, $claws2);
 
 BEGIN {
-    $tempdir1 = tempdir ();
+    $tempdir1 = tempdir (CLEANUP => 1);
     $tempdir2 = "$tempdir1/with space";
     $claws1 = "$tempdir1/claws-mail";
     $claws2 = "$tempdir2/claws-mail";
@@ -19,12 +19,6 @@ BEGIN {
         chmod +x $claws1
         mkdir "$tempdir2"
         cp -p "$claws1" "$claws2"
-    };
-}
-
-END {
-    qx {
-        rm -rf $tempdir1
     };
 }
 
