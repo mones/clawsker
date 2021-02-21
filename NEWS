@@ -1,3 +1,14 @@
+1.3.3:
+  - Support Python plugin hidden preferences
+  - Support “imap_scan_tree_recurs_limit” hidden preference
+  - Add Open URLs and Folder Sorting windows sizes
+  - Detect running versions of Claws Mail greater than 3.17.8
+  - Translations:
+    • Updated: Swedish, Dutch, Catalan, Danish and Spanish
+  - Late translations:
+    • Updated: Traditional Chinese (for 1.3.2)
+  - See git log for further details
+
 1.3.2:
   - Support Libravatar plugin new hidden preferences
   - Support for hidden preference “hide_timezone”, which was
