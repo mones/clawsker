@@ -77,7 +77,7 @@ sub _ {
     l_oth_mp_rounds => _('Rounds for PBKDF2 function'),
     h_oth_mp_rounds => _('Specify the number of iterations the key derivation function will be applied on master passphrase computation. Does not modify currently stored passphrase, only master passphrases computed after changing this value are affected.'),
     l_oth_imap_recl => _('Maximum depth scanning folders'),
-    h_oth_imap_recl => _('Maximun number of nested folders to be scanned on your configured IMAP servers.'),
+    h_oth_imap_recl => _('Maximum number of nested folders to be scanned on your configured IMAP servers.'),
 
     l_gui_b_unread => _('Show unread messages with bold font'),
     h_gui_b_unread => _('Show unread messages in the Message List using a bold font.'),

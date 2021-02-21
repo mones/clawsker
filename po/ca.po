@@ -94,7 +94,7 @@ msgstr "Profunditat màxima de l'escaneig de carpetes"
 
 #: ../clawsker:80
 msgid ""
-"Maximun number of nested folders to be scanned on your configured IMAP "
+"Maximum number of nested folders to be scanned on your configured IMAP "
 "servers."
 msgstr ""
 "Nombre màxim de carpetes imbricades que s’han d’escanejar als servidors IMAP "

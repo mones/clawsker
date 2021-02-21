@@ -92,7 +92,7 @@ msgstr "Maximalt djup vid scanning av mappar"
 
 #: ../clawsker:80
 msgid ""
-"Maximun number of nested folders to be scanned on your configured IMAP "
+"Maximum number of nested folders to be scanned on your configured IMAP "
 "servers."
 msgstr ""
 "Maximalt antal nästlade mappar att scanna på dina konfigurerade IMAP-servrar."
