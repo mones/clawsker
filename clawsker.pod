@@ -83,14 +83,16 @@ Weird option specifications may produce weird results (but otherwise correct).
 
 =head1 LIMITATIONS
 
-A running Claws Mail cannot be detected if using the B<--clawsrc> option
-because the directory is not assumed to be a Claws Mail configuration dir.
-If that is the case use the B<--alternate-config-dir> option instead.
+A running Claws Mail cannot be detected when using the B<--clawsrc>
+option because the directory containing the given file is not expected
+to be a full Claws Mail configuration folder. If that is the case use
+the B<--alternate-config-dir> option instead.
 
 Detection will also fail if the temporary directory resolution differs.
 This may happen, for example, when the value of the environment variable
-B<TMPDIR> under Clawsker is not the same that it was when Claws Mail was
-launched.
+B<TMPDIR>, under Clawsker is not the same that it was when Claws Mail
+was launched. For Claws Mail versions greater than 3.17.8 different
+values for B<XDG_RUNTIME_DIR> or B<XDG_CACHE_HOME> may also cause this.
 
 =head1 SEE ALSO
 
