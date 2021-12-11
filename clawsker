@@ -1951,7 +1951,7 @@ sub new_winpos_subpage_filtering() {
         [ new_text_box_for_int (\%pr::win, 'fild_w', \%HPVALUE),
             new_text_box_for_int (\%pr::win, 'fild_h', \%HPVALUE) ],
         [ '--' ],
-        [ ('Matcher window') ],
+        [ _('Matcher window') ],
         [ new_text_box_for_int (\%pr::win, 'matc_w', \%HPVALUE),
             new_text_box_for_int (\%pr::win, 'matc_h', \%HPVALUE) ]
 
