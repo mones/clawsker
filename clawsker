@@ -2404,12 +2404,11 @@ sub get_toolkit_versions {
     }
     $versions{'gtk'} = $Gtk3::VERSION;
     if ($Gtk3::VERSION >= 0.034) {
-        $versions{'gtk-b'} = &Gtk3::GET_VERSION_INFO
+        $versions{'gtk-b'} = join('.', &Gtk3::GET_VERSION_INFO);
     } else {
         $versions{'gtk-b'} = _('Not available')
     }
-    $versions{'gtk-r'} = join('.',
-        &Gtk3::get_major_version, &Gtk3::get_minor_version, &Gtk3::get_micro_version);
+    $versions{'gtk-r'} = join('.', &Gtk3::get_version_info);
     return \%versions;
 }
 
