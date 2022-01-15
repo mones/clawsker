@@ -35,6 +35,7 @@ my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
 my $READONLY = FALSE;
 my $IGNOREV = FALSE;
+my $LOWRES = FALSE;
 my $CLAWSV = undef;
 my $main_window = undef;
 
@@ -705,6 +706,14 @@ sub new_grid_pack {
                 }
             }
         }
+    }
+    if ($LOWRES) {
+        my $swin = Gtk3::ScrolledWindow->new;
+        $swin->set_border_width (0);
+        $swin->set_shadow_type ('none');
+        $swin->set_policy ('automatic', 'automatic');
+        $swin->add ($grid);
+        return $swin;
     }
     return $grid;
 }
@@ -2456,6 +2465,7 @@ sub print_help() {
         _("  -h|--help                        Prints this help screen and exits."),
         _("  -i|--ignore-versions             Allows setting almost everything."),
         _("  -r|--read-only                   Disables writing changes to disk."),
+        _("  -s|--small-screen                Forces low resolution UI adjustments."),
         _("  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."),
         _("  -v|--version                     Prints version information and exits.")
     );
@@ -2472,6 +2482,7 @@ sub parse_command_line {
             'v|version' => sub { print_version (); $cont = FALSE },
             'b|verbose' => sub { $VERBOSE = TRUE },
             'r|read-only' => sub { $READONLY = TRUE },
+            's|small-screen' => sub { $LOWRES = TRUE },
             'i|ignore-versions' => sub { $IGNOREV = TRUE },
             'u|use-claws-version=s' => \&opt_use_claws_version,
             'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
@@ -2908,6 +2919,13 @@ sub escape_key_handler {
     }
 }
 
+sub get_screen_height {
+    my $display = Gtk3::Gdk::Display::get_default();
+    my $monitor = Gtk3::Gdk::Display::get_primary_monitor($display);
+    my $area = Gtk3::Gdk::Monitor::get_workarea($monitor);
+    return $area->{'height'};
+}
+
 sub main {
     my $args = shift;
     exit unless parse_command_line ($args);
@@ -2916,6 +2934,7 @@ sub main {
     exit unless load_preferences ();
     exit unless init_hidden_preferences ();
     # create main GUI
+    $LOWRES = TRUE unless get_screen_height() > 720;
     my $box = Gtk3::VBox->new (FALSE, 5);
     $box->set_border_width(3);
     my $about = new_about_dialog ($main_window);
