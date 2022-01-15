@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #
 # Clawsker :: A Claws Mail Tweaker
-# Copyright 2007-2021 Ricardo Mones <ricardo@mones.org>
+# Copyright 2007-2022 Ricardo Mones <ricardo@mones.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2800,7 +2800,7 @@ sub new_notebook {
 # create an about dialog
 sub new_about_dialog {
     my ($parent) = @_;
-    my $year = '2007-2021';
+    my $year = '2007-2022';
     my $holder = 'Ricardo Mones <ricardo@mones.org>';
     my $url = 'http://www.claws-mail.org/clawsker.php';
     my $icons = &get_app_icons;
