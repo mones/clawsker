@@ -2325,8 +2325,10 @@ sub new_hotkeys_list {
         0, _("Menu path"), new_hotkeys_list_label (),
         sub {
             my ($col, $renderer, $model, $iter, $data) = @_;
+            my $hkey = $model->get_value ($iter, C_HOTKEY);
+            my $weight = ($hkey ne '""')? 'weight="bold"': '';
             $renderer->set_property (
-                'markup' => '<span size="smaller">'
+                'markup' => "<span size=\"smaller\" $weight>"
                             . $model->get_value ($iter, C_LABEL)
                             . '</span>');
             my $bgcol = row_background_color (
