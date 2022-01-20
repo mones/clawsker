@@ -39,7 +39,7 @@ Dependencies
   - Test suite:
 
   Test::Exception - https://metacpan.org/pod/Test::Exception
-  Test::DeedsDisplay - https://metacpan.org/pod/Test::NeedsDisplay
+  Test::NeedsDisplay - https://metacpan.org/pod/Test::NeedsDisplay
 
 Install
 -------
