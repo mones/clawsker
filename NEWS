@@ -1,3 +1,13 @@
+1.3.5
+  - Support low resolutions with scrolled UI (RFE #4554)
+  - New CLI flag --small-screen/-s to force scrolled UI
+  - Fixed bugs:
+    • 4543 'clawsker window too big on small screens'
+    • 4049 'Bold the lines with assigned hotkey'
+  - Translations:
+    • Updated: Swedish, Turkish, Catalan, Dutch and Spanish
+  - See git log for further details
+
 1.3.4:
   - Fix bug saving sections with comments: upgrade ASAP.
   - Added two more tests to test suite
