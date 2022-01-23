@@ -4,7 +4,7 @@
 # David Medina <opensusecatala@gmail.com>, agost i setembre de 2016, març de 2017, agost de 2018, novembre de 2020, febrer de 2021 i gener de 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: clawsker 1.3.3\n"
+"Project-Id-Version: clawsker 1.3.5\n"
 "Report-Msgid-Bugs-To: ricardo@mones.org\n"
 "POT-Creation-Date: 2022-01-15 18:43+0100\n"
 "PO-Revision-Date: 2022-01-18 11:31+0100\n"
