@@ -163,6 +163,9 @@ sub _ {
     h_beh_rewrite_ff => _('Workaround some servers which convert first \'From\' to \'>From\' by using Quoted-Printable transfer encoding instead of 7bit/8bit encoding.'),
     l_beh_hide_tz => _('Hide time zone information'),
     h_beh_hide_tz => _('On outgoing messages, sets time zone of date headers to the unknown timezone value "-0000", as specified by RFC 5322'),
+    l_beh_qs_press_t => _('Quick search type-ahead delay'),
+    l_beh_qs_press_t_units => _('milliseconds'),
+    h_beh_qs_press_t => _('When type-ahead mode of Quick search is enabled, this is the delay after key presses in the search entry before starting a new search with the changes made.'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -1118,10 +1121,19 @@ sub new_gui_page() {
         '3.14.0.22',
         '0',
     ],
+    qs_press_t => [
+        'qs_press_timeout',
+        [ $xl::s{l_beh_qs_press_t}, $xl::s{l_beh_qs_press_t_units} ],
+        $xl::s{h_beh_qs_press_t},
+        'int,50,5000', # 0.05 seconds - 5 seconds
+        '4.0.0.411',
+        '500',
+
+    ],
 );
 
 sub new_behaviour_page() {
-    return new_grid_pack (2, 21, [
+    return new_grid_pack (2, 22, [
         [ _('Drag \'n\' drop') ],
         [ new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE),
             new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE) ],
@@ -1147,7 +1159,8 @@ sub new_behaviour_page() {
         [ '--' ],
         [ _('Other') ],
         [ new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE) ],
-        [ new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE) ]
+        [ new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::beh, 'qs_press_t', \%HPVALUE) ]
     ]);
 }
 
