@@ -1123,8 +1123,8 @@ sub new_gui_page() {
 sub new_behaviour_page() {
     return new_grid_pack (2, 21, [
         [ _('Drag \'n\' drop') ],
-        [ new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE) ],
-        [ new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::beh, 'hover_t', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'warn_dnd', \%HPVALUE) ],
         [ '--' ],
         [ _('Secure Sockets Layer') ],
         [ new_check_button_for (\%pr::beh, 'skip_ssl', \%HPVALUE),
@@ -1142,8 +1142,8 @@ sub new_behaviour_page() {
         [ new_check_button_for (\%pr::beh, 'hide_tz', \%HPVALUE) ],
         [ '--' ],
         [ _('Completion') ],
-        [ new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE) ],
-        [ new_check_button_for (\%pr::beh, 'fold_swc', \%HPVALUE) ],
+        [ new_check_button_for (\%pr::beh, 'addr_swc', \%HPVALUE),
+            new_check_button_for (\%pr::beh, 'fold_swc', \%HPVALUE) ],
         [ '--' ],
         [ _('Other') ],
         [ new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE) ],
