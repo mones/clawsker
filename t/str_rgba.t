@@ -1,7 +1,8 @@
 use 5.010_000;
 use strict;
 use utf8;
-use Test::More tests => 6;
+use Gtk3;
+use Test::More tests => 12;
 
 require_ok ('Clawsker');
 
@@ -33,3 +34,19 @@ ok (
     'complementarity white'
 );
 
+my @colors = (
+    [Gtk3::Gdk::RGBA->new (1.0, 1.0, 1.0, 1.0), '#ffffff'],
+    [Gtk3::Gdk::RGBA->new (1.0, 1.0, 1.0, 0.5), '#ffffff'],
+    [Gtk3::Gdk::RGBA->new (0.505, 0.505, 0.505, 1.0), '#808080'],
+    [Gtk3::Gdk::RGBA->new (0.505, 0.505, 0.505, 0.5), '#808080'],
+    [Gtk3::Gdk::RGBA->new (0.0, 0.0, 0.0, 1.0), '#000000'],
+    [Gtk3::Gdk::RGBA->new (0.0, 0.0, 0.0, 0.5), '#000000'],
+);
+
+for my $color (@colors) {
+    is (
+        Clawsker::str_from_gdk_rgba($color->[0]),
+        $color->[1],
+        join(' ', 'color', $color->[1])
+    )
+}
