@@ -361,9 +361,9 @@ sub gdk_rgba_from_str {
     my ($rr, $gg, $bb) = (0, 0 ,0);
     $_ = uc ($str);
     if (/\#([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])([A-F0-9][A-F0-9])/) {
-        $rr = hex($1) / 256;
-        $gg = hex($2) / 256;
-        $bb = hex($3) / 256;
+        $rr = hex($1) / 255;
+        $gg = hex($2) / 255;
+        $bb = hex($3) / 255;
     }
     my $color = Gtk3::Gdk::RGBA->new ($rr, $gg, $bb, 1.0);
     return $color;
@@ -371,9 +371,9 @@ sub gdk_rgba_from_str {
 
 sub str_from_gdk_rgba {
     my ($color) = @_;
-    my $rr = $color->red * 256;
-    my $gg = $color->green * 256;
-    my $bb = $color->blue * 256;
+    my $rr = $color->red * 255;
+    my $gg = $color->green * 255;
+    my $bb = $color->blue * 255;
     my $str = sprintf ("#%.2x%.2x%.2x", $rr, $gg, $bb);
     return $str;
 }
