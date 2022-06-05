@@ -2327,6 +2327,13 @@ sub row_background_color {
         : $stylectx->get_background_color ('insensitive');
 }
 
+sub store_sort {
+    my ($store, $itera, $iterb, $sortkey) = @_;
+    my $a = $store->get($itera, $sortkey);
+    my $b = $store->get($iterb, $sortkey);
+    return $a cmp $b;
+}
+
 sub new_hotkeys_list {
     my ($gkey, $group) = @_;
     my $store = Gtk3::ListStore->new(
@@ -2373,6 +2380,11 @@ sub new_hotkeys_list {
             $renderer->set_property ('cell-background-rgba' => $bgcol);
         }
     );
+    for (0, 1) {
+        $store->set_sort_func($_, \&store_sort, $_);
+        my $col = $treeview->get_column($_);
+        $col->set_sort_column_id($_);
+    }
     # callback for saving current selection
     my $selection = $treeview->get_selection ();
     $selection->signal_connect ('changed' => sub { $SELHOTKEY = shift });
