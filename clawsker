@@ -296,7 +296,6 @@ use constant {
     C_HOTKEY => 1,
     C_GROUP => 2,
     C_ACCEL => 3,
-    C_ODDITY => 4,
 };
 
 # version functions
@@ -2318,15 +2317,6 @@ sub new_hotkeys_list_hotkey {
     return $renderer;
 }
 
-sub row_background_color {
-    my ($column, $isodd) = @_;
-    my $treeview = $column->get_tree_view;
-    my $stylectx = $treeview->get_style_context;
-    return $isodd
-        ? $stylectx->get_background_color ('normal')
-        : $stylectx->get_background_color ('insensitive');
-}
-
 sub store_sort {
     my ($store, $itera, $iterb, $sortkey) = @_;
     my $a = $store->get($itera, $sortkey);
@@ -2337,16 +2327,14 @@ sub store_sort {
 sub new_hotkeys_list {
     my ($gkey, $group) = @_;
     my $store = Gtk3::ListStore->new(
-        qw/Glib::String Glib::String Glib::String Glib::String Glib::Boolean/);
-    my $even = TRUE;
+        qw/Glib::String Glib::String Glib::String Glib::String/);
     foreach my $akey (sort keys %$group) {
         my $iter = $store->append ();
         my $hotkey = $group->{$akey}->{'key'};
         my $label = $akey;
         $label =~ s/[<>]//g; # <rrsyl> and <IMAPFolder> !?
         $store->set ($iter, C_LABEL, $label, C_HOTKEY, $hotkey,
-            C_GROUP, $gkey, C_ACCEL, $akey, C_ODDITY, $even);
-        $even = not $even;
+            C_GROUP, $gkey, C_ACCEL, $akey);
     }
     my $treeview = Gtk3::TreeView->new_with_model ($store);
     # labels column
@@ -2360,9 +2348,6 @@ sub new_hotkeys_list {
                 'markup' => "<span size=\"smaller\" $weight>"
                             . $model->get_value ($iter, C_LABEL)
                             . '</span>');
-            my $bgcol = row_background_color (
-                $col, $model->get_value ($iter, C_ODDITY));
-            $renderer->set_property ('cell-background-rgba' => $bgcol);
         }
     );
     # hotkeys column
@@ -2375,9 +2360,6 @@ sub new_hotkeys_list {
             my ($acckey, $accmod) = Gtk3::accelerator_parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
-            my $bgcol = row_background_color (
-                $col, $model->get_value ($iter, C_ODDITY));
-            $renderer->set_property ('cell-background-rgba' => $bgcol);
         }
     );
     for (0, 1) {
@@ -2388,6 +2370,7 @@ sub new_hotkeys_list {
     # callback for saving current selection
     my $selection = $treeview->get_selection ();
     $selection->signal_connect ('changed' => sub { $SELHOTKEY = shift });
+    $treeview->set_property('enable-grid-lines', 'horizontal');
     return $treeview;
 }
 
