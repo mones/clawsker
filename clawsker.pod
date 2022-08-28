@@ -13,7 +13,8 @@ Clawsker - A Claws Mail Tweaker
 
 B<clawsker> [B<-a>|B<--alternate-config-dir> I<dirname>] [B<-b>|B<--verbose>]
 [B<-c>|B<--clawsrc> I<filename>] [B<-i>|B<--ignore-versions>]
-[B<-r>|B<--read-only>] [B<-u>|B<--use-claws-version> I<version>]
+[B<-k>|B<--hide-disabled-keys>] [B<-r>|B<--read-only>]
+[B<-s>|B<--small-screen>] [B<-u>|B<--use-claws-version> I<version>]
 
 B<clawsker> [B<-v>|B<--version>]
 
@@ -63,10 +64,23 @@ Shows a brief help screen.
 Ignores any version detected or set by B<-u> option. Almost all options
 will be available.
 
+=item B<-k> | B<--hide-disabled-keys>
+
+On hotkeys columns sets foreground colour of unassigned keys to the same
+colour used as background, rendering them invisible until selected. This
+may help locating assigned keys on very long lists.
+
 =item B<-r> | B<--read-only>
 
 Edits hidden preferences without saving the changes. It also works while
 Claws Mail is running.
+
+=item B<-s> | B<--small-screen>
+
+Resolution of display is autodetected to adjust UI for screens where
+default rendering would exceed available space. This option forces those
+small screen adjustments. This can be useful for screens where the UI
+fits resolution, but the screen state is already used by other programs.
 
 =item B<-u> | B<--use-claws-version> I<version>
 
