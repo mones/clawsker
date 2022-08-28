@@ -35,6 +35,7 @@ my $VERSION = '@VERSION@';
 my $VERBOSE = FALSE;
 my $READONLY = FALSE;
 my $IGNOREV = FALSE;
+my $HIDEDK = FALSE;
 my $LOWRES = FALSE;
 my $CLAWSV = undef;
 my $main_window = undef;
@@ -2350,6 +2351,11 @@ sub new_hotkeys_list {
                             . '</span>');
         }
     );
+    my $stylectx = $treeview->get_style_context;
+    my $discol = $HIDEDK
+        ? $stylectx->get_background_color ('normal')
+        : $stylectx->get_color ('insensitive');
+    my $enacol = $stylectx->get_color ('normal');
     # hotkeys column
     $treeview->insert_column_with_data_func (
         1, _('Hotkey'), new_hotkeys_list_hotkey (),
@@ -2360,6 +2366,9 @@ sub new_hotkeys_list {
             my ($acckey, $accmod) = Gtk3::accelerator_parse ($hkey);
             $renderer->set_property ('accel-key' => $acckey);
             $renderer->set_property ('accel-mods' => $accmod);
+            $renderer->set_property (
+                'foreground-rgba' => ($acckey == 0? $discol: $enacol)
+            );
         }
     );
     for (0, 1) {
@@ -2472,6 +2481,7 @@ sub print_help() {
         _("  -c|--clawsrc <file>              Uses <file> as full resource name."),
         _("  -h|--help                        Prints this help screen and exits."),
         _("  -i|--ignore-versions             Allows setting almost everything."),
+        _("  -k|--hide-disabled-keys          Hides unassigned hotkeys in key columns."),
         _("  -r|--read-only                   Disables writing changes to disk."),
         _("  -s|--small-screen                Forces low resolution UI adjustments."),
         _("  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."),
@@ -2492,6 +2502,7 @@ sub parse_command_line {
             'r|read-only' => sub { $READONLY = TRUE },
             's|small-screen' => sub { $LOWRES = TRUE },
             'i|ignore-versions' => sub { $IGNOREV = TRUE },
+            'k|hide-disabled-keys' => sub { $HIDEDK = TRUE },
             'u|use-claws-version=s' => \&opt_use_claws_version,
             'a|alternate-config-dir=s' => \&opt_alternate_config_dir,
             'c|clawsrc=s' => \&opt_clawsrc)
