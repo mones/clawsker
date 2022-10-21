@@ -452,6 +452,7 @@ sub message_dialog {
 
 sub error_dialog {
     my ($emsg) = @_;
+    $emsg =~ s/&/&amp;/g;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
     my $errordlg = message_dialog (
         $main_window, _('Clawsker error'), $markup, 'error', [ 'gtk-cancel', 0 ]
@@ -682,6 +683,7 @@ sub new_label {
 sub new_title {
     my $text = shift;
     $text //= '';
+    $text =~ s/&/&amp;/g;
     my $label = Gtk3::Label->new ('<b>' . $text . '</b>');
     $label->set_use_markup (TRUE);
     $label->set_alignment (0, 0.5);
@@ -2127,6 +2129,7 @@ sub new_accounts_page() {
         my $name = $ACPREFS{$_}{'account_name'};
         my $isdef = ($ACPREFS{$_}{'is_default'} eq '1');
         my $page = new_account_subpage ($_);
+        $name =~ s/&/&amp;/g;
         my $label = new_label ($isdef? '<u>' . $name . '</u>': $name);
         $label->set_use_markup (TRUE);
         $accbook->append_page ($page, $label);
@@ -2355,11 +2358,12 @@ sub new_hotkeys_list {
         sub {
             my ($col, $renderer, $model, $iter, $data) = @_;
             my $hkey = $model->get_value ($iter, C_HOTKEY);
+            my $label = $model->get_value ($iter, C_LABEL);
+            $label =~ s/&/&amp;/g;
             my $weight = ($hkey ne '""')? 'weight="bold"': '';
             $renderer->set_property (
-                'markup' => "<span size=\"smaller\" $weight>"
-                            . $model->get_value ($iter, C_LABEL)
-                            . '</span>');
+                'markup' => "<span size=\"smaller\" $weight>$label</span>'"
+            );
         }
     );
     my $stylectx = $treeview->get_style_context;
@@ -2886,6 +2890,7 @@ sub exit_handler {
     my $markup = "<span>" . _('There are unapplied modifications.')
         . "</span>\n\n<span weight=\"bold\">"
         . _('Do you really want to quit?') . "</span>\n";
+    $markup =~ s/&/&amp;/g;
     my $dialog = message_dialog (
         $parent, _('Clawsker warning'), $markup, 'question',
         [ 'gtk-no', 1, 'gtk-yes', 0 ]
