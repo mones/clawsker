@@ -19,7 +19,7 @@ DATADIR = ${PREFIX}/share
 LOCALEDIR = ${DATADIR}/locale
 
 XG_ARGS = --keyword=_ --flag=_:1:pass-java-format -L Perl -w 80 --package-name=${NAME} --package-version=${VERSION} --msgid-bugs-address=ricardo@mones.org --from-code=UTF-8
-LINGUAS = es fr nl pt_BR sv nb de ca tr da zh_TW pt_PT
+LINGUAS = es fr nl pt_BR sv nb de ca tr da zh_TW pt_PT pl
 
 all: build
 
