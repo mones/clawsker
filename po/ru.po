@@ -1,0 +1,1364 @@
+# Translatable strings for Clawsker
+# Copyright (C) 2007 Ricardo Mones <ricardo@mones.org>
+# This file is distributed under the same license as the clawsker package.
+#
+# Sergey Kazorin <translation-team@basealt.ru>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: clawsker 1.3.7\n"
+"Report-Msgid-Bugs-To: ricardo@mones.org\n"
+"POT-Creation-Date: 2022-10-21 19:23+0200\n"
+"PO-Revision-Date: 2022-12-07 12:13+0300\n"
+"Last-Translator: Sergey Kazorin <translation-team@basealt.ru>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 22.04.3\n"
+
+#: ../clawsker:67
+msgid "Clawsker :: A Claws Mail Tweaker"
+msgstr ""
+"Clawsker :: Инструмент для тонкой настройки почтового клиента Claws Mail"
+
+#: ../clawsker:69
+msgid "Use detached address book edit dialogue"
+msgstr "Редактировать контакты адресной книги в отдельном окне"
+
+#: ../clawsker:70
+msgid ""
+"If true use a separate dialogue to edit a person's details. Otherwise will "
+"use a form embedded in the address book's main window."
+msgstr ""
+"При включении данного параметра контактные данные редактируются "
+"в отдельном окне. В противном случае форма для ввода данных будет "
+"открываться непосредственно в главном окне адресной книги."
+
+#: ../clawsker:71
+msgid "Maximum memory for message cache"
+msgstr "Максимальный объем памяти для кэша сообщений"
+
+#: ../clawsker:72
+msgid "kilobytes"
+msgstr "Кбайт"
+
+#: ../clawsker:73
+msgid "The maximum amount of memory to use to cache messages, in kilobytes."
+msgstr ""
+"Максимальный объём памяти, используемый для кэша сообщений, в килобайтах"
+
+#: ../clawsker:74
+msgid "Minimun time for cache elements"
+msgstr "Минимальное время хранения записей в кэше"
+
+#: ../clawsker:75
+msgid "minutes"
+msgstr "мин."
+
+#: ../clawsker:76
+msgid ""
+"The minimum time in minutes to keep a cache in memory. Caches more recent "
+"than this time will not be freed, even if the memory usage is too high."
+msgstr ""
+"Минимальное время в минутах для хранения кэша в памяти. Если время хранения "
+"сообщений не истекло, то кэш сохраняется даже при высоком объёме"
+" использования "
+"памяти."
+
+#: ../clawsker:77
+msgid "Use NetworkManager"
+msgstr "Использовать NetworkManager"
+
+#: ../clawsker:78
+msgid "Use NetworkManager to switch offline automatically."
+msgstr ""
+"Использовать NetworkManager для автоматического перехода "
+"в автономный режим."
+
+#: ../clawsker:79
+msgid "Rounds for PBKDF2 function"
+msgstr "Число итераций функции PBKDF2"
+
+#: ../clawsker:80
+msgid ""
+"Specify the number of iterations the key derivation function will be applied "
+"on master passphrase computation. Does not modify currently stored "
+"passphrase, only master passphrases computed after changing this value are "
+"affected."
+msgstr ""
+"Указывается количество итераций для функции формирования ключа при "
+"вычислении основной парольной фразы. При этом хранящаяся в данный "
+"момент парольная фраза изменениям не подвергается. Меняются лишь "
+"основные парольные фразы, которые вычисляются уже после изменения "
+"этой величины."
+
+#: ../clawsker:81
+msgid "Maximum depth scanning folders"
+msgstr "Максимальная глубина сканирования папок"
+
+#: ../clawsker:82
+msgid ""
+"Maximum number of nested folders to be scanned on your configured IMAP "
+"servers."
+msgstr ""
+"Максимальное число вложенных папок для сканирования на настроенных "
+"IMAP-серверах."
+
+#: ../clawsker:84
+msgid "Show unread messages with bold font"
+msgstr "Выделять непрочитанные сообщения жирным шрифтом"
+
+#: ../clawsker:85
+msgid "Show unread messages in the Message List using a bold font."
+msgstr "Выделять непрочитанные сообщения в списке сообщений жирным шрифтом."
+
+#: ../clawsker:86
+msgid "Show marked messages with bold font"
+msgstr "Выделять отмеченные сообщения жирным шрифтом"
+
+#: ../clawsker:87
+msgid "Show marked messages in the Message List using a bold font."
+msgstr "Выделять отмеченные сообщения в списке сообщений жирным шрифтом."
+
+#: ../clawsker:88
+msgid "Don't use markup"
+msgstr "Не использовать разметку"
+
+#: ../clawsker:89
+msgid "Don't use bold and italic text in Compose dialogue's account selector."
+msgstr ""
+"Не использовать жирный и наклонный шрифт текста в поле выбора "
+"учётной записи диалогового окна составления сообщения."
+
+#: ../clawsker:90
+msgid "Use dotted lines in tree view components"
+msgstr "Использовать пунктирные линии в представлениях деревьев"
+
+#: ../clawsker:91
+msgid ""
+"Use the old dotted line look in the main window tree views (Folder, Message "
+"and other lists) instead of the modern lineless look."
+msgstr ""
+"Представления деревьев в главном окне («Папка», «Сообщение» и другие "
+"списки) отображать в старом стиле с пунктирными линиями вместо "
+"использования современного формата отображения без линий."
+
+#: ../clawsker:92
+msgid "Enable horizontal scrollbar"
+msgstr "Использовать горизонтальную прокрутку"
+
+#: ../clawsker:93
+msgid "Enable the horizontal scrollbar in the Message List."
+msgstr "Использовать горизонтальную прокрутку в списке сообщений."
+
+#: ../clawsker:94
+msgid "Display To column instead From column in Sent folder"
+msgstr "Отображать в папке «Отправленные» столбец «Кому» вместо столбца «От»"
+
+#: ../clawsker:95
+msgid ""
+"Display the recipient's email address in a To column of the Sent folder "
+"instead of the originator's one in a From column."
+msgstr ""
+"В папке «Отправленные» отображать адрес электронной почты получателя "
+"в столбце «Кому» вместо адреса электронной почты отправителя в столбце «От»."
+
+#: ../clawsker:96
+msgid "Folder List scrollbar behaviour"
+msgstr "Поведение полосы прокрутки списка папки"
+
+#: ../clawsker:97
+msgid ""
+"Specify the policy of vertical scrollbar of Folder List: show always, "
+"automatic or hide always."
+msgstr ""
+"Задайте поведение вертикальной полосы прокрутки списка папки: "
+"всегда показывать, автоматически или всегда скрывать."
+
+#: ../clawsker:98
+msgid "Show always"
+msgstr "Всегда показывать"
+
+#: ../clawsker:99
+msgid "Automatic"
+msgstr "Автоматически"
+
+#: ../clawsker:100
+msgid "Hide always"
+msgstr "Всегда скрывать"
+
+#: ../clawsker:101
+msgid "From column displays"
+msgstr "Отображение данных в столбце «От»"
+
+#: ../clawsker:102
+msgid ""
+"Selects the data displayed in the From column of the Message List: name, "
+"address or both."
+msgstr ""
+"Выбрать данные для отображения в столбце «От» списка сообщений: "
+"имя, адрес или оба параметра"
+
+#: ../clawsker:103
+msgid "Name only"
+msgstr "Только имя"
+
+#: ../clawsker:104
+msgid "Address only"
+msgstr "Только адрес"
+
+#: ../clawsker:105
+msgid "Both name and address"
+msgstr "Имя и адрес"
+
+#: ../clawsker:106
+msgid "Coloured lines contrast"
+msgstr "Контрастность цветных линий"
+
+#: ../clawsker:107
+msgid ""
+"Specify the value to use when creating alternately coloured lines in tree "
+"view components. The smaller the value, the less visible the difference in "
+"the alternating colours of the lines."
+msgstr ""
+"Указать значение, использующееся при создании альтернативной расцветки "
+"линий в представлении деревьев. Чем короче линия, тем сложнее отличить "
+"её по раскраске."
+
+#: ../clawsker:108
+msgid "Show cursor"
+msgstr "Отображать курсор"
+
+#: ../clawsker:109
+msgid "Display the cursor in the Message View."
+msgstr "Отображать курсор в окне просмотра сообщений"
+
+#: ../clawsker:110
+msgid "Detachable toolbars"
+msgstr "Отсоединяемые панели инструментов"
+
+#: ../clawsker:111
+msgid "Show handles in the toolbars."
+msgstr "Отображать маркеры на панелях инструментов."
+
+#: ../clawsker:112
+msgid "Use stripes in all tree view components"
+msgstr "Отображать полосы на всех элементах представления деревьев"
+
+#: ../clawsker:113
+msgid "Enable alternately coloured lines in all tree view components."
+msgstr ""
+"Включить отображение чередования строк различного цвета "
+"во всех элементах представления деревьев."
+
+#: ../clawsker:114
+msgid "Use stripes in Folder List and Message List"
+msgstr "Отображать полосы в списке папок и списке сообщений"
+
+#: ../clawsker:115
+msgid "Enable alternately coloured lines in Message List and Folder List."
+msgstr ""
+"Включить отображение чередующихся строк различного цвета "
+"в списке папок и списке сообщений."
+
+#: ../clawsker:116
+msgid "2 lines per Message List item in 3-column layout"
+msgstr ""
+"2 строки на один элемент списка сообщений, скомпонованного из 3 столбцов"
+
+#: ../clawsker:117
+msgid ""
+"Spread Message List information over two lines when using the three column "
+"mode."
+msgstr ""
+"Распределить информацию списка сообщений на две строки при использовании "
+"режима отображения на трёх столбцах."
+
+#: ../clawsker:118
+msgid "Show margin"
+msgstr "Отображать поля"
+
+#: ../clawsker:119
+msgid "Shows a small margin in the Compose View."
+msgstr "В окне составления сообщения вводится отображение небольших полей."
+
+#: ../clawsker:120
+msgid "Don't display localized date"
+msgstr "Не отображать локализованную дату"
+
+#: ../clawsker:121
+msgid "Toggles localization of date format in Message View."
+msgstr "Переключает локализацию формата даты в окне просмотра сообщений."
+
+#: ../clawsker:122
+msgid "Zero replacement character"
+msgstr "Символ для замены символа «0»"
+
+#: ../clawsker:123
+msgid "Replaces '0' with the given character in Folder List."
+msgstr "Символ «0» в списке папок заменяется на заданный символ."
+
+#: ../clawsker:124
+msgid "Editable headers"
+msgstr "Редактируемые заголовки"
+
+#: ../clawsker:125
+msgid ""
+"Allows to manually type any value in Compose Window header entries or just "
+"select from the available choices in the associated dropdown list."
+msgstr ""
+"Позволяет вручную вводить любые значения заголовков в окне составления "
+"сообщения, либо выбирать доступные варианты в соответствующих "
+"выпадающих списках."
+
+#: ../clawsker:126
+msgid "Warn when sending to more than"
+msgstr "Выводить предупреждение при отправке сообщения более, чем"
+
+#: ../clawsker:127
+msgid "recipients"
+msgstr "получателям"
+
+#: ../clawsker:128
+msgid ""
+"Show a warning dialogue when sending to more recipients than specified. Use 0 "
+"to disable this check."
+msgstr ""
+"Выводить предупреждение при отправке сообщения большему числу"
+"получателей, чем указано в настройках. Для отключения проверки "
+"введите значение «0»."
+
+#: ../clawsker:129
+msgid "Select next message on delete"
+msgstr "При удалении сообщения выбирать следующее за ним сообщение"
+
+#: ../clawsker:130
+msgid ""
+"When deleting a message, toggles between selecting the next one (newer "
+"message) or the previous one (older message)."
+msgstr ""
+"При удалении сообщения выбирается следующее за ним (более новое) "
+"сообщение или предыдущее (более старое) сообщение."
+
+#: ../clawsker:132
+msgid "Drag 'n' drop hover timeout"
+msgstr "Время удержания при перетаскивании"
+
+#: ../clawsker:133 ../clawsker:170
+msgid "milliseconds"
+msgstr "миллисек."
+
+#: ../clawsker:134
+msgid ""
+"Time in milliseconds that will cause a folder tree to expand when the mouse "
+"cursor is held over it during drag and drop."
+msgstr ""
+"Время в миллисекундах для раскрытия дерева папок в случае удержания "
+"над ним курсора мыши при перетаскивании."
+
+#: ../clawsker:135
+msgid "Don't confirm deletions (dangerous!)"
+msgstr "Не выводить подтверждение при удалении (небезопасно!)"
+
+#: ../clawsker:136
+msgid "Don't ask for confirmation before definitive deletion of emails."
+msgstr "Не выводить подтверждение перед окончательным удалением сообщений."
+
+#: ../clawsker:137
+msgid "Respect format=flowed in messages"
+msgstr "Не использовать переносы строк в тексте сообщений"
+
+#: ../clawsker:138
+msgid ""
+"Respect format=flowed on text/plain message parts. This will cause some mails "
+"to have long lines, but will fix some URLs that would otherwise be wrapped."
+msgstr ""
+"Не использовать переносы строк в разделах сообщения с форматом «text/plain». "
+"Это может привести к появлению длинных строк в некоторых сообщениях, однако "
+"предотвратит перенос URL-адресов."
+
+#: ../clawsker:139
+msgid "Allow writable temporary files"
+msgstr "Разрешать запись временных файлов"
+
+#: ../clawsker:140
+msgid "Saves temporary files when opening attachment with write bit set."
+msgstr ""
+"Сохраняет временные файлы при открытии вложений с установленным битом записи."
+
+#: ../clawsker:141
+msgid "Don't check SSL certificates"
+msgstr "Не проверять SSL-сертификаты"
+
+#: ../clawsker:142
+msgid "Disables the verification of SSL certificates."
+msgstr "Отключает проверку SSL-сертификатов."
+
+#: ../clawsker:143
+msgid "Progress bar update step every"
+msgstr "Обновлять индикатор выполнения каждые"
+
+#: ../clawsker:144
+msgid "items"
+msgstr "элем."
+
+#: ../clawsker:145
+msgid "Update stepping in progress bars."
+msgstr "Установка шага обновления индикатора выполнения"
+
+#: ../clawsker:146
+msgid "Maximum age when threading by subject"
+msgstr ""
+"Максимальный возраст сообщений при построении цепочек по наименованию темы"
+
+#: ../clawsker:147
+msgid "days"
+msgstr "дн."
+
+#: ../clawsker:148
+msgid ""
+"Number of days to include a message in a thread when using \"Thread using "
+"subject in addition to standard headers\"."
+msgstr ""
+"Число дней, в течении которых сообщения будут включаться в цепочку при "
+"использовании параметра «Строить цепочки переписки, используя тему в "
+"дополнение к заголовкам»."
+
+#: ../clawsker:149
+msgid "Allow unsafe SSL certificates"
+msgstr "Разрешить использование небезопасных SSL-сертификатов"
+
+#: ../clawsker:150
+msgid ""
+"Allows Claws Mail to remember multiple SSL certificates for a given server/"
+"port."
+msgstr ""
+"Позволяет приложению Claws Mail запоминать несколько SSL-сертификатов "
+"для данного сервера или порта."
+
+#: ../clawsker:151
+msgid "Force UTF-8 for broken mails"
+msgstr "Принудительно использовать UTF-8 для повреждённых сообщений"
+
+#: ../clawsker:152
+msgid "Use UTF-8 encoding for broken mails instead of current locale."
+msgstr ""
+"Вместо текущих настроек языка использовать для повреждённых "
+"сообщений кодировку UTF-8."
+
+#: ../clawsker:153
+msgid "Warn on drag 'n' drop"
+msgstr "Выводить предупреждение при перетаскивании"
+
+#: ../clawsker:154
+msgid "Display a confirmation dialogue on drag 'n' drop of folders."
+msgstr "Выводить подтверждение при перетаскивание папок."
+
+#: ../clawsker:155
+msgid "Outgoing messages fallback to ASCII"
+msgstr "Использовать ASCII-кодировку для исходящих сообщений"
+
+#: ../clawsker:156
+msgid ""
+"If allowed by content, ASCII will be used to encode outgoing messages, "
+"otherwise the user-defined encoding is always enforced."
+msgstr ""
+"Если позволяет содержимое, исходящие сообщения создаются"
+"с использованием ASCII-кодировки, в противном случае применяется "
+"кодировка, указанная пользователем."
+
+#: ../clawsker:157
+msgid "Primary paste unselects selection"
+msgstr "Снятие выделения при вставке текста"
+
+#: ../clawsker:158
+msgid ""
+"Controls how pasting using middle-click changes the selected text and "
+"insertion point."
+msgstr ""
+"Управление изменением выделенного текста и точки ввода "
+"при вставке текста средней кнопкой мыши."
+
+#: ../clawsker:159
+msgid "Show inline attachments"
+msgstr "Показывать вложения внутри сообщения"
+
+#: ../clawsker:160
+msgid "Allows to hide inline attachments already shown in mail structure view."
+msgstr "Позволяет скрывать вложения, уже представленные в структуре сообщения."
+
+#: ../clawsker:161
+msgid "Address search in compose window matches any"
+msgstr "Искать адрес в окне составления сообщения с любого места строки"
+
+#: ../clawsker:162
+msgid ""
+"On Tab-key completion, address text will match any part of the string or only "
+"from the start."
+msgstr ""
+"Автодополнение с применением клавиши Tab может осуществляться "
+"либо поиском совпадения текста адреса c любого места строки, либо "
+"только с её начала."
+
+#: ../clawsker:163
+msgid "Folder search in folder selector matches any"
+msgstr "Искать папку в поле выбора с любого места строки"
+
+#: ../clawsker:164
+msgid ""
+"On folder name completion text will match any part of the string or only from "
+"the start."
+msgstr ""
+"Автодополнение при поиске имени папки может осуществляться либо поиском "
+"совпадения текста с любого места строки, либо только с её начала."
+
+#: ../clawsker:165
+msgid "Rewrite first 'From' using QP encoding"
+msgstr "Сначала преобразовывать поле «From» с использованием кодирования QP"
+
+#: ../clawsker:166
+msgid ""
+"Workaround some servers which convert first 'From' to '>From' by using Quoted-"
+"Printable transfer encoding instead of 7bit/8bit encoding."
+msgstr ""
+"Параметр используется для совместимости с некоторыми серверами, которые "
+"сначала преобразуют поле «From» в «>From», используя в качестве метода"
+" транспортного "
+"кодирования «Quoted-Printable» вместо «7bit» или «8bit»."
+
+#: ../clawsker:167
+msgid "Hide time zone information"
+msgstr "Скрывать информацию о часовом поясе"
+
+#: ../clawsker:168
+msgid ""
+"On outgoing messages, sets time zone of date headers to the unknown timezone "
+"value \"-0000\", as specified by RFC 5322"
+msgstr ""
+"В заголовках даты исходящих сообщений в качестве значения часового пояса "
+"устанавливается значение неизвестного часового пояса «-0000» в соответствии "
+"с указаниями спецификации RFC 5322"
+
+#: ../clawsker:169
+msgid "Quick search type-ahead delay"
+msgstr "Задержка опережающего ввода быстрого поиска"
+
+#: ../clawsker:171
+msgid ""
+"When type-ahead mode of Quick search is enabled, this is the delay after key "
+"presses in the search entry before starting a new search with the changes "
+"made."
+msgstr ""
+"При включении режима опережающего ввода быстрого поиска эта задержка "
+"устанавливается после нажатия клавиши в поле ввода перед выполнением "
+"нового поиска согласно внесённым изменениям."
+
+#: ../clawsker:173
+msgid "X-Mailer header"
+msgstr "Заголовок X-Mailer"
+
+#: ../clawsker:174
+msgid "The colour used for the X-Mailer line when its value is Claws Mail."
+msgstr ""
+"Цвет для строки «X-Mailer», когда в качестве значения параметра "
+"используется «Claws Mail»."
+
+#: ../clawsker:175
+msgid "Error messages"
+msgstr "Сообщения об ошибках"
+
+#: ../clawsker:176
+msgid "Colour for error messages in log window."
+msgstr "Цвет сообщений об ошибках в окне журнала."
+
+#: ../clawsker:177
+msgid "Server messages"
+msgstr "Сообщения сервера"
+
+#: ../clawsker:178
+msgid "Colour for messages received from servers in log window."
+msgstr "Цвет сообщений, полученных от серверов, в окне журнала."
+
+#: ../clawsker:179
+msgid "Standard messages"
+msgstr "Стандартные сообщения"
+
+#: ../clawsker:180
+msgid "Colour for messages in log window."
+msgstr "Цвет сообщений в окне журнала."
+
+#: ../clawsker:181
+msgid "Client messages"
+msgstr "Сообщения клиента"
+
+#: ../clawsker:182
+msgid "Colour for messages sent to servers in log window."
+msgstr "Цвет сообщений, отправленных на серверы, в окне журнала."
+
+#: ../clawsker:183
+msgid "Warning messages"
+msgstr "Предупреждающие сообщения"
+
+#: ../clawsker:184
+msgid "Colour for warning messages in log window."
+msgstr "Цвет предупреждающих сообщений в окне журнала."
+
+#: ../clawsker:186
+msgid "Tags background"
+msgstr "Фон для тегов"
+
+#: ../clawsker:187
+msgid "Background colour for tags in message view."
+msgstr "Цвет фона для тегов в окне журнала."
+
+#: ../clawsker:188
+msgid "Tags text"
+msgstr "Текст тегов"
+
+#: ../clawsker:189
+msgid "Text colour for tags in message view."
+msgstr "Цвет текста для тегов при просмотре сообщений."
+
+#: ../clawsker:191
+msgid "Default headers background"
+msgstr "Фон заголовков по умолчанию"
+
+#: ../clawsker:192
+msgid "Background colour for default headers in compose window."
+msgstr "Цвет фона для заголовков по умолчанию в окне составления сообщения."
+
+#: ../clawsker:193
+msgid "Default headers text"
+msgstr "Текст заголовков по умолчанию"
+
+#: ../clawsker:194
+msgid "Text colour for default headers in compose window."
+msgstr "Цвет текста для заголовков по умолчанию в окне составления сообщения."
+
+#: ../clawsker:196
+msgid "Active quick search background"
+msgstr "Фон активного быстрого поиска"
+
+#: ../clawsker:197
+msgid "Background colour for active quick search."
+msgstr "Цвет фона активного быстрого поиска."
+
+#: ../clawsker:198
+msgid "Active quick search text"
+msgstr "Текст активного быстрого поиска"
+
+#: ../clawsker:199
+msgid "Text colour for active quick search."
+msgstr "Цвет текста активного быстрого поиска."
+
+#: ../clawsker:200
+msgid "Quick search error background"
+msgstr "Фон ошибки быстрого поиска"
+
+#: ../clawsker:201
+msgid "Background colour for quick search error."
+msgstr "Цвет фона ошибки быстрого поиска."
+
+#: ../clawsker:202
+msgid "Quick search error text"
+msgstr "Текст ошибки быстрого поиска"
+
+#: ../clawsker:203
+msgid "Text colour for quick search error."
+msgstr "Цвет текста ошибки быстрого поиска."
+
+#: ../clawsker:205
+msgid "Added lines"
+msgstr "Добавленные строки"
+
+#: ../clawsker:206
+msgid "Colour for added lines in patches."
+msgstr "Цвет добавленных строк в файлах различий."
+
+#: ../clawsker:207
+msgid "Deleted lines"
+msgstr "Удалённые строки"
+
+#: ../clawsker:208
+msgid "Colour for deleted lines in patches."
+msgstr "Цвет удалённых строк в файлах различий."
+
+#: ../clawsker:209
+msgid "Hunk lines"
+msgstr "Отличающиеся строки"
+
+#: ../clawsker:210
+msgid "Colour for hunk headers in patches."
+msgstr "Цвет отличающихся заголовков в файлах различий."
+
+#: ../clawsker:212
+msgid "X position"
+msgstr "Положение по оси X"
+
+#: ../clawsker:213
+msgid "X coordinate for window's top-left corner."
+msgstr "Координата X для верхнего левого угла окна."
+
+#: ../clawsker:214
+msgid "Y position"
+msgstr "Положение по оси Y"
+
+#: ../clawsker:215
+msgid "Y coordinate for window's top-left corner."
+msgstr "Координата Y для верхнего левого угла окна."
+
+#: ../clawsker:216
+msgid "Width"
+msgstr "Ширина"
+
+#: ../clawsker:217
+msgid "Window's width in pixels."
+msgstr "Ширина окна в пикселах."
+
+#: ../clawsker:218
+msgid "Height"
+msgstr "Высота"
+
+#: ../clawsker:219
+msgid "Window's height in pixels."
+msgstr "Высота окна в пикселах."
+
+#: ../clawsker:221
+msgid "Maximized"
+msgstr "Распахнуто"
+
+#: ../clawsker:222
+msgid "Changes window maximized status."
+msgstr "Приложение открывается в распахнутом окне."
+
+#: ../clawsker:223
+msgid "Full-screen"
+msgstr "Во весь экран"
+
+#: ../clawsker:224
+msgid "Changes full screen status."
+msgstr "Приложение открывается в полноэкранном режиме."
+
+#: ../clawsker:226
+msgid "Use custom GnuTLS priority"
+msgstr "Использовать собственную строку приоритета GnuTLS"
+
+#: ../clawsker:227
+msgid "Enables using user provided GnuTLS priority string."
+msgstr ""
+"Позволяет пользователю использовать собственную строку приоритета GnuTLS."
+
+#: ../clawsker:228 ../clawsker:2114
+msgid "GnuTLS priority"
+msgstr "Стока приоритета GnuTLS"
+
+#: ../clawsker:229
+msgid ""
+"Value to use as GnuTLS priority string if custom priority check is enabled. "
+"Otherwise this value is ignored."
+msgstr ""
+"Данное поле предназначено для ввода строки приоритета GnuTLS "
+"при подключении возможности использования собственной строки "
+"приоритета проверки подлинности. В противном случае, значение "
+"этого параметра игнорируется."
+
+#: ../clawsker:230
+msgid "Use TLS SNI extension"
+msgstr "Использовать расширение TLS SNI"
+
+#: ../clawsker:231
+msgid ""
+"Enables sending your hostname, if available, so the server can select the "
+"appropriate certificate for your domain. Useful for servers which host "
+"multiple domains on the same IP address."
+msgstr ""
+"Позволяет отправлять имя узла, при его наличии, чтобы сервер мог "
+"выбрать подходящий сертификат для домена. Это удобно для серверов, "
+"имеющих несколько доменов на одном IP-адресе."
+
+#: ../clawsker:233
+msgid "Autocompletion limit"
+msgstr "Ограничение автодополнения"
+
+#: ../clawsker:234
+msgid ""
+"Limits the number of addresses obtained from keyring through autocompletion. "
+"Use 0 to get all matches."
+msgstr ""
+"Ограничивает число адресов, получаемых от keyring через автодополнение. "
+"Значение «0» можно использовать для получения всех совпадений."
+
+#: ../clawsker:235
+msgid "Base URL"
+msgstr "Базовый URL-адрес"
+
+#: ../clawsker:236
+msgid ""
+"This is the URL where avatar requests are sent. You can use the one of your "
+"own libravatar server, if available."
+msgstr ""
+"Этот URL-адрес используется для отправки запросов на получение изображения. "
+"При наличии можно использовать один из собственных серверов libravatar."
+
+#: ../clawsker:237
+msgid "Default redirects"
+msgstr "Перенаправления по умолчанию"
+
+#: ../clawsker:238
+msgid "Maximum default value for HTTP redirects, if enabled"
+msgstr ""
+"Максимальное значение по умолчанию для перенаправлений HTTP при включении "
+"возможности использования данного параметра"
+
+#: ../clawsker:239
+msgid "Mistery man redirects"
+msgstr "Перенаправления в режиме «Мистический»"
+
+#: ../clawsker:240
+msgid "Maximum value for HTTP redirects when using \"Mistery man\" mode."
+msgstr ""
+"Максимальное число перенаправлений HTTP при использовании режима"
+" «Мистический»."
+
+#: ../clawsker:241
+msgid "Custom URL redirects"
+msgstr "Перенаправления на пользовательский URL-адрес"
+
+#: ../clawsker:242
+msgid "Maximum value for HTTP redirects when using a custom URL"
+msgstr ""
+"Максимальное число перенаправлений HTTP при использовании "
+"пользовательского URL-адреса"
+
+#: ../clawsker:244
+msgid "Log level"
+msgstr "Детализация журнала"
+
+#: ../clawsker:245
+msgid "Verbosity level of log, accumulative."
+msgstr "Уровень детализации журнала, накопительный."
+
+#: ../clawsker:246
+msgid "None"
+msgstr "Нет"
+
+#: ../clawsker:247
+msgid "Manual"
+msgstr "Вручную"
+
+#: ../clawsker:248
+msgid "Actions"
+msgstr "Действия"
+
+#: ../clawsker:249
+msgid "Matches"
+msgstr "Совпадения"
+
+#: ../clawsker:458
+msgid "Clawsker error"
+msgstr "Ошибка приложения Clawsker"
+
+#: ../clawsker:465
+msgid "Error: seems Claws Mail is currently running, close it first."
+msgstr ""
+"Ошибка: выполняется экземпляр приложения Claws Mail, "
+"который необходимо закрыть."
+
+#: ../clawsker:498
+msgid "Error: resource file for Claws Mail was not found."
+msgstr "Ошибка: файл окружения Claws Mail не найден."
+
+#: ../clawsker:783 ../clawsker:2075
+msgid "Addressbook"
+msgstr "Адресная книга"
+
+#: ../clawsker:786
+msgid "Memory"
+msgstr "Память"
+
+#: ../clawsker:790
+msgid "NetworkManager"
+msgstr "NetworkManager"
+
+#: ../clawsker:793
+msgid "Master passphrase"
+msgstr "Основная парольная фраза"
+
+#: ../clawsker:796
+msgid "IMAP"
+msgstr "IMAP"
+
+#: ../clawsker:966
+msgid "Coloured stripes"
+msgstr "Цветные полосы"
+
+#: ../clawsker:971
+msgid "Message List"
+msgstr "Список сообщений"
+
+#: ../clawsker:979 ../clawsker:1321
+msgid "Message View"
+msgstr "Просмотр сообщения"
+
+#: ../clawsker:983 ../clawsker:1338
+msgid "Compose window"
+msgstr "Окно составления"
+
+#: ../clawsker:989
+msgid "Scroll bars"
+msgstr "Полосы прокрутки"
+
+#: ../clawsker:993 ../clawsker:1173 ../clawsker:2080 ../clawsker:2824
+msgid "Other"
+msgstr "Другое"
+
+#: ../clawsker:1150
+msgid "Drag 'n' drop"
+msgstr "Перемещение"
+
+#: ../clawsker:1154
+msgid "Secure Sockets Layer"
+msgstr "Secure Sockets Layer"
+
+#: ../clawsker:1158
+msgid "Messages"
+msgstr "Сообщения"
+
+#: ../clawsker:1169
+msgid "Completion"
+msgstr "Дополнение"
+
+#: ../clawsker:1326 ../clawsker:2050
+msgid "Log window"
+msgstr "Окно журнала"
+
+#: ../clawsker:1333
+msgid "Viewing patches"
+msgstr "Просмотр файлов различий"
+
+#: ../clawsker:1342
+msgid "Quick search"
+msgstr "Быстрый поиск"
+
+#: ../clawsker:1901
+msgid "Main window"
+msgstr "Главное окно"
+
+#: ../clawsker:1913
+msgid "Message window"
+msgstr "Окно сообщений"
+
+#: ../clawsker:1919
+msgid "Open URLs window"
+msgstr "Окно для открытия URL-адреса"
+
+#: ../clawsker:1927
+msgid "Send window"
+msgstr "Окно отправки"
+
+#: ../clawsker:1931
+msgid "Receive window"
+msgstr "Окно получения"
+
+#: ../clawsker:1939
+msgid "Folder window"
+msgstr "Окно папки"
+
+#: ../clawsker:1945
+msgid "Folder selection window"
+msgstr "Окно выбора папки"
+
+#: ../clawsker:1949
+msgid "Folder sorting window"
+msgstr "Окно сортировки папок"
+
+#: ../clawsker:1957
+msgid "Addressbook main window"
+msgstr "Главное окно адресной книги"
+
+#: ../clawsker:1961
+msgid "Edit person window"
+msgstr "Окно правки данных контакта"
+
+#: ../clawsker:1965
+msgid "Edit group window"
+msgstr "Окно редактирования данных о группе"
+
+#: ../clawsker:1969
+msgid "Add address window"
+msgstr "Окно добавления адреса"
+
+#: ../clawsker:1973
+msgid "Folder select window"
+msgstr "Окно выбора папки"
+
+#: ../clawsker:1981
+msgid "Accounts window"
+msgstr "Окно правки учётных записей"
+
+#: ../clawsker:1985
+msgid "Edit account window"
+msgstr "Окно параметров учётной записи"
+
+#: ../clawsker:1993
+msgid "Filtering window"
+msgstr "Окно настройки фильтрации"
+
+#: ../clawsker:1997
+msgid "Filtering actions window"
+msgstr "Окно настройки действий фильтрации"
+
+#: ../clawsker:2001
+msgid "Filtering debug window"
+msgstr "Окно журнала отладки фильтрации"
+
+#: ../clawsker:2005
+msgid "Matcher window"
+msgstr "Окно сопоставителя совпадений"
+
+#: ../clawsker:2014
+msgid "User Actions prefs window"
+msgstr "Окно настройки действий пользователя"
+
+#: ../clawsker:2018
+msgid "User Actions I/O window"
+msgstr "Окно ввода/вывода действий пользователя"
+
+#: ../clawsker:2026
+msgid "Preferences window"
+msgstr "Окно настройки параметров"
+
+#: ../clawsker:2030
+msgid "Templates window"
+msgstr "Окно настройки шаблонов"
+
+#: ../clawsker:2034
+msgid "Tags window"
+msgstr "Окно настройки тегов"
+
+#: ../clawsker:2038
+msgid "Plugins window"
+msgstr "Окно модулей"
+
+#: ../clawsker:2046
+msgid "About window"
+msgstr "Окно о программе Clows Mail"
+
+#: ../clawsker:2054
+msgid "SSL manager"
+msgstr "Сертификаты TLS"
+
+#: ../clawsker:2058
+msgid "Print preview window"
+msgstr "Окно предпросмотра печати"
+
+#: ../clawsker:2062
+msgid "View source window"
+msgstr "Окно исходного текста"
+
+#: ../clawsker:2071
+msgid "Main"
+msgstr "Основное"
+
+#: ../clawsker:2072
+msgid "Message"
+msgstr "Сообщение"
+
+#: ../clawsker:2073
+msgid "Send/Receive"
+msgstr "Отправка/Получение"
+
+#: ../clawsker:2074
+msgid "Folder"
+msgstr "Папки"
+
+#: ../clawsker:2076 ../clawsker:2826
+msgid "Accounts"
+msgstr "Учётные записи"
+
+#: ../clawsker:2077
+msgid "Filtering"
+msgstr "Фильтрация"
+
+#: ../clawsker:2078
+msgid "User Actions"
+msgstr "Действия"
+
+#: ../clawsker:2079
+msgid "Preferences"
+msgstr "Параметры"
+
+#: ../clawsker:2117
+msgid "Server Name Indication"
+msgstr "Указание имени сервера"
+
+#: ../clawsker:2291
+msgid "Attachment remover"
+msgstr "Attachment remover"
+
+#: ../clawsker:2292
+msgid "GPG"
+msgstr "GPG"
+
+#: ../clawsker:2293
+msgid "Sieve manager"
+msgstr "Модуль управления Sieve"
+
+#: ../clawsker:2294
+msgid "Libravatar"
+msgstr "Libravatar"
+
+#: ../clawsker:2295
+msgid "Perl"
+msgstr "Perl"
+
+#: ../clawsker:2296
+msgid "Python console"
+msgstr "Консоль Python"
+
+#: ../clawsker:2357
+msgid "Menu path"
+msgstr "Путь меню"
+
+#: ../clawsker:2376
+msgid "Hotkey"
+msgstr "Комбинация клавиш"
+
+#: ../clawsker:2424
+msgid "Library versions"
+msgstr "Версии библиотек"
+
+#: ../clawsker:2426
+msgid "GLib runtime"
+msgstr "Работает с GLib"
+
+#: ../clawsker:2427
+msgid "GLib built"
+msgstr "Собран с GLib"
+
+#: ../clawsker:2429
+msgid "GTK3 runtime"
+msgstr "Работает с GTK3"
+
+#: ../clawsker:2430
+msgid "GTK3 built"
+msgstr "Собран с GTK3"
+
+#: ../clawsker:2432
+msgid "Claws Mail versions"
+msgstr "Версии Claws Mail"
+
+#: ../clawsker:2433
+msgid "Binary"
+msgstr "Двоичная"
+
+#: ../clawsker:2434
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: ../clawsker:2452
+msgid "Not available"
+msgstr "Недоступно"
+
+#: ../clawsker:2460
+msgid "Version:"
+msgstr "Версия:"
+
+#: ../clawsker:2463
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}, built for {glibb}, running with {glibr}."
+msgstr "Perl-GLib: версия {glibv}, собрано с {glibb}, работает с {glibr}."
+
+#: ../clawsker:2468
+#, perl-brace-format
+msgid "Perl-GLib version {glibv}."
+msgstr "Perl-GLib: версия {glibv}."
+
+#: ../clawsker:2471
+#, perl-brace-format
+msgid "Perl-GTK3 version {gtkv}, built for {gtkb}, running with {gtkr}."
+msgstr "Perl-GTK3: версия {gtkv}, собрано с {gtkb}, работает с {gtkr}."
+
+#: ../clawsker:2476
+#, perl-brace-format
+msgid "Perl-GTK3 version {gtkv}."
+msgstr "Perl-GTK3: версия {gtkv}."
+
+#: ../clawsker:2479
+msgid "Claws Mail was not found!"
+msgstr "Приложение Claws Mail не найдено!"
+
+#: ../clawsker:2480
+#, perl-brace-format
+msgid "Claws Mail returned version {cmv}."
+msgstr "Приложение Claws Mail вернуло значение версии {cmv}."
+
+#: ../clawsker:2491
+msgid "Syntax:"
+msgstr "Синтаксис:"
+
+#: ../clawsker:2492
+msgid "  clawsker [options]"
+msgstr "  clawsker [параметры]"
+
+#: ../clawsker:2493
+msgid "Options:"
+msgstr "Параметры:"
+
+#: ../clawsker:2494
+msgid ""
+"  -a|--alternate-config-dir <dir>  Uses <dir> as Claws Mail configuration."
+msgstr ""
+"  -a|--alternate-config-dir <dir>  Использование <dir> в качестве каталога"
+" настройки конфигурации Claws Mail."
+
+#: ../clawsker:2495
+msgid "  -b|--verbose                     More messages on standard output."
+msgstr ""
+"  -b|--verbose                     Вывод дополнительной информации в"
+" стандартный поток вывода."
+
+#: ../clawsker:2496
+msgid "  -c|--clawsrc <file>              Uses <file> as full resource name."
+msgstr ""
+"  -c|--clawsrc <file>              Использование <file> в качестве файла"
+" окружения."
+
+#: ../clawsker:2497
+msgid "  -h|--help                        Prints this help screen and exits."
+msgstr "  -h|--help                        Вывод справки и выход."
+
+#: ../clawsker:2498
+msgid "  -i|--ignore-versions             Allows setting almost everything."
+msgstr ""
+"  -i|--ignore-versions             Обеспечивает настройку практически всех"
+" параметров."
+
+#: ../clawsker:2499
+msgid ""
+"  -k|--hide-disabled-keys          Hides unassigned hotkeys in key columns."
+msgstr ""
+"  -k|--hide-disabled-keys          Вывод только заданных комбинаций клавиш в"
+" столбцах комбинаций клавиш."
+
+#: ../clawsker:2500
+msgid "  -r|--read-only                   Disables writing changes to disk."
+msgstr ""
+"  -r|--read-only                   Отключение записи изменений на диск."
+
+#: ../clawsker:2501
+msgid ""
+"  -s|--small-screen                Forces low resolution UI adjustments."
+msgstr ""
+"  -s|--small-screen                Принудительное использование интерфейса с"
+" низким разрешением."
+
+#: ../clawsker:2502
+msgid ""
+"  -u|--use-claws-version <ver>     Uses <ver> instead of detected version."
+msgstr ""
+"  -u|--use-claws-version <ver>     Использование версии <ver> вместо"
+" обнаруженной версии."
+
+#: ../clawsker:2503
+msgid ""
+"  -v|--version                     Prints version information and exits."
+msgstr "  -v|--version                     Вывод информации о версии и выход."
+
+#: ../clawsker:2524
+msgid "try -h or --help for syntax.\n"
+msgstr ""
+"Используйте параметр -h или --help для получении информации о синтаксисе.\n"
+
+#: ../clawsker:2527
+#, perl-brace-format
+msgid "Error in options: {msg}\n"
+msgstr "Ошибка в параметрах: {msg}\n"
+
+#: ../clawsker:2539
+#, perl-brace-format
+msgid "Error: {opt} requires a dotted numeric value argument\n"
+msgstr ""
+"Ошибка: в качестве значения параметра {opt} должно быть указано число с"
+" точкой\n"
+
+#: ../clawsker:2546
+#, perl-brace-format
+msgid "Error: '{dir}' is not a directory or does not exist\n"
+msgstr "Ошибка: «{dir}» не является каталогом или не существует\n"
+
+#: ../clawsker:2554
+#, perl-brace-format
+msgid "Error: '{value}' is not a file or does not exist\n"
+msgstr "Ошибка: «{value}» не является файлом или не существует\n"
+
+#: ../clawsker:2592 ../clawsker:2666
+#, perl-brace-format
+msgid "Error: opening '{file}' for reading"
+msgstr "Ошибка: открытие «{file}» для чтения"
+
+#: ../clawsker:2600
+#, perl-brace-format
+msgid "Error: duplicate section '{sect}' in resource file '{file}'\n"
+msgstr "Ошибка: раздел «{sect}» дублируется в файле окружения «{file}»\n"
+
+#: ../clawsker:2620 ../clawsker:2701
+#, perl-brace-format
+msgid "Error: opening '{file}' for writing"
+msgstr "Ошибка: открытие «{file}» для записи"
+
+#: ../clawsker:2654
+#, perl-brace-format
+msgid "Unable to create backup file '{name}'\n"
+msgstr "Не удалось создать файл резервной копии «{name}»\n"
+
+#: ../clawsker:2821
+msgid "Behaviour"
+msgstr "Поведение"
+
+#: ../clawsker:2822
+msgid "Colours"
+msgstr "Цвета"
+
+#: ../clawsker:2823
+msgid "GUI"
+msgstr "Интерфейс"
+
+#: ../clawsker:2825
+msgid "Windows"
+msgstr "Окна"
+
+#: ../clawsker:2827
+msgid "Plugins"
+msgstr "Модули"
+
+#: ../clawsker:2828
+msgid "Hotkeys"
+msgstr "Комбинации клавиш"
+
+#: ../clawsker:2829
+msgid "Info"
+msgstr "Информация"
+
+#: ../clawsker:2849
+msgid "Visit Clawsker's web page"
+msgstr "Переход на веб-сайт приложения Clawsker"
+
+#: ../clawsker:2890
+msgid "There are unapplied modifications."
+msgstr "Имеются несохранённые изменения."
+
+#: ../clawsker:2892
+msgid "Do you really want to quit?"
+msgstr "Завершить работу?"
+
+#: ../clawsker:2895
+msgid "Clawsker warning"
+msgstr "Предупреждение Clawsker"
+
+#: ../clawsker:2980
+msgid "Claws Mail Hidden Preferences"
+msgstr "Скрытые параметры настройки Claws Mail"
