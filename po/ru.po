@@ -1045,7 +1045,7 @@ msgstr "Окно модулей"
 
 #: ../clawsker:2046
 msgid "About window"
-msgstr "Окно о программе Clows Mail"
+msgstr "Окно о программе"
 
 #: ../clawsker:2054
 msgid "SSL manager"
