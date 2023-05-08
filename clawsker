@@ -169,6 +169,9 @@ sub _ {
     l_beh_qs_press_t => _('Quick search type-ahead delay'),
     l_beh_qs_press_t_units => _('milliseconds'),
     h_beh_qs_press_t => _('When type-ahead mode of Quick search is enabled, this is the delay after key presses in the search entry before starting a new search with the changes made.'),
+    l_beh_nav_hlen => _('Navigation history length'),
+    l_beh_nav_hlen_units => _('items'),
+    h_beh_nav_hlen => _('Maximun number of messages to keep track of when navigating with the “Next opened message” and “Previous opened message” menu actions'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),
@@ -1143,6 +1146,14 @@ sub new_gui_page() {
         '500',
 
     ],
+    nav_hlen => [
+        'nav_history_length',
+        [ $xl::s{l_beh_nav_hlen}, $xl::s{l_beh_nav_hlen_units} ],
+        $xl::s{h_beh_nav_hlen},
+        'int,0,500000',
+        '3.8.0.26',
+        '50',
+    ],
 );
 
 sub new_behaviour_page() {
@@ -1173,7 +1184,8 @@ sub new_behaviour_page() {
         [ _('Other') ],
         [ new_text_box_for_int (\%pr::beh, 'up_step', \%HPVALUE) ],
         [ new_text_box_for_int (\%pr::beh, 'thread_a', \%HPVALUE) ],
-        [ new_text_box_for_int (\%pr::beh, 'qs_press_t', \%HPVALUE) ]
+        [ new_text_box_for_int (\%pr::beh, 'qs_press_t', \%HPVALUE) ],
+        [ new_text_box_for_int (\%pr::beh, 'nav_hlen', \%HPVALUE) ]
     ]);
 }
 
