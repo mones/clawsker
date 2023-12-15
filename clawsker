@@ -2435,8 +2435,8 @@ sub new_info_page() {
     return new_grid_pack (4, 11, [
         [ _('Library versions') ],
         [ new_label ('Perl-GLib'), new_title ($v->{'glib'}) ],
-        [ new_label (_('GLib runtime')), new_title ($v->{'glib-r'}) ],
-        [ new_label (_('GLib built')), new_title ($v->{'glib-b'}) ],
+        [ new_label (_('GLib runtime')), new_title ($v->{'glib-r'} // _('not available')) ],
+        [ new_label (_('GLib built')), new_title ($v->{'glib-b'} // _('not available')) ],
         [ new_label ('Perl-GTK3'), new_title ($v->{'gtk'}) ],
         [ new_label (_('GTK3 runtime')), new_title ($v->{'gtk-r'}) ],
         [ new_label (_('GTK3 built')), new_title ($v->{'gtk-b'}) ],
