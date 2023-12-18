@@ -1,7 +1,7 @@
 use 5.010_000;
 use strict;
 use utf8;
-use Test::More tests => 10;
+use Test::More tests => 17;
 use Test::Exception;
 use File::Spec::Functions;
 
@@ -22,7 +22,25 @@ use Clawsker;
 
 ok ( defined &Clawsker::parse_command_line, 'has function' );
 
-dies_ok { Clawsker::parse_command_line(['--invalid']) } 'invalid option';
+lives_ok { Clawsker::parse_command_line(['--help']) } '--help';
+
+lives_ok { Clawsker::parse_command_line(['--version']) } '--version';
+
+lives_ok { Clawsker::parse_command_line(['--verbose']) } '--verbose';
+
+lives_ok { Clawsker::parse_command_line(['--read-only']) } '--read-only';
+
+lives_ok { Clawsker::parse_command_line(['--small-screen']) } '--small-screen';
+
+lives_ok { Clawsker::parse_command_line(['--ignore-versions']) } '--ignore-versions';
+
+lives_ok { Clawsker::parse_command_line(['--hide-disabled-keys']) } '--hide-disabled-keys';
+
+dies_ok { Clawsker::parse_command_line(['--use-claws-version']) } '--use-claws-version';
+
+lives_ok { Clawsker::parse_command_line(['--use-claws-version', '1.0.0']) } '--use-claws-version ok';
+
+dies_ok { Clawsker::parse_command_line(['--use-claws-version', 'invalid']) } '--use-claws-version ko';
 
 dies_ok { Clawsker::parse_command_line(['--alternate-config-dir']) } '--alternate-config-dir';
 
@@ -30,11 +48,7 @@ dies_ok { Clawsker::parse_command_line(['--alternate-config-dir', '/notexisting'
 
 lives_ok { Clawsker::parse_command_line(['--alternate-config-dir', '.']) } '--alternate-config-dir ok';
 
-lives_ok { Clawsker::parse_command_line(['--verbose']) } '--verbose';
-
 dies_ok { Clawsker::parse_command_line(['--clawsrc']) } '--clawsrc';
 
-lives_ok { Clawsker::parse_command_line(['--help']) } '--help';
-
-lives_ok { Clawsker::parse_command_line(['--version']) } '--version';
+dies_ok { Clawsker::parse_command_line(['--invalid']) } 'invalid option';
 
