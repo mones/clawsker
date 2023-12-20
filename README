@@ -38,6 +38,8 @@ Dependencies
 
   - Test suite:
 
+  Test::More - https://metacpan.org/pod/Test::More
+  Test::Output - https://metacpan.org/pod/Test::Output
   Test::Exception - https://metacpan.org/pod/Test::Exception
   Test::NeedsDisplay - https://metacpan.org/pod/Test::NeedsDisplay
 
