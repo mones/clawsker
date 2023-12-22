@@ -454,6 +454,7 @@ sub message_dialog {
 }
 
 sub error_dialog {
+    return unless (defined $ENV{'DISPLAY'} and $ENV{'DISPLAY'} ne '');
     my ($emsg) = @_;
     $emsg =~ s/&/&amp;/g;
     my $markup = "<span weight=\"bold\" size=\"large\">" . $emsg . "</span>";
