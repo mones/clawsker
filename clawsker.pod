@@ -108,6 +108,15 @@ B<TMPDIR>, under Clawsker is not the same that it was when Claws Mail
 was launched. For Claws Mail versions greater than 3.17.8 different
 values for B<XDG_RUNTIME_DIR> or B<XDG_CACHE_HOME> may also cause this.
 
+=head1 BUGS
+
+You can send bug reports using the Claws Mail bugzilla instance located
+at L<http://www.thewildbeast.co.uk/claws-mail/bugzilla/>. When creating
+the bug please select the C<clawsker> product.
+
+Security bugs can be reported also in bugzilla or to the main author
+directly if a coordinated disclosure is preferable.
+
 =head1 SEE ALSO
 
 L<Clawsker homepage|http://www.claws-mail.org/clawsker.php>,
