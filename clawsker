@@ -171,7 +171,7 @@ sub _ {
     h_beh_qs_press_t => _('When type-ahead mode of Quick search is enabled, this is the delay after key presses in the search entry before starting a new search with the changes made.'),
     l_beh_nav_hlen => _('Navigation history length'),
     l_beh_nav_hlen_units => _('items'),
-    h_beh_nav_hlen => _('Maximun number of messages to keep track of when navigating with the “Next opened message” and “Previous opened message” menu actions'),
+    h_beh_nav_hlen => _('Maximum number of messages to keep track of when navigating with the “Next opened message” and “Previously opened message” menu actions'),
 
     l_col_emphasis => _('X-Mailer header'),
     h_col_emphasis => _('The colour used for the X-Mailer line when its value is Claws Mail.'),

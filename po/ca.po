@@ -558,8 +558,8 @@ msgstr "Llargada de l'historial de navegació"
 
 #: ../clawsker:174
 msgid ""
-"Maximun number of messages to keep track of when navigating with the “Next "
-"opened message” and “Previous opened message” menu actions"
+"Maximum number of messages to keep track of when navigating with the “Next "
+"opened message” and “Previously opened message” menu actions"
 msgstr ""
 "Nombre màxim de missatges dels quals cal fer un seguiment quan navegueu amb "
 "les accions del menú de missatge obert següent i missatge obert anterior."

@@ -568,8 +568,8 @@ msgstr "Taille de l'historique de navigation"
 
 #: ../clawsker:174
 msgid ""
-"Maximun number of messages to keep track of when navigating with the “Next "
-"opened message” and “Previous opened message” menu actions"
+"Maximum number of messages to keep track of when navigating with the “Next "
+"opened message” and “Previously opened message” menu actions"
 msgstr ""
 "Nombre maximum de messages à conserver lors de la navigation avec les "
 "actions 'Message ouvert suivant' et 'Message ouvert précédent'"

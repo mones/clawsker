@@ -538,8 +538,8 @@ msgstr "Gezinti geçmişi adedi"
 
 #: ../clawsker:174
 msgid ""
-"Maximun number of messages to keep track of when navigating with the “Next "
-"opened message” and “Previous opened message” menu actions"
+"Maximum number of messages to keep track of when navigating with the “Next "
+"opened message” and “Previously opened message” menu actions"
 msgstr ""
 "“Sonraki açılan mesaj” ve “Önceki açılan mesaj” menü eylemleri ile "
 "gezinirken takip edilecek maksimum mesaj sayısı"
