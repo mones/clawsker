@@ -11,7 +11,7 @@
 #
 
 NAME = clawsker
-VERSION ?= 1.3.7
+VERSION ?= 1.3.8
 PREFIX ?= /usr/local
 BINDIR = ${PREFIX}/bin
 DATADIR = ${PREFIX}/share
