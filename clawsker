@@ -252,6 +252,19 @@ sub _ {
     l_plu_prl_match => _('Matches'),
 );
 
+# labels associated to history file names
+%hi::s = (
+    'command_history' => _('Commands'),
+    'compose_save_to_history' => _('Compose'),
+    'messagesearch_history' => _('Message search'),
+    'quicksearch_history' => _('Quick search'),
+    'summarysearch_adv_history' => _('Quick search (advanced)'),
+    'summary_searchbody_history' => _('Summary (body)'),
+    'summarysearch_from_history' => _('Summary (from)'),
+    'summarysearch_subject_history' => _('Summary (subject)'),
+    'summarysearch_to_history' => _('Summary (to)'),
+);
+
 # data and metadata of resource files
 my $CONFIGDATA;
 my $CONFIGMETA;
@@ -261,6 +274,7 @@ my $ACCOUNTMETA;
 my %PREFS = ();
 my %ACPREFS = ();
 my %PLPREFS = ();
+my %HISTORY = ();
 # values of all preferences handled by clawsker
 my %HPVALUE = ();
 my %ACHPVALUE = ();
@@ -2429,6 +2443,36 @@ sub new_hotkeys_page() {
     return $hkbook;
 }
 
+sub new_history_subpage($) {
+    my ($key) = @_;
+    my $fname = catfile ($CONFIGDIR, $key);
+    my $buffer = Gtk3::TextBuffer->new;
+    $buffer->set_text($HISTORY{$key});
+    $buffer->signal_connect ('changed' => sub {
+        my ($hbuf, $hkey) = @_;
+        my $start = $hbuf->get_iter_at_offset(0);
+        my $end = $hbuf->get_iter_at_offset(-1);
+        $HISTORY{$hkey} = $hbuf->get_text($start, $end, FALSE)
+    }, $key);
+    my $textview = Gtk3::TextView->new_with_buffer($buffer);
+    $textview->set_editable(not $READONLY);
+    my $swin = Gtk3::ScrolledWindow->new;
+    $swin->set_border_width (5);
+    $swin->set_shadow_type ('none');
+    $swin->set_policy ('automatic', 'automatic');
+    $swin->add ($textview);
+    return $swin;
+}
+
+sub new_histories_page() {
+    my $hisbook = Gtk3::Notebook->new;
+    $hisbook->set_tab_pos ('right');
+    foreach my $name (sort { $hi::s{$a} cmp $hi::s{$b} } keys %hi::s) {
+        $hisbook->append_page (&new_history_subpage($name), new_label ($hi::s{$name}));
+    }
+    return $hisbook;
+}
+
 sub new_info_page() {
     my $v = get_toolkit_versions ();
     my $cfgv = $CONFIGDATA->{'Common'}{'config_version'};
@@ -2719,6 +2763,48 @@ sub save_menurc {
     close (RCF);
 }
 
+# history files
+sub load_history {
+    my $history = shift;
+    open (HIF, '<:encoding(utf8)', $history)
+        or die _("Error: opening '{file}' for reading", file => $history) . ": $!\n";
+    my @lines = ();
+    while (<HIF>) { chomp; s/^\s*//; push @lines, $_ if $_ }
+    close (HIF);
+    return join("\n", @lines);
+}
+
+sub save_history {
+    my ($history, $text) = @_;
+    open (HIF, '>:utf8', $history)
+        or die _("Error: opening '{file}' for writing", file => $history) . ": $!\n";
+    say HIF $text;
+    close (HIF);
+}
+
+sub load_hi_preferences {
+    foreach my $key (keys %hi::s) {
+        my $fname = catfile ($CONFIGDIR, $key);
+        my $history = '';
+        if (-f $fname) {
+            $history = load_history($fname)
+        }
+        $HISTORY{$key} = $history;
+    }
+    return TRUE;
+}
+
+sub save_hi_preferences {
+    foreach my $key (keys %HISTORY) {
+        my $fname = catfile ($CONFIGDIR, $key);
+        if (-f $fname) {
+            return FALSE unless backup_resource ($fname)
+        }
+        save_history($fname, $HISTORY{$key});
+    }
+    return TRUE;
+}
+
 # load current status from disc
 sub load_rc_preferences {
     my $rc = get_rc_filename ();
@@ -2766,6 +2852,7 @@ sub load_preferences {
     return (load_rc_preferences ()
         and load_ac_preferences ()
         and load_hk_preferences ()
+        and load_hi_preferences ()
     );
 }
 
@@ -2822,7 +2909,8 @@ sub save_preferences {
     return FALSE unless check_claws_not_running ();
     my $result = save_rc_preferences ()
         and save_ac_preferences ()
-        and save_hk_preferences ();
+        and save_hk_preferences ()
+        and save_hi_preferences ();
     $MODIFIED = 0 if $result;
     return $result;
 }
@@ -2839,6 +2927,7 @@ sub new_notebook {
     $nb->append_page (&new_accounts_page, Gtk3::Label->new (_('Accounts')));
     $nb->append_page (&new_plugins_page, Gtk3::Label->new (_('Plugins')));
     $nb->append_page (&new_hotkeys_page, Gtk3::Label->new (_('Hotkeys')));
+    $nb->append_page (&new_histories_page, Gtk3::Label->new (_('Histories')));
     $nb->append_page (&new_info_page, Gtk3::Label->new (_('Info')));
 
     return $nb;
