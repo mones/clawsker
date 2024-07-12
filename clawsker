@@ -250,6 +250,8 @@ sub _ {
     l_plu_prl_manual => _('Manual'),
     l_plu_prl_action => _('Actions'),
     l_plu_prl_match => _('Matches'),
+
+    not_avail => _('Not available'),
 );
 
 # labels associated to history file names
@@ -2480,8 +2482,8 @@ sub new_info_page() {
     return new_grid_pack (4, 11, [
         [ _('Library versions') ],
         [ new_label ('Perl-GLib'), new_title ($v->{'glib'}) ],
-        [ new_label (_('GLib runtime')), new_title ($v->{'glib-r'} // _('not available')) ],
-        [ new_label (_('GLib built')), new_title ($v->{'glib-b'} // _('not available')) ],
+        [ new_label (_('GLib runtime')), new_title ($v->{'glib-r'} // $xl::s{not_avail}) ],
+        [ new_label (_('GLib built')), new_title ($v->{'glib-b'} // $xl::s{not_avail}) ],
         [ new_label ('Perl-GTK3'), new_title ($v->{'gtk'}) ],
         [ new_label (_('GTK3 runtime')), new_title ($v->{'gtk-r'}) ],
         [ new_label (_('GTK3 built')), new_title ($v->{'gtk-b'}) ],
@@ -2506,7 +2508,7 @@ sub get_toolkit_versions {
     if ($Gtk3::VERSION >= 0.034) {
         $versions{'gtk-b'} = join('.', &Gtk3::GET_VERSION_INFO);
     } else {
-        $versions{'gtk-b'} = _('Not available')
+        $versions{'gtk-b'} = $xl::s{not_avail}
     }
     $versions{'gtk-r'} = join('.', &Gtk3::get_version_info);
     return \%versions;
