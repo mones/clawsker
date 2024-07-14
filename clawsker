@@ -2445,6 +2445,61 @@ sub new_hotkeys_page() {
     return $hkbook;
 }
 
+my %UNDO = ();
+my $undoable = TRUE;
+
+sub textbuf_insert_text {
+    my ($tbuf, $iter, $text, $len, $hkey) = @_;
+    return TRUE unless $undoable;
+    my $pos = $iter->get_offset();
+    push @{$UNDO{$hkey}}, [$hkey, '+', $pos, $text, $len];
+    return TRUE;
+}
+
+sub textbuf_delete_range {
+    my ($tbuf, $start, $end, $hkey) = @_;
+    return TRUE unless $undoable;
+    my $text = $tbuf->get_text($start, $end, FALSE);
+    my $pos = $start->get_offset();
+    my $len = $end->get_offset() - $pos;
+    push @{$UNDO{$hkey}}, [$hkey, '-', $pos, $text, $len];
+    return TRUE;
+}
+
+sub textbuf_undo {
+    my ($tview, $hkey) = @_;
+    my $tbuff = $tview->get_buffer();
+    my $undoing = pop @{$UNDO{$hkey}};
+    return unless defined $undoing; # empty undo stack
+    $undoable = FALSE; # don't push actions undone
+    my ($orig, $op, $pos, $text, $len) = @$undoing;
+    if ($hkey eq $orig) {
+        if ($op eq '+') {
+            my $from_pos = $tbuff->get_iter_at_offset($pos);
+            my $to_pos = $tbuff->get_iter_at_offset($pos + $len);
+            $tbuff->delete($from_pos, $to_pos);
+        } elsif ($op eq '-') {
+            my $at_pos = $tbuff->get_iter_at_offset($pos);
+            $tbuff->insert($at_pos, $text, $len);
+        } else {
+            say "Oops, invalid op!?: $op";
+        }
+    } else {
+        say "Oops, undoing a different buffer!?: $hkey != $orig";
+    }
+    $undoable = TRUE;
+}
+
+sub ctrlz_key_handler {
+    my ($tview, $event, $data) = @_;
+    if ($event->keyval == Gtk3::Gdk::KEY_z) {
+        if ($event->state & 'control-mask') {
+            textbuf_undo($tview, $data);
+        }
+    }
+    return FALSE;
+}
+
 sub new_history_subpage($) {
     my ($key) = @_;
     my $fname = catfile ($CONFIGDIR, $key);
@@ -2456,8 +2511,12 @@ sub new_history_subpage($) {
         my $end = $hbuf->get_iter_at_offset(-1);
         $HISTORY{$hkey} = $hbuf->get_text($start, $end, FALSE)
     }, $key);
+    $UNDO{$key} = [];
+    $buffer->signal_connect('insert-text' => \&textbuf_insert_text, $key);
+    $buffer->signal_connect('delete-range' => \&textbuf_delete_range, $key);
     my $textview = Gtk3::TextView->new_with_buffer($buffer);
     $textview->set_editable(not $READONLY);
+    $textview->signal_connect (key_press_event => \&ctrlz_key_handler, $key);
     my $swin = Gtk3::ScrolledWindow->new;
     $swin->set_border_width (5);
     $swin->set_shadow_type ('none');
